@@ -21,12 +21,12 @@
 /*This block creates an angular.js module and a controller to manage the items displayed and the data 
 received in the index*/
 (function() {
-    
+
     //Creates angular module
-    var app = angular.module("homeApp", []);
+    var app = angular.module("indexApp", []);
 
     //Creates the controller named indexCtrl
-    app.controller("homeCtrl", function($scope) {
+    app.controller("indexCtrl", function($scope) {
         this.searchIcon = icon;
     });
     var icon = {
