@@ -14,6 +14,8 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- endbuild -->
 </head>
 
@@ -27,6 +29,38 @@
         <!--Navbar Begins -->
         <nav class="navbar navbar-inverse" role="navigation">
             <div class="container-fluid">
+                <!--Brand and toggle get grouped for better mobile display-->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!--Displays the brand logo on the navbar-->
+                    <a class="navbar-brand" href="index.html">
+                        <img src="../images/logo.png" class="logo">
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <!--Manages the items on right side of the first navbar-->
+                    <form class="navbar-form navbar-right" role="form">
+                        <ul class="nav navbar-nav">
+                            <li><a href="">Log In</a>
+                            </li>
+                            <li><a href="#/login">Sign Up</a>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -35,14 +69,61 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#/">BookHubs</a>
+                    <!--Displays the brand logo on the navbar-->
+                    <a class="navbar-brand" href="">
+                        <img src="../images/logo.png" class="logo">
+                    </a>
                 </div>
-
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <!--Manages the items in the right side of the second navbar-->
                     <form class="navbar-form navbar-right" role="form">
                         <ul class="nav navbar-nav">
-                            <li><a href="#/login">Log In</a>
+                            <li ng-show="show">
+                                <!--Displays the search input group when the search icon button is toggled-->
+                                <div class="form-group" id="navbar-searchInput">
+                                    <input type="text" class="form-control" placeholder="Search" id="input-search-navbar">
+                                   <div class="btn-group">
+                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                                    Search By
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Title</a>
+                                    </li>
+                                    <li><a href="#">ISBN 10</a>
+                                    </li>
+                                    <li><a href="#">ISBN 13</a>
+                                    </li>
+                                    <li><a href="#">Author</a>
+                                    </li>
+                                </ul>
+                            </div>
+                                </div>
+                            </li>
+                            <li>
+                                <!--Icon button that when toggled shows the search input group-->
+                                <button class="btn btn-default iconsToggle" id="" ng-click="show = ! show" data-toggle="tooltip" data-placement="bottom" title="Click me to Search!"><i class="fa fa-search fa-lg"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn btn-default iconsToggle" id=""><i class="fa fa-plus fa-lg"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn btn-default iconsToggle" id=""><i class="fa fa-shopping-cart fa-lg"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn btn-default iconsToggle" id=""><i class="fa fa-user fa-lg"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn btn-default iconsToggle" id=""><i class="fa fa-cog fa-spin fa-lg"></i>
+                                </button>
+                            </li>
+                            <!--Log in and Sign Up links-->
+                            <li><a href="">Log In</a>
                             </li>
                             <li><a href="">Sign Up</a>
                             </li>
@@ -56,9 +137,24 @@
 
         <div ng-view=""></div>
 
-        <div class="footer">
-            <p>
-                <span class="glyphicon glyphicon-book"></span>BooksHub</p>
+        <!--Footer Section Begins-->
+        <div id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6" id="footerText">
+                        <p><a href="#">About Us</a>
+                        </p>
+                        <p><a href="#">Contact Us</a>
+                        </p>
+                        <p><a href="#">Terms and Conditions</a>
+                        </p>
+                        <p><a href="#"><i class="fa fa-github fa-3x"></i></a> &nbsp;
+                            <a href="#"><i class="fa fa-facebook fa-3x"></i></a> &nbsp;
+                            <a href="#"><i class="fa fa-twitter fa-3x"></i></a> 
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -71,7 +167,7 @@
             (i[r].q = i[r].q || []).push(arguments)
         }, i[r].l = 1 * new Date();
         a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
+            m = s.getElementsByTagName(o)[0];
         a.async = 1;
         a.src = g;
         m.parentNode.insertBefore(a, m)
