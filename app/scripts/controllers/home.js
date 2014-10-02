@@ -21,15 +21,15 @@
 /*This block creates an angular.js module and a controller to manage the items displayed and the data 
 received in the index*/
 (function() {
-
-    //Creates angular module
-    var app = angular.module("indexApp", []);
-
-    //Creates the controller named indexCtrl
-    app.controller("indexCtrl", function($scope) {
+    angular.module('hubAppApp').controller("HomeCtrl", function($scope) {
         this.searchIcon = icon;
     });
     var icon = {
         toggled: false
     }
 })();
+
+// $(function ()  
+// { $("#iconToggle").popover({title: 'Settings', content: "It's so simple to create a tooltop for my website!"});  
+// });  
+
