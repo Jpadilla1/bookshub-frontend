@@ -1,5 +1,4 @@
 /* index Styles Begins*/
-
 /*Navbar Styles*/
 
 .navbar.navbar-inverse {
@@ -10,35 +9,35 @@
     color: white;
     font-weight: 800;
 }
-.navbar-default .navbar-nav>li>a{
+.navbar-default .navbar-nav>li>a {
     color: white;
     font-weight: 800;
 }
-.navbar-default .navbar-brand{
+.navbar-default .navbar-brand {
     color: white;
 }
 .navbar-inverse .navbar-brand {
     color: white;
 }
-.navbar-default{
+.navbar-default {
     background-color: rgba(0, 0, 0, 0.19);
     border-color: transparent;
 }
-#navbar-searchInput{
+#navbar-searchInput {
     margin-top: 2%;
 }
-#input-search-navbar{
+#input-search-navbar {
     margin-left: -40%;
     width: 100%;
 }
-.iconsToggle{
+.iconsToggle {
     color: white;
     background-color: transparent;
     margin-top: 15%;
-    border-color: transparent; 
+    border-color: transparent;
     outline: none;
 }
-.logo{
+.logo {
     width: 70%;
     height: 178%;
     margin-top: -3%
@@ -60,6 +59,10 @@
     margin-top: 0%;
     margin-left: -25%;
     width: 50%;
+}
+.thumbnail > img, .thumbnail a > img {
+    width: 340px;
+    height: 191px;
 }
 #form-search {
     margin-bottom: 0;
@@ -86,15 +89,14 @@
     background-color: rgba(0, 0, 0, 0.74);
     margin-top: 3%;
 }
-#footerText{
+#footerText {
     margin-top: 3%;
 }
-a{
+a {
     color: rgb(17, 213, 119);
     font-weight: 800;
 }
 /*Index Styles End*/
-
 /*Button Styles Begins*/
 
 .butn {
