@@ -96,6 +96,10 @@ a {
     color: rgb(17, 213, 119);
     font-weight: 800;
 }
+a:hover{
+    color: rgb(17, 213, 119);
+    text-decoration: none;
+}
 /*Index Styles End*/
 /*Button Styles Begins*/
 

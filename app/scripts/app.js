@@ -24,7 +24,7 @@ angular
        templateUrl: 'views/home.html',
        controller: 'HomeCtrl'
      })
-     .when('/login', {
+     .when('/signUp', {
        templateUrl: 'views/main.html',
        controller: 'MainCtrl'
      })
