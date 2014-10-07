@@ -31,5 +31,4 @@ received in the index*/
 
 // $(function ()  
 // { $("#iconToggle").popover({title: 'Settings', content: "It's so simple to create a tooltop for my website!"});  
-// });  
-
+// });

@@ -8,9 +8,10 @@
  * Controller of the hubAppApp
  */
 angular.module('hubAppApp')
-  .controller('LogInCtrl', function ($scope) {
-    $scope.submission = [
-      email: '',
-      password: ''
+  .controller('AboutCtrl', function ($scope) {
+    $scope.awesomeThings = [
+      'HTML5 Boilerplate',
+      'AngularJS',
+      'Karma'
     ];
   });
