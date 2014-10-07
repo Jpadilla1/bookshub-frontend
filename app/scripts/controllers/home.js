@@ -8,7 +8,7 @@
             $(window).scroll(function() {
 
                 // set distance user needs to scroll before we start fadeIn
-                if ($(this).scrollTop() >= $('.index-background').height()) {
+                if ($(this).scrollTop() >= $(window).height()) {
                     $('.navbar-fixed-top').fadeIn();
                 } else {
                     $('.navbar-fixed-top').fadeOut();
@@ -17,9 +17,6 @@
         });
     });
 }(jQuery));
-
-var homeController = angular.module('homeController', []);
-
 
 /*This block creates an angular.js module and a controller to manage the items displayed and the data 
 received in the index*/

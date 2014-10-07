@@ -22,6 +22,7 @@
 .navbar-default {
     background-color: rgba(0, 0, 0, 0.19);
     border-color: transparent;
+    display: none;
 }
 #navbar-searchInput {
     margin-top: 2%;
