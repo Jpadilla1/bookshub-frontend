@@ -2,16 +2,13 @@
 
 /**
  * @ngdoc function
- * @name hubAppApp.controller:AboutCtrl
+ * @name hubAppApp.controller:LogInCtrl
  * @description
- * # AboutCtrl
+ * # LogInCtrl
  * Controller of the hubAppApp
  */
 angular.module('hubAppApp')
-  .controller('AboutCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+    .controller('LogInCtrl', function($scope) {
+        $scope.email = '';
+        $scope.password = '';
+    });
