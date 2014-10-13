@@ -25,19 +25,23 @@ received in the index*/
 
         $scope.searchInput = '';
 
-        $scope.submitByTitle = function(){
+        $scope.$on('$viewContentLoaded', function() {
+            document.getElementById("primaryNav").style.backgroundColor = "transparent";
+        });
+
+        $scope.submitByTitle = function() {
             alert("tile");
         }
 
-        $scope.submitByIsbn10 = function(){
+        $scope.submitByIsbn10 = function() {
             alert("isbn10");
         }
 
-        $scope.submitByIsbn13 = function(){
+        $scope.submitByIsbn13 = function() {
             alert("isbn 13");
         }
 
-        $scope.submitByAuthor = function(){
+        $scope.submitByAuthor = function() {
             alert("author");
         }
     });

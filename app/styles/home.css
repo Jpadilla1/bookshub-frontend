@@ -2,7 +2,6 @@
 /*Navbar Styles*/
 
 .navbar.navbar-inverse {
-    background-color: transparent;
     border-style: hidden;
 }
 .navbar-inverse .navbar-nav>li>a {
@@ -96,7 +95,8 @@
     margin-top: 3%;
 }
 #logInForm {
-    margin-bottom: 23.5%;
+    margin-top: 20%;
+    margin-bottom: 3.5%;
 }
 .ng-dirty.ng-invalid {
     border-color: red;
