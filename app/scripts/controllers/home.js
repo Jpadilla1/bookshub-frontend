@@ -22,6 +22,23 @@
 received in the index*/
 (function() {
     angular.module('hubAppApp').controller("HomeCtrl", function($scope) {
-        $scope.search = '';
+
+        $scope.searchInput = '';
+
+        $scope.submitByTitle = function(){
+            alert("tile");
+        }
+
+        $scope.submitByIsbn10 = function(){
+            alert("isbn10");
+        }
+
+        $scope.submitByIsbn13 = function(){
+            alert("isbn 13");
+        }
+
+        $scope.submitByAuthor = function(){
+            alert("author");
+        }
     });
 })();

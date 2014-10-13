@@ -21,20 +21,20 @@
                     <li ng-show="show">
                         <!--Displays the search input group when the search icon button is toggled-->
                         <div class="form-group" id="navbar-searchInput">
-                            <input type="text" class="form-control" placeholder="Search" id="input-search-navbar">
+                            <input type="text" class="form-control" placeholder="Search" id="input-search-navbar" ng-model="searchInput">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
                                     Search By
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">Title</a>
+                                    <li><a href="" ng-click="submitByTitle()">Title</a>
                                     </li>
-                                    <li><a href="#">ISBN 10</a>
+                                    <li><a href="" ng-click="submitByIsbn10()">ISBN 10</a>
                                     </li>
-                                    <li><a href="#">ISBN 13</a>
+                                    <li><a href="" ng-click="submitByIsbn13()">ISBN 13</a>
                                     </li>
-                                    <li><a href="#">Author</a>
+                                    <li><a href="" ng-click="submitByAuthor()">Author</a>
                                     </li>
                                 </ul>
                             </div>
@@ -54,7 +54,7 @@
                                 </a>
                     </li>
                     <li>
-                        <a href="#/"><i class="fa fa-user fa-lg"></i>
+                        <a href="#/userProfile"><i class="fa fa-user fa-lg"></i>
                                 </a>
                     </li>
                     <li>
@@ -84,7 +84,7 @@
                 </h1>
                 <!--Input Group that manages the data to be searched-->
                 <div class="input-group">
-                    <input type="text" class="form-control" ng-model="search">
+                    <input type="text" class="form-control" ng-model="searchInput">
                     <span class="input-group-btn">
                         <div class="btn-group">
                             <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
@@ -92,13 +92,13 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Title</a>
+                                <li><a href="" ng-click="submitByTitle">Title</a>
                                 </li>
-                                <li><a href="#">ISBN 10</a>
+                                <li><a href="" ng-click="submitByIsbn10">ISBN 10</a>
                                 </li>
-                                <li><a href="#">ISBN 13</a>
+                                <li><a href="" ng-click="submitByIsbn13">ISBN 13</a>
                                 </li>
-                                <li><a href="#">Author</a>
+                                <li><a href="" ng-click="submitByAuthor">Author</a>
                                 </li>
                             </ul>
                         </div>
