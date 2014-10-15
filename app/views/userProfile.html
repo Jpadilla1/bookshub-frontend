@@ -1,74 +1,66 @@
-<div ng-init="tab = 0"></div>
+<div class="container">
+    <div ng-init="tab = 0"></div>
 
-<div class="jumbotron clearfix" ng-show="tab===0">
+
     <br>
     <br>
+    <form role="container">
 
-    <p>
-
-        <form role="form">
-
-            <div class="col-md-4">
+        <div class="col-md-4">
 
 
+            <p>
+                <img src="images/logo.png" alt="..." class="img-thumbnail">
+            </p>
+
+            <br>
+            <br>
+            <div class="form-group">
+                <button type="button" class="btn btn-success btn-lg  btn-block">Review Username</button>
                 <br>
+                <button type="button" class="btn btn-info btn-lg btn btn-block">Contact Username</button>
                 <br>
-                <br>
-
-                <p>
-                    <img src="images/logo.png" alt="..." class="img-thumbnail">
-                </p>
-
-				<br>
-				<div class="form-group">
-				<button type="button" class="btn btn-success btn-lg btn-margin">Review Username</button>
-				<br>
-				<button type="button" class="btn btn-info btn-lg btn btn-margin">Contact Username</button>
-				<button type="button" class="btn btn-danger btn-lg">Report to BooksHub</button>
-				</div>
+                <button type="button" class="btn btn-danger btn-lg btn-block">Report to BooksHub</button>
             </div>
+        </div>
 
-            </br>
-            </br>
-            </br>
-
-
-            <div class="col-md-8" ng-show="tab === 1"></div>
-            <div class="col-md-8">
+        </br>
+        </br>
+        </br>
 
 
-                <form role="form">
-
-                    <br>
-                    <div class="form-group col-md-6 col-md-offset-2">
-                        <p>
-                            <h3>Name:</h3>
-                        </p>
-                    </div>
-                    <div class="form-group col-md-6 col-md-offset-2">
-                        <p>
-                            <h3>Description:</h3>
-                        </p>
-
-                    </div>
-                    <div class="form-group col-md-6 col-md-offset-2">
-
-                    </div>
+        <div class="col-md-8" ng-show="tab === 1"></div>
+        <div class="col-md-8">
 
 
+            <form role="container">
+                <div class="form-group col-md-6 col-md-offset-2">
 
-                </form>
+                    <p>
+                        <h3>Name:</h3>
+                    </p>
+                    <p>
+                        <h3>Description:</h3>
+                    </p>
+                     <p>
+                        <h3>Books Sold:</h3>
+                    </p>
 
 
-            </div>
+                </div>
 
 
-        </form>
 
-    </p>
+            </form>
+
+
+        </div>
+
+
+    </form>
+
 
 </div>
-
 <!-- Second Part of Form (Company)-->
 <div class="jumbotron clearfix" ng-show="tab===3">
     <div class="letter">
