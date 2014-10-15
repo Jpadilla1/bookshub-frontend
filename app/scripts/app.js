@@ -44,19 +44,14 @@ angular
        templateUrl: 'views/logIn.html',
        controller: 'LogInCtrl'
      })
+      .when('/bookProfile', {
+      templateUrl: 'views/bookProfile.html',
+      controller: 'bookProfileCtrl'
+     })
      .otherwise({
        redirectTo: '/'
      });
  });
-
-
-
-
-
-
-
-
-
 
 
 
