@@ -22,14 +22,27 @@
 received in the index*/
 (function() {
     angular.module('hubAppApp').controller("HomeCtrl", function($scope) {
-        this.searchIcon = icon;
+
+        $scope.searchInput = '';
+
+        $scope.$on('$viewContentLoaded', function() {
+            document.getElementById("primaryNav").style.backgroundColor = "transparent";
+        });
+
+        $scope.submitByTitle = function() {
+            alert("tile");
+        }
+
+        $scope.submitByIsbn10 = function() {
+            alert("isbn10");
+        }
+
+        $scope.submitByIsbn13 = function() {
+            alert("isbn 13");
+        }
+
+        $scope.submitByAuthor = function() {
+            alert("author");
+        }
     });
-    var icon = {
-        toggled: false
-    }
 })();
-
-// $(function ()  
-// { $("#iconToggle").popover({title: 'Settings', content: "It's so simple to create a tooltop for my website!"});  
-// });  
-

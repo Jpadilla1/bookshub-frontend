@@ -2,7 +2,6 @@
 /*Navbar Styles*/
 
 .navbar.navbar-inverse {
-    background-color: transparent;
     border-style: hidden;
 }
 .navbar-inverse .navbar-nav>li>a {
@@ -20,7 +19,7 @@
     color: white;
 }
 .navbar-default {
-    background-color: rgba(0, 0, 0, 0.19);
+    background-color: rgba(0, 0, 0, 0.74);
     border-color: transparent;
     display: none;
 }
@@ -40,7 +39,7 @@
 }
 .logo {
     width: 70%;
-    height: 178%;
+    height: 270%;
     margin-top: -3%
 }
 /*Section Styles*/
@@ -55,7 +54,7 @@
 .searchInput {
     position: absolute;
     margin-bottom: 20%;
-    top: 50%;
+    top: 40%;
     left: 50%;
     margin-top: 0%;
     margin-left: -25%;
@@ -83,6 +82,26 @@
     position: relative;
     color: white;
 }
+/*Log In Styles*/
+
+#forgotLinks {
+    float: right;
+}
+#logInButn {
+    width: 100%;
+    margin-top: 5%;
+}
+#marginBottom {
+    margin-top: 3%;
+}
+#logInForm {
+    margin-top: 20%;
+    margin-bottom: 3.5%;
+}
+.ng-dirty.ng-invalid {
+    border-color: red;
+}
+/*Log In Styles*/
 /*Footer Styles*/
 
 #footer {
@@ -98,40 +117,8 @@ a {
     color: rgb(17, 213, 119);
     font-weight: 800;
 }
-a:hover{
+a:hover {
     color: rgb(17, 213, 119);
     text-decoration: none;
 }
 /*Index Styles End*/
-/*Button Styles Begins*/
-
-.butn {
-    border-radius: 0;
-    background-color: transparent;
-    font-size: 12px;
-    font-weight: 500;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    letter-spacing: 0.110em;
-}
-.btn-green {
-    color: rgba(35, 204, 97, 0.9);
-    border: 3px solid rgba(35, 204, 97, 0.7);
-}
-.btn-red {
-    color: rgba(204, 35, 38, 0.9);
-    border: 3px solid rgba(204, 35, 38, 0.7);
-}
-.btn-blue {
-    color: rgba(35, 125, 204, 0.9);
-    border: 3px solid rgba(35, 125, 204, 0.7);
-}
-.btn-lightblue {
-    color: rgba(37, 216, 219, 0.9);
-    border: 3px solid rgba(37, 216, 219, 0.7);
-}
-.btn-warning {
-    color: rgba(227, 177, 41, 0.9);
-    border: 3px solid rgba(227, 177, 41, 0.7);
-}
-/*Button Styles End*/

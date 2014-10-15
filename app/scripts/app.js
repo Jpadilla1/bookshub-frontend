@@ -8,6 +8,7 @@
 *
 * Main module of the application.
 */
+
 angular
  .module('hubAppApp', [
    'ngAnimate',
@@ -18,7 +19,8 @@ angular
    'ngTouch'
  ])
  
- .config(function ($routeProvider) {
+ .config(function($routeProvider) {
+
    $routeProvider
      .when('/', {
        templateUrl: 'views/home.html',

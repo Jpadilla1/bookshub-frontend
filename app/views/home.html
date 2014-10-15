@@ -1,78 +1,78 @@
- <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <!--Displays the brand logo on the navbar-->
-                    <a class="navbar-brand" href="#/">
-                        <img src="../images/logo.png" class="logo">
-                    </a>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <!--Manages the items in the right side of the second navbar-->
-                    <form class="navbar-form navbar-right" role="form">
-                        <ul class="nav navbar-nav">
-                            <li ng-show="show">
-                                <!--Displays the search input group when the search icon button is toggled-->
-                                <div class="form-group" id="navbar-searchInput">
-                                    <input type="text" class="form-control" placeholder="Search" id="input-search-navbar">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-                                            Search By
-                                            <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Title</a>
-                                            </li>
-                                            <li><a href="#">ISBN 10</a>
-                                            </li>
-                                            <li><a href="#">ISBN 13</a>
-                                            </li>
-                                            <li><a href="#">Author</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <!--Icon button that when toggled shows the search input group-->
-                                <a href="" ng-click="show = ! show" data-toggle="tooltip" data-placement="bottom" title="Click me to Search!"><i class="fa fa-search fa-lg"></i>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!--Displays the brand logo on the navbar-->
+            <a class="navbar-brand" href="#/">
+                <img src="../images/logo.png" class="logo">
+            </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <!--Manages the items in the right side of the second navbar-->
+            <form class="navbar-form navbar-right" role="form">
+                <ul class="nav navbar-nav">
+                    <li ng-show="show">
+                        <!--Displays the search input group when the search icon button is toggled-->
+                        <div class="form-group" id="navbar-searchInput">
+                            <input type="text" class="form-control" placeholder="Search" id="input-search-navbar" ng-model="searchInput">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                                    Search By
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="" ng-click="submitByTitle()">Title</a>
+                                    </li>
+                                    <li><a href="" ng-click="submitByIsbn10()">ISBN 10</a>
+                                    </li>
+                                    <li><a href="" ng-click="submitByIsbn13()">ISBN 13</a>
+                                    </li>
+                                    <li><a href="" ng-click="submitByAuthor()">Author</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <!--Icon button that when toggled shows the search input group-->
+                        <a href="" ng-click="show = ! show" data-toggle="tooltip" data-placement="bottom" title="Click me to Search!"><i class="fa fa-search fa-lg"></i>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="#/book"><i class="fa fa-plus fa-lg"></i>
+                    </li>
+                    <li>
+                        <a href="#/book"><i class="fa fa-plus fa-lg"></i>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="#/"><i class="fa fa-shopping-cart fa-lg"></i>
+                    </li>
+                    <li>
+                        <a href="#/"><i class="fa fa-shopping-cart fa-lg"></i>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="#/"><i class="fa fa-user fa-lg"></i>
+                    </li>
+                    <li>
+                        <a href="#/userProfile"><i class="fa fa-user fa-lg"></i>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="#/"><i class="fa fa-cog fa-lg"></i>
+                    </li>
+                    <li>
+                        <a href="#/"><i class="fa fa-cog fa-lg"></i>
                                 </a>
-                            </li>
-                            <!--Log in and Sign Up links-->
-                            <li><a href="#/logIn">Log In</a>
-                            </li>
-                            <li><a href="#/signUp">Sign Up</a>
-                            </li>
-                        </ul>
-                    </form>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /.container-fluid -->
-        </nav>
+                    </li>
+                    <!--Log in and Sign Up links-->
+                    <li><a href="#/logIn">Log In</a>
+                    </li>
+                    <li><a href="#/signUp">Sign Up</a>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
 <!--Background Image for the Search Section-->
 <img src="../images/homeBackground.jpg" class="index-background">
 <form class="form-group" role="form" id="form-search">
@@ -84,7 +84,7 @@
                 </h1>
                 <!--Input Group that manages the data to be searched-->
                 <div class="input-group">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" ng-model="searchInput">
                     <span class="input-group-btn">
                         <div class="btn-group">
                             <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
@@ -92,13 +92,13 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Title</a>
+                                <li><a href="" ng-click="submitByTitle">Title</a>
                                 </li>
-                                <li><a href="#">ISBN 10</a>
+                                <li><a href="" ng-click="submitByIsbn10">ISBN 10</a>
                                 </li>
-                                <li><a href="#">ISBN 13</a>
+                                <li><a href="" ng-click="submitByIsbn13">ISBN 13</a>
                                 </li>
-                                <li><a href="#">Author</a>
+                                <li><a href="" ng-click="submitByAuthor">Author</a>
                                 </li>
                             </ul>
                         </div>
@@ -123,8 +123,11 @@
             <div class="requested-books">
                 <ul class="list-unstyled">
                     <li class="col-md-4">
+
                         <a href="/" class="thumbnail">
                             <img src="http://placehold.it/400x200" alt="..." height="191" width="340"/>
+
+
                             <div class="caption">
                                 <h3>Book Title</h3>
                                 <p>ISBN:</p>
@@ -135,7 +138,7 @@
                     <!--Remember to all types of col-->
                     <li class="col-md-4">
                         <a href="#" class="thumbnail">
-                            <img src="http://placehold.it/400x200" alt="..." height="200" width="400"/>
+                            <img src="http://placehold.it/400x200" alt="..." height="200" width="400" />
                             <div class="caption">
                                 <h3>Book Title</h3>
                                 <p>ISBN:</p>
