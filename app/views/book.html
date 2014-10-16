@@ -13,20 +13,19 @@
     <div class="row">
         <div class="col-lg-4">
             <div class="input-group">
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" ng-model="searchInput">
                 <div class="input-group-btn">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">Search
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Search
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                        <li><a href="#">Title</a>
+                        <li><a href="" ng-click="submitByTitle()">Title</a>
                         </li>
-                        <li><a href="#">ISBN 10</a>
+                        <li><a href="" ng-click="submitByIsbn10()">ISBN 10</a>
                         </li>
-                        <li><a href="#">ISBN 13</a>
+                        <li><a href="" ng-click="submitByIsbn13()">ISBN 13</a>
                         </li>
-                        <li class="divider"></li>
-                        <li><a href="#">Author</a>
+                        <li><a href="" ng-click="submitByAuthor()">Author</a>
                         </li>
                     </ul>
                 </div>
@@ -42,36 +41,31 @@
 <br>
 
     <div class="container">
-        <form role="form">
 
             <div class="col-md-8" ng-show="tab === 1"></div>
 
 
-
-            <form role="form">
+            <form role="form" ng-submit="submit()" name="bookForm">
                 <div class="form-group col-md-6 col-md-offset-3">
-                    <input type="text" class="form-control" id="book_title" placeholder="Title">
+                    <input type="text" class="form-control" id="book_title" placeholder="Title" ng-model="newBookForm.title" required>
                 </div>
                 <div class="form-group col-md-6 col-md-offset-3">
-                    <input type="text" class="form-control" id="book_isbn" placeholder="ISBN">
+                    <input type="number" class="form-control" id="book_isbn" placeholder="ISBN" ng-model="newBookForm.isbn" required>
                 </div>
                 <div class="form-group col-md-6 col-md-offset-3">
-                    <input type="text" class="form-control" id="book_author" placeholder="Author">
+                    <input type="text" class="form-control" id="book_author" placeholder="Author" ng-model="newBookForm.author" required>
                 </div>
-
-
                 <div class="form-group col-md-6 col-md-offset-3">
-                    <input type="email" class="form-control" id="book_edition" placeholder="Edition">
+                    <input type="text" class="form-control" id="book_edition" placeholder="Edition" ng-model="newBookForm.edition" required>
                 </div>
-
                 <div class="form-group col-md-6 col-md-offset-3">
-                    <input type="password" class="form-control" id="book_category" placeholder="Category(DropDown)">
+                    <input type="text" class="form-control" id="book_category" placeholder="Category(DropDown)" ng-model="newBookForm.category" required>
                 </div>
 
 
                 <div class="form-group col-md-6 col-md-offset-3 text-center">
-                    <button type="button" class="btn btn-info btn-lg">Sumbit</button>
-                    <button type="button" class="btn btn-info btn-lg btn-margin">Clear</button>
+                    <button type="submit" class="btn btn-success btn-lg">Submit</button>
+                    <button type="button" ng-click="clear()" class="btn btn-success btn-lg btn-margin">Clear</button>
 
                 </div>
 
@@ -81,7 +75,7 @@
     </div>
 
 
-    </form>
+    
 
 
 </div>

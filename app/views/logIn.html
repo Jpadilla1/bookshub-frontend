@@ -1,20 +1,20 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <form role="form" id="logInForm" ng-submit="submit()">
+            <form role="form" ng-submit="submit()">
                 <div class="form-group">
                     <p>
                         <label for="exampleInputEmail1">Email address</label>
                         <a href="" id="forgotLinks">Forgot Username?</a>
                     </p>
-                    <input type="email" class="form-control" placeholder="Email" ng-model="email" required>
+                    <input type="email" class="form-control" placeholder="Email" ng-model="logInForm.email" required>
                 </div>
                 <div class="form-group">
                     <p>
                         <label for="exampleInputPassword1">Password</label>
                         <a href="" id="forgotLinks">Forgot Password?</a>
                     </p>
-                    <input type="password" class="form-control" placeholder="Password" ng-model="password" required>
+                    <input type="password" class="form-control" placeholder="Password" ng-model="logInForm.password" required>
                 </div>
                 <button type="submit" class="btn btn-success" id="logInButn">Log In</button>
                 <p id="marginBottom">

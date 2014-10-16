@@ -11,15 +11,18 @@
 
 angular.module('hubAppApp')
     .controller('LogInCtrl', function($scope) {
-        $scope.email = '';
-        $scope.password = '';
+
+        $scope.logInForm = { 
+            "email": '',
+            "password": ''
+        };
         
+        $scope.submit = function() {
+            //Here we send data to back end
+            console.log($scope.logInForm);
+        }
+
         $scope.$on('$viewContentLoaded', function() {
             document.getElementById("primaryNav").style.backgroundColor = "rgba(0, 0, 0, 0.74)";
         });
-
-        $scope.submit = function() {
-            //Here we send data to back end
-            alert("Hola");
-        }
     });
