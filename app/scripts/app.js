@@ -27,8 +27,8 @@ angular
        controller: 'HomeCtrl'
      })
      .when('/signUp', {
-       templateUrl: 'views/main.html',
-       controller: 'MainCtrl'
+       templateUrl: 'views/signUp.html',
+       controller: 'SignUpCtrl'
      })
      .when('/about', {
        templateUrl: 'views/about.html',

@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp').controller('MainCtrl', function($scope) {
+angular.module('hubAppApp').controller('SignUpCtrl', function($scope) {
 
     $scope.basicForm = {
     	"username": '',

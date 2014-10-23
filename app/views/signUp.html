@@ -1,54 +1,42 @@
 <div ng-init="tab = 0"></div>
 <div ng-show="tab===0">
-    <br>
-    <div class="letter">
-        <h1>
-            <center>
-                <h1>First step to join BooksHub!</h1>
-                  <a href="#/"><h4>Or just Search!</h4></a>
-            </center>
-        </h1>
-    </div>
-    <br>
-
+    <h1>
+        <center>
+            <h1 id="signUpHeader">First step to join BooksHub!</h1>
+        </center>
+    </h1>
     <div class="container">
-        <div class="col-md-6" ng-show="tab === 1"></div>
-
-
-
-        <form role="form">
-
-
-            <br>
-            <div class="form-group col-md-6 col-md-offset-3">
-                <input type="text" class="form-control" id="username" placeholder="Username" ng-model="basicForm.username">
-            </div>
-            <div class="form-group col-md-6 col-md-offset-3">
-                <input type="text" class="form-control" id="firstName" placeholder="First Name" ng-model="basicForm.firstName">
-            </div>
-            <div class="form-group col-md-6 col-md-offset-3">
-                <input type="text" class="form-control" id="lastName" placeholder="Last Name" ng-model="basicForm.lastName">
-            </div>
-            <div class="form-group col-md-6 col-md-offset-3">
-                <input type="email" class="form-control" id="email" placeholder="Email" ng-model="basicForm.email">
-            </div>
-            <div class="form-group col-md-6 col-md-offset-3">
-                <input type="password" class="form-control" id="password" placeholder="Password" ng-model="basicForm.password">
-            </div>
-            <div class="form-group col-md-6 col-md-offset-3">
-                <input type="password" class="form-control" id="retypepassword" placeholder="Retype Password" ng-model="basicForm.retypedPassword">
-            </div>
-
-            <div class="form-group col-md-6 col-md-offset-3 text-center">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+            <form role="form" ng-show="tab === 0">
+                <br>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="username" placeholder="Username" ng-model="basicForm.username">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name" ng-model="basicForm.firstName">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name" ng-model="basicForm.lastName">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" placeholder="Email" ng-model="basicForm.email">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" placeholder="Password" ng-model="basicForm.password">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="retypepassword" placeholder="Retype Password" ng-model="basicForm.retypedPassword">
+                </div>
+                <div class="form-group" id="signUpButtons">
+                    <center>
                     <button type="button" class="btn btn-success btn-lg" ng-click="tab=1">User</button>
                     <button type="button" class="btn btn-success btn-lg btn-margin" ng-click="tab=2">Student</button>
-            </div>
-
-        </form>
-
-
+                    </center>
+                </div>
+            </form>
+        </div>
     </div>
-
 </div>
 <!-- SignUp = Tab = 0 -->
 
@@ -59,24 +47,15 @@
 <!-- Second Part of Form (Student)-->
 
 <div ng-show="tab===2">
-    <br>
-    <div class="letter">
-        <center>
-            <h1>Finish your Profile or get Searching!</h1>
-                 <a href="#/"><h4>Or just Search!</h4></a>
-        </center>
-    </div>
-
-
+    <center>
+        <h1>Finish your Profile or get Searching!</h1>
+        <a href="#/">
+            <h4>Or just Search!</h4>
+        </a>
+    </center>
     <div class="container">
         <div class="col-md-6" ng-show="tab === 1"></div>
-
-
-
         <form role="form">
-           
-            <br>
-
             <!-- ONLY FOR USER & STUDENTS-->
             <div class="form-group col-md-6 col-md-offset-3">
                 <input type="text" class="form-control" id="city" placeholder="City" ng-model="studentForm.city">
@@ -132,69 +111,73 @@
 
 <div ng-show="tab===1">
     <div class="letter">
-    <center>
-        <h1>Finish your Profile or get Searching!</h1>
-             <a href="/"><h4>Or just Search!</h4></a>
+        <center>
+            <h1>Finish your Profile or get Searching!</h1>
+            <a href="/">
+                <h4>Or just Search!</h4>
+            </a>
         </center>
     </div>
 
     <p>
 
-    
 
 
 
 
-            <div class="col-md-8" ng-show="tab === 1"></div>
-            
 
-                <div class="container">
-                <form role="form">
-                
-                    <br>
-
-                    <!-- ONLY FOR USER & STUDENTS-->
-
-                    <div class="form-group col-md-6 col-md-offset-3">
-                        <input type="text" class="form-control" id="title" placeholder="Title" ng-model="userForm.title">
-                    </div>
-                    <div class="form-group col-md-6 col-md-offset-3">
-                        <input type="text" class="form-control" id="city" placeholder="City" ng-model="userForm.city">
-                    </div>
-                    <div class="form-group col-md-6 col-md-offset-3">
-                        <input type="text" class="form-control" id="state" placeholder="State" ng-model="userForm.state">
-                    </div>
-                    <div class="form-group col-md-6 col-md-offset-3">
-                        <input type="text" class="form-control" id="zipcode" placeholder="ZipCode" ng-model="userForm.zipCode">
-                    </div>
-
-                    <div class="form-group col-md-6 col-md-offset-3">
-                        <input type="text" class="form-control" id="facebook_url" placeholder="Facebook" ng-model="userForm.facebook">
-                    </div>
-                    <div class="form-group col-md-6 col-md-offset-3">
-                        <input type="text" class="form-control" id="twitter_url" placeholder="@Twitter" ng-model="userForm.twitter">
-                    </div>
-
-                    <div class="form-group col-md-6 col-md-offset-3">
-                        <input type="text" class="form-control" id="google_url" placeholder="Google ID" ng-model="userForm.googleId">
-                    </div>
-
-                    <div class="form-group col-md-6 col-md-offset-3">
-                        <input type="text" class="form-control" id="gravatar_url" placeholder="Gravatar" ng-model="userForm.gravatar">
-                    </div>
+        <div class="col-md-8" ng-show="tab === 1"></div>
 
 
+        <div class="container">
+            <form role="form">
 
-                    <div class="form-group col-md-6 col-md-offset-3 text-center">
-                         <button type="button" class="btn btn-success btn-lg" ng-click="submit()">Finish Up</button>
-                         <a href="/"><button type="button" class="btn btn-success btn-lg btn-margin" ng-click="tab = 0">Lets Search</button></a>
+                <br>
 
-                    </div>
+                <!-- ONLY FOR USER & STUDENTS-->
 
-                </form>
+                <div class="form-group col-md-6 col-md-offset-3">
+                    <input type="text" class="form-control" id="title" placeholder="Title" ng-model="userForm.title">
+                </div>
+                <div class="form-group col-md-6 col-md-offset-3">
+                    <input type="text" class="form-control" id="city" placeholder="City" ng-model="userForm.city">
+                </div>
+                <div class="form-group col-md-6 col-md-offset-3">
+                    <input type="text" class="form-control" id="state" placeholder="State" ng-model="userForm.state">
+                </div>
+                <div class="form-group col-md-6 col-md-offset-3">
+                    <input type="text" class="form-control" id="zipcode" placeholder="ZipCode" ng-model="userForm.zipCode">
+                </div>
+
+                <div class="form-group col-md-6 col-md-offset-3">
+                    <input type="text" class="form-control" id="facebook_url" placeholder="Facebook" ng-model="userForm.facebook">
+                </div>
+                <div class="form-group col-md-6 col-md-offset-3">
+                    <input type="text" class="form-control" id="twitter_url" placeholder="@Twitter" ng-model="userForm.twitter">
+                </div>
+
+                <div class="form-group col-md-6 col-md-offset-3">
+                    <input type="text" class="form-control" id="google_url" placeholder="Google ID" ng-model="userForm.googleId">
+                </div>
+
+                <div class="form-group col-md-6 col-md-offset-3">
+                    <input type="text" class="form-control" id="gravatar_url" placeholder="Gravatar" ng-model="userForm.gravatar">
+                </div>
 
 
-            </div>
+
+                <div class="form-group col-md-6 col-md-offset-3 text-center">
+                    <button type="button" class="btn btn-success btn-lg" ng-click="submit()">Finish Up</button>
+                    <a href="/">
+                        <button type="button" class="btn btn-success btn-lg btn-margin" ng-click="tab = 0">Lets Search</button>
+                    </a>
+
+                </div>
+
+            </form>
+
+
+        </div>
 
 
 </div>

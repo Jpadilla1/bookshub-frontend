@@ -42,6 +42,27 @@
     height: 270%;
     margin-top: -3%
 }
+/*Footer Styles*/
+
+#footer {
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.74);
+    margin-top: 3%;
+    margin-bottom: -2%;
+}
+#footerText {
+    margin-top: 3%;
+}
+a {
+    color: rgb(17, 213, 119);
+    font-weight: 800;
+}
+a:hover {
+    color: rgb(17, 213, 119);
+    text-decoration: none;
+}
+/*Index Styles End*/
+
 /*Section Styles*/
 
 .index-background {
@@ -116,23 +137,11 @@
 #forgotPassDescription{
     text-align: justify;
 }
-/*Footer Styles*/
 
-#footer {
-    height: 200px;
-    background-color: rgba(0, 0, 0, 0.74);
-    margin-top: 3%;
-    margin-bottom: -2%;
-}
-#footerText {
-    margin-top: 3%;
-}
-a {
+/*Sign Up Styles*/
+#signUpHeader{
     color: rgb(17, 213, 119);
-    font-weight: 800;
 }
-a:hover {
-    color: rgb(17, 213, 119);
-    text-decoration: none;
+#signUpButtons{
+    margin-top: 0%;
 }
-/*Index Styles End*/
