@@ -104,6 +104,18 @@
 #logInLogo{
     margin-bottom: 10%;
 }
+/*Forgot Password Styles*/
+
+#forgotPasswordButn {
+    width: 100%;
+    margin-top: 5%;
+}
+#forgotPassForm {
+    margin-bottom: 3.5%;
+}
+#forgotPassDescription{
+    text-align: justify;
+}
 /*Footer Styles*/
 
 #footer {

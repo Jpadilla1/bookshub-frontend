@@ -50,6 +50,10 @@ angular
       templateUrl: 'views/bookProfile.html',
       controller: 'bookProfileCtrl'
      })
+      .when('/forgotPassword', {
+      templateUrl: 'views/forgotPassword.html',
+      controller: 'ForgotPasswordCtrl'
+     })
      .otherwise({
        redirectTo: '/'
      });
