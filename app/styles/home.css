@@ -62,7 +62,6 @@ a:hover {
     text-decoration: none;
 }
 /*Index Styles End*/
-
 /*Section Styles*/
 
 .index-background {
@@ -116,13 +115,13 @@ a:hover {
     margin-top: 3%;
 }
 #logForm {
-    margin-top: 5%%;
+    margin-top: 5%;
     margin-bottom: 3.5%;
 }
 .ng-dirty.ng-invalid {
     border-color: red;
 }
-#logInLogo{
+#logInLogo {
     margin-bottom: 10%;
 }
 /*Forgot Password Styles*/
@@ -134,14 +133,15 @@ a:hover {
 #forgotPassForm {
     margin-bottom: 3.5%;
 }
-#forgotPassDescription{
+#forgotPassDescription {
     text-align: justify;
 }
-
 /*Sign Up Styles*/
-#signUpHeader{
+
+#signUpHeader {
+    text-align: center;
     color: rgb(17, 213, 119);
 }
-#signUpButtons{
-    margin-top: 0%;
+#signUpButtons {
+    text-align: center;
 }
