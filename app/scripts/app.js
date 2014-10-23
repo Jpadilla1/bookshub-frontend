@@ -58,6 +58,10 @@ angular
       templateUrl: 'views/resetPassword.html',
       controller: 'ResetPasswordCtrl'
      })
+      .when('/cart', {
+      templateUrl: 'views/cart.html',
+      controller: 'CartCtrl'
+     })
      .otherwise({
        redirectTo: '/'
      });
