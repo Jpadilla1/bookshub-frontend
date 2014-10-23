@@ -95,13 +95,15 @@
     margin-top: 3%;
 }
 #logForm {
-    margin-top: 20%;
+    margin-top: 5%%;
     margin-bottom: 3.5%;
 }
 .ng-dirty.ng-invalid {
     border-color: red;
 }
-/*Log In Styles*/
+#logInLogo{
+    margin-bottom: 10%;
+}
 /*Footer Styles*/
 
 #footer {
