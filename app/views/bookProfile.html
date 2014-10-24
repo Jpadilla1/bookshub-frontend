@@ -2,31 +2,77 @@
     <div class="row">
         <div class="col-md-4">
             <p>
-                <h3>Title: Te como el culito</h3>
+                <h3>Title: {{bookInformation.title}}</h3>
             </p>
             <img src="images/hpbook.jpg" alt="..." class="img-rounded">
+                <br>
+                <br>
+                <br>
+              <button type="button" class="btn btn-info">{{offerInformation.new}} New</button>
+              <button type="button" class="btn btn-info">{{offerInformation.used}} Used</button>
+              <button type="button" class="btn btn-info">Reviews</button>
 
         </div>
 
-        <br>
-        <br>
+       
         <div class="col-md-4">
-            <div class="container">
+           
+            <div class="row">
                 <p>
-                    <h3>Author: J:K Rowlings</h3>
+                    <h3>Author: {{bookInformation.author}}</h3>
                 </p>
                 <p>
-                    <h3>ISBN:</h3>
+                    <h3>ISBN: {{bookInformation.isbn}}</h3>
                 </p>
                 <p>
-                    <h3>Rating: Hermionie Loves Carly</h3>
+                    <h3>Edition: {{bookInformation.edition}}</h3>
                 </p>
                 <p>
-                    <h3>Description:</h3>
+                    <h3>Publisher: {{bookInformation.publisher}}</h3>
+                </p>
+                <p>
+                    <h3>Rating: {{bookInformation.rating}}</h3>
+                </p>
+                <p>
+                    <h3>Description: {{vendorInformation.description}}</h3>
                 </p>
 
             </div>
+
+
         </div>
+
+
+    <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-sm-4 col-md-12">
+                    <div class="thumbnail">
+                        <div class="caption">
+
+                            <h2>Price: {{bookInformation.price}}</h2>
+                            <h2>Quantity: {{offerInformation.quantity}}</h2>
+                            <h3>
+                                <p>Vendor: {{vendorInformation.vendor}}</p>
+                            </h3>
+                            <h3>
+                                <p>Rating: {{vendorInformation.rating}}</p>
+                            </h3>
+                            <h3>
+                                <p>Ships From: {{vendorInformation.address}}</p>
+                            </h3>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+              
+                
+                <a href="#" class="btn btn-success btn-lg btn-block" role="button">Add to Cart</a>
+        
+        </div>
+
+
 
 
     </div>
@@ -38,26 +84,6 @@
 
         <p>Reviews:</p>
     </h3>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8"></div>
-            <div class="col-md-4">
-             <p><h2>Price: $9.99</h2>
-             <a href="#" class="btn btn-success btn-lg" role="button">Add to Cart</a></p>
-          
-                <div class="row">
-                    <div class="col-sm-4 col-md-10">
-                        <div class="thumbnail">
-                            <div class="caption">
-                              <h3><p>Vendor: </p></h3>
-                              <h3><p>Rating: </p></h3>
-                              <h3><p>Ships From: </p></h3>  
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
 </div>
