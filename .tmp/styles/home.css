@@ -164,7 +164,11 @@ a:hover {
 
 /* Home Sections */
 .home-sections{
-    margin-top: 10%;
+    margin-top: 12%;
+}
+.separate-sections{
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 /* Sign up separator */
