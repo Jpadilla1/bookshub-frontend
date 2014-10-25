@@ -186,3 +186,7 @@ a:hover {
 .icon-space{
     margin-right: 2%;
 }
+
+.lighter-text{
+    font-weight: lighter;
+}
