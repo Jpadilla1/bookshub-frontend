@@ -40,10 +40,34 @@ angular.module('hubAppApp').controller('bookProfileCtrl', function ($scope) {
     	"used": '3'
     };
 
-  }
+  
+
+      $scope.tabs = {
+        "showNew": false,
+        "showUsed": false,
+        "showReview": true
+    };
+
+    $scope.showNew = function() {
+        $scope.tabs.showNew = true;[]
+        $scope.tabs.showUsed = false;
+        $scope.tabs.showReview = false;
+    }
+
+    $scope.showUsed = function() {
+        $scope.tabs.showNew = false;
+        $scope.tabs.showUsed = true;
+        $scope.tabs.showReview = false;
+    }
+
+    $scope.showReview = function() {
+        $scope.tabs.showNew = false;
+        $scope.tabs.showUsed = false;
+        $scope.tabs.showReview = true;
+    }
 
 
-  );
+  });
 
 
 
