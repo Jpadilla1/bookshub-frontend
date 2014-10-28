@@ -250,6 +250,12 @@
         margin-left:5%;
         margin-right:5%;
     }
+    .info-top-space{
+        margin-top: 7%;
+    }
+    .footer-links{
+        margin-top: 7%;
+    }
 }
 
 /* sm */
