@@ -61,7 +61,7 @@
     position: relative;
     z-index: -1;
     width: 100vw;
-    height: 102vh;
+    height: 110vh;
     margin-top: -7%;
 }
 .search-input {
@@ -267,12 +267,33 @@
 
 /* sm */
 @media (min-width: 768px) and (max-width: 991px) {
+    .home-header{
+        white-space: initial;
+        font-size: 50px;
+    }
+    .index-background{
+        margin-top: -12%;
+    }
+    .search-input{
+        left:37%;
+        width: 70%;
+    }
 }
 
 /* md */
 @media (min-width: 992px) and (max-width: 1199px) {
+    .home-header{
+        white-space: initial;
+        font-size: 47px;
+    }
+    .index-background{
+        margin-top: -10%;
+    }
 }
 
 /* lg */
 @media (min-width: 1200px) {
+    .index-background{
+        margin-top: -8%;
+    }
 }
