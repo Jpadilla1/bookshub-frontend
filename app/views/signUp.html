@@ -4,7 +4,7 @@
             <form role="form" ng-submit="submit()">
                 <div ng-show="tabs.showBasicForm">
                     <div class="col-md-12">
-                        <h1 id="signUpHeader">Join BooksHub Today!</h1>
+                        <h1 class="sign-up-header">Join BooksHub Today!</h1>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Username" ng-model="signUpForm.username" required>
@@ -30,7 +30,7 @@
                     <div class="form-group">
                         <input type="password" class="form-control" placeholder="Retype Password" ng-model="retypedPassword" required>
                     </div>
-                    <div class="form-group" id="signUpButtons">
+                    <div class="form-group" class="signup-buttons">
                         <button type="button" class="btn btn-success btn-lg" ng-click="showUserForm()">Complete Account</button>
                         <!--Student Form Button
                         <div class="col-md-4">
@@ -41,7 +41,7 @@
                 </div>
                 <div ng-show="tabs.showUserForm">
                     <div class="col-md-12">
-                        <h1 id="signUpHeader">Complete Your Account!</h1>
+                        <h1 class="sign-up-header">Complete Your Account!</h1>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Country" ng-model="settingsForm.country">
@@ -70,7 +70,7 @@
                     <div class="form-group">
                         <input type="url" class="form-control" placeholder="Google ID" ng-model="settingsForm.google_url">
                     </div>
-                    <div class="form-group" id="signUpButtons">
+                    <div class="form-group" class="signup-buttons">
                         <button type="button" class="btn btn-success btn-lg" ng-click="showBasicForm()">Back</button>
                         <button type="submit" class="btn btn-success btn-lg">Finish!</button>
                     </div>
@@ -78,7 +78,7 @@
                 <!--STUDENTS FORM
                 <div ng-show="tabs.showStudentForm">
                     <center>
-                        <h1 id="signUpHeader">Finish your Profile or get Searching!</h1>
+                        <h1 class="sign-up-header">Finish your Profile or get Searching!</h1>
                     </center>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="City" ng-model="signUpForm.city">

@@ -1,7 +1,7 @@
 /* index Styles Begins*/
 /*Navbar Styles*/
 
-.navbar.navbar-inverse {
+.navbar .navbar-inverse {
     border-style: hidden;
 }
 .navbar-inverse .navbar-nav>li>a {
@@ -23,14 +23,14 @@
     border-color: transparent;
     display: none;
 }
-#navbar-searchInput {
+#navbar-search-input {
     margin-top: 2%;
 }
 #input-search-navbar {
     margin-left: -40%;
     width: 100%;
 }
-.iconsToggle {
+.icons-toggle {
     color: white;
     background-color: transparent;
     margin-top: 15%;
@@ -50,7 +50,7 @@
     margin-top: 3%;
     margin-bottom: -2%;
 }
-#footerText {
+#footer-text {
     margin-top: 3%;
 }
 /*Index Styles End*/
@@ -63,7 +63,7 @@
     height: 102vh;
     margin-top: -7%;
 }
-.searchInput {
+.search-input {
     position: absolute;
     margin-bottom: 20%;
     top: 35%;
@@ -96,45 +96,45 @@
 }
 /*Log In Styles*/
 
-#forgotLinks {
+.forgot-links {
     float: right;
 }
-#logInButn {
+#login-button {
     width: 100%;
     margin-top: 5%;
 }
-#marginBottom {
+.margin-bottom {
     margin-top: 3%;
 }
-#logForm {
+#log-form {
     margin-top: 5%;
     margin-bottom: 3.5%;
 }
 .ng-dirty.ng-invalid {
     border-color: red;
 }
-#logInLogo {
+.login-logo {
     margin-bottom: 10%;
 }
 /*Forgot Password Styles*/
 
-#forgotPasswordButn {
+.forgot-password-btn {
     width: 100%;
     margin-top: 5%;
 }
-#forgotPassForm {
+#forgot-pass-form {
     margin-bottom: 3.5%;
 }
-#forgotPassDescription {
+#forgot-pass-desc {
     text-align: justify;
 }
 /*Sign Up Styles*/
 
-#signUpHeader {
+#signup-header {
     text-align: center;
     color: rgb(17, 213, 119);
 }
-#signUpButtons {
+#signup-buttons {
     text-align: center;
 }
 
