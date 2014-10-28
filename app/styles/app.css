@@ -3,6 +3,7 @@
 
 .navbar .navbar-inverse {
     border-style: hidden;
+    border-color:transparent;
 }
 .navbar-inverse .navbar-nav>li>a {
     color: white;
@@ -156,6 +157,11 @@
     border-color: rgb(17, 213, 119);
 }
 
+/* navbar */
+#primary-nav{
+    background-color: transparent;
+    border-color:transparent;
+}
 
 /* home.html styles */
 /* Home Sections */
@@ -186,6 +192,7 @@
 .footer-links, .footer-links a{
     color: rgb(17, 213, 119);
     font-weight: 800;
+    margin-top: 3%;
 }
 .footer-links:hover a{
     color: rgb(17, 213, 119);
@@ -197,7 +204,7 @@
     color:rgb(17, 213, 119);
 }
 .info-top-space{
-    margin-top: 1%;
+    margin-top: 4%;
 }
 .icon-space{
     margin-right: 2%;
@@ -230,7 +237,7 @@
     .home-subheader{
         font-size: 20px;
     }
-    .searchInput{
+    .search-input{
         top:30%;
         width:75%;
         left:37%;
