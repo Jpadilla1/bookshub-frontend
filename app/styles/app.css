@@ -152,7 +152,7 @@
     background-color: rgb(17, 213, 119);
     border-color: rgb(17, 213, 110);
 }
-.btn-success:hover{
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success{
     background-color: rgb(17, 213, 110);
     border-color: rgb(17, 213, 119);
 }
