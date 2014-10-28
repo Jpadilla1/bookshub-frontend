@@ -156,6 +156,7 @@
     border-color: rgb(17, 213, 119);
 }
 
+
 /* home.html styles */
 /* Home Sections */
 .home-sections{
@@ -174,6 +175,7 @@
     color:whitesmoke;
     padding-bottom: 5%;
 }
+
 
 /* Sign up separator */
 .button-text-separator{
@@ -214,4 +216,50 @@
 
 .btn-margin{
     margin-bottom: 10px;
+}
+
+/* xs */
+@media (min-width: 0px) and (max-width: 767px) {
+    .home-header{
+        white-space: initial;
+        font-size: 30px;
+    }
+    .index-background{
+        margin-top: -17%;
+    }
+    .home-subheader{
+        font-size: 20px;
+    }
+    .searchInput{
+        top:30%;
+        width:75%;
+        left:37%;
+    }
+    .logo{
+        width: 200px;
+        height: 50px;
+        margin-top: -7%;
+    }
+    .home-sections{
+        margin-top: 0;
+    }
+    .thumbnail-image{
+        height: 191;
+        width: 340;
+        margin-top:5%;
+        margin-left:5%;
+        margin-right:5%;
+    }
+}
+
+/* sm */
+@media (min-width: 768px) and (max-width: 991px) {
+}
+
+/* md */
+@media (min-width: 992px) and (max-width: 1199px) {
+}
+
+/* lg */
+@media (min-width: 1200px) {
 }
