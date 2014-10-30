@@ -42,7 +42,7 @@ angular
        templateUrl: 'views/book.html',
        controller: 'BookCtrl'
      })
-      .when('/logIn', {
+      .when('/login', {
        templateUrl: 'views/logIn.html',
        controller: 'LogInCtrl'
      })
