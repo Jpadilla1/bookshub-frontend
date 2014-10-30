@@ -20,9 +20,13 @@
     color: white;
 }
 .navbar-default {
-    background-color: rgba(0, 0, 0, 0.74);
+    background-color: white;
     border-color: transparent;
     display: none;
+    border-bottom-color: rgba(17, 213, 119,0.69);
+}
+.navbar-default i, p{
+    color: rgba(17, 213, 119,0.69);
 }
 #navbar-search-input {
     margin-top: 2%;
@@ -47,9 +51,6 @@
 
 #footer {
     height: 105px;
-    background-color: rgba(0, 0, 0, 0.74);
-    margin-top: 3%;
-    margin-bottom: -2%;
 }
 #footer-text {
     margin-top: 3%;
@@ -133,7 +134,7 @@
 
 #signup-header {
     text-align: center;
-    color: rgb(17, 213, 119);
+    color: rgba(17, 213, 119, 69);
 }
 #signup-buttons {
     text-align: center;
@@ -149,18 +150,18 @@
     border-radius: 3px;
 }
 .btn-success{
-    background-color: rgb(17, 213, 119);
-    border-color: rgb(17, 213, 110);
+    background-color: rgba(17, 213, 119, 0.69);
+    border-color: rgba(17, 213, 119, 0.69);
 }
 .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success{
-    background-color: rgb(17, 213, 110);
-    border-color: rgb(17, 213, 119);
+    background-color: rgba(17, 213, 119, 0.69);
+    border-color: rgba(17, 213, 119, 0.69);
 }
 
 /* navbar */
 #primary-nav{
-    background-color: transparent;
-    border-color:transparent;
+    background-color: white;
+    border-bottom-color: rgba(17, 213, 119, 0.69);
 }
 
 /* home.html styles */
@@ -190,21 +191,20 @@
 
 /* Footer Modifications */
 .footer-links, .footer-links a{
-    color: rgb(17, 213, 119);
+    color: rgba(17, 213, 119, 0.69);
     font-weight: 800;
-    margin-top: 3%;
 }
 .footer-links:hover a{
-    color: rgb(17, 213, 119);
+    color: rgba(17, 213, 119, 0.69);
     text-decoration: none;
 }
 .footer-spacers{
     margin-right: 2%;
     margin-left: 2%;
-    color:rgb(17, 213, 119);
+    color:rgba(17, 213, 119, 0.69);
 }
 .info-top-space{
-    margin-top: 4%;
+    margin-top: 1%;
 }
 .icon-space{
     margin-right: 2%;
@@ -223,6 +223,19 @@
 
 .btn-margin{
     margin-bottom: 10px;
+}
+
+/* Sign up */
+.sign-up-image{
+    width:245px;
+    height: 205px;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.sign-up-header{
+    margin-top: 0;
+    margin-bottom: 5%;
 }
 
 /* xs */

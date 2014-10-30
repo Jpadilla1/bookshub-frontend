@@ -64,7 +64,21 @@ angular.module('hubAppApp').controller('SignUpCtrl', function($scope) {
     }
 
     $scope.$on('$viewContentLoaded', function() {
-        document.getElementById("primary-nav").style.backgroundColor = "rgba(0, 0, 0, 0.74)";
+        var navbar = document.getElementById("primary-nav");
+        navbar.style.backgroundColor = "white";
+
+        var anchors = document.getElementById("primary-nav").getElementsByTagName('a');
+
+        for (var i = 0; i < anchors.length; i++) {
+            anchors[i].style.color = "rgba(17, 213, 119, 0.69)"; 
+        };
+
+        var icons = document.getElementById("primary-nav").getElementsByTagName('i');
+
+        for (var i = 0; i < icons.length; i++) {
+            icons[i].style.color = "rgba(17, 213, 119, 0.69)"; 
+        };
+
         document.getElementById("brand-logo").src = "../images/logo.png";
     });
 });
