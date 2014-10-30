@@ -15,11 +15,12 @@ angular.module('hubAppApp')
         $scope.reTypedPassword = '';
 
         $scope.submit = function() {
-                console.log($scope.newPassword);
-                console.log($scope.reTypedPassword);
+            console.log($scope.newPassword);
+            console.log($scope.reTypedPassword);
         }
 
         $scope.$on('$viewContentLoaded', function() {
-            document.getElementById("primaryNav").style.backgroundColor = "rgba(0, 0, 0, 0.74)";
+            document.getElementById("primary-nav").style.backgroundColor = "rgba(0, 0, 0, 0.74)";
+            document.getElementById("brand-logo").src = "../images/logo.png";
         });
     });
