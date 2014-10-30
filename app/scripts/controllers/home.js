@@ -26,7 +26,8 @@ received in the index*/
         $scope.searchInput = '';
 
         $scope.$on('$viewContentLoaded', function() {
-            document.getElementById("primaryNav").style.backgroundColor = "transparent";
+            document.getElementById("primary-nav").style.backgroundColor = "transparent";
+            document.getElementById("brand-logo").src = "../images/bookshub-white.png";
         });
 
         $scope.submitByTitle = function() {
