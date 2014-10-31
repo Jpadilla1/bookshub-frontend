@@ -1,6 +1,8 @@
 /* index Styles Begins*/
 /*Navbar Styles*/
-
+h1, h2, h3, h4, h5, h6{
+    color: rgba(29, 28, 28, 0.65);
+}
 .navbar .navbar-inverse {
     border-style: hidden;
     border-color:transparent;
