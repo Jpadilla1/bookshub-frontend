@@ -1,115 +1,127 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <form role="form" ng-submit="submit()">
-                <div ng-show="tabs.showBasicForm">
-                    <div class="col-md-12">
-                        <h1 class="sign-up-header">Join BooksHub Today!</h1>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Username" ng-model="signUpForm.username" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name" ng-model="signUpForm.first_name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Last Name" ng-model="signUpForm.last_name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Title" ng-model="signUpForm.title" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Email" ng-model="signUpForm.email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="number" class="form-control" placeholder="Phone Number" ng-model="signUpForm.phone" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password" ng-model="signUpForm.password" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Retype Password" ng-model="retypedPassword" required>
-                    </div>
-                    <div class="form-group" class="signup-buttons">
-                        <button type="button" class="btn btn-success btn-lg" ng-click="showUserForm()">Complete Account</button>
-                        <!--Student Form Button
-                        <div class="col-md-4">
-                            <button type="button" class="btn btn-success btn-lg" ng-click="showStudentForm()">Fill Student Info</button>
-                        </div>-->
-                        <button type="submit" class="btn btn-success btn-lg">Finish Now!</button>
-                    </div>
-                </div>
-                <div ng-show="tabs.showUserForm">
-                    <div class="col-md-12">
-                        <h1 class="sign-up-header">Complete Your Account!</h1>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Country" ng-model="settingsForm.country">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="State" ng-model="settingsForm.state">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="City" ng-model="settingsForm.city">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Address 1" ng-model="settingsForm.address_1">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Address 2" ng-model="settingsForm.address_2">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Zip Code" ng-model="settingsForm.zip">
-                    </div>
-                    <div class="form-group">
-                        <input type="url" class="form-control" placeholder="Facebook" ng-model="settingsForm.facebook_url">
-                    </div>
-                    <div class="form-group">
-                        <input type="url" class="form-control" placeholder="Twitter" ng-model="settingsForm.twitter_url">
-                    </div>
-                    <div class="form-group">
-                        <input type="url" class="form-control" placeholder="Google ID" ng-model="settingsForm.google_url">
-                    </div>
-                    <div class="form-group" class="signup-buttons">
-                        <button type="button" class="btn btn-success btn-lg" ng-click="showBasicForm()">Back</button>
-                        <button type="submit" class="btn btn-success btn-lg">Finish!</button>
-                    </div>
-                </div>
-                <!--STUDENTS FORM
-                <div ng-show="tabs.showStudentForm">
-                    <center>
-                        <h1 class="sign-up-header">Finish your Profile or get Searching!</h1>
-                    </center>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="City" ng-model="signUpForm.city">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="State" ng-model="signUpForm.state">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="ZipCode" ng-model="signUpForm.zipcode">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Facebook" ng-model="signUpForm.facebook">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="@Twitter" ng-model="signUpForm.twitter">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Google ID" ng-model="signUpForm.googleId">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Institution" ng-model="signUpForm.institution">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Department" ng-model="signUpForm.department">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-lg">Finish Up</button>
-                        <button type="button" class="btn btn-success btn-lg btn-margin" ng-click="tab = 0">Lets Search</button>
-                    </div>
-                </div>-->
-            </form>
+        <div class="col-md-12">    
+            <div class="col-md-10 col-md-offset-1">
+                <form role="form" ng-submit="submit()">
+                    <div ng-show="tabs.showBasicForm">
+                        <div class="col-md-12">
+                            <img src="../images/bookhub-b.png" class="sign-up-image" alt="">
+                            <h1 class="sign-up-header text-center">Start selling today!</h1>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Username" ng-model="signUpForm.username" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Email" ng-model="signUpForm.email" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Password" ng-model="signUpForm.password" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Retype Password" ng-model="retypedPassword" required>
+                                </div>                        
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="First Name" ng-model="signUpForm.first_name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Last Name" ng-model="signUpForm.last_name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" placeholder="Phone Number" ng-model="signUpForm.phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Title" ng-model="signUpForm.title" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-md-offset-3">
+                                    <div class="form-group" class="signup-buttons">
+                                    <!--<button type="button" class="btn btn-success btn-lg" ng-click="showUserForm()">Complete Account</button>-->
+                                    <!--Student Form Button
+                                    <div class="col-md-4">
+                                        <button type="button" class="btn btn-success btn-lg" ng-click="showStudentForm()">Fill Student Info</button>
+                                    </div>-->
+                                    <button type="submit" class="btn btn-success btn-lg btn-block">Finish Now!</button>
+                                </div>     
+                            </div>
+                        </div>
+                        <div ng-show="tabs.showUserForm">
+                            <div class="col-md-12">
+                                <h1 class="sign-up-header">Complete Your Account!</h1>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Country" ng-model="settingsForm.country">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="State" ng-model="settingsForm.state">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="City" ng-model="settingsForm.city">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Address 1" ng-model="settingsForm.address_1">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Address 2" ng-model="settingsForm.address_2">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Zip Code" ng-model="settingsForm.zip">
+                            </div>
+                            <div class="form-group">
+                                <input type="url" class="form-control" placeholder="Facebook" ng-model="settingsForm.facebook_url">
+                            </div>
+                            <div class="form-group">
+                                <input type="url" class="form-control" placeholder="Twitter" ng-model="settingsForm.twitter_url">
+                            </div>
+                            <div class="form-group">
+                                <input type="url" class="form-control" placeholder="Google ID" ng-model="settingsForm.google_url">
+                            </div>
+                            <div class="form-group" class="signup-buttons">
+                                <button type="button" class="btn btn-success btn-lg" ng-click="showBasicForm()">Back</button>
+                                <button type="submit" class="btn btn-success btn-lg">Finish!</button>
+                            </div>
+                        </div>
+                        </div>
+                    <!--STUDENTS FORM
+                    <div ng-show="tabs.showStudentForm">
+                        <center>
+                            <h1 class="sign-up-header">Finish your Profile or get Searching!</h1>
+                        </center>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="City" ng-model="signUpForm.city">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="State" ng-model="signUpForm.state">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="ZipCode" ng-model="signUpForm.zipcode">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Facebook" ng-model="signUpForm.facebook">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="@Twitter" ng-model="signUpForm.twitter">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Google ID" ng-model="signUpForm.googleId">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Institution" ng-model="signUpForm.institution">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Department" ng-model="signUpForm.department">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-lg">Finish Up</button>
+                            <button type="button" class="btn btn-success btn-lg btn-margin" ng-click="tab = 0">Lets Search</button>
+                        </div>
+                    </div>-->
+                </form>
+            </div>
         </div>
     </div>
 </div>
