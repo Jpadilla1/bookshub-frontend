@@ -162,6 +162,7 @@
 #primary-nav{
     background-color: white;
     border-bottom-color: rgba(17, 213, 119, 0.69);
+    border-color:transparent;
 }
 
 /* home.html styles */

@@ -66,6 +66,7 @@ angular.module('hubAppApp').controller('SignUpCtrl', function($scope) {
     $scope.$on('$viewContentLoaded', function() {
         var navbar = document.getElementById("primary-nav");
         navbar.style.backgroundColor = "white";
+        navbar.style.borderBottomColor = "rgba(17, 213, 119, 0.69)";
 
         var anchors = document.getElementById("primary-nav").getElementsByTagName('a');
 

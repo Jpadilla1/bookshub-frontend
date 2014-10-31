@@ -26,7 +26,20 @@ received in the index*/
         $scope.searchInput = '';
 
         $scope.$on('$viewContentLoaded', function() {
-            document.getElementById("primary-nav").style.backgroundColor = "transparent";
+            var navbar = document.getElementById("primary-nav");
+            navbar.style.backgroundColor = "transparent";
+            navbar.style.borderBottomColor = "transparent";
+
+            var anchors = document.getElementById("primary-nav").getElementsByTagName('a');
+            for (var i = 0; i < anchors.length; i++) {
+                anchors[i].style.color = "white";
+            };
+
+            var icons = document.getElementById("primary-nav").getElementsByTagName('i');
+            for (var i = 0; i < icons.length; i++) {
+                icons[i].style.color = "white";
+            };
+
             document.getElementById("brand-logo").src = "../images/bookshub-white.png";
         });
 
