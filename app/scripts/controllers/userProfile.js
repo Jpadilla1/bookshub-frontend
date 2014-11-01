@@ -86,19 +86,21 @@ angular.module('hubAppApp').controller('UserCtrl', function($scope) {
     }
 
     $scope.showNew = function() {
-        $scope.tabs.showNew = true;[]
+        $scope.tabs.showNew = true;
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = false;
         $scope.tabs.showContactForm = false;
-         $scope.tabs.showInformation = true;
+        $scope.tabs.showInformation = true;
+        $scope.tabs.showRating = true;
     }
 
     $scope.showUsed = function() {
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = true;
+        $scope.tabs.showRating = true;
         $scope.tabs.showReview = false;
         $scope.tabs.showContactForm = false;
-         $scope.tabs.showInformation = true;
+        $scope.tabs.showInformation = true;
     }
 
     $scope.showReview = function() {
@@ -107,6 +109,7 @@ angular.module('hubAppApp').controller('UserCtrl', function($scope) {
         $scope.tabs.showReview = true;
         $scope.tabs.showContactForm = false;
         $scope.tabs.showInformation = true;
+        $scope.tabs.showRating = true;
     }
 
     $scope.showContactForm = function() {
