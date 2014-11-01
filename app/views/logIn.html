@@ -1,25 +1,25 @@
 <div class="container">
     <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <form role="form" ng-submit="submit()" id="log-form">
-                <img src="../images/logo.png" class="login-logo">
-                <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" placeholder="Email" ng-model="logInForm.email" required>
-                </div>
-                <div class="form-group">
-                    <p>
-                        <label for="exampleInputPassword1">Password</label>
-                        <a href="#/forgotPassword" class="forgot-links">Forgot Password?</a>
-                    </p>
-                    <input type="password" class="form-control" placeholder="Password" ng-model="logInForm.password" required>
-                </div>
-                <button type="submit" class="btn btn-success" id="login-button">Log In</button>
-                <p class="margin-bottom">
-                    <label>Don't Have an Account?</label>
-                    <a href="#/signUp" class="forgot-links">Sign Up!</a>
-                </p>
-            </form>
+        <div class="col-md-12">
+            <img src="../images/bookhub-b.png" class="header-image">
+            <div class="col-sm-6 col-md-4 col-md-offset-4">
+                <h1 class="text-center image-subheader-text">Welcome back!</h1>
+                <form role="form" ng-submit="submit()" id="log-form">
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Email" ng-model="logInForm.email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password" ng-model="logInForm.password" required>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-success no-margin-top" id="login-button">Log In</button>
+                    </div>
+                    <span class="margin-bottom">
+                        <a href="#/signUp" class="forgot-links pull-left">Sign Up</a>
+                        <a href="#/forgotPassword" class="forgot-links pull-right">Forgot Password?</a>
+                    </span>
+                </form>
+            </div>
         </div>
     </div>
 </div>
