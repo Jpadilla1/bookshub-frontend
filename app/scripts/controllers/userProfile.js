@@ -15,8 +15,7 @@ angular.module('hubAppApp').controller('UserCtrl', function($scope) {
     ];
 
     $scope.$on('$viewContentLoaded', function() {
-        document.getElementById("primary-nav").style.backgroundColor = "rgba(0, 0, 0, 0.74)";
-        document.getElementById("brand-logo").src = "../images/logo.png";
+        defaultNavbar();
     });
 
 
