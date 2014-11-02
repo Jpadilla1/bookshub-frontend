@@ -7,7 +7,8 @@
  * # SignUpCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp').controller('SignUpCtrl', function($scope) {
+angular.module('hubAppApp')
+    .controller('SignUpCtrl', ['$scope', 'authService', function($scope, authService) {
 
     $scope.retypedPassword = '';
 
@@ -60,11 +61,19 @@ angular.module('hubAppApp').controller('SignUpCtrl', function($scope) {
 
     $scope.submit = function() {
         console.log($scope.signUpForm);
-        console.log($scope.settingsForm);
+        authService.signup($scope.signUpForm)
+            .then(function(data){
+                // success
+                console.log(data);
+            }, function(data){
+                // error
+                console.log(data);
+        });
+        // console.log($scope.settingsForm);
     }
 
     $scope.$on('$viewContentLoaded', function() {
         document.getElementById("primary-nav").style.backgroundColor = "rgba(0, 0, 0, 0.74)";
         document.getElementById("brand-logo").src = "../images/logo.png";
     });
-});
+}]);

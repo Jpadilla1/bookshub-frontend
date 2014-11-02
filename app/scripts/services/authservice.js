@@ -67,20 +67,19 @@ angular.module('hubAppApp')
             }));
             return deferred.promise;
         },
-        'signup': function(username, email, type, first_name, last_name,
-                             title, phone, password){
+        'signup': function(form){
             return this.request({
                 'method': "POST",
                 'url': "/signup/",
                 'data':{
-                    'username':username,
-                    'email':email,
-                    'first_name': first_name,
-                    'last_name': last_name,
-                    'type': type,
-                    'title': title,
-                    'phone': phone,
-                    'password':password
+                    'username':form.username,
+                    'email':form.email,
+                    'first_name': form.first_name,
+                    'last_name': form.last_name,
+                    'type': form.type,
+                    'title': form.title,
+                    'phone': form.phone,
+                    'password':form.password
                 }
             });
         },
@@ -112,6 +111,7 @@ angular.module('hubAppApp')
             });
         },
         'forgotPassword': function(email){
+            console.log(email);
             return this.request({
                 'method': "POST",
                 'url': "/forgot_password/",
