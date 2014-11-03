@@ -9,7 +9,8 @@
  */
 
 angular.module('hubAppApp')
-    .controller('ForgotPasswordCtrl', ['$scope', 'authService', function($scope, authService) {
+    .controller('ForgotPasswordCtrl',
+        ['$scope', 'authService', function($scope, authService) {
 
         $scope.forgotPasswordForm = {
             "email": ''
@@ -26,7 +27,7 @@ angular.module('hubAppApp')
                     // error
                     console.log(data);
                 });
-        }
+        };
 
         $scope.$on('$viewContentLoaded', function() {
             document.getElementById("primary-nav").style.backgroundColor = "rgba(0, 0, 0, 0.74)";
