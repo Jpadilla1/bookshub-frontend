@@ -9,7 +9,8 @@
  */
 
 angular.module('hubAppApp')
-    .controller('ForgotPasswordCtrl', function($scope) {
+    .controller('ForgotPasswordCtrl',
+        ['$scope', 'authService', function($scope, authService) {
 
         $scope.forgotPasswordForm = {
             "email": ''
@@ -18,9 +19,17 @@ angular.module('hubAppApp')
         $scope.submit = function() {
             //Here we send data to back end
             console.log($scope.forgotPasswordForm);
-        }
+            authService.forgotPassword($scope.forgotPasswordForm.email)
+                .then(function(data) {
+                    // success
+                    console.log(data);
+                }, function(data) {
+                    // error
+                    console.log(data);
+                });
+        };
 
         $scope.$on('$viewContentLoaded', function() {
             defaultNavbar();
         });
-    });
+    }]);

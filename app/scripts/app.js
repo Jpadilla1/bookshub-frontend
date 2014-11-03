@@ -16,7 +16,9 @@ angular
    'ngResource',
    'ngRoute',
    'ngSanitize',
-   'ngTouch'
+   'ngTouch',
+   'validation',
+   'validation.rule'
  ])
  
  .config(function($routeProvider) {
@@ -66,40 +68,3 @@ angular
        redirectTo: '/'
      });
  });
-
-
-
-
-
-(function(){
-
- var app = angular.module('signUp',[]);
-
- app.controller('BookSUController',function(){
-
-   
-
-
-
-
- });
-
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  

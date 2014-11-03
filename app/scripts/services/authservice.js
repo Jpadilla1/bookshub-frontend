@@ -17,7 +17,6 @@ angular.module('hubAppApp')
         'use_session': false,
         'authenticated': null,
         'authPromise': null,
-        'user': {},
         'request': function(args) {
             // Let's retrieve the token from the cookie, if available
             if($cookies.token){
@@ -67,20 +66,19 @@ angular.module('hubAppApp')
             }));
             return deferred.promise;
         },
-        'signup': function(username, email, type, first_name, last_name,
-                             title, phone, password){
+        'signup': function(form){
             return this.request({
                 'method': "POST",
                 'url': "/signup/",
                 'data':{
-                    'username':username,
-                    'email':email,
-                    'first_name': first_name,
-                    'last_name': last_name,
-                    'type': type,
-                    'title': title,
-                    'phone': phone,
-                    'password':password
+                    'username':form.username,
+                    'email':form.email,
+                    'first_name': form.first_name,
+                    'last_name': form.last_name,
+                    'type': form.type,
+                    'title': form.title,
+                    'phone': form.phone,
+                    'password':form.password
                 }
             });
         },
@@ -112,6 +110,7 @@ angular.module('hubAppApp')
             });
         },
         'forgotPassword': function(email){
+            console.log(email);
             return this.request({
                 'method': "POST",
                 'url': "/forgot_password/",
@@ -120,13 +119,13 @@ angular.module('hubAppApp')
                 }
             });
         },
-        'resetPassword': function(new_password){
+        'resetPassword': function(new_password, token){
             return this.request({
                 'method': "POST",
                 'url': "/reset_password/",
                 'data':{
                     'new_password':new_password,
-                    'token':$cookies.token
+                    'token':token
                 }
             });
         },
@@ -142,7 +141,7 @@ angular.module('hubAppApp')
         'settings': function(){
             return this.request({
                 'method': "GET",
-                'url': "/settings/"
+                'url': "/users/profile/"
             }); 
         },
         'updateSettings': function(data){
