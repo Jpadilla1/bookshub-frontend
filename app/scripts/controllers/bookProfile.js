@@ -47,7 +47,6 @@ angular.module('hubAppApp').controller('bookProfileCtrl', function($scope) {
 
     $scope.showNew = function() {
         $scope.tabs.showNew = true;
-        []
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = false;
     }
@@ -63,8 +62,9 @@ angular.module('hubAppApp').controller('bookProfileCtrl', function($scope) {
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = true;
     }
+
+    $scope.$on('$viewContentLoaded', function() {
+        defaultNavbar();
+    });
 });
 
-$scope.$on('$viewContentLoaded', function() {
-    defaultNavbar();
-});
