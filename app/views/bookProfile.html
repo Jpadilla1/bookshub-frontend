@@ -1,199 +1,222 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <p>
-                <h3>Title: {{bookInformation.title}}</h3>
-            </p>
-            <img src="images/hpbook.jpg" alt="..." class="img-rounded">
-            <br>
-            <br>
-            <br>
-            <button type="button" class="btn btn-info" ng-click="showNew()">{{offerInformation.new}} New</button>
-            <button type="button" class="btn btn-info" ng-click="showUsed()">{{offerInformation.used}} Used</button>
-            <button type="button" class="btn btn-info" ng-click="showReview()">Reviews</button>
-
-        </div>
-
-
-        <div class="col-md-4">
-
-            <div class="row">
-                <p>
-                    <h3>Author: {{bookInformation.author}}</h3>
-                </p>
-                <p>
-                    <h3>ISBN: {{bookInformation.isbn}}</h3>
-                </p>
-                <p>
-                    <h3>Edition: {{bookInformation.edition}}</h3>
-                </p>
-                <p>
-                    <h3>Publisher: {{bookInformation.publisher}}</h3>
-                </p>
-                <p>
-                    <h3>Rating: {{bookInformation.rating}}</h3>
-                </p>
-                <p>
-                    <h3>Description: {{vendorInformation.description}}</h3>
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-        <div class="col-md-2"></div>
-        <div class="col-md-4">
-            <div class="row">
-                <div class="col-sm-4 col-md-12">
-                    <div class="thumbnail">
-                        <div class="caption">
-
-                            <h2>Price: {{bookInformation.price}}</h2>
-                            <h2>Quantity: {{offerInformation.quantity}}</h2>
-                            <h3>
-                                <p>Vendor: {{vendorInformation.vendor}}</p>
-                            </h3>
-                            <h3>
-                                <p>Rating: {{vendorInformation.rating}}</p>
-                            </h3>
-                            <h3>
-                                <p>Ships From: {{vendorInformation.address}}</p>
-                            </h3>
+<section class="books-subheader"> 
+    <div class="book-profile">    
+        <div class="book-profile-background">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <img src="images/hpbook.jpg" alt="..." class="img-thumbnail img-responsive books-picture">
+                        </div>
+                        <div class="col-md-9">
+                            <h1 class="book-profile">{{bookInformation.title}}</h1>
+                            <h3 class="book-profile">{{bookInformation.author}}</h3>
+                            <h3 class="book-profile">{{bookInformation.isbn}}</h3>
+                            <h3 class="book-profile">{{bookInformation.author}}</h3>
                         </div>
                     </div>
-
                 </div>
             </div>
-
-
-            <a href="#" class="btn btn-success btn-lg btn-block" role="button">Add to Cart</a>
-
         </div>
-
-
-
-
     </div>
+</section>
 
-    <br>
-    <br>
-    <div ng-show="tabs.showReview">
-        <h3>Reviews:</h3>
-        <p>Review from the book will be shown right here!</p>
-    </div>
-
-    <div ng-show="tabs.showNew">
-        <h3>New Books:</h3>
-        <div class="col-md-12">
-            <div class="requested-books">
-                <ul class="list-unstyled">
-                    <li class="col-md-4">
-
-                        <a href="/" class="thumbnail">
-                            <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
-
-
-                            <div class="caption">
-                                <h3>Book Title</h3>
-                                <span class="lighter-text">
-                                    <p>ISBN:</p>
-                                    <p>Price:</p>
-                                </span>
-                            </div>
-                        </a>
-                    </li>
-                    <!--Remember to all types of col-->
-                    <li class="col-md-4">
-                        <a href="#" class="thumbnail">
-                            <img src="http://placehold.it/400x200" alt="..." height="200" width="400" />
-                            <div class="caption">
-                                <h3>Book Title</h3>
-                                <span class="lighter-text">
-                                    <p>ISBN:</p>
-                                    <p>Price:</p>
-                                </span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="col-md-4">
-                        <a href="#" class="thumbnail">
-                            <img src="http://placehold.it/400x200" alt="..." />
-                            <div class="caption">
-                                <h3>Book Title</h3>
-                                <span class="lighter-text">
-                                    <p>ISBN:</p>
-                                    <p>Price:</p>
-                                </span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="col-md-4">
-                        <a href="#" class="thumbnail">
-                            <img src="http://placehold.it/400x200" alt="..." />
-                            <div class="caption">
-                                <h3>Book Title</h3>
-                                <span class="lighter-text">
-                                    <p>ISBN:</p>
-                                    <p>Price:</p>
-                                </span>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
+<div class="container">
+    <div class="row">
+        <div class="book-options">        
+            <div class="col-md-4">
+                <span>
+                    <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showReview()">
+                        Reviews
+                    </button>
+                </span>
+            </div>
+            <div class="col-md-4">
+                <span>
+                    <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showNew()">
+                        {{offerInformation.new}} New
+                    </button>
+                </span>
+            </div>
+            <div class="col-md-4">
+                <span>
+                    <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showUsed()">
+                        {{offerInformation.used}} Used
+                    </button>
+                </span>
             </div>
         </div>
-    </div>
+
+        <!--
+        <div class="col-md-4">
+            <div class="col-md-12">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>Price: {{bookInformation.price}}</h3>
+                        <h3>Quantity: {{offerInformation.quantity}}</h3>
+                        <h4>Vendor: {{vendorInformation.vendor}}</h4>
+                        <h4>Rating: {{vendorInformation.rating}}</h4>
+                        <h4>Ships From: {{vendorInformation.address}}</h4>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-success btn-lg btn-block" role="button">Add to Cart</a>
+            </div>
+        </div>
+        -->
+
+        <!--
+        <div class="col-md-4">
+            <h3>Rating: {{bookInformation.rating}}</h3>
+            <h3>Description: {{vendorInformation.description}}</h3>
+        </div>
+        -->
+
+        <div ng-show="tabs.showReview">
+            <div class="col-md-4">
+                <div class="home-sections">
+                    <hr>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h1 class="text-center">Reviews</h1>
+            </div>
+            <div class="col-md-4">
+                <div class="home-sections">
+                    <hr>
+                </div>           
+            </div>
+        </div>
+
+        <div ng-show="tabs.showNew">
+            <div class="col-md-4">
+                <div class="home-sections">
+                    <hr>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h1 class="text-center">New Books</h1>
+            </div>
+            <div class="col-md-4">
+                <div class="home-sections">
+                    <hr>
+                </div>           
+            </div>
+            <div class="col-md-12">
+                <div class="requested-books">
+                    <ul class="list-unstyled">
+                        <li class="col-md-4">
+
+                            <a href="/" class="thumbnail">
+                                <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
+                                <div class="caption">
+                                    <h3>Book Title</h3>
+                                    <span class="lighter-text">
+                                        <p>ISBN:</p>
+                                        <p>Price:</p>
+                                    </span>
+                                </div>
+                            </a>
+                        </li>
+                        <!--Remember to all types of col-->
+                        <li class="col-md-4">
+                            <a href="#" class="thumbnail">
+                                <img src="http://placehold.it/400x200" alt="..." height="200" width="400" />
+                                <div class="caption">
+                                    <h3>Book Title</h3>
+                                    <span class="lighter-text">
+                                        <p>ISBN:</p>
+                                        <p>Price:</p>
+                                    </span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="col-md-4">
+                            <a href="#" class="thumbnail">
+                                <img src="http://placehold.it/400x200" alt="..." />
+                                <div class="caption">
+                                    <h3>Book Title</h3>
+                                    <span class="lighter-text">
+                                        <p>ISBN:</p>
+                                        <p>Price:</p>
+                                    </span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="col-md-4">
+                            <a href="#" class="thumbnail">
+                                <img src="http://placehold.it/400x200" alt="..." />
+                                <div class="caption">
+                                    <h3>Book Title</h3>
+                                    <span class="lighter-text">
+                                        <p>ISBN:</p>
+                                        <p>Price:</p>
+                                    </span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div ng-show="tabs.showUsed">
+            <div class="col-md-4">
+                <div class="home-sections">
+                    <hr>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h1 class="text-center">Used Books</h1>
+            </div>
+            <div class="col-md-4">
+                <div class="home-sections">
+                    <hr>
+                </div>           
+            </div>
+            <div class="col-md-12">
+                <div class="requested-books">
+                    <ul class="list-unstyled">
+                        <li class="col-md-4">
+
+                            <a href="/" class="thumbnail">
+                                <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
 
 
-
-    <div ng-show="tabs.showUsed">
-        <h3>Used Books:</h3>
-        <div class="col-md-12">
-            <div class="requested-books">
-                <ul class="list-unstyled">
-                    <li class="col-md-4">
-
-                        <a href="/" class="thumbnail">
-                            <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
-
-
-                            <div class="caption">
-                                <h3>Book Title</h3>
-                                <span class="lighter-text">
-                                    <p>ISBN:</p>
-                                    <p>Price:</p>
-                                </span>
-                            </div>
-                        </a>
-                    </li>
-                    <!--Remember to all types of col-->
-                    <li class="col-md-4">
-                        <a href="#" class="thumbnail">
-                            <img src="http://placehold.it/400x200" alt="..." height="200" width="400" />
-                            <div class="caption">
-                                <h3>Book Title</h3>
-                                <span class="lighter-text">
-                                    <p>ISBN:</p>
-                                    <p>Price:</p>
-                                </span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="col-md-4">
-                        <a href="#" class="thumbnail">
-                            <img src="http://placehold.it/400x200" alt="..." />
-                            <div class="caption">
-                                <h3>Book Title</h3>
-                                <span class="lighter-text">
-                                    <p>ISBN:</p>
-                                    <p>Price:</p>
-                                </span>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
+                                <div class="caption">
+                                    <h3>Book Title</h3>
+                                    <span class="lighter-text">
+                                        <p>ISBN:</p>
+                                        <p>Price:</p>
+                                    </span>
+                                </div>
+                            </a>
+                        </li>
+                        <!--Remember to all types of col-->
+                        <li class="col-md-4">
+                            <a href="#" class="thumbnail">
+                                <img src="http://placehold.it/400x200" alt="..." height="200" width="400" />
+                                <div class="caption">
+                                    <h3>Book Title</h3>
+                                    <span class="lighter-text">
+                                        <p>ISBN:</p>
+                                        <p>Price:</p>
+                                    </span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="col-md-4">
+                            <a href="#" class="thumbnail">
+                                <img src="http://placehold.it/400x200" alt="..." />
+                                <div class="caption">
+                                    <h3>Book Title</h3>
+                                    <span class="lighter-text">
+                                        <p>ISBN:</p>
+                                        <p>Price:</p>
+                                    </span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
