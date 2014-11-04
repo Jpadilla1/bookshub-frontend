@@ -22,7 +22,7 @@ angular.module('hubAppApp').controller('BookCtrl', function($scope) {
     var originalNewBookForm = angular.copy($scope.newBookForm);
 
     $scope.submit = function() {
-
+        
     }
 
     $scope.clear = function() {
