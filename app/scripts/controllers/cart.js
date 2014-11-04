@@ -36,7 +36,7 @@ angular.module('hubAppApp').controller('CartCtrl', function($scope) {
 		$scope.totalPrice = sum;
 	}
 
-	$scope.removeAll = function() {
+	$scope.remove = function() {
 		$scope.cartItems = [];
 		$scope.checkTotalPrice();
 		document.getElementById("select-all").checked = false;
