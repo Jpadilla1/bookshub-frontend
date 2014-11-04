@@ -266,6 +266,12 @@ h1, h2, h3, h4, h5, h6 {
     border-color: rgba(17, 213, 119, 0.69);
     border-style: solid;
     border-radius: 10px;
+    margin-bottom: 20px;
+}
+.cart-total-price{
+    font-weight: bold;
+    text-align: left;
+    margin-top: 5%;
 }
 .cart-item-image {
     width: 100%;
