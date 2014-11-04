@@ -1,48 +1,82 @@
 <div class="container">
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
-            <h1 class="add-book-header">Check if we have the Book!</h1>
-            <div class="form-group add-book-search">
-                <div class="input-group">
-                    <input type="text" class="form-control" ng-model="searchInput">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Search
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                            <li><a href="" ng-click="submitByTitle()">Title</a>
-                            </li>
-                            <li><a href="" ng-click="submitByIsbn10()">ISBN 10</a>
-                            </li>
-                            <li><a href="" ng-click="submitByIsbn13()">ISBN 13</a>
-                            </li>
-                            <li><a href="" ng-click="submitByAuthor()">Author</a>
-                            </li>
-                        </ul>
+            <div ng-show="show.searchForm" class="add-book-search" id="add-book-search-form">
+                <h1 class="add-book-header">Check if we have the Book!</h1>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="searchInput">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Search
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                <li><a href="" ng-click="submitByTitle()">Title</a>
+                                </li>
+                                <li><a href="" ng-click="submitByIsbn10()">ISBN 10</a>
+                                </li>
+                                <li><a href="" ng-click="submitByIsbn13()">ISBN 13</a>
+                                </li>
+                                <li><a href="" ng-click="submitByAuthor()">Author</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-            <form role="form" ng-submit="submit()" name="bookForm">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="book_title" placeholder="Title" ng-model="newBookForm.title" required>
+            <div ng-show="show.newForm" class="add-book-form">
+                <h1 class="add-book-header">Add Your Book to Bookshub!</h1>
+                <form role="form" ng-submit="submit()" name="bookForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="book_title" placeholder="Title" ng-model="newBookForm.title" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="book_isbn" placeholder="ISBN" ng-model="newBookForm.isbn" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="book_author" placeholder="Author" ng-model="newBookForm.author" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="book_edition" placeholder="Edition" ng-model="newBookForm.edition" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="book_category" placeholder="Category(DropDown)" ng-model="newBookForm.category" required>
+                    </div>
+                    <div class="form-group add-book-buttons">
+                        <button type="submit" class="btn btn-success btn-lg">Submit</button>
+                        <button type="button" ng-click="clear()" class="btn btn-success btn-lg">Clear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div ng-show="show.result">
+            <div class="col-md-offset-4 col-md-4">
+                <button type="button" class="btn btn-danger btn-lg add-book-not-found-button" ng-click="notFound()">Didn't Found your Book?</button>
+            </div>
+            <hr class="col-md-12">
+                <div class="col-md-12 add-book-result" ng-repeat="result in searchResult">
+                    <div class="col-md-3">
+                        <img src="../images/hpbook.jpg" class="add-book-result-image">
+                        <br>
+                    </div>
+                    <div class="col-md-3 add-book-result-information">
+                        <label class="cart-item-info">Title:</label> {{result.title}}
+                        </br>
+                        <label class="cart-item-info">ISBN 13:</label> {{result.isbn13}}
+                        </br>
+                        <label class="cart-item-info">ISBN 10:</label> {{result.isbn10}}
+                    </div>
+                    <div class="col-md-3 add-book-result-information">
+                        <label class="cart-item-info">Author:</label> {{result.author}}
+                        </br>
+                        <label class="cart-item-info">Edition:</label> {{result.edition}}
+                        </br>
+                        <label class="cart-item-info">Publisher:</label> {{result.publisher}}
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-success btn-lg add-book-result-button">This is the Book!</button>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="number" class="form-control" id="book_isbn" placeholder="ISBN" ng-model="newBookForm.isbn" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" id="book_author" placeholder="Author" ng-model="newBookForm.author" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" id="book_edition" placeholder="Edition" ng-model="newBookForm.edition" required>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" id="book_category" placeholder="Category(DropDown)" ng-model="newBookForm.category" required>
-                </div>
-                <div class="form-group add-book-buttons">
-                    <button type="submit" class="btn btn-success btn-lg">Submit</button>
-                    <button type="button" ng-click="clear()" class="btn btn-success btn-lg">Clear</button>
-                </div>
-            </form>
         </div>
     </div>
 </div>
