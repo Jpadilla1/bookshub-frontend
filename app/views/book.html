@@ -26,7 +26,7 @@
             </div>
             <div ng-show="show.newForm" class="add-book-form">
                 <h1 class="add-book-header">Add Your Book to Bookshub!</h1>
-                <form role="form" ng-submit="submit()" name="bookForm">
+                <form role="form" ng-submit="submitNewBook()" name="bookForm">
                     <div class="form-group">
                         <input type="text" class="form-control" id="book_title" placeholder="Title" ng-model="newBookForm.title" required>
                     </div>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="form-group add-book-buttons">
                         <button type="submit" class="btn btn-success btn-lg">Submit</button>
-                        <button type="button" ng-click="clear()" class="btn btn-success btn-lg">Clear</button>
+                        <button type="button" ng-click="clearNewBookForm()" class="btn btn-success btn-lg">Clear</button>
                     </div>
                 </form>
             </div>
@@ -74,9 +74,30 @@
                         <label class="cart-item-info">Publisher:</label> {{result.publisher}}
                     </div>
                     <div class="col-md-3">
-                        <button type="button" class="btn btn-success btn-lg add-book-result-button">This is the Book!</button>
+                        <button type="button" ng-click="setBookIdOffer(result.id)" class="btn btn-success btn-lg add-book-result-button">This is the Book!</button>
                     </div>
                 </div>
+        </div>
+        <div ng-show="show.offer" class="col-md-offset-3 col-md-6 add-book-offer-form">
+            <h1 class="add-book-header">Make an Offer!</h1>
+                <form role="form" ng-submit="submitOffer()" name="newOfferForm">
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="Price" ng-model="offerForm.price" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Description" ng-model="offerForm.description" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="Quantity" ng-model="offerForm.quantity" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Condition" ng-model="offerForm.condition" required>
+                    </div>
+                    <div class="form-group add-book-buttons">
+                        <button type="submit" class="btn btn-success btn-lg">Submit</button>
+                        <button type="button" ng-click="clearOfferForm()" class="btn btn-success btn-lg">Clear</button>
+                    </div>
+                </form>
         </div>
     </div>
 </div>

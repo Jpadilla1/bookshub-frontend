@@ -7,13 +7,22 @@
  * # BookCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp').controller('BookCtrl', function($scope) {
+angular.module('hubAppApp').controller('BookCtrl', function($scope,$filter) {
 
     $scope.searchInput = '';
     $scope.show = {
         "searchForm": true,
         "newForm": false,
-        "result": false
+        "result": false,
+        "offer": false
+    };
+    $scope.offerForm = {
+        "price": '',
+        "description": '',
+        "quantity": '',
+        "condition": '',
+        "book": '',
+        "owner": ''
     };
     $scope.newBookForm = {
         "title": '',
@@ -23,6 +32,7 @@ angular.module('hubAppApp').controller('BookCtrl', function($scope) {
         "category": ''
     };
     $scope.searchResult = [{
+        "id": 1,
         "title": 'Starting Out With Java',
         "isbn13": '978-0132855839',
         "isbn10": 0132855836,
@@ -30,6 +40,7 @@ angular.module('hubAppApp').controller('BookCtrl', function($scope) {
         "edition": '4th',
         "publisher": 'Pearson'
     }, {
+        "id": 2,
         "title": 'Starting Out With Java',
         "isbn13": '978-0132855839',
         "isbn10": 0132855836,
@@ -38,23 +49,46 @@ angular.module('hubAppApp').controller('BookCtrl', function($scope) {
         "publisher": 'Pearson'
     }];
 
+    $scope.setBookIdOffer = function(bookId) {
+        $scope.offerForm.book = bookId;
+        $scope.show.result = !$scope.show.result;
+        $scope.show.searchForm = !$scope.show.searchForm;
+        $scope.show.offer = !$scope.show.offer;    
+    }
+
+    $scope.submitOffer = function() {
+        
+    }
+
+    $scope.getActualDate = function() {
+        var actualDate = $filter('date')(new Date(), 'MM dd yyyy');
+        return actualDate;
+    }
+
     $scope.searchIsMoved = false;
 
     var originalNewBookForm = angular.copy($scope.newBookForm);
+    var originalOfferForm =  angular.copy($scope.offerForm);
 
-    $scope.submit = function() {
+    $scope.submitNewBook = function() {
 
     }
 
-    $scope.clear = function() {
+    $scope.clearNewBookForm = function() {
         $scope.newBookForm = angular.copy(originalNewBookForm);
         $scope.bookForm.$setPristine();
+    }
+
+     $scope.clearOfferForm = function() {
+        $scope.offerForm = angular.copy(originalOfferForm);
+        $scope.newOfferForm.$setPristine();
     }
 
     $scope.notFound = function() {
         $scope.show.result = !$scope.show.result;
         $scope.show.searchForm = !$scope.show.searchForm;
         $scope.show.newForm = !$scope.show.newForm;
+        $scope.show.offer = !$scope.show.offer; 
     }
 
     $scope.submitByTitle = function() {
