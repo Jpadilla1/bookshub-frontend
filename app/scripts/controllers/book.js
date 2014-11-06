@@ -71,7 +71,8 @@ angular.module('hubAppApp').controller('BookCtrl', function($scope,$filter) {
     var originalOfferForm =  angular.copy($scope.offerForm);
 
     $scope.submitNewBook = function() {
-
+        $scope.show.newForm = ! $scope.show.newForm;
+        $scope.show.offer = ! $scope.show.offer;
     }
 
     $scope.clearNewBookForm = function() {
@@ -88,7 +89,6 @@ angular.module('hubAppApp').controller('BookCtrl', function($scope,$filter) {
         $scope.show.result = !$scope.show.result;
         $scope.show.searchForm = !$scope.show.searchForm;
         $scope.show.newForm = !$scope.show.newForm;
-        $scope.show.offer = !$scope.show.offer; 
     }
 
     $scope.submitByTitle = function() {
