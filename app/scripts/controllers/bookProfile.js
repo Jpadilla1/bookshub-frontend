@@ -7,23 +7,18 @@
  * # BookProfileCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp').controller('bookProfileCtrl', function($scope) {
+
+var app = angular.module('hubAppApp');
 
 
-    $scope.bookInformation = {
+app.controller('bookProfileCtrl', ['$scope', '$http', 'MyBookService', function($scope, $http, MyBookService){
+    var result;
 
-        "title": 'Harry Potter - Eat You Alive',
-        "author": 'Howard T. James',
-        "isbn": '012345667890',
-        "rating": '5.0',
-        "publisher": 'Warner Brothers',
-        "edition": '10th edition',
-        "price": '$249.99',
-        "reviews": '',
+    MyBookService.async($http).then(function(response) {
+        result = result;
+    });
 
-        "recomendation": ''
-
-    };
+    $scope.bookInformation = result;
 
     $scope.vendorInformation = {
         "vendor": 'Luis N. Valcourt',
@@ -66,5 +61,4 @@ angular.module('hubAppApp').controller('bookProfileCtrl', function($scope) {
     $scope.$on('$viewContentLoaded', function() {
         defaultNavbar();
     });
-});
-
+}]);

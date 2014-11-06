@@ -9,19 +9,18 @@
 * Main module of the application.
 */
 
-angular
- .module('hubAppApp', [
-   'ngAnimate',
-   'ngCookies',
-   'ngResource',
-   'ngRoute',
-   'ngSanitize',
-   'ngTouch',
-   'validation',
-   'validation.rule'
- ])
+var app = angular.module('hubAppApp', [
+  'ngAnimate',
+  'ngCookies',
+  'ngResource',
+  'ngRoute',
+  'ngSanitize',
+  'ngTouch',
+  'validation',
+  'validation.rule'
+ ]);
  
- .config(function($routeProvider) {
+app.config(function($routeProvider) {
 
    $routeProvider
      .when('/', {
