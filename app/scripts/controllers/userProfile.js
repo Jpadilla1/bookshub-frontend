@@ -75,7 +75,6 @@ angular.module('hubAppApp').controller('UserCtrl',
         "showContactForm": false,
         "showRating": true,
         "showInformation": true,
-  
     };
 
      $scope.showInformation = function() {
@@ -129,7 +128,7 @@ angular.module('hubAppApp').controller('UserCtrl',
     $scope.showContactForm = function() {
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = false;
-        $scope.tabs.showReview = true;
+        $scope.tabs.showReview = false;
         $scope.tabs.showRating = false;
         $scope.tabs.showContactForm = true;
         $scope.tabs.showInformation = false;
