@@ -172,6 +172,9 @@ h1, h2, h3, h4, h5, h6 {
     background-color: rgba(29, 28, 28, 0.79);
     border-color: rgba(29, 28, 28, 0.79);
 }
+.img-thumbnail{
+    border-radius: 3px;
+}
 /* navbar */
 
 #primary-nav {
@@ -351,6 +354,43 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 2%;
     margin-bottom: 8%;
 }
+
+/* user profile */
+.user-profile{
+    color: white;
+}
+.user-profile img{
+    margin-top: 6%;
+    margin-bottom: 4%;
+    width: 250px;
+    height: 199px;
+    padding:2%;
+}
+.user-profile-background{
+    width: 100vw;
+    height: 36vh;
+    background-color: rgba(17, 213, 119, 0.69);
+    margin-top: -2%;
+}
+.user-social{
+    margin-top:65%;
+}
+.user-social i{
+    color:white;
+}
+.user-social-space{
+    margin-bottom: 32%;
+}
+.user-content-space{
+    margin-top:1%;
+}
+.user-sections{
+    margin-top:3%;
+}
+.user-contact{
+    margin-top:8%;
+}
+
 /* helpers */
 
 .no-margin {
@@ -375,6 +415,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 .small-margin-bottom {
     margin-bottom: 2%;
+}
+textarea{
+    resize:none;
 }
 /*.image-subheader-text{
     margin-top:-2%;
