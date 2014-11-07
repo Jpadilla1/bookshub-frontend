@@ -416,6 +416,9 @@ h1, h2, h3, h4, h5, h6 {
 .small-margin-bottom {
     margin-bottom: 2%;
 }
+textarea{
+    resize:none;
+}
 /*.image-subheader-text{
     margin-top:-2%;
     margin-bottom:1%; 

@@ -35,8 +35,6 @@ angular.module('hubAppApp').controller('UserCtrl',
     };
 
     $scope.userInformation = {
-
- 		
         "user": 'Howard T. James',
         "rating": '5.0',
         "review": 'Nice Seller, recommended with eyes closed!',
@@ -48,7 +46,6 @@ angular.module('hubAppApp').controller('UserCtrl',
     };
 
     $scope.userBook = {
-
     	"quantity": '15',
     	"new": '10',
     	"used": '5'	
@@ -73,6 +70,8 @@ angular.module('hubAppApp').controller('UserCtrl',
         "showUsed": false,
         "showReview": true,
         "showContactForm": false,
+        "showReviewForm": false,
+        "showReportForm": false,
         "showRating": true,
         "showInformation": true,
     };
@@ -84,7 +83,8 @@ angular.module('hubAppApp').controller('UserCtrl',
         $scope.tabs.showRating = true;
         $scope.tabs.showInformation = true
         $scope.tabs.showContactForm = false;
-  
+        $scope.tabs.showReviewForm = false;
+        $scope.tabs.showReportForm = false;
     }
 
 
@@ -95,7 +95,8 @@ angular.module('hubAppApp').controller('UserCtrl',
         $scope.tabs.showRating = false;
         $scope.tabs.showContactForm = false;
         $scope.tabs.showInformation = true;
-  
+        $scope.tabs.showReviewForm = false;
+        $scope.tabs.showReportForm = false;
     }
 
     $scope.showNew = function() {
@@ -105,6 +106,8 @@ angular.module('hubAppApp').controller('UserCtrl',
         $scope.tabs.showContactForm = false;
         $scope.tabs.showInformation = true;
         $scope.tabs.showRating = true;
+        $scope.tabs.showReviewForm = false;
+        $scope.tabs.showReportForm = false;
     }
 
     $scope.showUsed = function() {
@@ -114,6 +117,8 @@ angular.module('hubAppApp').controller('UserCtrl',
         $scope.tabs.showReview = false;
         $scope.tabs.showContactForm = false;
         $scope.tabs.showInformation = true;
+        $scope.tabs.showReviewForm = false;
+        $scope.tabs.showReportForm = false;
     }
 
     $scope.showReview = function() {
@@ -123,6 +128,8 @@ angular.module('hubAppApp').controller('UserCtrl',
         $scope.tabs.showContactForm = false;
         $scope.tabs.showInformation = true;
         $scope.tabs.showRating = true;
+        $scope.tabs.showReviewForm = false;
+        $scope.tabs.showReportForm = false;
     }
 
     $scope.showContactForm = function() {
@@ -132,8 +139,31 @@ angular.module('hubAppApp').controller('UserCtrl',
         $scope.tabs.showRating = false;
         $scope.tabs.showContactForm = true;
         $scope.tabs.showInformation = false;
-  
+        $scope.tabs.showReviewForm = false;
+        $scope.tabs.showReportForm = false;
     }
+    $scope.showReviewForm = function() {
+        $scope.tabs.showNew = false;
+        $scope.tabs.showUsed = false;
+        $scope.tabs.showReview = false;
+        $scope.tabs.showRating = false;
+        $scope.tabs.showContactForm = false;
+        $scope.tabs.showInformation = false;
+        $scope.tabs.showReviewForm = true;
+        $scope.tabs.showReportForm = false;
+    }
+    $scope.showReportForm = function() {
+        $scope.tabs.showNew = false;
+        $scope.tabs.showUsed = false;
+        $scope.tabs.showReview = false;
+        $scope.tabs.showRating = false;
+        $scope.tabs.showContactForm = false;
+        $scope.tabs.showInformation = false;
+        $scope.tabs.showReviewForm = false;
+        $scope.tabs.showReportForm = true;
+    }
+
+
 
     var init = function() {
         console.log(authService.settings());
