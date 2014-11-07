@@ -11,14 +11,25 @@
 var app = angular.module('hubAppApp');
 
 
-app.controller('bookProfileCtrl', ['$scope', '$http', 'MyBookService', function($scope, $http, MyBookService){
+app.controller('bookProfileCtrl', ['$scope', '$resource', 'MyBookService', 'MyOfferService',
+    function($scope, $resource, MyBookService, MyOfferService){
     var result;
 
-    MyBookService.async($http).then(function(response) {
-        result = result;
-    });
+    $scope.test = {
+        "bookId": '1'
+    };
 
-    $scope.bookInformation = result;
+    var params = {'bookId': $scope.test.bookId};
+    var paramTest = {'offerId': 2};
+
+    console.log(MyBookService.specificBook.get(params));
+    console.log(MyBookService.bookReviews.get(params));
+    console.log(MyOfferService.bookOffer.get(paramTest));
+
+    $scope.bookInformation = MyBookService.specificBook.get(params);
+
+    $scope.bookReviews = MyBookService.bookReviews.get(params);
+
 
     $scope.vendorInformation = {
         "vendor": 'Luis N. Valcourt',

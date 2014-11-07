@@ -10,24 +10,38 @@
 
 var app = angular.module('hubAppApp');
 
+app.service('MyBookService', ['$resource', '$cookies', function($resource, $cookies){
+	var resource = {};
 
-app.factory('MyBookService', function(){
-    return new BookService();
-});
+	// \\escape slash
+	resource.specificBook = $resource('https://bookshub.herokuapp.com/api/books/:bookId\\/', {}, {
+		get: {
+			method: "GET",
+			isArray: false,
+			headers: {'Content-Type': 'application/json'}
+		},
+	}),
+	resource.bookReviews = $resource('https://bookshub.herokuapp.com/api/books/:bookId/reviews\\/', {},{
+		get: {
+			method: "GET",
+			isArray: false,
+			headers: {'Content-Type': 'application/json'}
+		},
+	});
+	resource.topRecommended = $resource('https://bookshub.herokuapp.com/api/books/top/recommended\\/', {}, {
+		get: {
+			method: "GET",
+			isArray: false,
+			headers: {'Content-Type': 'application/json'}
+		},
+	});
+	resource.topRequested = $resource('https://bookshub.herokuapp.com/api/books/top/requested\\/', {}, {
+		get: {
+			method: "GET",
+			isArray: false,
+			headers: {'Content-Type': 'application/json'}
+		},
+	});
 
-function BookService(){
-    var myService = {
-    async: function($http) {
-      // $http returns a promise, which has a then function, which also returns a promise
-      var promise = $http.get('http://data.pr.gov/resource/uaij-e68c.json').then(function (response) {
-        // The then function here is an opportunity to modify the response
-        console.log(response);
-        // The return value gets picked up by the then in the controller.
-        return response.data;
-      });
-      // Return the promise to the controller
-      return promise;
-    }
-  };
-  return myService;
-};
+	return resource;
+}]);
