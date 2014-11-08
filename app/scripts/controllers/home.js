@@ -21,28 +21,32 @@
 /*This block creates an angular.js module and a controller to manage the items displayed and the data 
 received in the index*/
 (function() {
-    angular.module('hubAppApp').controller("HomeCtrl", function($scope) {
+    angular.module('hubAppApp').controller("HomeCtrl", ['$scope', 'MyBookService', function($scope, MyBookService){
 
-        $scope.searchInput = '';
+            $scope.searchInput = '';
 
-        $scope.$on('$viewContentLoaded', function() {
-            homeNavbar();
-        });
+             console.log(MyBookService.topRequested.get());
 
-        $scope.submitByTitle = function() {
-            alert("tile");
-        }
+            $scope.topRequestedBooks = MyBookService.topRequested.get();
 
-        $scope.submitByIsbn10 = function() {
-            alert("isbn10");
-        }
+            $scope.$on('$viewContentLoaded', function() {
+                homeNavbar();
+            });
 
-        $scope.submitByIsbn13 = function() {
-            alert("isbn 13");
-        }
+            $scope.submitByTitle = function() {
+                alert("tile");
+            }
 
-        $scope.submitByAuthor = function() {
-            alert("author");
-        }
-    });
+            $scope.submitByIsbn10 = function() {
+                alert("isbn10");
+            }
+
+            $scope.submitByIsbn13 = function() {
+                alert("isbn 13");
+            }
+
+            $scope.submitByAuthor = function() {
+                alert("author");
+            }
+    }]);
 })();

@@ -156,59 +156,16 @@
         <div class="col-md-12">
             <div class="requested-books">
                 <ul class="list-unstyled">
-                    <li class="col-md-4 col-sm-6">
+                    <li class="col-md-4 col-sm-6" ng-repeat="rb in topRequestedBooks.results">
                         <div class="thumbnail">
                             <a href="#">
                                 <img src="http://placehold.it/400x200" alt="..." class="thumbnail-image"/>
                             </a>
                             <div class="caption">
-                                <h3>Book Title</h3>
+                                <h3>{{rb.title}}</h3>
                                 <span class="lighter-text">
-                                    <p>ISBN:</p>
-                                    <p>Price:</p>
-                                </span>
-                            </div>
-                        </div>
-                    </li>
-                    <!--Remember to all types of col-->
-                    <li class="col-md-4 col-sm-6">
-                        <div class="thumbnail">
-                            <a href="#">
-                                <img src="http://placehold.it/400x200" alt="..." class="thumbnail-image"/>
-                            </a>
-                            <div class="caption">
-                                <h3>Book Title</h3>
-                                <span class="lighter-text">
-                                    <p>ISBN:</p>
-                                    <p>Price:</p>
-                                </span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="col-md-4 col-sm-6">
-                        <div class="thumbnail">
-                            <a href="#">
-                                <img src="http://placehold.it/400x200" alt="..." class="thumbnail-image"/>
-                            </a>
-                            <div class="caption">
-                                <h3>Book Title</h3>
-                                <span class="lighter-text">
-                                    <p>ISBN:</p>
-                                    <p>Price:</p>
-                                </span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="col-md-4 col-sm-6">
-                        <div class="thumbnail">
-                            <a href="#">
-                                <img src="http://placehold.it/400x200" alt="..." class="thumbnail-image"/>
-                            </a>
-                            <div class="caption">
-                                <h3>Book Title</h3>
-                                <span class="lighter-text">
-                                    <p>ISBN:</p>
-                                    <p>Price:</p>
+                                    <p ngIf="rb.isbn_10">ISBN 10: {{rb.isbn_10}} </p>
+                                    <p ngIf="rb.isbn_13">ISBN 13: {{rb.isbn_13}}</p>
                                 </span>
                             </div>
                         </div>
