@@ -54,8 +54,8 @@ h1, h2, h3, h4, h5, h6 {
     height: 60px;
     margin-top: -4%
 }
-/*Footer Styles*/
 
+/*Footer Styles*/
 #footer {
     height: 105px;
 }
@@ -104,8 +104,8 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     color: white;
 }
-/*Log In Styles*/
 
+/*Log In Styles*/
 .forgot-links {
     float: right;
 }
@@ -126,8 +126,8 @@ h1, h2, h3, h4, h5, h6 {
 .login-logo {
     margin-bottom: 10%;
 }
-/*Forgot Password Styles*/
 
+/*Forgot Password Styles*/
 .forgot-password-btn {
     width: 100%;
     margin-top: 5%;
@@ -138,8 +138,8 @@ h1, h2, h3, h4, h5, h6 {
 #forgot-pass-desc {
     text-align: justify;
 }
-/*Sign Up Styles*/
 
+/*Sign Up Styles*/
 #signup-header {
     text-align: center;
     color: rgba(17, 213, 119, 0.69);
@@ -150,9 +150,9 @@ h1, h2, h3, h4, h5, h6 {
 .promo-signup {
     padding: 5%;
 }
+
 /* Boostrap overwrites */
 /* btn success overwrite */
-
 .btn {
     border-radius: 3px;
 }
@@ -172,16 +172,16 @@ h1, h2, h3, h4, h5, h6 {
     background-color: rgba(29, 28, 28, 0.79);
     border-color: rgba(29, 28, 28, 0.79);
 }
-/* navbar */
 
+/* navbar */
 #primary-nav {
     background-color: white;
     border-bottom-color: rgba(17, 213, 119, 0.69);
     border-color: transparent;
 }
+
 /* home.html styles */
 /* Home Sections */
-
 .home-sections {
     margin-top: 12%;
 }
@@ -198,13 +198,13 @@ h1, h2, h3, h4, h5, h6 {
     color: whitesmoke;
     padding-bottom: 5%;
 }
-/* Sign up separator */
 
+/* Sign up separator */
 .button-text-separator {
     margin-left: 3%;
 }
-/* Footer Modifications */
 
+/* Footer Modifications */
 .footer-links, .footer-links a {
     color: rgba(17, 213, 119, 0.69);
     font-weight: 800;
@@ -227,8 +227,8 @@ h1, h2, h3, h4, h5, h6 {
 .lighter-text {
     font-weight: lighter;
 }
-/* userProfile.css */
 
+/* userProfile.css */
 .image {
     padding-bottom: 10px;
 }
@@ -258,6 +258,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 .add-book-search {
     margin-bottom: 10%;
+}
+.panel-heading span{
+    color: white;
+}
+.book-reviews-space{
+    padding-top: 10%;
 }
 /*Cart Styles*/
 
@@ -301,8 +307,8 @@ h1, h2, h3, h4, h5, h6 {
 .cart-item-information{
     margin-top: 20px;
 }
-/* Book Profile */
 
+/* Book Profile */
 .book-profile-background {
     width: 100vw;
     height: 36vh;
@@ -322,8 +328,11 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 2%;
     margin-bottom: 8%;
 }
-/* helpers */
+#comment-panel{
+    background-color: rgba(29, 28, 28, 0.65);
+}
 
+/* helpers */
 .no-margin {
     margin: 0;
 }
@@ -346,6 +355,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 .small-margin-bottom {
     margin-bottom: 2%;
+}
+.small-picture{
+    height: 30px;
+    width: 30px;
 }
 /*.image-subheader-text{
     margin-top:-2%;

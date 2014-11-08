@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-3">
-                            <img src="images/hpbook.jpg" alt="..." class="img-thumbnail img-responsive books-picture">
+                            <img src="http://placehold.it/400x200" alt="..." class="img-thumbnail img-responsive books-picture">
                         </div>
                         <div class="col-md-9">
                             <h1 class="book-profile">{{bookInformation.title}}</h1>
@@ -40,29 +40,6 @@
             </div>
         </div>
 
-        <!--
-        <div class="col-md-4">
-            <div class="col-md-12">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>Price: {{bookInformation.price}}</h3>
-                        <h3>Quantity: {{offerInformation.quantity}}</h3>
-                        <h4>Vendor: {{vendorInformation.vendor}}</h4>
-                        <h4>Rating: {{vendorInformation.rating}}</h4>
-                        <h4>Ships From: {{vendorInformation.address}}</h4>
-                    </div>
-                </div>
-                <a href="#" class="btn btn-success btn-lg btn-block" role="button">Add to Cart</a>
-            </div>
-        </div>
-        -->
-
-        <!--
-        <div class="col-md-4">
-            <h3>Rating: {{bookInformation.rating}}</h3>
-            <h3>Description: {{vendorInformation.description}}</h3>
-        </div>
-        -->
         <div class="col-md-12">
             <div ng-show="tabs.showReview">
                 <div class="col-md-4">
@@ -78,16 +55,24 @@
                         <hr>
                     </div>           
                 </div>
-                <div ng-repeat="r in bookReviews.results" class="col-md-12">
-                    <div class="col-md-12">
-                        <div class="col-md-8 col-md-offset-2">
-                            <h3>{{r.user}}</h3>
-                            <p>{{r.review}}</p>
-                        </div>
-                    </div>
-                    <div class="col-md-12 text-center">
-                        <div class="col-md-8 col-md-offset-2">
-                            <hr>
+                <div class="book-reviews-space">
+                    <div ng-repeat="r in bookReviews.results">
+                        <div class="col-md-12">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="panel panel-default">
+                                  <div class="panel-heading" id="comment-panel">
+                                        <img src="http://placehold.it/400x200" class="img-rounded small-picture">
+                                        <span>
+                                            Reviewed by {{r.user}}
+                                        </span>
+                                    </div>
+                                    <div class="panel-body">
+                                        <p>
+                                            {{r.review}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
