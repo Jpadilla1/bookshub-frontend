@@ -23,8 +23,6 @@ app.controller('bookProfileCtrl', ['$scope', '$resource', 'MyBookService', 'MyOf
     var paramTest = {'offerId': 2};
 
     console.log(MyBookService.specificBook.get(params));
-    console.log(MyBookService.bookReviews.get(params));
-    console.log(MyOfferService.bookOffer.get(paramTest));
 
     $scope.bookInformation = MyBookService.specificBook.get(params);
 
@@ -48,26 +46,35 @@ app.controller('bookProfileCtrl', ['$scope', '$resource', 'MyBookService', 'MyOf
     $scope.tabs = {
         "showNew": false,
         "showUsed": false,
-        "showReview": true
+        "showReview": true,
+        "showOffers": false
     };
 
     $scope.showNew = function() {
         $scope.tabs.showNew = true;
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = false;
-    }
+    };
 
     $scope.showUsed = function() {
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = true;
         $scope.tabs.showReview = false;
-    }
+    };
 
     $scope.showReview = function() {
+        $scope.tabs.showOffers = false;        
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = true;
-    }
+    };
+
+    $scope.showOffers = function(){
+        $scope.tabs.showOffers = true;
+        $scope.tabs.showNew = true;
+        $scope.tabs.showUsed = false;
+        $scope.tabs.showReview = false;
+    };
 
     $scope.$on('$viewContentLoaded', function() {
         defaultNavbar();

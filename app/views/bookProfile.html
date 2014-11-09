@@ -22,199 +22,160 @@
 
 <div class="container">
     <div class="row">
-        <div class="book-options">        
-            <div class="col-md-4">
-                <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showReview()">
-                    {{bookReviews.count}} Reviews
-                </button>
-            </div>
-            <div class="col-md-4">
-                <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showNew()">
-                    {{offerInformation.new}} New
-                </button>
-            </div>
-            <div class="col-md-4">
-                <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showUsed()">
-                    {{offerInformation.used}} Used
-                </button>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            <div ng-show="tabs.showReview">
-                <div class="col-md-4">
-                    <div class="home-sections">
-                        <hr>
+        <div class="book-options">
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showReview()">
+                            {{bookReviews.count}} Reviews
+                        </button>
+                    </div>
+                    <div class="col-md-12 top-space">
+                        <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showOffers()">
+                            {{bookInformation.offers.length}} Offers
+                        </button>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <h1 class="text-center">Reviews</h1>
-                </div>
-                <div class="col-md-4">
-                    <div class="home-sections">
-                        <hr>
-                    </div>           
-                </div>
-                <div class="book-reviews-space">
-                    <div ng-repeat="r in bookReviews.results">
-                        <div class="col-md-12">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class="panel panel-default">
-                                  <div class="panel-heading" id="comment-panel">
-                                        <img src="http://placehold.it/400x200" class="img-rounded small-picture">
-                                        <span>
-                                            Reviewed by {{r.user}}
-                                        </span>
-                                    </div>
-                                    <div class="panel-body">
-                                        <p>
-                                            {{r.review}}
-                                        </p>
+
+                <div class="col-md-9">
+                    <div ng-show="tabs.showReview">
+                        <div class="col-md-4">
+                            <div class="book-profile-sections">
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h1 class="text-center">Reviews</h1>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="book-profile-sections">
+                                <hr>
+                            </div>           
+                        </div>
+                        <div class="book-reviews-space">
+                            <div ng-repeat="r in bookReviews.results">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default">
+                                      <div class="panel-heading" id="comment-panel">
+                                            <img src="http://placehold.it/400x200" class="img-rounded small-picture">
+                                            <span>
+                                                Reviewed by {{r.user}}
+                                            </span>
+                                        </div>
+                                        <div class="panel-body">
+                                            <p>
+                                                {{r.review}}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            <div ng-show="tabs.showNew">
-                <div class="col-md-4">
-                    <div class="home-sections">
-                        <hr>
+                <div ng-show="tabs.showOffers">
+                    <div class="col-md-9">
+                        <div class="col-md-6">
+                            <button class="btn btn-info btn-lg btn-block" ng-click="showNew()">
+                                New
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-info btn-lg btn-block" ng-click="showUsed()">
+                                Used
+                            </button>
+                        </div>
+                        <div ng-show="tabs.showNew">
+                            <div class="col-md-4">
+                                <div class="book-profile-sections">
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h1 class="text-center">New Books</h1>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="book-profile-sections">
+                                    <hr>
+                                </div>           
+                            </div>
+                            <div class="books-new-used">
+                                <div class="col-md-12">
+                                    <div class="book-offers">
+                                        <span ng-repeat="nb in bookInformation.offers">
+                                            <div ng-if="nb.condition == 'new'">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading" id="comment-panel">
+                                                        <img src="http://placehold.it/400x200" class="img-rounded small-picture">
+                                                        <span>
+                                                            Sold by {{nb.owner}} at
+                                                            <span class="label label-with-background">
+                                                                ${{nb.price}}
+                                                            </span>
+                                                        </span>
+                                                        <span>
+                                                            <a href="" class="btn btn-with-background anchor-btn pull-right">
+                                                                Add to Cart
+                                                            </a>
+                                                        </span>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <p>{{nb.description}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-show="tabs.showUsed">
+                            <div class="col-md-4">
+                                <div class="book-profile-sections">
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h1 class="text-center">Used Books</h1>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="book-profile-sections">
+                                    <hr>
+                                </div>           
+                            </div>
+                            <div class="books-new-used">
+                                <div class="col-md-12">
+                                    <div class="book-offers">
+                                        <span ng-repeat="ub in bookInformation.offers">
+                                            <div ng-if="ub.condition == 'used'">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading" id="comment-panel">
+                                                        <img src="http://placehold.it/400x200" class="img-rounded small-picture">
+                                                        <span>
+                                                            Sold by {{ub.owner}} at
+                                                            <span class="label label-with-background">
+                                                                $ {{ub.price}}
+                                                            </span>
+                                                            <span>
+                                                                <a href="" class="btn btn-with-background anchor-btn pull-right">
+                                                                    Add to Cart
+                                                                </a>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <p>{{ub.description}}</p>  
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <h1 class="text-center">New Books</h1>
-                </div>
-                <div class="col-md-4">
-                    <div class="home-sections">
-                        <hr>
-                    </div>           
-                </div>
-                <div class="col-md-12">
-                    <div class="requested-books">
-                        <ul class="list-unstyled">
-                            <li class="col-md-4">
-
-                                <a href="/" class="thumbnail">
-                                    <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
-                                    <div class="caption">
-                                        <h3>Book Title</h3>
-                                        <span class="lighter-text">
-                                            <p>ISBN:</p>
-                                            <p>Price:</p>
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <!--Remember to all types of col-->
-                            <li class="col-md-4">
-                                <a href="#" class="thumbnail">
-                                    <img src="http://placehold.it/400x200" alt="..." height="200" width="400" />
-                                    <div class="caption">
-                                        <h3>Book Title</h3>
-                                        <span class="lighter-text">
-                                            <p>ISBN:</p>
-                                            <p>Price:</p>
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="col-md-4">
-                                <a href="#" class="thumbnail">
-                                    <img src="http://placehold.it/400x200" alt="..." />
-                                    <div class="caption">
-                                        <h3>Book Title</h3>
-                                        <span class="lighter-text">
-                                            <p>ISBN:</p>
-                                            <p>Price:</p>
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="col-md-4">
-                                <a href="#" class="thumbnail">
-                                    <img src="http://placehold.it/400x200" alt="..." />
-                                    <div class="caption">
-                                        <h3>Book Title</h3>
-                                        <span class="lighter-text">
-                                            <p>ISBN:</p>
-                                            <p>Price:</p>
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <div class="col-md-12">
-            <div ng-show="tabs.showUsed">
-                <div class="col-md-4">
-                    <div class="home-sections">
-                        <hr>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <h1 class="text-center">Used Books</h1>
-                </div>
-                <div class="col-md-4">
-                    <div class="home-sections">
-                        <hr>
-                    </div>           
-                </div>
-                <div class="col-md-12">
-                    <div class="requested-books">
-                        <ul class="list-unstyled">
-                            <li class="col-md-4">
-
-                                <a href="/" class="thumbnail">
-                                    <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
-
-
-                                    <div class="caption">
-                                        <h3>Book Title</h3>
-                                        <span class="lighter-text">
-                                            <p>ISBN:</p>
-                                            <p>Price:</p>
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <!--Remember to all types of col-->
-                            <li class="col-md-4">
-                                <a href="#" class="thumbnail">
-                                    <img src="http://placehold.it/400x200" alt="..." height="200" width="400" />
-                                    <div class="caption">
-                                        <h3>Book Title</h3>
-                                        <span class="lighter-text">
-                                            <p>ISBN:</p>
-                                            <p>Price:</p>
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="col-md-4">
-                                <a href="#" class="thumbnail">
-                                    <img src="http://placehold.it/400x200" alt="..." />
-                                    <div class="caption">
-                                        <h3>Book Title</h3>
-                                        <span class="lighter-text">
-                                            <p>ISBN:</p>
-                                            <p>Price:</p>
-                                        </span>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            </div>        
         </div>
     </div>
 </div>
