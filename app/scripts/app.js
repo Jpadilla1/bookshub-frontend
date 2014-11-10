@@ -19,7 +19,7 @@ var app = angular.module('hubAppApp', [
   'validation',
   'validation.rule'
  ]);
- 
+
 app.config(function($routeProvider) {
 
    $routeProvider
@@ -28,7 +28,7 @@ app.config(function($routeProvider) {
        controller: 'HomeCtrl'
      })
      .when('/signUp', {
-       templateUrl: 'views/signUp.html',
+       templateUrl: 'views/sign-up.html',
        controller: 'SignUpCtrl'
      })
      .when('/about', {
@@ -36,7 +36,7 @@ app.config(function($routeProvider) {
        controller: 'AboutCtrl'
      })
      .when('/userProfile', {
-       templateUrl: 'views/userProfile.html',
+       templateUrl: 'views/user-profile.html',
        controller: 'UserCtrl'
      })
       .when('/book', {
@@ -44,18 +44,18 @@ app.config(function($routeProvider) {
        controller: 'BookCtrl'
      })
       .when('/login', {
-       templateUrl: 'views/logIn.html',
+       templateUrl: 'views/login.html',
        controller: 'LogInCtrl'
      })
-      .when('/bookProfile', {
+      .when('/book-profile', {
       templateUrl: 'views/bookProfile.html',
       controller: 'bookProfileCtrl'
      })
-      .when('/forgotPassword', {
+      .when('/forgot-password', {
       templateUrl: 'views/forgotPassword.html',
       controller: 'ForgotPasswordCtrl'
      })
-      .when('/resetPassword', {
+      .when('/reset-password', {
       templateUrl: 'views/resetPassword.html',
       controller: 'ResetPasswordCtrl'
      })
