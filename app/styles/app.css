@@ -54,8 +54,8 @@ h1, h2, h3, h4, h5, h6 {
     height: 60px;
     margin-top: -4%
 }
-/*Footer Styles*/
 
+/*Footer Styles*/
 #footer {
     height: 105px;
 }
@@ -104,8 +104,8 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     color: white;
 }
-/*Log In Styles*/
 
+/*Log In Styles*/
 .forgot-links {
     float: right;
 }
@@ -126,8 +126,8 @@ h1, h2, h3, h4, h5, h6 {
 .login-logo {
     margin-bottom: 10%;
 }
-/*Forgot Password Styles*/
 
+/*Forgot Password Styles*/
 .forgot-password-btn {
     width: 100%;
     margin-top: 5%;
@@ -138,8 +138,8 @@ h1, h2, h3, h4, h5, h6 {
 #forgot-pass-desc {
     text-align: justify;
 }
-/*Sign Up Styles*/
 
+/*Sign Up Styles*/
 #signup-header {
     text-align: center;
     color: rgba(17, 213, 119, 0.69);
@@ -150,9 +150,9 @@ h1, h2, h3, h4, h5, h6 {
 .promo-signup {
     padding: 5%;
 }
+
 /* Boostrap overwrites */
 /* btn success overwrite */
-
 .btn {
     border-radius: 3px;
 }
@@ -172,19 +172,25 @@ h1, h2, h3, h4, h5, h6 {
     background-color: rgba(29, 28, 28, 0.79);
     border-color: rgba(29, 28, 28, 0.79);
 }
+
 .img-thumbnail{
     border-radius: 3px;
 }
 /* navbar */
+.label-success{
+    background-color: rgba(17, 213, 119, 0.69);
+    color: white;
+}
 
+/* navbar */
 #primary-nav {
     background-color: white;
     border-bottom-color: rgba(17, 213, 119, 0.69);
     border-color: transparent;
 }
+
 /* home.html styles */
 /* Home Sections */
-
 .home-sections {
     margin-top: 12%;
 }
@@ -201,13 +207,16 @@ h1, h2, h3, h4, h5, h6 {
     color: whitesmoke;
     padding-bottom: 5%;
 }
-/* Sign up separator */
+.anchor-btn:hover{
+    font-weight: initial;
+}
 
+/* Sign up separator */
 .button-text-separator {
     margin-left: 3%;
 }
-/* Footer Modifications */
 
+/* Footer Modifications */
 .footer-links, .footer-links a {
     color: rgba(17, 213, 119, 0.69);
     font-weight: 800;
@@ -230,8 +239,8 @@ h1, h2, h3, h4, h5, h6 {
 .lighter-text {
     font-weight: lighter;
 }
-/* userProfile.css */
 
+/* userProfile.css */
 .image {
     padding-bottom: 10px;
 }
@@ -291,6 +300,12 @@ h1, h2, h3, h4, h5, h6 {
 .add-book-form {
     margin-top: 15%;
 }
+.panel-heading span{
+    color: white;
+}
+.book-reviews-space{
+    padding-top: 10%;
+}
 /*Cart Styles*/
 
 .cart-item {
@@ -333,8 +348,8 @@ h1, h2, h3, h4, h5, h6 {
 .cart-item-information{
     margin-top: 20px;
 }
-/* Book Profile */
 
+/* Book Profile */
 .book-profile-background {
     width: 100vw;
     height: 36vh;
@@ -392,7 +407,38 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* helpers */
+#comment-panel{
+    background-color: rgba(29, 28, 28, 0.65);
+}
+.book-profile-sections{
+    padding-top: 8%;
+}
+.offer-label-top-space{
+    margin-top: 0.5%;
+}
+.btn-with-background{
+    padding-bottom: 0.5%;
+    background-color: rgba(57, 244, 155, 0.82);
+    color:white;
+}
+.btn-with-background:hover{
+    background-color: rgba(57, 244, 155, 0.88);
+    color:white;
+}
+.label-with-background{
+    background-color: rgba(57, 244, 155, 0.82);
+}
+.book-offers{
+    margin-top: 4%;
+}
+.books-new-used {
+    margin-top: 8%;
+}
 
+/* helpers */
+.top-space{
+    margin-top: 1%;
+}
 .no-margin {
     margin: 0;
 }
@@ -418,6 +464,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 textarea{
     resize:none;
+}
+.small-picture{
+    height: 30px;
+    width: 30px;
 }
 /*.image-subheader-text{
     margin-top:-2%;

@@ -7,23 +7,27 @@
  * # BookProfileCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp').controller('bookProfileCtrl', function($scope) {
+
+var app = angular.module('hubAppApp');
 
 
-    $scope.bookInformation = {
+app.controller('bookProfileCtrl', ['$scope', '$resource', 'MyBookService', 'MyOfferService',
+    function($scope, $resource, MyBookService, MyOfferService){
+    var result;
 
-        "title": 'Harry Potter - Eat You Alive',
-        "author": 'Howard T. James',
-        "isbn": '012345667890',
-        "rating": '5.0',
-        "publisher": 'Warner Brothers',
-        "edition": '10th edition',
-        "price": '$249.99',
-        "reviews": '',
-
-        "recomendation": ''
-
+    $scope.test = {
+        "bookId": '1'
     };
+
+    var params = {'bookId': $scope.test.bookId};
+    var paramTest = {'offerId': 2};
+
+    console.log(MyBookService.specificBook.get(params));
+
+    $scope.bookInformation = MyBookService.specificBook.get(params);
+
+    $scope.bookReviews = MyBookService.bookReviews.get(params);
+
 
     $scope.vendorInformation = {
         "vendor": 'Luis N. Valcourt',
@@ -42,29 +46,37 @@ angular.module('hubAppApp').controller('bookProfileCtrl', function($scope) {
     $scope.tabs = {
         "showNew": false,
         "showUsed": false,
-        "showReview": true
+        "showReview": true,
+        "showOffers": false
     };
 
     $scope.showNew = function() {
         $scope.tabs.showNew = true;
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = false;
-    }
+    };
 
     $scope.showUsed = function() {
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = true;
         $scope.tabs.showReview = false;
-    }
+    };
 
     $scope.showReview = function() {
+        $scope.tabs.showOffers = false;        
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = true;
-    }
+    };
+
+    $scope.showOffers = function(){
+        $scope.tabs.showOffers = true;
+        $scope.tabs.showNew = true;
+        $scope.tabs.showUsed = false;
+        $scope.tabs.showReview = false;
+    };
 
     $scope.$on('$viewContentLoaded', function() {
         defaultNavbar();
     });
-});
-
+}]);

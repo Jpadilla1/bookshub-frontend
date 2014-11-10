@@ -92,6 +92,7 @@ angular.module('hubAppApp')
                     'password':password
                 }
             }).then(function(data){
+                console.log(data);
                 $http.defaults.headers.common.Authorization = 'JWT ' + data.token;
                 $cookies.token = data.token;
                 djangoAuth.authenticated = true;
