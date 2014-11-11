@@ -261,10 +261,6 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 5%;
 }
 /*Add Book Styles*/
-
-.add-book-header {
-    text-align: center;
-}
 .add-book-buttons {
     text-align: center;
 }
@@ -438,6 +434,9 @@ h1, h2, h3, h4, h5, h6 {
 /* helpers */
 .top-space{
     margin-top: 1%;
+}
+.bottom-space{
+    margin-bottom: 1%;
 }
 .no-margin {
     margin: 0;
