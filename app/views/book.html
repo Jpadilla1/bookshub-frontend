@@ -66,7 +66,7 @@
                 <button type="button" class="btn btn-danger btn-lg add-book-not-found-button" ng-click="notFound()">Didn't Found your Book?</button>
             </div>
             <hr class="col-md-12">
-                <div class="col-md-12 add-book-result" ng-repeat="result in searchResult">
+                <div class="col-md-12 add-book-result" ng-repeat="result in autoCompleteResults.results">
                     <div class="col-md-3">
                         <img src="../images/hpbook.jpg" class="add-book-result-image">
                         <br>
@@ -74,12 +74,15 @@
                     <div class="col-md-3 add-book-result-information">
                         <label class="cart-item-info">Title:</label> {{result.title}}
                         </br>
-                        <label class="cart-item-info">ISBN 13:</label> {{result.isbn13}}
+                        <label class="cart-item-info">ISBN 10:</label> {{result.isbn_10}}
                         </br>
-                        <label class="cart-item-info">ISBN 10:</label> {{result.isbn10}}
+                        <label class="cart-item-info">ISBN 13:</label> {{result.isbn_13}}
                     </div>
                     <div class="col-md-3 add-book-result-information">
-                        <label class="cart-item-info">Author:</label> {{result.author}}
+                        <label class="cart-item-info">Author:</label>
+                          <span ng-repeat="a in result.author">
+                            {{a}}
+                          </span>
                         </br>
                         <label class="cart-item-info">Edition:</label> {{result.edition}}
                         </br>

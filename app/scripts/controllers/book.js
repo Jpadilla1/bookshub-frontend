@@ -26,6 +26,9 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', functi
       $scope.autoCompleteResults = MySearch.bookAutoCompleteSearch.get(params);
 
       console.log($scope.autoCompleteResults);
+
+      $scope.moveSearchForm();
+      $scope.show.result = !$scope.show.result;
     }
   };
 
@@ -50,23 +53,6 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', functi
       "edition": '',
       "category": ''
   };
-  $scope.searchResult = [{
-      "id": 1,
-      "title": 'Starting Out With Java',
-      "isbn13": '978-0132855839',
-      "isbn10": 0132855836,
-      "author": 'Tonny Gaddis',
-      "edition": '4th',
-      "publisher": 'Pearson'
-  }, {
-      "id": 2,
-      "title": 'Starting Out With Java',
-      "isbn13": '978-0132855839',
-      "isbn10": 0132855836,
-      "author": 'Tonny Gaddis',
-      "edition": '4th',
-      "publisher": 'Pearson'
-  }];
 
   $scope.setBookIdOffer = function(bookId) {
       $scope.offerForm.book = bookId;
@@ -108,23 +94,6 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', functi
       $scope.show.result = !$scope.show.result;
       $scope.show.searchForm = !$scope.show.searchForm;
       $scope.show.newForm = !$scope.show.newForm;
-  }
-
-  $scope.submitByTitle = function() {
-      $scope.moveSearchForm();
-      $scope.show.result = !$scope.show.result;
-  }
-
-  $scope.submitByIsbn10 = function() {
-      alert("isbn10");
-  }
-
-  $scope.submitByIsbn13 = function() {
-      alert("isbn 13");
-  }
-
-  $scope.submitByAuthor = function() {
-      alert("author");
   }
 
   $scope.moveSearchForm = function() {
