@@ -28,13 +28,25 @@
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="" ng-click="submitByTitle()">Title</a>
+                                    <li>
+                                      <a href="" ng-click="submitByTitle('title')">
+                                        Title
+                                      </a>
                                     </li>
-                                    <li><a href="" ng-click="submitByIsbn10()">ISBN 10</a>
+                                    <li>
+                                      <a href="" ng-click="submitByIsbn10('isbn_10')">
+                                        ISBN 10
+                                      </a>
                                     </li>
-                                    <li><a href="" ng-click="submitByIsbn13()">ISBN 13</a>
+                                    <li>
+                                      <a href="" ng-click="submitByIsbn13('isbn_13')">
+                                        ISBN 13
+                                      </a>
                                     </li>
-                                    <li><a href="" ng-click="submitByAuthor()">Author</a>
+                                    <li>
+                                      <a href="" ng-click="submitByAuthor('author')">
+                                        Author
+                                      </a>
                                     </li>
                                 </ul>
                             </div>
@@ -42,29 +54,35 @@
                     </li>
                     <li>
                         <!--Icon button that when toggled shows the search input group-->
-                        <a href="" ng-click="show = ! show" data-toggle="tooltip" data-placement="bottom" title="Click me to Search!"><i class="fa fa-search fa-lg"></i>
+                        <a href="" ng-click="show = ! show" data-toggle="tooltip" data-placement="bottom" title="Click me to Search!">
+                          <i class="fa fa-search fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#/book">
+                          <i class="fa fa-plus fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#/cart">
+                          <i class="fa fa-shopping-cart fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#/use-profile"><i class="fa fa-user fa-lg"></i>
                                 </a>
                     </li>
                     <li>
-                        <a href="#/book"><i class="fa fa-plus fa-lg"></i>
-                                </a>
-                    </li>
-                    <li>
-                        <a href="#/cart"><i class="fa fa-shopping-cart fa-lg"></i>
-                                </a>
-                    </li>
-                    <li>
-                        <a href="#/userProfile"><i class="fa fa-user fa-lg"></i>
-                                </a>
-                    </li>
-                    <li>
-                        <a href="#/"><i class="fa fa-cog fa-lg"></i>
-                                </a>
+                        <a href="#/">
+                          <i class="fa fa-cog fa-lg"></i>
+                        </a>
                     </li>
                     <!--Log in and Sign Up links-->
-                    <li><a href="#/logIn">Log In</a>
+                    <li>
+                      <a href="#/log-in">Log In</a>
                     </li>
-                    <li><a href="#/signUp">Sign Up</a>
+                    <li>
+                      <a href="#/signup">Sign Up</a>
                     </li>
                 </ul>
             </form>
@@ -95,13 +113,25 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="" ng-click="submitByTitle()">Title</a>
+                                <li>
+                                  <a href="" ng-click="searchBy('title')">
+                                    Title
+                                  </a>
                                 </li>
-                                <li><a href="" ng-click="submitByIsbn10()">ISBN 10</a>
+                                <li>
+                                  <a href="" ng-click="searchBy('isbn_10')">
+                                    ISBN 10
+                                  </a>
                                 </li>
-                                <li><a href="" ng-click="submitByIsbn13()">ISBN 13</a>
+                                <li>
+                                  <a href="" ng-click="searchBy('isbn_13')">
+                                    ISBN 13
+                                  </a>
                                 </li>
-                                <li><a href="" ng-click="submitByAuthor()">Author</a>
+                                <li>
+                                  <a href="" ng-click="searchBy('author')">
+                                    Author
+                                  </a>
                                 </li>
                             </ul>
                         </div>
@@ -146,7 +176,7 @@
                 <h1 class="text-center">
                     Requested Books
                 </h1>
-            </div>  
+            </div>
             <div class="col-md-4">
                 <div class="home-sections">
                     <hr>
@@ -190,7 +220,7 @@
                     <h1 class="text-center">
                         Top Sellers
                     </h1>
-                </div>  
+                </div>
                 <div class="col-md-4">
                     <div class="home-sections">
                         <hr>
@@ -258,7 +288,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>  
+            </div>
         </div>
     </div>
 -->
@@ -277,7 +307,7 @@
                 <h1 class="text-center">
                     Recommendations
                 </h1>
-            </div>  
+            </div>
             <div class="col-md-4">
                 <div class="home-sections">
                     <hr>

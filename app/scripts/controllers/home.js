@@ -18,35 +18,35 @@
     });
 }(jQuery));
 
-/*This block creates an angular.js module and a controller to manage the items displayed and the data 
+/*This block creates an angular.js module and a controller to manage the items displayed and the data
 received in the index*/
 (function() {
-    angular.module('hubAppApp').controller("HomeCtrl", ['$scope', 'MyBookService', function($scope, MyBookService){
+    angular.module('hubAppApp').controller("HomeCtrl", ['$scope', 'MyBookService', 'MySearch', function($scope, MyBookService, MySearch){
 
-            $scope.searchInput = '';
+      $scope.searchInput = '';
 
-            $scope.topRequestedBooks = MyBookService.topRequested.get();
+      $scope.topRequestedBooks = MyBookService.topRequested.get();
 
-            $scope.topRecommendedBooks = MyBookService.topRecommended.get();
+      $scope.topRecommendedBooks = MyBookService.topRecommended.get();
 
-            $scope.$on('$viewContentLoaded', function() {
-                homeNavbar();
-            });
+      $scope.$on('$viewContentLoaded', function() {
+          homeNavbar();
+      });
 
-            $scope.submitByTitle = function() {
-                alert("tile");
-            }
+      $scope.searchResult = '';
 
-            $scope.submitByIsbn10 = function() {
-                alert("isbn10");
-            }
+      $scope.searchBy = function(selection){
+        result = validateField($scope.searchInput);
+        if(result){
+          var params = {
+            'searchBy': selection,
+            'searchValue': result
+          };
 
-            $scope.submitByIsbn13 = function() {
-                alert("isbn 13");
-            }
+          $scope.searchResult = MySearch.bookSearch.get(params);
+          console.log($scope.searchResult);
+        }
 
-            $scope.submitByAuthor = function() {
-                alert("author");
-            }
+      }
     }]);
 })();
