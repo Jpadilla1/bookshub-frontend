@@ -11,13 +11,25 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                <li><a href="" ng-click="submitByTitle()">Title</a>
+                                <li>
+                                  <a href="" ng-click="autoCompleteSearch('title')">
+                                    Title
+                                  </a>
                                 </li>
-                                <li><a href="" ng-click="submitByIsbn10()">ISBN 10</a>
+                                <li>
+                                  <a href="" ng-click="autoCompleteSearch('isbn_10')">
+                                    ISBN 10
+                                  </a>
                                 </li>
-                                <li><a href="" ng-click="submitByIsbn13()">ISBN 13</a>
+                                <li>
+                                  <a href="" ng-click="autoCompleteSearch('isbn_13')">
+                                    ISBN 13
+                                  </a>
                                 </li>
-                                <li><a href="" ng-click="submitByAuthor()">Author</a>
+                                <li>
+                                  <a href="" ng-click="autoCompleteSearch('author')">
+                                    Author
+                                  </a>
                                 </li>
                             </ul>
                         </div>

@@ -7,120 +7,139 @@
  * # BookCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp').controller('BookCtrl', function($scope,$filter) {
+angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', function($scope, MySearch){
 
-    $scope.searchInput = '';
-    $scope.show = {
-        "searchForm": true,
-        "newForm": false,
-        "result": false,
-        "offer": false
-    };
-    $scope.offerForm = {
-        "price": '',
-        "description": '',
-        "quantity": '',
-        "condition": '',
-        "book": '',
-        "owner": ''
-    };
-    $scope.newBookForm = {
-        "title": '',
-        "isbn": '',
-        "author": '',
-        "edition": '',
-        "category": ''
-    };
-    $scope.searchResult = [{
-        "id": 1,
-        "title": 'Starting Out With Java',
-        "isbn13": '978-0132855839',
-        "isbn10": 0132855836,
-        "author": 'Tonny Gaddis',
-        "edition": '4th',
-        "publisher": 'Pearson'
-    }, {
-        "id": 2,
-        "title": 'Starting Out With Java',
-        "isbn13": '978-0132855839',
-        "isbn10": 0132855836,
-        "author": 'Tonny Gaddis',
-        "edition": '4th',
-        "publisher": 'Pearson'
-    }];
+  $scope.searchInput = '';
 
-    $scope.setBookIdOffer = function(bookId) {
-        $scope.offerForm.book = bookId;
-        $scope.show.result = !$scope.show.result;
-        $scope.show.searchForm = !$scope.show.searchForm;
-        $scope.show.offer = !$scope.show.offer;    
+
+  $scope.autoCompleteResults = '';
+
+  $scope.autoCompleteSearch = function(selection){
+    var result = validateField($scope.searchInput);
+
+    if (result){
+      var params = {
+        'searchBy': selection,
+        'searchValue': $scope.searchInput
+      };
+
+      $scope.autoCompleteResults = MySearch.bookAutoCompleteSearch.get(params);
+
+      console.log($scope.autoCompleteResults);
     }
+  };
 
-    $scope.submitOffer = function() {
-        
-    }
+  $scope.show = {
+      "searchForm": true,
+      "newForm": false,
+      "result": false,
+      "offer": false
+  };
+  $scope.offerForm = {
+      "price": '',
+      "description": '',
+      "quantity": '',
+      "condition": '',
+      "book": '',
+      "owner": ''
+  };
+  $scope.newBookForm = {
+      "title": '',
+      "isbn": '',
+      "author": '',
+      "edition": '',
+      "category": ''
+  };
+  $scope.searchResult = [{
+      "id": 1,
+      "title": 'Starting Out With Java',
+      "isbn13": '978-0132855839',
+      "isbn10": 0132855836,
+      "author": 'Tonny Gaddis',
+      "edition": '4th',
+      "publisher": 'Pearson'
+  }, {
+      "id": 2,
+      "title": 'Starting Out With Java',
+      "isbn13": '978-0132855839',
+      "isbn10": 0132855836,
+      "author": 'Tonny Gaddis',
+      "edition": '4th',
+      "publisher": 'Pearson'
+  }];
 
-    $scope.getActualDate = function() {
-        var actualDate = $filter('date')(new Date(), 'MM dd yyyy');
-        return actualDate;
-    }
+  $scope.setBookIdOffer = function(bookId) {
+      $scope.offerForm.book = bookId;
+      $scope.show.result = !$scope.show.result;
+      $scope.show.searchForm = !$scope.show.searchForm;
+      $scope.show.offer = !$scope.show.offer;
+  }
 
-    $scope.searchIsMoved = false;
+  $scope.submitOffer = function() {
 
-    var originalNewBookForm = angular.copy($scope.newBookForm);
-    var originalOfferForm =  angular.copy($scope.offerForm);
+  }
 
-    $scope.submitNewBook = function() {
-        $scope.show.newForm = ! $scope.show.newForm;
-        $scope.show.offer = ! $scope.show.offer;
-    }
+  $scope.getActualDate = function() {
+      var actualDate = $filter('date')(new Date(), 'MM dd yyyy');
+      return actualDate;
+  }
 
-    $scope.clearNewBookForm = function() {
-        $scope.newBookForm = angular.copy(originalNewBookForm);
-        $scope.bookForm.$setPristine();
-    }
+  $scope.searchIsMoved = false;
 
-     $scope.clearOfferForm = function() {
-        $scope.offerForm = angular.copy(originalOfferForm);
-        $scope.newOfferForm.$setPristine();
-    }
+  var originalNewBookForm = angular.copy($scope.newBookForm);
+  var originalOfferForm =  angular.copy($scope.offerForm);
 
-    $scope.notFound = function() {
-        $scope.show.result = !$scope.show.result;
-        $scope.show.searchForm = !$scope.show.searchForm;
-        $scope.show.newForm = !$scope.show.newForm;
-    }
+  $scope.submitNewBook = function() {
+      $scope.show.newForm = ! $scope.show.newForm;
+      $scope.show.offer = ! $scope.show.offer;
+  }
 
-    $scope.submitByTitle = function() {
-        $scope.moveSearchForm();
-        $scope.show.result = !$scope.show.result;
-    }
+  $scope.clearNewBookForm = function() {
+      $scope.newBookForm = angular.copy(originalNewBookForm);
+      $scope.bookForm.$setPristine();
+  }
 
-    $scope.submitByIsbn10 = function() {
-        alert("isbn10");
-    }
+   $scope.clearOfferForm = function() {
+      $scope.offerForm = angular.copy(originalOfferForm);
+      $scope.newOfferForm.$setPristine();
+  }
 
-    $scope.submitByIsbn13 = function() {
-        alert("isbn 13");
-    }
+  $scope.notFound = function() {
+      $scope.show.result = !$scope.show.result;
+      $scope.show.searchForm = !$scope.show.searchForm;
+      $scope.show.newForm = !$scope.show.newForm;
+  }
 
-    $scope.submitByAuthor = function() {
-        alert("author");
-    }
+  $scope.submitByTitle = function() {
+      $scope.moveSearchForm();
+      $scope.show.result = !$scope.show.result;
+  }
 
-    $scope.moveSearchForm = function() {
-        if ($scope.searchIsMoved) {
-            document.getElementById("add-book-search-form").style.marginTop = "35%";
-            document.getElementById("add-book-search-form").style.marginBottom = "30%";
-            $scope.searchIsMoved = false;
-        } else {
-            document.getElementById("add-book-search-form").style.marginTop = "0%";
-            document.getElementById("add-book-search-form").style.marginBottom = "5%";
-            $scope.searchIsMoved = true;
-        }
-    }
+  $scope.submitByIsbn10 = function() {
+      alert("isbn10");
+  }
 
-    $scope.$on('$viewContentLoaded', function() {
-        defaultNavbar();
-    });
-});
+  $scope.submitByIsbn13 = function() {
+      alert("isbn 13");
+  }
+
+  $scope.submitByAuthor = function() {
+      alert("author");
+  }
+
+  $scope.moveSearchForm = function() {
+      if ($scope.searchIsMoved) {
+          document.getElementById("add-book-search-form").style.marginTop = "35%";
+          document.getElementById("add-book-search-form").style.marginBottom = "30%";
+          $scope.searchIsMoved = false;
+      } else {
+          document.getElementById("add-book-search-form").style.marginTop = "0%";
+          document.getElementById("add-book-search-form").style.marginBottom = "5%";
+          $scope.searchIsMoved = true;
+      }
+  }
+
+  $scope.$on('$viewContentLoaded', function() {
+      defaultNavbar();
+  });
+}]);

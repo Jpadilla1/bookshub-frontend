@@ -14,5 +14,13 @@ app.service('MySearch', ['$resource', '$cookies', function($resource, $cookies){
     },
   });
 
+  resource.bookAutoCompleteSearch = $resource('https://bookshub.herokuapp.com/api/search/autocomplete/?search_by=:searchBy&search_value=:searchValue', {}, {
+    get: {
+      method: "GET",
+      isArray: false,
+      headers: {'Content-Type': 'application/json'}
+    },
+  });
+
   return resource;
 }]);

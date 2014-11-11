@@ -23,6 +23,8 @@ received in the index*/
 (function() {
     angular.module('hubAppApp').controller("HomeCtrl", ['$scope', 'MyBookService', 'MySearch', function($scope, MyBookService, MySearch){
 
+      $scope.searchInput = '';
+
       $scope.topRequestedBooks = MyBookService.topRequested.get();
 
       $scope.topRecommendedBooks = MyBookService.topRecommended.get();
@@ -34,7 +36,7 @@ received in the index*/
       $scope.searchResult = '';
 
       $scope.searchBy = function(selection){
-        result = validateField();
+        result = validateField($scope.searchInput);
         if(result){
           var params = {
             'searchBy': selection,
@@ -48,11 +50,3 @@ received in the index*/
       }
     }]);
 })();
-
-function validateField(){
-  var input = document.getElementById("input-search-navbar").value;
-  if(input.trim())
-    return input;
-  else
-    return '';
-}
