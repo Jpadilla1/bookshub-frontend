@@ -14,17 +14,22 @@ app.service('MyOfferService', ['$resource', '$cookies', 'authService', function(
 	var resource = {};
 
 	// \\escape slash
-	resource.bookOffer = $resource('https://bookshub.herokuapp.com/api/offers\\/', {}, {
+	var headers = {
+		'Content-Type': 'application/json',
+		'Authorization': 'JWT ' + $cookies.token
+	};
+
+	resource.bookOffer = $resource('https://bookshub.herokuapp.com/api/offers/:offerId\\/', {}, {
 		get: {
 			method: "GET",
 			isArray: false,
-			headers: {'Content-Type': 'application/json'}
+			headers: headers
 		},
 		save: {
-			'method': "POST",
-			'isArray': false,
-			'headers': {'Content-Type': 'application/json'},
-			'stripTrailingSlashes': true
+			url: 'https://bookshub.herokuapp.com/api/offers\\/',
+			method: "POST",
+			isArray: false,
+			headers: headers
 		},
 	});
 

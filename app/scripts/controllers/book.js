@@ -64,6 +64,9 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOff
 
   $scope.submitOffer = function() {
       if(authService.authenticationStatus()){
+        var test = authService.settings();
+        console.log(test);
+
         $scope.offerForm.owner = "1";
         $scope.offerForm.end_date = '2014-11-08 20:24:02';
         var test = MyOfferService.bookOffer.save('', $scope.offerForm);
@@ -82,8 +85,14 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOff
   var originalOfferForm =  angular.copy($scope.offerForm);
 
   $scope.submitNewBook = function() {
-      $scope.show.newForm = ! $scope.show.newForm;
-      $scope.show.offer = ! $scope.show.offer;
+    if(authService.authenticationStatus()){
+      var test = authService.settings();
+      //AQUI!!!!!
+
+    }
+
+    $scope.show.newForm = ! $scope.show.newForm;
+    $scope.show.offer = ! $scope.show.offer;
   }
 
   $scope.clearNewBookForm = function() {

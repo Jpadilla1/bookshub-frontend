@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
             <div ng-show="show.searchForm" class="add-book-search" id="add-book-search-form">
-                <h1 class="add-book-header">Check if we have the Book!</h1>
+                <h1 class="text-center">Check if we have the Book!</h1>
                 <div class="form-group">
                     <div class="input-group">
                         <input type="text" class="form-control" ng-model="searchInput">
@@ -13,23 +13,23 @@
                             <ul class="dropdown-menu dropdown-menu-right" role="menu">
                                 <li>
                                     <a href="" ng-click="autoCompleteSearch('title')">
-                                    Title
-                                  </a>
+                                        Title
+                                    </a>
                                 </li>
                                 <li>
                                     <a href="" ng-click="autoCompleteSearch('isbn_10')">
-                                    ISBN 10
-                                  </a>
+                                        ISBN 10
+                                    </a>
                                 </li>
                                 <li>
                                     <a href="" ng-click="autoCompleteSearch('isbn_13')">
-                                    ISBN 13
-                                  </a>
+                                        ISBN 13
+                                    </a>
                                 </li>
                                 <li>
                                     <a href="" ng-click="autoCompleteSearch('author')">
-                                    Author
-                                  </a>
+                                        Author
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div ng-show="show.newForm" class="add-book-form">
-                <h1 class="add-book-header">Add Your Book to Bookshub!</h1>
+                <h1 class="text-center">Add Your Book to Bookshub!</h1>
                 <form role="form" ng-submit="submitNewBook()" name="bookForm">
                     <div class="form-group">
                         <input type="text" class="form-control" id="book_title" placeholder="Title" ng-model="newBookForm.title" required>
@@ -96,17 +96,9 @@
                                 <label class="cart-item-info">Publisher:</label>{{acr.publisher}}
                             </div>
                             <div class="col-md-3">
-                                
-                                <span ng-if="acr.id != null">
-                                    <button type="button" ng-click="setBookIdOffer(result.id)" class="btn btn-success btn-lg add-book-result-button">
-                                        This is the Book!
-                                    </button>
-                                </span>
-                                <span ng-if="acr.id == null">
-                                    <button type="button" ng-click="setBookIdOffer(result.id)" class="btn btn-success btn-lg add-book-result-button">
-                                        Add book & make offer
-                                    </button>
-                                </span>
+                                <button type="button" ng-click="setBookIdOffer(acr.id)" class="btn btn-success btn-lg add-book-result-button">
+                                    This is the Book!
+                                </button>
                             </div>
                             <div class="col-md-12">
                                 <hr>
@@ -115,41 +107,42 @@
                     </div>
                 </div>
             </div>
-            <div ng-show="show.offer" class="col-md-offset-3 col-md-6 add-book-offer-form">
-                <h1 class="text-center">Make an Offer!</h1>
-                <form role="form" ng-submit="submitOffer()" name="newOfferForm" class="add-book-offer-form">
-                    <div class="col-md-12">
-                        <div class="col-md-4">
-                            <div class="form-group col-md-12">
-                                <input type="number" class="form-control" placeholder="Price" ng-model="offerForm.price" required>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group col-md-12">
-                                <select class="form-control" ng-model="offerForm.condition" required>
-                                    <option value="new">New</option>
-                                    <option value="used">Used</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <input type="number" class="form-control" placeholder="Quantity" ng-model="offerForm.quantity" required>
-                            </div>
+        </div>
+        <div ng-show="show.offer" class="col-md-offset-3 col-md-6 add-book-offer-form">
+            <h1 class="text-center">Make an Offer!</h1>
+            <form role="form" ng-submit="submitOffer()" name="newOfferForm" class="add-book-offer-form">
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <input type="number" class="form-control" placeholder="Price" ng-model="offerForm.price" required>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <select class="form-control" ng-model="offerForm.condition" required>
+                                <option value="new">New</option>
+                                <option value="used">Used</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="form-group">
-                            <textarea class="form-control" rows="4" placeholder="Description" ng-model="offerForm.description" required></textarea>
+                            <input type="number" class="form-control" placeholder="Quantity" ng-model="offerForm.quantity" required>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="form-group add-book-buttons">
-                            <button type="submit" class="btn btn-success btn-lg">Submit</button>
-                            <button type="button" ng-click="clearOfferForm()" class="btn btn-success btn-lg">Clear</button>
-                        </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <textarea class="form-control" rows="4" placeholder="Description" ng-model="offerForm.description" required></textarea>
                     </div>
-                </form>
-            </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group add-book-buttons">
+                        <button type="submit" class="btn btn-success btn-lg">Submit</button>
+                        <button type="button" ng-click="clearOfferForm()" class="btn btn-success btn-lg">Clear</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
+</div>

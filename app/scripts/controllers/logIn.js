@@ -17,22 +17,15 @@ angular.module('hubAppApp')
             "password": ''
         };
 
-        $scope.userData = '';
-
         $scope.submit = function() {
             //Here we send data to back end
-            console.log($scope.logInForm);
-            $scope.userData = authService.signin($scope.logInForm.email, $scope.logInForm.password)
+            authService.signin($scope.logInForm.email, $scope.logInForm.password)
                 .then(function(data){
                     // success
-                    $scope.userData = data;
-                    console.log($scope.userData);
                 }, function(data){
                     // error
-                    console.log(data);
-            });
+                });
         };
-
 
         $scope.$on('$viewContentLoaded', function() {
             defaultNavbar();
