@@ -73,30 +73,40 @@
                         Search Results
                     </div>
                     <div class="panel-body">
-                        <div class="col-md-12 add-book-result" ng-repeat="result in autoCompleteResults.results">
+                        <div class="col-md-12 add-book-result" ng-repeat="acr in autoCompleteResults.results">
                             <div class="col-md-3">
                                 <img src="../images/hpbook.jpg" class="add-book-result-image">
                                 <br>
                             </div>
                             <div class="col-md-3 add-book-result-information">
-                                <label class="cart-item-info">Title:</label>{{result.title}}
+                                <label class="cart-item-info">Title:</label>{{acr.title}}
                                 </br>
-                                <label class="cart-item-info">ISBN 10:</label>{{result.isbn_10}}
+                                <label class="cart-item-info">ISBN 10:</label>{{acr.isbn_10}}
                                 </br>
-                                <label class="cart-item-info">ISBN 13:</label>{{result.isbn_13}}
+                                <label class="cart-item-info">ISBN 13:</label>{{acr.isbn_13}}
                             </div>
                             <div class="col-md-3 add-book-result-information">
                                 <label class="cart-item-info">Author:</label>
-                                <span ng-repeat="a in result.author">
+                                <span ng-repeat="a in acr.author">
                                     {{a}}
                                 </span>
                                 </br>
-                                <label class="cart-item-info">Edition:</label>{{result.edition}}
+                                <label class="cart-item-info">Edition:</label>{{acr.edition}}
                                 </br>
-                                <label class="cart-item-info">Publisher:</label>{{result.publisher}}
+                                <label class="cart-item-info">Publisher:</label>{{acr.publisher}}
                             </div>
                             <div class="col-md-3">
-                                <button type="button" ng-click="setBookIdOffer(result.id)" class="btn btn-success btn-lg add-book-result-button">This is the Book!</button>
+                                
+                                <span ng-if="acr.id != null">
+                                    <button type="button" ng-click="setBookIdOffer(result.id)" class="btn btn-success btn-lg add-book-result-button">
+                                        This is the Book!
+                                    </button>
+                                </span>
+                                <span ng-if="acr.id == null">
+                                    <button type="button" ng-click="setBookIdOffer(result.id)" class="btn btn-success btn-lg add-book-result-button">
+                                        Add book & make offer
+                                    </button>
+                                </span>
                             </div>
                             <div class="col-md-12">
                                 <hr>

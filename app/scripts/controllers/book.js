@@ -25,6 +25,8 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOff
 
       $scope.autoCompleteResults = MySearch.bookAutoCompleteSearch.get(params);
 
+      console.log($scope.autoCompleteResults);
+
       $scope.moveSearchForm();
       $scope.show.result = !$scope.show.result;
     }
