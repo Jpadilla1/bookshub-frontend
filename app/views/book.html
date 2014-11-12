@@ -12,22 +12,22 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right" role="menu">
                                 <li>
-                                  <a href="" ng-click="autoCompleteSearch('title')">
+                                    <a href="" ng-click="autoCompleteSearch('title')">
                                     Title
                                   </a>
                                 </li>
                                 <li>
-                                  <a href="" ng-click="autoCompleteSearch('isbn_10')">
+                                    <a href="" ng-click="autoCompleteSearch('isbn_10')">
                                     ISBN 10
                                   </a>
                                 </li>
                                 <li>
-                                  <a href="" ng-click="autoCompleteSearch('isbn_13')">
+                                    <a href="" ng-click="autoCompleteSearch('isbn_13')">
                                     ISBN 13
                                   </a>
                                 </li>
                                 <li>
-                                  <a href="" ng-click="autoCompleteSearch('author')">
+                                    <a href="" ng-click="autoCompleteSearch('author')">
                                     Author
                                   </a>
                                 </li>
@@ -63,38 +63,50 @@
         </div>
         <div ng-show="show.result">
             <div class="col-md-offset-4 col-md-4">
-                <button type="button" class="btn btn-danger btn-lg add-book-not-found-button" ng-click="notFound()">Didn't Found your Book?</button>
+                <button type="button" class="btn btn-danger btn-lg add-book-not-found-button" ng-click="notFound()">
+                    Didn't Found your Book?
+                </button>
             </div>
-            <hr class="col-md-12">
-                <div class="col-md-12 add-book-result" ng-repeat="result in autoCompleteResults.results">
-                    <div class="col-md-3">
-                        <img src="../images/hpbook.jpg" class="add-book-result-image">
-                        <br>
+            <div class="col-md-12 autocomplete-results">
+                <div class="panel panel-default">
+                    <div class="panel-heading" id="comment-panel">
+                        Search Results
                     </div>
-                    <div class="col-md-3 add-book-result-information">
-                        <label class="cart-item-info">Title:</label> {{result.title}}
-                        </br>
-                        <label class="cart-item-info">ISBN 10:</label> {{result.isbn_10}}
-                        </br>
-                        <label class="cart-item-info">ISBN 13:</label> {{result.isbn_13}}
-                    </div>
-                    <div class="col-md-3 add-book-result-information">
-                        <label class="cart-item-info">Author:</label>
-                          <span ng-repeat="a in result.author">
-                            {{a}}
-                          </span>
-                        </br>
-                        <label class="cart-item-info">Edition:</label> {{result.edition}}
-                        </br>
-                        <label class="cart-item-info">Publisher:</label> {{result.publisher}}
-                    </div>
-                    <div class="col-md-3">
-                        <button type="button" ng-click="setBookIdOffer(result.id)" class="btn btn-success btn-lg add-book-result-button">This is the Book!</button>
+                    <div class="panel-body">
+                        <div class="col-md-12 add-book-result" ng-repeat="result in autoCompleteResults.results">
+                            <div class="col-md-3">
+                                <img src="../images/hpbook.jpg" class="add-book-result-image">
+                                <br>
+                            </div>
+                            <div class="col-md-3 add-book-result-information">
+                                <label class="cart-item-info">Title:</label>{{result.title}}
+                                </br>
+                                <label class="cart-item-info">ISBN 10:</label>{{result.isbn_10}}
+                                </br>
+                                <label class="cart-item-info">ISBN 13:</label>{{result.isbn_13}}
+                            </div>
+                            <div class="col-md-3 add-book-result-information">
+                                <label class="cart-item-info">Author:</label>
+                                <span ng-repeat="a in result.author">
+                                    {{a}}
+                                </span>
+                                </br>
+                                <label class="cart-item-info">Edition:</label>{{result.edition}}
+                                </br>
+                                <label class="cart-item-info">Publisher:</label>{{result.publisher}}
+                            </div>
+                            <div class="col-md-3">
+                                <button type="button" ng-click="setBookIdOffer(result.id)" class="btn btn-success btn-lg add-book-result-button">This is the Book!</button>
+                            </div>
+                            <div class="col-md-12">
+                                <hr>
+                            </div>
+                        </div>
                     </div>
                 </div>
-        </div>
-        <div ng-show="show.offer" class="col-md-offset-3 col-md-6 add-book-offer-form">
-            <h1 class="text-center">Make an Offer!</h1>
+            </div>
+            <div ng-show="show.offer" class="col-md-offset-3 col-md-6 add-book-offer-form">
+                <h1 class="text-center">Make an Offer!</h1>
                 <form role="form" ng-submit="submitOffer()" name="newOfferForm" class="add-book-offer-form">
                     <div class="col-md-12">
                         <div class="col-md-4">
@@ -103,8 +115,8 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="form-group col-md-12" ng-model="offerForm.condition" required>
-                                <select class="form-control">
+                            <div class="form-group col-md-12">
+                                <select class="form-control" ng-model="offerForm.condition" required>
                                     <option value="new">New</option>
                                     <option value="used">Used</option>
                                 </select>
@@ -128,6 +140,6 @@
                         </div>
                     </div>
                 </form>
+            </div>
         </div>
     </div>
-</div>

@@ -405,6 +405,7 @@ h1, h2, h3, h4, h5, h6 {
 /* helpers */
 #comment-panel{
     background-color: rgba(29, 28, 28, 0.65);
+    color:white;
 }
 .book-profile-sections{
     padding-top: 8%;
@@ -430,6 +431,12 @@ h1, h2, h3, h4, h5, h6 {
 .books-new-used {
     margin-top: 8%;
 }
+
+/* book autocomplete search results */
+.autocomplete-results{
+    padding-top: 2%;
+}
+
 
 /* helpers */
 .top-space{

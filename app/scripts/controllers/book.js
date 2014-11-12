@@ -7,7 +7,7 @@
  * # BookCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', function($scope, MySearch){
+angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOfferService', 'authService', function($scope, MySearch, MyOfferService, authService){
 
   $scope.searchInput = '';
 
@@ -24,8 +24,6 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', functi
       };
 
       $scope.autoCompleteResults = MySearch.bookAutoCompleteSearch.get(params);
-
-      console.log($scope.autoCompleteResults);
 
       $scope.moveSearchForm();
       $scope.show.result = !$scope.show.result;
@@ -44,7 +42,8 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', functi
       "quantity": '',
       "condition": '',
       "book": '',
-      "owner": ''
+      "owner": '',
+      "end_date": ''
   };
   $scope.newBookForm = {
       "title": '',
@@ -62,7 +61,12 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', functi
   }
 
   $scope.submitOffer = function() {
-
+      if(authService.authenticationStatus()){
+        $scope.offerForm.owner = "1";
+        $scope.offerForm.end_date = '2014-11-08 20:24:02';
+        var test = MyOfferService.bookOffer.save('', $scope.offerForm);
+        console.log(test);
+      }
   }
 
   $scope.getActualDate = function() {
