@@ -43,16 +43,44 @@
                         <input type="text" class="form-control" id="book_title" placeholder="Title" ng-model="newBookForm.title" required>
                     </div>
                     <div class="form-group">
-                        <input type="number" class="form-control" id="book_isbn" placeholder="ISBN" ng-model="newBookForm.isbn" required>
+                        <input type="number" class="form-control" id="book_isbn_10" placeholder="ISBN 10" ng-model="newBookForm.isbn10" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="book_isbn_13" placeholder="ISBN 13" ng-model="newBookForm.isbn13" required>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" id="book_author" placeholder="Author" ng-model="newBookForm.author" required>
                     </div>
                     <div class="form-group">
+                        <input type="text" class="form-control" id="book_publisher" placeholder="Publisher" ng-model="newBookForm.publisher" required>
+                    </div>
+                    <div class="form-group">
                         <input type="text" class="form-control" id="book_edition" placeholder="Edition" ng-model="newBookForm.edition" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="book_category" placeholder="Category(DropDown)" ng-model="newBookForm.category" required>
+                        <select class="form-control" ng-model="newBookForm.category" id="book_category" required>
+                            <option value="accounting">Accounting</option>
+                            <option value="architecture">Architecture</option>
+                            <option value="art">Art</option>
+                            <option value="biology">Biology</option>
+                            <option value="business_administration">Business Administration</option>
+                            <option value="computer_science">Computer Science</option>
+                            <option value="design">Design</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="english">English</option>
+                            <option value="french">French</option>
+                            <option value="finance">Finance</option>
+                            <option value="history">History</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="mathematics">Mathematics</option>
+                            <option value="medical">Medical</option>
+                            <option value="philosophy">Philosophy</option>
+                            <option value="psychology">Psychology</option>
+                            <option value="spanish">Spanish</option>
+                            <option value="social_science">Social Science</option>
+                            <option value="travel">Travel</option>
+                            <option value="other">Other</option>
+                        </select>
                     </div>
                     <div class="form-group add-book-buttons">
                         <button type="submit" class="btn btn-success btn-lg">Submit</button>
@@ -96,9 +124,16 @@
                                 <label class="cart-item-info">Publisher:</label>{{acr.publisher}}
                             </div>
                             <div class="col-md-3">
-                                <button type="button" ng-click="setBookIdOffer(acr.id)" class="btn btn-success btn-lg add-book-result-button">
-                                    This is the Book!
-                                </button>
+                                <span ng-if="acr.id != null">
+                                    <button type="button" ng-click="setBookIdOffer(acr.id)" class="btn btn-success btn-lg add-book-result-button">
+                                        This is the Book!
+                                    </button>
+                                </span>
+                                <span ng-if="acr.id == null">
+                                    <button type="button" ng-click="addBookAndOffer($index)" class="btn btn-success btn-lg add-book-result-button">
+                                        Add Book & Make Offer
+                                    </button>
+                                </span>
                             </div>
                             <div class="col-md-12">
                                 <hr>

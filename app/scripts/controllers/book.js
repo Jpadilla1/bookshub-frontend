@@ -7,10 +7,9 @@
  * # BookCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOfferService', 'authService', function($scope, MySearch, MyOfferService, authService){
-
+angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOfferService', 'MyBookService', 'authService', function($scope, MySearch, MyOfferService, MyBookService,authService){
+  $scope.searchIsMoved = false;
   $scope.searchInput = '';
-
 
   $scope.autoCompleteResults = '';
 
@@ -49,67 +48,64 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOff
   };
   $scope.newBookForm = {
       "title": '',
-      "isbn": '',
+      "isbn_10": '',
+      "isbn_13": '',
       "author": '',
+      'publisher': '',
       "edition": '',
       "category": ''
   };
 
   $scope.setBookIdOffer = function(bookId) {
       $scope.offerForm.book = bookId;
-      $scope.show.result = !$scope.show.result;
-      $scope.show.searchForm = !$scope.show.searchForm;
-      $scope.show.offer = !$scope.show.offer;
-  }
+      $scope.show.result = false;
+      $scope.show.searchForm = false;
+      $scope.show.offer = true;
+  };
 
   $scope.submitOffer = function() {
-      if(authService.authenticationStatus()){
-        var test = authService.settings();
-        console.log(test);
+    var test = authService.settings();
+    console.log(test);
 
-        $scope.offerForm.owner = "1";
-        $scope.offerForm.end_date = '2014-11-08 20:24:02';
-        var test = MyOfferService.bookOffer.save('', $scope.offerForm);
-        console.log(test);
-      }
-  }
+    $scope.offerForm.owner = "1";
+    $scope.offerForm.end_date = '2014-11-08 20:24:02';
+    var test = MyOfferService.bookOffer.save('', $scope.offerForm);
+    console.log(test);
+  };
 
+  $scope.submitNewBook = function() {
+    var newBook = MyBookService.specificBook.save('', $scope.newBookForm);
+    console.log(newBook);
+    console.log(newBook.id);
+
+    $scope.setBookIdOffer(newBook.id);
+  };
+  
   $scope.getActualDate = function() {
       var actualDate = $filter('date')(new Date(), 'MM dd yyyy');
       return actualDate;
-  }
+  };
 
-  $scope.searchIsMoved = false;
 
   var originalNewBookForm = angular.copy($scope.newBookForm);
   var originalOfferForm =  angular.copy($scope.offerForm);
 
-  $scope.submitNewBook = function() {
-    if(authService.authenticationStatus()){
-      var test = authService.settings();
-      //AQUI!!!!!
-
-    }
-
-    $scope.show.newForm = ! $scope.show.newForm;
-    $scope.show.offer = ! $scope.show.offer;
-  }
 
   $scope.clearNewBookForm = function() {
       $scope.newBookForm = angular.copy(originalNewBookForm);
       $scope.bookForm.$setPristine();
-  }
+  };
 
    $scope.clearOfferForm = function() {
       $scope.offerForm = angular.copy(originalOfferForm);
       $scope.newOfferForm.$setPristine();
-  }
+  };
 
   $scope.notFound = function() {
       $scope.show.result = !$scope.show.result;
       $scope.show.searchForm = !$scope.show.searchForm;
       $scope.show.newForm = !$scope.show.newForm;
-  }
+  };
 
   $scope.moveSearchForm = function() {
       if ($scope.searchIsMoved) {
@@ -121,7 +117,23 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOff
           document.getElementById("add-book-search-form").style.marginBottom = "5%";
           $scope.searchIsMoved = true;
       }
-  }
+  };
+
+
+  $scope.addBookAndOffer = function(index){
+    $scope.show.result = false;
+    $scope.show.searchForm = false;
+    $scope.show.offer = false;
+    $scope.show.newForm = true;
+
+    var specificResult = $scope.autoCompleteResults.results[index];
+    console.log(specificResult);
+    document.getElementById('book_title').value = $scope.newBookForm.title = specificResult.title;
+    document.getElementById('book_isbn_10').value = $scope.newBookForm.isbn_10 = specificResult.isbn_10;
+    document.getElementById('book_isbn_13').value = $scope.newBookForm.isbn_13 = specificResult.isbn_13;
+    document.getElementById('book_author').value = $scope.newBookForm.author = specificResult.author[0];
+    document.getElementById('book_publisher').value = $scope.newBookForm.publisher = specificResult.publisher;
+  };
 
   $scope.$on('$viewContentLoaded', function() {
       defaultNavbar();

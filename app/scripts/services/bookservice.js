@@ -26,6 +26,12 @@ app.service('MyBookService', ['$resource', '$cookies', function($resource, $cook
 			isArray: false,
 			headers: headers
 		},
+		save: {
+			url: "https://bookshub.herokuapp.com/api/books\\/",
+			method: "POST",
+			isArray: false,
+			headers: headers
+		},
 	}),
 	resource.bookReviews = $resource('https://bookshub.herokuapp.com/api/books/:bookId/reviews\\/', {},{
 		get: {

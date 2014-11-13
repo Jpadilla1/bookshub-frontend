@@ -142,7 +142,7 @@ angular.module('hubAppApp')
         'settings': function(){
             return this.request({
                 'method': "GET",
-                'url': "/users/profile/"
+                'url': "/settings/"
             });
         },
         'updateSettings': function(data){
