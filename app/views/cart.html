@@ -3,7 +3,7 @@
         <div class="col-md-3">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" id="select-all" ng-disabled="cartItems.length == 0" ng-click="allItemsClicked = ! allItemsClicked">Select All Item(s)
+                    <input type="checkbox" id="select-all" ng-disabled="cartItems.length == 0" ng-model="allChecked">Select All Item(s)
                     <span class="badge">{{cartItems.length}}</span>
                 </label>
             </div>
@@ -12,13 +12,13 @@
             <h3 class="cart-total-price">Total Price: {{totalPrice | currency}}</h3>
         </div>
         <div class="col-md-2 cart-buttons">
-            <button type="button" ng-show="allItemsClicked" ng-click="remove()" class="btn btn-danger btn-lg">Remove</button>
+            <button type="button" ng-click="remove(-1)" class="btn btn-danger btn-lg">Remove</button>
         </div>
         <hr class="col-md-12">
         <div class="col-md-12 cart-item" ng-repeat="item in cartItems">
             <div class="col-md-1">
                 <div class="checkbox cart-item-checkbox">
-                    <input type="checkbox" ng-checked="allItemsClicked">
+                    <input type="checkbox" ng-model="item.selected" ng-checked="allChecked">
                 </div>
             </div>
             <div class="col-md-3">
@@ -40,7 +40,7 @@
             </div>
             <div class="col-md-3">
                 <h3 class="cart-item-price">Price: {{item.pricePerItem * item.quantity | currency}}</h3>
-                <button type="button" class="btn btn-danger btn-lg cart-item-buttons">Remove</button>
+                <button type="button" ng-click="remove($index)" class="btn btn-danger btn-lg cart-item-buttons">Remove</button>
             </div>
         </div>
     </div>
