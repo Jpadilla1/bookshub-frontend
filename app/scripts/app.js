@@ -27,16 +27,16 @@ app.config(function($routeProvider) {
        templateUrl: 'views/home.html',
        controller: 'HomeCtrl'
      })
-     .when('/signUp', {
-       templateUrl: 'views/sign-up.html',
+     .when('/sign-up', {
+       templateUrl: 'views/signUp.html',
        controller: 'SignUpCtrl'
      })
      .when('/about', {
        templateUrl: 'views/about.html',
        controller: 'AboutCtrl'
      })
-     .when('/userProfile', {
-       templateUrl: 'views/user-profile.html',
+     .when('/user-profile', {
+       templateUrl: 'views/userProfile.html',
        controller: 'UserCtrl'
      })
       .when('/book', {

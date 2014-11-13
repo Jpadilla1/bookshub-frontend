@@ -54,6 +54,9 @@ h1, h2, h3, h4, h5, h6 {
     height: 60px;
     margin-top: -4%
 }
+#home-nav-link {
+    color: rgba(17, 213, 119, 0.69);
+}
 
 /*Footer Styles*/
 #footer {
