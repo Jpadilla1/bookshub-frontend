@@ -7,6 +7,7 @@
  * # authService
  * Service in the bookshubFrontendApp.
  */
+ 
 angular.module('hubAppApp')
   .service('authService', function authService($q, $http, $cookies, $rootScope) {
     // This is taken from angular-django-registration-auth
