@@ -10,15 +10,26 @@
 
 var app = angular.module('hubAppApp');
 
-app.service('MyOfferService', ['$resource', '$cookies', function($resource, $cookies){
+app.service('MyOfferService', ['$resource', '$cookies', 'authService', function($resource, $cookies, authService){
 	var resource = {};
 
 	// \\escape slash
+	var headers = {
+		'Content-Type': 'application/json',
+		'Authorization': 'JWT ' + $cookies.token
+	};
+
 	resource.bookOffer = $resource('https://bookshub.herokuapp.com/api/offers/:offerId\\/', {}, {
 		get: {
 			method: "GET",
 			isArray: false,
-			headers: {'Content-Type': 'application/json'}
+			headers: headers
+		},
+		save: {
+			url: 'https://bookshub.herokuapp.com/api/offers\\/',
+			method: "POST",
+			isArray: false,
+			headers: headers
 		},
 	});
 

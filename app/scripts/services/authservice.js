@@ -92,11 +92,11 @@ angular.module('hubAppApp')
                     'password':password
                 }
             }).then(function(data){
-                console.log(data);
                 $http.defaults.headers.common.Authorization = 'JWT ' + data.token;
                 $cookies.token = data.token;
                 djangoAuth.authenticated = true;
                 djangoAuth.user = data;
+                return data;
             });
         },
         'changePassword': function(current_password, password1, password2){
@@ -142,15 +142,15 @@ angular.module('hubAppApp')
         'settings': function(){
             return this.request({
                 'method': "GET",
-                'url': "/users/profile/"
-            }); 
+                'url': "/settings/"
+            });
         },
         'updateSettings': function(data){
             return this.request({
                 'method': "PATCH",
                 'url': "/settings/",
                 'data':data
-            }); 
+            });
         },
         'refreshToken': function(){
             return this.request({

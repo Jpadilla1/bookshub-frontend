@@ -7,28 +7,33 @@
  * # BookCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', function($scope, MySearch){
-
+angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOfferService', 'MyBookService', 'authService', function($scope, MySearch, MyOfferService, MyBookService,authService){
+  $scope.searchIsMoved = false;
   $scope.searchInput = '';
-
+  $scope.createAndOffer = '';
 
   $scope.autoCompleteResults = '';
 
   $scope.autoCompleteSearch = function(selection){
     var result = validateField($scope.searchInput);
 
+    $scope.autoCompleteResults = $scope.makeExternalAPISearch(result, selection);
+
+    $scope.moveSearchForm();
+    $scope.show.result = !$scope.show.result;
+  };
+
+  $scope.makeExternalAPISearch = function(result, selection){
     if (result){
+
       var params = {
         'searchBy': selection,
         'searchValue': $scope.searchInput
       };
 
-      $scope.autoCompleteResults = MySearch.bookAutoCompleteSearch.get(params);
+      var search = MySearch.bookAutoCompleteSearch.get(params);
 
-      console.log($scope.autoCompleteResults);
-
-      $scope.moveSearchForm();
-      $scope.show.result = !$scope.show.result;
+      return search;
     }
   };
 
@@ -36,7 +41,8 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', functi
       "searchForm": true,
       "newForm": false,
       "result": false,
-      "offer": false
+      "offer": false,
+      "newBookAndOfferForm": false
   };
   $scope.offerForm = {
       "price": '',
@@ -44,57 +50,73 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', functi
       "quantity": '',
       "condition": '',
       "book": '',
-      "owner": ''
+      "owner": '',
+      "end_date": ''
   };
   $scope.newBookForm = {
       "title": '',
-      "isbn": '',
+      "isbn_10": '',
+      "isbn_13": '',
       "author": '',
+      "publisher": '',
       "edition": '',
       "category": ''
   };
 
   $scope.setBookIdOffer = function(bookId) {
       $scope.offerForm.book = bookId;
-      $scope.show.result = !$scope.show.result;
-      $scope.show.searchForm = !$scope.show.searchForm;
-      $scope.show.offer = !$scope.show.offer;
-  }
+      $scope.show.result = false;
+      $scope.show.searchForm = false;
+      $scope.show.offer = true;
+      $scope.show.newBookAndOfferForm = false;
+  };
 
   $scope.submitOffer = function() {
+    authService.settings().then(function(data){
+        $scope.offerForm.owner = data.id;
+        MyOfferService.bookOffer.save('', $scope.offerForm);
+    });
 
-  }
+  };
 
+  $scope.submitNewBook = function() {
+    MyBookService.specificBook.save('', $scope.newBookForm);
+  };
+
+  $scope.submitBookAndCreateOffer = function(){
+    $scope.newBook = MyBookService.specificBook.save('', $scope.newBookForm);
+
+    $scope.$watch('newBook.id', function(){
+        console.log($scope.newBook.id);
+        $scope.setBookIdOffer($scope.newBook.id);
+    });
+  };
+  
   $scope.getActualDate = function() {
       var actualDate = $filter('date')(new Date(), 'MM dd yyyy');
       return actualDate;
-  }
+  };
 
-  $scope.searchIsMoved = false;
 
   var originalNewBookForm = angular.copy($scope.newBookForm);
   var originalOfferForm =  angular.copy($scope.offerForm);
 
-  $scope.submitNewBook = function() {
-      $scope.show.newForm = ! $scope.show.newForm;
-      $scope.show.offer = ! $scope.show.offer;
-  }
 
   $scope.clearNewBookForm = function() {
       $scope.newBookForm = angular.copy(originalNewBookForm);
       $scope.bookForm.$setPristine();
-  }
+  };
 
    $scope.clearOfferForm = function() {
       $scope.offerForm = angular.copy(originalOfferForm);
       $scope.newOfferForm.$setPristine();
-  }
+  };
 
   $scope.notFound = function() {
       $scope.show.result = !$scope.show.result;
       $scope.show.searchForm = !$scope.show.searchForm;
       $scope.show.newForm = !$scope.show.newForm;
-  }
+  };
 
   $scope.moveSearchForm = function() {
       if ($scope.searchIsMoved) {
@@ -106,7 +128,26 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', functi
           document.getElementById("add-book-search-form").style.marginBottom = "5%";
           $scope.searchIsMoved = true;
       }
-  }
+  };
+
+
+  $scope.addBookAndOffer = function(index){
+    $scope.show.result = false;
+    $scope.show.searchForm = false;
+    $scope.show.offer = false;
+    $scope.show.newForm = false;
+    $scope.show.newBookAndOfferForm = true;
+
+    $scope.createAndOffer = true;
+
+    var specificResult = $scope.autoCompleteResults.results[index];
+
+    document.getElementById('auto_title').value = $scope.newBookForm.title = specificResult.title;
+    document.getElementById('auto_isbn_10').value = $scope.newBookForm.isbn_10 = specificResult.isbn_10;
+    document.getElementById('auto_isbn_13').value = $scope.newBookForm.isbn_13 = specificResult.isbn_13;
+    document.getElementById('auto_author').value = $scope.newBookForm.author = specificResult.author[0];
+    document.getElementById('auto_publisher').value = $scope.newBookForm.publisher = specificResult.publisher;
+  };
 
   $scope.$on('$viewContentLoaded', function() {
       defaultNavbar();
