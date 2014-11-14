@@ -36,26 +36,84 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-md-offset-3 col-md-6">
             <div ng-show="show.newForm" class="add-book-form">
                 <h1 class="text-center">Add Your Book to Bookshub!</h1>
-                <form role="form" ng-submit="submitNewBook()" name="bookForm">
+                    <form role="form" ng-submit="submitNewBook()" name="bookForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="book_title" placeholder="Title" ng-model="newBookForm.title" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" id="book_isbn_10" placeholder="ISBN 10" ng-model="newBookForm.isbn_10" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" id="book_isbn_13" placeholder="ISBN 13" ng-model="newBookForm.isbn_13" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="book_author" placeholder="Author" ng-model="newBookForm.author" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="book_publisher" placeholder="Publisher" ng-model="newBookForm.publisher" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="book_edition" placeholder="Edition" ng-model="newBookForm.edition" required>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" ng-model="newBookForm.category" id="book_category" required>
+                                <option value="accounting">Accounting</option>
+                                <option value="architecture">Architecture</option>
+                                <option value="art">Art</option>
+                                <option value="biology">Biology</option>
+                                <option value="business_administration">Business Administration</option>
+                                <option value="computer_science">Computer Science</option>
+                                <option value="design">Design</option>
+                                <option value="engineering">Engineering</option>
+                                <option value="english">English</option>
+                                <option value="french">French</option>
+                                <option value="finance">Finance</option>
+                                <option value="history">History</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="mathematics">Mathematics</option>
+                                <option value="medical">Medical</option>
+                                <option value="philosophy">Philosophy</option>
+                                <option value="psychology">Psychology</option>
+                                <option value="spanish">Spanish</option>
+                                <option value="social_science">Social Science</option>
+                                <option value="travel">Travel</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    <div class="form-group add-book-buttons">
+                        <button type="submit" class="btn btn-success btn-lg">Add Book</button>
+                        <button type="button" ng-click="clearNewBookForm()" class="btn btn-success btn-lg">Clear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-offset-3 col-md-6">
+            <div ng-show="show.newBookAndOfferForm" class="add-book-form">
+                <h1 class="center-text">
+                    Add Your Book to BooksHub
+                </h1>
+                <form role="form" ng-submit="submitBookAndCreateOffer()" name="bookForm">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="book_title" placeholder="Title" ng-model="newBookForm.title" required>
+                        <input type="text" class="form-control" id="auto_title" placeholder="Title" ng-model="newBookForm.title" required>
                     </div>
                     <div class="form-group">
-                        <input type="number" class="form-control" id="book_isbn_10" placeholder="ISBN 10" ng-model="newBookForm.isbn10" required>
+                        <input type="number" class="form-control" id="auto_isbn_10" placeholder="ISBN 10" ng-model="newBookForm.isbn_10" required>
                     </div>
                     <div class="form-group">
-                        <input type="number" class="form-control" id="book_isbn_13" placeholder="ISBN 13" ng-model="newBookForm.isbn13" required>
+                        <input type="number" class="form-control" id="auto_isbn_13" placeholder="ISBN 13" ng-model="newBookForm.isbn_13" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="book_author" placeholder="Author" ng-model="newBookForm.author" required>
+                        <input type="text" class="form-control" id="auto_author" placeholder="Author" ng-model="newBookForm.author" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="book_publisher" placeholder="Publisher" ng-model="newBookForm.publisher" required>
+                        <input type="text" class="form-control" id="auto_publisher" placeholder="Publisher" ng-model="newBookForm.publisher" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="book_edition" placeholder="Edition" ng-model="newBookForm.edition" required>
+                        <input type="text" class="form-control" id="auto_edition" placeholder="Edition" ng-model="newBookForm.edition" required>
                     </div>
                     <div class="form-group">
                         <select class="form-control" ng-model="newBookForm.category" id="book_category" required>
@@ -107,21 +165,24 @@
                                 <br>
                             </div>
                             <div class="col-md-3 add-book-result-information">
-                                <label class="cart-item-info">Title:</label>{{acr.title}}
+                                <label class="cart-item-info">Title: </label>{{acr.title}}
                                 </br>
-                                <label class="cart-item-info">ISBN 10:</label>{{acr.isbn_10}}
+                                <label class="cart-item-info">ISBN 10: </label>{{acr.isbn_10}}
                                 </br>
-                                <label class="cart-item-info">ISBN 13:</label>{{acr.isbn_13}}
+                                <label class="cart-item-info">ISBN 13: </label>{{acr.isbn_13}}
                             </div>
                             <div class="col-md-3 add-book-result-information">
-                                <label class="cart-item-info">Author:</label>
-                                <span ng-repeat="a in acr.author">
-                                    {{a}}
-                                </span>
+                                <label class="cart-item-info">Author: </label>
+                                    <span ng-if="acr.id == null" ng-repeat="a in acr.author track by $index">
+                                        {{a}}
+                                    </span>
+                                    <span ng-if="acr.id != null">
+                                        {{acr.author}}
+                                    </span>
                                 </br>
-                                <label class="cart-item-info">Edition:</label>{{acr.edition}}
+                                <label class="cart-item-info">Edition: </label>{{acr.edition}}
                                 </br>
-                                <label class="cart-item-info">Publisher:</label>{{acr.publisher}}
+                                <label class="cart-item-info">Publisher: </label>{{acr.publisher}}
                             </div>
                             <div class="col-md-3">
                                 <span ng-if="acr.id != null">
@@ -173,7 +234,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="form-group add-book-buttons">
-                        <button type="submit" class="btn btn-success btn-lg">Submit</button>
+                        <button type="submit" class="btn btn-success btn-lg">Add Offer</button>
                         <button type="button" ng-click="clearOfferForm()" class="btn btn-success btn-lg">Clear</button>
                     </div>
                 </div>
