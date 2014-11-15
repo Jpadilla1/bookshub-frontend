@@ -7,97 +7,19 @@
  * # MainCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp').controller('UserCtrl',
-    ['$scope', 'authService', function($scope, authService) {
-    $scope.awesomeThings = [
-        'HTML5 Boilerplate',
-        'AngularJS',
-        'Karma'
-    ];
 
-    $scope.$on('$viewContentLoaded', function() {
-        defaultNavbar();
-    });
+var app = angular.module('hubAppApp');
 
-    $scope.bookInformation = {
-
-        "title": 'Harry Potter - Eat You Alive',
-        "author": 'Howard T. James',
-        "isbn": '012345667890',
-        "rating": '5.0',
-        "publisher": 'Warner Brothers',
-        "edition": '10th edition',
-        "price": '$249.99',
-        "reviews": '',
-
-        "recomendation": ''
-
-    };
-
-    $scope.userInformation = {
-        "user": 'Howard T. James',
-        "rating": '5.0',
-        "review": 'Nice Seller, recommended with eyes closed!',
-        "type": 'Seller',
-        "facebook_url": 'www.facebook.com',
-        "twitter_url": '',
-        "github_url": ''
-        
-    };
-
-    $scope.userBook = {
-    	"quantity": '15',
-    	"new": '10',
-    	"used": '5'	
-
-    };
-
-    $scope.offerInformation = {
-        "quantity": '2',
-        "new": '15',
-        "used": '3'
-    };
-
-    $scope.userReview = {
-
-    	"user": 'Emmanuel Cleaveland',
-    	"quantity": '1'
-
-    };
-
+app.controller('UserCtrl', ['$scope', 'authService', 'MyContactService', 'UserService', 'MyOfferService', 'MyBookService', function($scope, authService, MyContactService, UserService, MyOfferService, MyBookService) {
     $scope.tabs = {
         "showNew": false,
         "showUsed": false,
         "showReview": true,
-        "showContactForm": false,
-        "showReviewForm": false,
-        "showReportForm": false,
-        "showRating": true,
         "showInformation": true,
+        "showOffers": false,
+        "showAllOffers": false,
+        "offersNavbar": false
     };
-
-     $scope.showInformation = function() {
-        $scope.tabs.showNew = false;
-        $scope.tabs.showUsed = false;
-        $scope.tabs.showReview = true;
-        $scope.tabs.showRating = true;
-        $scope.tabs.showInformation = true
-        $scope.tabs.showContactForm = false;
-        $scope.tabs.showReviewForm = false;
-        $scope.tabs.showReportForm = false;
-    }
-
-
-    $scope.showRating = function() {
-        $scope.tabs.showNew = false;
-        $scope.tabs.showUsed = false;
-        $scope.tabs.showReview = true;
-        $scope.tabs.showRating = false;
-        $scope.tabs.showContactForm = false;
-        $scope.tabs.showInformation = true;
-        $scope.tabs.showReviewForm = false;
-        $scope.tabs.showReportForm = false;
-    }
 
     $scope.showNew = function() {
         $scope.tabs.showNew = true;
@@ -107,7 +29,7 @@ angular.module('hubAppApp').controller('UserCtrl',
         $scope.tabs.showInformation = true;
         $scope.tabs.showRating = true;
         $scope.tabs.showReviewForm = false;
-        $scope.tabs.showReportForm = false;
+        $scope.tabs.offersNavbar = true;
     }
 
     $scope.showUsed = function() {
@@ -118,56 +40,78 @@ angular.module('hubAppApp').controller('UserCtrl',
         $scope.tabs.showContactForm = false;
         $scope.tabs.showInformation = true;
         $scope.tabs.showReviewForm = false;
-        $scope.tabs.showReportForm = false;
+        $scope.tabs.offersNavbar = true;
     }
 
     $scope.showReview = function() {
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = true;
-        $scope.tabs.showContactForm = false;
-        $scope.tabs.showInformation = true;
         $scope.tabs.showRating = true;
-        $scope.tabs.showReviewForm = false;
-        $scope.tabs.showReportForm = false;
+        $scope.tabs.offersNavbar = false;
     }
 
-    $scope.showContactForm = function() {
-        $scope.tabs.showNew = false;
+    $scope.showOffers = function() {
+        $scope.tabs.showNew = true;
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = false;
         $scope.tabs.showRating = false;
-        $scope.tabs.showContactForm = true;
-        $scope.tabs.showInformation = false;
-        $scope.tabs.showReviewForm = false;
-        $scope.tabs.showReportForm = false;
+        $scope.tabs.showAllOffers = true;
+        $scope.tabs.offersNavbar = true;
     }
-    $scope.showReviewForm = function() {
+
+    $scope.showReviews = function() {
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = false;
-        $scope.tabs.showReview = false;
+        $scope.tabs.showReview = true;
         $scope.tabs.showRating = false;
         $scope.tabs.showContactForm = false;
         $scope.tabs.showInformation = false;
-        $scope.tabs.showReviewForm = true;
-        $scope.tabs.showReportForm = false;
-    }
-    $scope.showReportForm = function() {
-        $scope.tabs.showNew = false;
-        $scope.tabs.showUsed = false;
-        $scope.tabs.showReview = false;
-        $scope.tabs.showRating = false;
-        $scope.tabs.showContactForm = false;
-        $scope.tabs.showInformation = false;
-        $scope.tabs.showReviewForm = false;
-        $scope.tabs.showReportForm = true;
+        $scope.tabs.offersNavbar = false;
     }
 
+    $scope.userProfile = '';
 
+    $scope.currentUserInformation = '';
 
-    var init = function() {
-        console.log(authService.settings());
+    $scope.userReviews = '';
+
+    $scope.offers = '';
+
+    $scope.bookInformation = '';
+
+    authService.settings().then(function(data) {
+        $scope.currentUserInformation = data;
+        $scope.addReviewData();
+        $scope.addOfferData();
+    });
+
+    $scope.addReviewData = function() {
+        var params = {
+            'userId': $scope.currentUserInformation.id
+        };
+
+        $scope.userReviews = UserService.userReview.get(params);
+        console.log($scope.userReviews);
     };
 
-    init();
+    $scope.addOfferData = function(){
+        var offerParams = {
+            'ownerId': $scope.currentUserInformation.id
+        };
+
+        $scope.offers = MyOfferService.userOffers.get(offerParams);
+
+        console.log($scope.offers);
+    };
+
+    $scope.submitReview = function() {
+        $scope.newReview.created_by = $scope.newReview.user_id = $scope.userProfile.id;
+        $scope.owner = '3';
+        UserService.userReview.save('', $scope.newReview);
+    };
+
+    $scope.$on('$viewContentLoaded', function() {
+        defaultNavbar();
+    });
 }]);

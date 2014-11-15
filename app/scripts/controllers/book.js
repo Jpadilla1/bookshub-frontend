@@ -7,7 +7,7 @@
  * # BookCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOfferService', 'MyBookService', 'authService', function($scope, MySearch, MyOfferService, MyBookService,authService){
+angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOfferService', 'MyBookService', 'authService', function($scope, MySearch, MyOfferService, MyBookService, authService){
   $scope.searchIsMoved = false;
   $scope.searchInput = '';
   $scope.createAndOffer = '';
@@ -87,7 +87,6 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOff
     $scope.newBook = MyBookService.specificBook.save('', $scope.newBookForm);
 
     $scope.$watch('newBook.id', function(){
-        console.log($scope.newBook.id);
         $scope.setBookIdOffer($scope.newBook.id);
     });
   };

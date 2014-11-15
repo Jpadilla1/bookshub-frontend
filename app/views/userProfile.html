@@ -5,24 +5,30 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-3">
-                            <img src="http://placehold.it/400x200" alt="..." class="img-thumbnail img-responsive">
+                            <img ng-src="{{currentUserInformation.gravatar_url}}" alt="..." class="img-thumbnail img-responsive" width="145">
                         </div>
                         <div class="col-md-8">
-                            <h1 class="user-profile">{{userInformation.user}}</h1>
-                            <h3 class="user-profile">{{userInformation.type}}</h3>
-                            <h4 class="user-profile">{{userInformation.rating}}</h4>
+                            <h1 class="user-profile">{{currentUserInformation.first_name}} {{currentUserInformation.last_name}}</h1>
+                            <h3 class="user-profile lighter-text">{{currentUserInformation.username}}</h3>
+                            <h5 class="user-profile">{{currentUserInformation.description}}</h5>
                         </div>
                         <div class="col-md-1">
                             <div class="col-md-12 user-social">
-                                <a ng-href="{{userInformation.facebook_url}}" target="_blank">
-                                    <i class="fa fa-facebook fa-3x user-social-space"></i>
-                                </a>
-                                <a ng-href="{{}}">
-                                    <i class="fa fa-twitter fa-3x user-social-space"></i>
-                                </a>
-                                <a ng-href="showGitHub()">
-                                    <i class="fa fa-github fa-3x user-social-space"></i>
-                                </a>
+                                <span ng-if="currentUserInformation.facebook_url">
+                                    <a ng-href="{{currentUserInformation.facebook_url}}" target="_blank">
+                                        <i class="fa fa-facebook fa-3x user-social-space"></i>
+                                    </a>
+                                </span>
+                                <span ng-if="currentUserInformation.twitter_url">
+                                    <a ng-href="{{currentUserInformation.twitter_url}}" target="_blank">
+                                        <i class="fa fa-twitter fa-3x user-social-space"></i>
+                                    </a>
+                                </span>
+                                <span ng-if="currentUserInformation.google_url">
+                                    <a ng-href="{{currentUserInformation.google_url}}" target="_blank">
+                                        <i class="fa fa-google-plus fa-3x user-social-space"></i>
+                                    </a>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -39,38 +45,17 @@
                 <section class="side-navbar">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <button type="button" class="btn btn-info btn-lg  btn-block" ng-click="showReviewForm()">
-                                Review Username
+                            <button type="button" class="btn btn-info btn-lg  btn-block" ng-click="showReviews()">
+                                Reviews
                             </button>
-                            <button type="button" class="btn btn-info btn-lg btn btn-block" ng-click="showContactForm()">
-                                Contact Username
-                            </button>
-                            <button type="button" class="btn btn-danger btn-lg btn-block" ng-click="showReportForm()">
-                                Report to BooksHub
+                            <button type="button" class="btn btn-info btn-lg btn btn-block" ng-click="showOffers()">
+                                Offers
                             </button>
                         </div>
                     </div>
                 </section>
 
                 <div class="col-md-9">
-                    <section class="user-offers">
-                        <div class="col-md-4">
-                            <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showReview()">
-                                {{userReview.quantity}} Reviews
-                            </button>
-                        </div>
-                        <div class="col-md-4">
-                            <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showNew()">
-                                {{userBook.new}} New
-                            </button>
-                        </div>
-                        <div class="col-md-4">
-                            <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showUsed()">
-                                {{userBook.used}} Used
-                            </button>
-                        </div>
-                    </section>
-                    
                     <!-- Reviews -->
                     <section class="user-reviews">
                         <div ng-show="tabs.showReview">
@@ -83,110 +68,137 @@
                             <div class="col-md-4 user-sections">
                                 <hr>
                             </div>
-                            <div class="col-md-12">
-                                <h4>{{userReview.user}}</h4>
-                                <p>{{userInformation.review}}</p>
-                            </div>
-                            <div class="col-md-12">
-                                <hr>
+                            <div class="user-reviews-top-space">
+                                <span ng-repeat="r in userReviews.results">
+                                    <div class="col-md-12">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading" id="comment-panel">
+                                                <img ng-src="{{r.metadata.created_by_gravatar_url}}" class="img-rounded small-picture">
+                                                <span>
+                                                    Reviewed by {{r.metadata.created_by_name}}
+                                                </span>
+                                            </div>
+                                            <div class="panel-body">
+                                                <p>{{r.text}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </span>
                             </div>
                         </div>
                     </section>
 
-                    <!-- New -->
-                    <section class="new-books">
-                        <div ng-show="tabs.showNew">
-                            <div class="col-md-4 user-sections">
-                                <hr>
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <h1>New Books</h1>
-                            </div>
-                            <div class="col-md-4 user-sections">
-                                <hr>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="requested-books">
-                                    <ul class="list-unstyled">
-                                        <li class="col-md-6">
-                                            <a href="/" class="thumbnail">
-                                                <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
-                                                <div class="caption">
-                                                    <h3>Book Title</h3>
-                                                    <span class="lighter-text">
-                                                        <p>ISBN:</p>
-                                                        <p>Price:</p>
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <!--Remember to all types of col-->
-                                        <li class="col-md-6">
-                                            <a href="#" class="thumbnail">
-                                                <img src="http://placehold.it/400x200" alt="..." height="200" width="400" />
-                                                <div class="caption">
-                                                    <h3>Book Title</h3>
-                                                    <span class="lighter-text">
-                                                        <p>ISBN:</p>
-                                                        <p>Price:</p>
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
+                    <!-- Offers -->
+                    <section class="offers">
+                        <div ng-show="tabs.showAllOffers">
+                            <div ng-show="tabs.offersNavbar">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showNew()">
+                                        New
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showUsed()">
+                                        Used
+                                    </button>
                                 </div>
                             </div>
-                        </div>
-                    </section>
 
-                    <!-- Used -->
-                    <section class="used-books">
-                        <div ng-show="tabs.showUsed">
-                            <div class="col-md-4 user-sections">
-                                <hr>
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <h1>Used Books</h1>
-                            </div>
-                            <div class="col-md-4 user-sections">
-                                <hr>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="requested-books">
-                                    <ul class="list-unstyled">
-                                        <li class="col-md-6">
-                                            <a href="/" class="thumbnail">
-                                                <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
+                            <section class="user-offers-top-space">
+                                <div ng-show="tabs.showNew">
+                                    <div class="col-md-4 user-sections">
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <h1>New Books</h1>
+                                    </div>
+                                    <div class="col-md-4 user-sections">
+                                        <hr>
+                                    </div>
 
-
-                                                <div class="caption">
-                                                    <h3>Book Title</h3>
-                                                    <span class="lighter-text">
-                                                        <p>ISBN:</p>
-                                                        <p>Price:</p>
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <!--Remember to all types of col-->
-                                        <li class="col-md-6">
-                                            <a href="#" class="thumbnail">
-                                                <img src="http://placehold.it/400x200" alt="..." height="200" width="400" />
-                                                <div class="caption">
-                                                    <h3>Book Title</h3>
-                                                    <span class="lighter-text">
-                                                        <p>ISBN:</p>
-                                                        <p>Price:</p>
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                    <div class="col-md-12">
+                                        <div class="requested-books">
+                                            <ul class="list-unstyled" ng-repeat="o in offers.results">
+                                                <span ng-if="o.condition == 'new'">
+                                                    <li class="col-md-6">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body">
+                                                                <a href="/">
+                                                                    <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
+                                                                </a>
+                                                                <div>
+                                                                    <h3>{{o.metadata.book.title}}</h3>
+                                                                    <span class="lighter-text">
+                                                                        <p>ISBN 10: {{o.metadata.book.isbn_10}}</p>
+                                                                        <p>ISBN 13: {{o.metadata.book.isbn_13}}</p>
+                                                                    </span>
+                                                                    <h4>{{o.metadata.book.author}}</h4>
+                                                                </div>
+                                                            </div>
+                                                            <div class="panel-footer" id="comment-panel">
+                                                                Price: 
+                                                                <span class="label label-with-background">
+                                                                    ${{o.price}}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </span>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </section>
+
+                            <!-- Used -->
+                            <section class="used-books">
+                                <div ng-show="tabs.showUsed">
+                                    <div class="col-md-4 user-sections">
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <h1>Used Books</h1>
+                                    </div>
+                                    <div class="col-md-4 user-sections">
+                                        <hr>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="requested-books">
+                                            <ul class="list-unstyled" ng-repeat="o in offers.results">
+                                                <span ng-if="o.condition == 'used'">
+                                                    <li class="col-md-6">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body">
+                                                                <a href="/">
+                                                                    <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
+                                                                </a>
+                                                                <div>
+                                                                    <h3>{{o.metadata.book.title}}</h3>
+                                                                    <span class="lighter-text">
+                                                                        <p>ISBN 10: {{o.metadata.book.isbn_10}}</p>
+                                                                        <p>ISBN 13: {{o.metadata.book.isbn_13}}</p>
+                                                                    </span>
+                                                                    <h4>{{o.metadata.book.author}}</h4>
+                                                                </div>
+                                                            </div>
+                                                            <div class="panel-footer" id="comment-panel">
+                                                                Price: 
+                                                                <span class="label label-with-background">
+                                                                    ${{o.price}}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </span>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
                         </div>
                     </section>
+
 
                     <!-- Contact -->
                     <section class="user-contact">
@@ -211,67 +223,6 @@
                                     <div class="col-md-10 col-md-offset-1">
                                         <div class="form-group">
                                             <textarea class="form-control" rows="12" placeholder="Please, Enter Information Here"></textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-4 col-md-offset-4">
-                                            <center>
-                                                <button type="submit" class="btn btn-success btn-lg">Submit</button>
-                                                <button type="clear" class="btn btn-info btn-lg">Clear</button>
-                                            </center>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Review -->
-                    <section class="user-review">
-                        <div class="col-md-12" ng-show="tabs.showReviewForm">
-                            <div class="col-md-4 col-md-offset-4 text-center">
-                                <h1>Review</h1>
-                            </div>
-                            <div class="thumbnail">
-                                <form class="form-horizontal" role="form">
-                                    <div class="form-group">
-                                        <div class="col-md-10 col-md-offset-1">
-                                            <input type="email" class="form-control" id="email" placeholder="Rate">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-10 col-md-offset-1">
-                                                <textarea class="form-control" rows="6" placeholder="How was your expirience with this seller?"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-4 col-md-offset-4">
-                                            <center>
-                                                <button type="submit" class="btn btn-success btn-lg">Submit</button>
-                                                <button type="clear" class="btn btn-info btn-lg">Clear</button>
-                                            </center>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Report -->
-                    <section class="user-report">
-                        <div class="col-md-12" ng-show="tabs.showReportForm">
-                            <div class="col-md-4 col-md-offset-4 text-center">
-                                <h1>Report</h1>
-                            </div>
-                            <div class="thumbnail">
-                                <form class="form-horizontal" role="form">
-                                    <div class="col-md-10 col-md-offset-1">
-                                        <div class="form-group">
-                                            <select name="user-report" class="form-control">
-                                                <option value="1">This user never sent the book.</option>
-                                                <option value="2">The item was not as described.</option>
-                                            </select>
                                         </div>
                                     </div>
 

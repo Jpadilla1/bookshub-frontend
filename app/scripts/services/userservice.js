@@ -10,43 +10,46 @@
 
 var app = angular.module('hubAppApp');
 
-app.service('MyBookService', ['$resource', '$cookies', function($resource, $cookies){
+app.service('UserService', ['$resource', '$cookies', function($resource, $cookies){
 	var resource = {};
-	
+
 	var headers = {
 	  'Content-Type': 'application/json',
 	  'Authorization': 'JWT ' + $cookies.token
 	};
 
-	// \\escape slash
-	resource.specificBook = $resource('https://bookshub.herokuapp.com/api/books/:bookId\\/', {}, {
+	resource.userReview = $resource('https://bookshub.herokuapp.com/api/users/:userId/reviews\\/', {}, {
 		get: {
 			method: "GET",
 			isArray: false,
 			headers: headers
 		},
 		save: {
-			url: "https://bookshub.herokuapp.com/api/books\\/",
 			method: "POST",
 			isArray: false,
 			headers: headers
 		},
-	}),
-	resource.bookReviews = $resource('https://bookshub.herokuapp.com/api/books/:bookId/reviews\\/', {},{
+	});
+
+	resource.specificUserReview = $resource('https://bookshub.herokuapp.com/api/users/:userId/reviews/:reviewId\\/', {}, {
 		get: {
 			method: "GET",
 			isArray: false,
 			headers: headers
 		},
-	});
-	resource.topRecommended = $resource('https://bookshub.herokuapp.com/api/books/top/recommended\\/', {}, {
-		get: {
-			method: "GET",
+		remove: {
+			method: "DELETE",
+			isArray: false,
+			headers: headers
+		},
+		put: {
+			method: "PUT",
 			isArray: false,
 			headers: headers
 		},
 	});
-	resource.topRequested = $resource('https://bookshub.herokuapp.com/api/books/top/requested\\/', {}, {
+
+	resource.specificProfile = $resource('https://bookshub.herokuapp.com/api/auth/users/:userId/profile\\/', {}, {
 		get: {
 			method: "GET",
 			isArray: false,
