@@ -7,17 +7,12 @@
  * # MainCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp').controller('UserCtrl',
-    ['$scope', 'authService', function($scope, authService) {
-    $scope.awesomeThings = [
-        'HTML5 Boilerplate',
-        'AngularJS',
-        'Karma'
-    ];
 
-    $scope.$on('$viewContentLoaded', function() {
-        defaultNavbar();
-    });
+var app = angular.module('hubAppApp');
+
+app.controller('UserCtrl', ['$scope', 'authService', 'MyContactService', 'UserReviewService', function($scope, authService, MyContactService, UserReviewService){
+    $scope.userInformation = '';
+    $scope.userReviews = '';
 
     $scope.bookInformation = {
 
@@ -34,21 +29,10 @@ angular.module('hubAppApp').controller('UserCtrl',
 
     };
 
-    $scope.userInformation = {
-        "user": 'Howard T. James',
-        "rating": '5.0',
-        "review": 'Nice Seller, recommended with eyes closed!',
-        "type": 'Seller',
-        "facebook_url": 'www.facebook.com',
-        "twitter_url": '',
-        "github_url": ''
-        
-    };
-
     $scope.userBook = {
-    	"quantity": '15',
-    	"new": '10',
-    	"used": '5'	
+        "quantity": '15',
+        "new": '10',
+        "used": '5' 
 
     };
 
@@ -58,12 +42,43 @@ angular.module('hubAppApp').controller('UserCtrl',
         "used": '3'
     };
 
-    $scope.userReview = {
-
-    	"user": 'Emmanuel Cleaveland',
-    	"quantity": '1'
-
+    $scope.newReview = {
+        "created_by": '',
+        "rate": '',
+        "text": '',
+        "owner": '',
+        "user_id": ''
     };
+
+
+    authService.settings().then(function(data){
+        $scope.userInformation = data;
+        $scope.addReviewData();
+    });
+
+    $scope.addReviewData = function(){
+        var params = {
+            'userId': $scope.userInformation.id
+        };
+
+        $scope.userReviews = UserReviewService.userReview.get(params);
+    };
+
+    $scope.submitReview = function(){
+        $scope.newReview.created_by = $scope.newReview.user_id = $scope.userInformation.id;
+        $scope.owner = '3';
+        UserReviewService.userReview.save('', $scope.newReview);
+    }
+
+    $scope.awesomeThings = [
+        'HTML5 Boilerplate',
+        'AngularJS',
+        'Karma'
+    ];
+
+    $scope.$on('$viewContentLoaded', function() {
+        defaultNavbar();
+    });
 
     $scope.tabs = {
         "showNew": false,
@@ -162,12 +177,4 @@ angular.module('hubAppApp').controller('UserCtrl',
         $scope.tabs.showReviewForm = false;
         $scope.tabs.showReportForm = true;
     }
-
-
-
-    var init = function() {
-        console.log(authService.settings());
-    };
-
-    init();
 }]);

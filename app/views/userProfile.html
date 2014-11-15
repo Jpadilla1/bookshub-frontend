@@ -5,24 +5,30 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-3">
-                            <img src="http://placehold.it/400x200" alt="..." class="img-thumbnail img-responsive">
+                            <img ng-src="{{userInformation.gravatar_url}}" alt="..." class="img-thumbnail img-responsive" width="145">
                         </div>
                         <div class="col-md-8">
-                            <h1 class="user-profile">{{userInformation.user}}</h1>
-                            <h3 class="user-profile">{{userInformation.type}}</h3>
+                            <h1 class="user-profile">{{userInformation.first_name}} {{userInformation.last_name}}</h1>
+                            <h3 class="user-profile lighter-text">{{userInformation.username}}</h3>
                             <h4 class="user-profile">{{userInformation.rating}}</h4>
                         </div>
                         <div class="col-md-1">
                             <div class="col-md-12 user-social">
-                                <a ng-href="{{userInformation.facebook_url}}" target="_blank">
-                                    <i class="fa fa-facebook fa-3x user-social-space"></i>
-                                </a>
-                                <a ng-href="{{}}">
-                                    <i class="fa fa-twitter fa-3x user-social-space"></i>
-                                </a>
-                                <a ng-href="showGitHub()">
-                                    <i class="fa fa-github fa-3x user-social-space"></i>
-                                </a>
+                                <span ng-if="userInformation.facebook_url">
+                                    <a ng-href="{{userInformation.facebook_url}}" target="_blank">
+                                        <i class="fa fa-facebook fa-3x user-social-space"></i>
+                                    </a>
+                                </span>
+                                <span ng-if="userInformation.twitter_url">
+                                    <a ng-href="{{userInformation.twitter_url}}" target="_blank">
+                                        <i class="fa fa-twitter fa-3x user-social-space"></i>
+                                    </a>
+                                </span>
+                                <span ng-if="userInformation.google_url">
+                                    <a ng-href="{{userInformation.google_url}}" target="_blank">
+                                        <i class="fa fa-google-plus fa-3x user-social-space"></i>
+                                    </a>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -40,10 +46,10 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <button type="button" class="btn btn-info btn-lg  btn-block" ng-click="showReviewForm()">
-                                Review Username
+                                Review {{userInformation.username}}
                             </button>
                             <button type="button" class="btn btn-info btn-lg btn btn-block" ng-click="showContactForm()">
-                                Contact Username
+                                Contact {{userInformation.username}}
                             </button>
                             <button type="button" class="btn btn-danger btn-lg btn-block" ng-click="showReportForm()">
                                 Report to BooksHub
@@ -83,10 +89,18 @@
                             <div class="col-md-4 user-sections">
                                 <hr>
                             </div>
-                            <div class="col-md-12">
-                                <h4>{{userReview.user}}</h4>
-                                <p>{{userInformation.review}}</p>
-                            </div>
+                            <span ng-repeat="r in userReviews.results">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" id="comment-panel">
+                                            Reviewed by {{r.created_by}}
+                                        </div>
+                                        <div class="panel-body">
+                                            <p>{{r.text}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </span>
                             <div class="col-md-12">
                                 <hr>
                             </div>
@@ -234,15 +248,15 @@
                                 <h1>Review</h1>
                             </div>
                             <div class="thumbnail">
-                                <form class="form-horizontal" role="form">
+                                <form ng-submit="submitReview()" class="form-horizontal" role="form">
                                     <div class="form-group">
                                         <div class="col-md-10 col-md-offset-1">
-                                            <input type="email" class="form-control" id="email" placeholder="Rate">
+                                                <input class="form-control" ng-model="newReview.rate" type="number" placeholder="Rate" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-10 col-md-offset-1">
-                                                <textarea class="form-control" rows="6" placeholder="How was your expirience with this seller?"></textarea>
+                                            <textarea class="form-control" ng-model="newReview.text" rows="6" placeholder="How was your expirience with this seller?" required></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">

@@ -1,6 +1,16 @@
+'use strict';
+
+/**
+ * @ngdoc service
+ * @name bookshubFrontendApp.authService
+ * @description
+ * # authService
+ * Service in the bookshubFrontendApp.
+ */
+
 var app = angular.module('hubAppApp');
 
-app.service('MyContactService', ['$resource', function($resource){
+app.service('MyContactService', ['$resource', '$cookies', function($resource, $cookies){
 	var apiUrl = 'https://bookshub.herokuapp.com/api/';
 	
 	var resource = {};
@@ -9,7 +19,7 @@ app.service('MyContactService', ['$resource', function($resource){
 	  'Authorization': 'JWT ' + $cookies.token
 	};
 
-	resource.contact = $resource((apirUrl + 'constact\\/'), {}, {
+	resource.contact = $resource((apiUrl + 'constact\\/'), {}, {
 		method: 'POST',
 		isArray: false,
 		headers: headers
