@@ -7,64 +7,10 @@
  * # MainCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp').controller('UserCtrl',
-    ['$scope', 'authService', function($scope, authService) {
-    $scope.awesomeThings = [
-        'HTML5 Boilerplate',
-        'AngularJS',
-        'Karma'
-    ];
 
-    $scope.$on('$viewContentLoaded', function() {
-        defaultNavbar();
-    });
+ var app = angular.module('hubAppApp');
 
-    $scope.bookInformation = {
-
-        "title": 'Harry Potter - Eat You Alive',
-        "author": 'Howard T. James',
-        "isbn": '012345667890',
-        "rating": '5.0',
-        "publisher": 'Warner Brothers',
-        "edition": '10th edition',
-        "price": '$249.99',
-        "reviews": '',
-
-        "recomendation": ''
-
-    };
-
-    $scope.userInformation = {
-        "user": 'Howard T. James',
-        "rating": '5.0',
-        "review": 'Nice Seller, recommended with eyes closed!',
-        "type": 'Seller',
-        "facebook_url": 'www.facebook.com',
-        "twitter_url": '',
-        "github_url": ''
-        
-    };
-
-    $scope.userBook = {
-    	"quantity": '15',
-    	"new": '10',
-    	"used": '5'	
-
-    };
-
-    $scope.offerInformation = {
-        "quantity": '2',
-        "new": '15',
-        "used": '3'
-    };
-
-    $scope.userReview = {
-
-    	"user": 'Emmanuel Cleaveland',
-    	"quantity": '1'
-
-    };
-
+ app.controller('SpecificUserCtrl', ['$scope', 'authService', 'UserService', 'MyOfferService', function($scope, authService, UserService, MyOfferService){
     $scope.tabs = {
         "showNew": false,
         "showUsed": false,
@@ -163,6 +109,71 @@ angular.module('hubAppApp').controller('UserCtrl',
         $scope.tabs.showReportForm = true;
     }
 
+    $scope.$on('$viewContentLoaded', function() {
+        defaultNavbar();
+    });
+
+    $scope.profileData = '';
+    $scope.profileReviews = '';
+    $scope.profileOffers = '';
+
+    if(UserService.userId){
+        var params = {
+            'userId': UserService.userId,
+            'ownerId': UserService.userId
+        };
+
+        $scope.profileData = UserService.specificProfile.get(params);
+
+        $scope.$watch('profileData.id', function(){
+            $scope.profileReviews = UserService.userReview.get(params);
+            $scope.profileOffers = MyOfferService.userOffers.get(params);
+            console.log($scope.profileReviews);
+            console.log($scope.profileOffers);
+        });
+    }else{
+        //send to another place
+    }
+
+    $scope.bookInformation = {
+
+        "title": 'Harry Potter - Eat You Alive',
+        "author": 'Howard T. James',
+        "isbn": '012345667890',
+        "rating": '5.0',
+        "publisher": 'Warner Brothers',
+        "edition": '10th edition',
+        "price": '$249.99',
+        "reviews": '',
+
+        "recomendation": ''
+
+    };
+
+    $scope.userInformation = {
+        "user": 'Howard T. James',
+        "rating": '5.0',
+        "review": 'Nice Seller, recommended with eyes closed!',
+        "type": 'Seller',
+        "facebook_url": 'www.facebook.com',
+        "twitter_url": '',
+        "github_url": ''
+        
+    };
+
+    $scope.userBook = {
+        "quantity": '15',
+        "new": '10',
+        "used": '5' 
+
+    };
+
+    $scope.offerInformation = {
+        "quantity": '2',
+        "new": '15',
+        "used": '3'
+    };
+
     // $scope.addReviewData = function(id) {
     //     var params = {
     //         'userId': id
@@ -186,10 +197,4 @@ angular.module('hubAppApp').controller('UserCtrl',
     //         });
     //     }
     // };
-
-    var init = function() {
-        console.log(authService.settings());
-    };
-
-    init();
-}]);
+ }]);

@@ -75,7 +75,10 @@
                                             <div class="panel-heading" id="comment-panel">
                                                 <img ng-src="{{r.metadata.created_by_gravatar_url}}" class="img-rounded small-picture">
                                                 <span>
-                                                    Reviewed by {{r.metadata.created_by_name}}
+                                                    Reviewed by 
+                                                    <a href="#/specific-profile" ng-click="goToOtherUser(r.created_by)">
+                                                        {{r.metadata.created_by_name}}
+                                                    </a>
                                                 </span>
                                             </div>
                                             <div class="panel-body">

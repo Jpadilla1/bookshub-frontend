@@ -10,7 +10,7 @@
 
 var app = angular.module('hubAppApp');
 
-app.controller('UserCtrl', ['$scope', 'authService', 'MyContactService', 'UserService', 'MyOfferService', 'MyBookService', function($scope, authService, MyContactService, UserService, MyOfferService, MyBookService) {
+app.controller('UserCtrl', ['$rootScope', '$scope', 'authService', 'MyContactService', 'UserService', 'MyOfferService', 'MyBookService', function($rootScope, $scope, authService, MyContactService, UserService, MyOfferService, MyBookService) {
     $scope.tabs = {
         "showNew": false,
         "showUsed": false,
@@ -109,6 +109,10 @@ app.controller('UserCtrl', ['$scope', 'authService', 'MyContactService', 'UserSe
         $scope.newReview.created_by = $scope.newReview.user_id = $scope.userProfile.id;
         $scope.owner = '3';
         UserService.userReview.save('', $scope.newReview);
+    };
+
+    $scope.goToOtherUser = function(userId){
+        UserService.setUserId(userId);
     };
 
     $scope.$on('$viewContentLoaded', function() {

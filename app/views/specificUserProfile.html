@@ -5,24 +5,30 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-3">
-                            <img src="http://placehold.it/400x200" alt="..." class="img-thumbnail img-responsive">
+                            <img ng-src="{{profileData.gravatar_url}}" alt="..." class="img-thumbnail img-responsive">
                         </div>
                         <div class="col-md-8">
-                            <h1 class="user-profile">{{userInformation.user}}</h1>
-                            <h3 class="user-profile">{{userInformation.type}}</h3>
-                            <h4 class="user-profile">{{userInformation.rating}}</h4>
+                            <h1 class="user-profile">{{profileData.first_name}} {{profileData.last_name}}</h1>
+                            <h3 class="user-profile lighter-text">{{profileData.username}}</h3>
+                            <h5 class="user-profile">{{profileData.description}}</h5>
                         </div>
                         <div class="col-md-1">
                             <div class="col-md-12 user-social">
-                                <a ng-href="{{userInformation.facebook_url}}" target="_blank">
-                                    <i class="fa fa-facebook fa-3x user-social-space"></i>
-                                </a>
-                                <a ng-href="{{}}">
-                                    <i class="fa fa-twitter fa-3x user-social-space"></i>
-                                </a>
-                                <a ng-href="showGitHub()">
-                                    <i class="fa fa-github fa-3x user-social-space"></i>
-                                </a>
+                                <span ng-if="profileData.facebook_url">
+                                    <a ng-href="{{profileData.facebook_url}}" target="_blank">
+                                        <i class="fa fa-facebook fa-3x user-social-space"></i>
+                                    </a>
+                                </span>
+                                <span ng-if="profileData.twitter_url">
+                                    <a ng-href="{{profileData.facebook_url}}">
+                                        <i class="fa fa-twitter fa-3x user-social-space"></i>
+                                    </a>
+                                </span>
+                                <span ng-if="profileData.google_url">
+                                    <a ng-href="{{profileData.google_url}}">
+                                        <i class="fa fa-google-plus fa-3x user-social-space"></i>
+                                    </a>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -40,7 +46,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <button type="button" class="btn btn-info btn-lg  btn-block" ng-click="showReviewForm()">
-                                Review Username
+                                Review {{profileData.username}}
                             </button>
                             <button type="button" class="btn btn-info btn-lg btn btn-block" ng-click="showContactForm()">
                                 Contact Username
@@ -84,11 +90,19 @@
                                 <hr>
                             </div>
                             <div class="col-md-12">
-                                <h4>{{userReview.user}}</h4>
-                                <p>{{userInformation.review}}</p>
-                            </div>
-                            <div class="col-md-12">
-                                <hr>
+                                <span ng-repeat="pr in profileReviews.results">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" id="comment-panel">
+                                            <img ng-src="{{pr.metadata.created_by_gravatar_url}}" class="img-rounded small-picture">
+                                            <span>
+                                                Reviewed by {{pr.metadata.created_by_name}}
+                                            </span>
+                                        </div>
+                                        <div class="panel-body">
+                                            <p>{{pr.text}}</p>
+                                        </div>
+                                    </div>
+                                </span>
                             </div>
                         </div>
                     </section>

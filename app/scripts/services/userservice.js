@@ -10,8 +10,10 @@
 
 var app = angular.module('hubAppApp');
 
-app.service('UserService', ['$resource', '$cookies', function($resource, $cookies){
+app.service('UserService', ['$resource', '$cookies', '$rootScope', function($resource, $cookies, $rootScope){
 	var resource = {};
+
+	resource.userId = '';
 
 	var headers = {
 	  'Content-Type': 'application/json',
@@ -56,6 +58,10 @@ app.service('UserService', ['$resource', '$cookies', function($resource, $cookie
 			headers: headers
 		},
 	});
+
+	resource.setUserId = function(userId){
+		this.userId = userId;
+	};
 
 	return resource;
 }]);

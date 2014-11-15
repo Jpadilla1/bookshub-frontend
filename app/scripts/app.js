@@ -63,6 +63,10 @@ app.config(function($routeProvider) {
       templateUrl: 'views/cart.html',
       controller: 'CartCtrl'
      })
+      .when('/specific-profile', {
+      templateUrl: 'views/specificUserProfile.html',
+      controller: 'SpecificUserCtrl'
+     })
      .otherwise({
        redirectTo: '/'
      });
