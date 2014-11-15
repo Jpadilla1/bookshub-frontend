@@ -33,5 +33,13 @@ app.service('MyOfferService', ['$resource', '$cookies', 'authService', function(
 		},
 	});
 
+	resource.userOffers = $resource('https://bookshub.herokuapp.com/api/offers/?owner=:ownerId', {}, {
+		get: {
+			method: "GET",
+			isArray: false,
+			headers: headers
+		}
+	});
+
 	return resource;
 }]);
