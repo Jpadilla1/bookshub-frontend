@@ -10,7 +10,7 @@
 
 var app = angular.module('hubAppApp');
 
-app.service('UserReviewService', ['$resource', '$cookies', function($resource, $cookies){
+app.service('UserService', ['$resource', '$cookies', function($resource, $cookies){
 	var resource = {};
 
 	var headers = {
@@ -44,6 +44,14 @@ app.service('UserReviewService', ['$resource', '$cookies', function($resource, $
 		},
 		put: {
 			method: "PUT",
+			isArray: false,
+			headers: headers
+		},
+	});
+
+	resource.specificProfile = $resource('https://bookshub.herokuapp.com/api/auth/users/:userId/profile\\/', {}, {
+		get: {
+			method: "GET",
 			isArray: false,
 			headers: headers
 		},
