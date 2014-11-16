@@ -10,7 +10,7 @@
 
  var app = angular.module('hubAppApp');
 
- app.controller('SpecificUserCtrl', ['$scope', 'authService', 'UserService', 'MyOfferService', function($scope, authService, UserService, MyOfferService){
+ app.controller('SpecificUserCtrl', ['$scope', 'authService', 'UserService', 'MyOfferService', 'ReportService', function($scope, authService, UserService, MyOfferService, ReportService){
     $scope.tabs = {
         "showNew": false,
         "showUsed": false,
@@ -137,7 +137,7 @@
         //send to another place
     }
 
-    $scope.reviewData = {
+    $scope.userReviewData = {
         "user_id": '',
         "created_by": '',
         "owner": '',
@@ -145,15 +145,47 @@
         "text": ''
     };
 
-    $scope.submitReview = function(){
-        authService.settings().then(function(data){
-            $scope.reviewData.created_by = data.id;
-            $scope.reviewData.user_id = $scope.profileData.id;
-            $scope.reviewData.owner = $scope.profileData.id;
-            UserService.userReview.save(params, $scope.reviewData);
+    $scope.loggedInUserData = '';
 
-            //make something to do the review section refresh it's data after post
-        });
+    $scope.submitUserReview = function(){
+
+        if($scope.loggedInUserData){
+            $scope.userReviewData.created_by = $scope.loggedInUserData.id;
+        }else{
+            authService.settings().then(function(data){
+                $scope.loggedInUserData = data;
+                $scope.userReviewData.created_by = data.id;
+            });   
+        }
+
+        $scope.userReviewData.user_id = $scope.profileData.id;
+        $scope.userReviewData.owner = $scope.profileData.id;
+        UserService.userReview.save(params, $scope.userReviewData);
+
+        //make something to do the review section refresh it's data after post
+        //show success message
+    };
+
+    $scope.userReportData = {
+        receiver: '',
+        reason: '',
+        sender: []
+    }
+
+    $scope.submitUserReport = function(){
+        if($scope.loggedInUserData){
+            $scope.userReportData.sender.push($scope.loggedInUserData.id);
+        }else{
+            authService.settings().then(function(data){
+                $scope.loggedInUserData = data;
+                $scope.userReportData.sender.push(data.id);
+            });
+        }
+
+        console.log($scope.userReportData);
+        $scope.userReportData.receiver = $scope.profileData.id;
+        ReportService.userReport.save('', $scope.userReportData);
+        //show success message
     };
 
     $scope.bookInformation = {

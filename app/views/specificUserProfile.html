@@ -248,7 +248,7 @@
                                 <h1>Review</h1>
                             </div>
                             <div class="thumbnail">
-                                <form class="form-horizontal" role="form" ng-submit="submitReview()">
+                                <form class="form-horizontal" role="form" ng-submit="submitUserReview()">
                                     <div class="form-group">
                                         <div class="col-md-10 col-md-offset-1">
                                             <input type="number" class="form-control" ng-model="reviewData.score" placeholder="Rate">
@@ -279,10 +279,10 @@
                                 <h1>Report</h1>
                             </div>
                             <div class="thumbnail">
-                                <form class="form-horizontal" role="form">
+                                <form class="form-horizontal" role="form" ng-submit="submitUserReport()">
                                     <div class="col-md-10 col-md-offset-1">
                                         <div class="form-group">
-                                            <select name="user-report" class="form-control">
+                                            <select name="user-report" class="form-control" ng-model="userReportData.reason">
                                                 <option value="1">This user never sent the book.</option>
                                                 <option value="2">The item was not as described.</option>
                                             </select>
