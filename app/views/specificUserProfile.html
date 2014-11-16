@@ -248,15 +248,15 @@
                                 <h1>Review</h1>
                             </div>
                             <div class="thumbnail">
-                                <form class="form-horizontal" role="form">
+                                <form class="form-horizontal" role="form" ng-submit="submitReview()">
                                     <div class="form-group">
                                         <div class="col-md-10 col-md-offset-1">
-                                            <input type="email" class="form-control" id="email" placeholder="Rate">
+                                            <input type="number" class="form-control" ng-model="reviewData.score" placeholder="Rate">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-10 col-md-offset-1">
-                                                <textarea class="form-control" rows="6" placeholder="How was your expirience with this seller?"></textarea>
+                                                <textarea class="form-control" ng-model="reviewData.text" rows="6" placeholder="How was your expirience with this seller?"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">

@@ -116,24 +116,45 @@
     $scope.profileData = '';
     $scope.profileReviews = '';
     $scope.profileOffers = '';
+    var params = {
+        "userId": '',
+        "ownerId": ''
+    };
 
     if(UserService.userId){
-        var params = {
-            'userId': UserService.userId,
-            'ownerId': UserService.userId
-        };
+        params.userId = UserService.userId;
+        params.ownerId = UserService.userId;
 
         $scope.profileData = UserService.specificProfile.get(params);
 
         $scope.$watch('profileData.id', function(){
             $scope.profileReviews = UserService.userReview.get(params);
             $scope.profileOffers = MyOfferService.userOffers.get(params);
-            console.log($scope.profileReviews);
+            console.log($scope.profileData);
             console.log($scope.profileOffers);
         });
     }else{
         //send to another place
     }
+
+    $scope.reviewData = {
+        "user_id": '',
+        "created_by": '',
+        "owner": '',
+        "score": '',
+        "text": ''
+    };
+
+    $scope.submitReview = function(){
+        authService.settings().then(function(data){
+            $scope.reviewData.created_by = data.id;
+            $scope.reviewData.user_id = $scope.profileData.id;
+            $scope.reviewData.owner = $scope.profileData.id;
+            UserService.userReview.save(params, $scope.reviewData);
+
+            //make something to do the review section refresh it's data after post
+        });
+    };
 
     $scope.bookInformation = {
 
