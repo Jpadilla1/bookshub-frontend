@@ -48,9 +48,6 @@
                             <button type="button" class="btn btn-info btn-lg  btn-block" ng-click="showReviewForm()">
                                 Review {{profileData.username}}
                             </button>
-                            <button type="button" class="btn btn-info btn-lg btn btn-block" ng-click="showContactForm()">
-                                Contact Username
-                            </button>
                             <button type="button" class="btn btn-danger btn-lg btn-block" ng-click="showReportForm()">
                                 Report to BooksHub
                             </button>
@@ -62,17 +59,17 @@
                     <section class="user-offers">
                         <div class="col-md-4">
                             <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showReview()">
-                                {{userReview.quantity}} Reviews
+                                Reviews
                             </button>
                         </div>
                         <div class="col-md-4">
                             <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showNew()">
-                                {{userBook.new}} New
+                                New
                             </button>
                         </div>
                         <div class="col-md-4">
                             <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showUsed()">
-                                {{userBook.used}} Used
+                                Used
                             </button>
                         </div>
                     </section>
@@ -122,32 +119,39 @@
 
                             <div class="col-md-12">
                                 <div class="requested-books">
-                                    <ul class="list-unstyled">
-                                        <li class="col-md-6">
-                                            <a href="/" class="thumbnail">
-                                                <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
-                                                <div class="caption">
-                                                    <h3>Book Title</h3>
-                                                    <span class="lighter-text">
-                                                        <p>ISBN:</p>
-                                                        <p>Price:</p>
-                                                    </span>
+                                    <ul class="list-unstyled" ng-repeat="po in profileOffers.results">
+                                        <span ng-if="po.condition == 'new'">
+                                            <li class="col-md-6">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-body">
+                                                        <a href="/">
+                                                            <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
+                                                        </a>
+                                                        <div>
+                                                            <h3>{{po.metadata.book.title}}</h3>
+                                                            <span class="lighter-text">
+                                                                <p>ISBN 10: {{po.metadata.book.isbn_10}}</p>
+                                                                <p>ISBN 13: {{po.metadata.book.isbn_13}}</p>
+                                                            </span>
+                                                            <h4>{{po.metadata.book.author}}</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-footer" id="footer-panel-with-button">
+                                                        <div class="offer-footer-top-space">
+                                                            Price: 
+                                                            <span class="label label-with-background">
+                                                                ${{po.price}}
+                                                            </span>
+                                                            <span>
+                                                                <button class="btn btn-with-background pull-right">
+                                                                    Add to Cart
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </a>
-                                        </li>
-                                        <!--Remember to all types of col-->
-                                        <li class="col-md-6">
-                                            <a href="#" class="thumbnail">
-                                                <img src="http://placehold.it/400x200" alt="..." height="200" width="400" />
-                                                <div class="caption">
-                                                    <h3>Book Title</h3>
-                                                    <span class="lighter-text">
-                                                        <p>ISBN:</p>
-                                                        <p>Price:</p>
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                            </li>
+                                        </span>
                                     </ul>
                                 </div>
                             </div>
@@ -168,75 +172,41 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="requested-books">
-                                    <ul class="list-unstyled">
-                                        <li class="col-md-6">
-                                            <a href="/" class="thumbnail">
-                                                <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
-
-
-                                                <div class="caption">
-                                                    <h3>Book Title</h3>
-                                                    <span class="lighter-text">
-                                                        <p>ISBN:</p>
-                                                        <p>Price:</p>
-                                                    </span>
+                                    <ul class="list-unstyled" ng-repeat="po in profileOffers.results">
+                                        <span ng-if="po.condition == 'used'">
+                                            <li class="col-md-6">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-body">
+                                                        <a href="/">
+                                                            <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
+                                                        </a>
+                                                        <div>
+                                                            <h3>{{po.metadata.book.title}}</h3>
+                                                            <span class="lighter-text">
+                                                                <p>ISBN 10: {{po.metadata.book.isbn_10}}</p>
+                                                                <p>ISBN 13: {{po.metadata.book.isbn_13}}</p>
+                                                            </span>
+                                                            <h4>{{po.metadata.book.author}}</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-footer" id="footer-panel-with-button">
+                                                        <div class="offer-footer-top-space">
+                                                            Price: 
+                                                            <span class="label label-with-background">
+                                                                ${{po.price}}
+                                                            </span>
+                                                            <span>
+                                                                <button class="btn btn-with-background pull-right">
+                                                                    Add to Cart
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </a>
-                                        </li>
-                                        <!--Remember to all types of col-->
-                                        <li class="col-md-6">
-                                            <a href="#" class="thumbnail">
-                                                <img src="http://placehold.it/400x200" alt="..." height="200" width="400" />
-                                                <div class="caption">
-                                                    <h3>Book Title</h3>
-                                                    <span class="lighter-text">
-                                                        <p>ISBN:</p>
-                                                        <p>Price:</p>
-                                                    </span>
-                                                </div>
-                                            </a>
-                                        </li>
+                                            </li>
+                                        </span>
                                     </ul>
                                 </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Contact -->
-                    <section class="user-contact">
-                        <div class="col-md-12" ng-show="tabs.showContactForm">
-                            <div class="col-md-4 col-md-offset-4 text-center">
-                                <h1>Contact</h1>
-                            </div>
-                            <div class="thumbnail">
-                                <form class="form-horizontal" role="form">
-                                    <div class="form-group">
-
-                                        <div class="col-sm-10 col-md-offset-1">
-                                            <input type="email" class="form-control" id="email" placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-
-                                        <div class="col-sm-10 col-md-offset-1">
-                                            <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-10 col-md-offset-1">
-                                        <div class="form-group">
-                                            <textarea class="form-control" rows="12" placeholder="Please, Enter Information Here"></textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-4 col-md-offset-4">
-                                            <center>
-                                                <button type="submit" class="btn btn-success btn-lg">Submit</button>
-                                                <button type="clear" class="btn btn-info btn-lg">Clear</button>
-                                            </center>
-                                        </div>
-                                    </div>
-                                </form>
                             </div>
                         </div>
                     </section>
@@ -248,15 +218,15 @@
                                 <h1>Review</h1>
                             </div>
                             <div class="thumbnail">
-                                <form class="form-horizontal" role="form">
+                                <form class="form-horizontal" role="form" ng-submit="submitUserReview()">
                                     <div class="form-group">
                                         <div class="col-md-10 col-md-offset-1">
-                                            <input type="email" class="form-control" id="email" placeholder="Rate">
+                                            <input type="number" class="form-control" ng-model="reviewData.score" placeholder="Rate">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-10 col-md-offset-1">
-                                                <textarea class="form-control" rows="6" placeholder="How was your expirience with this seller?"></textarea>
+                                                <textarea class="form-control" ng-model="reviewData.text" rows="6" placeholder="How was your expirience with this seller?"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -279,10 +249,10 @@
                                 <h1>Report</h1>
                             </div>
                             <div class="thumbnail">
-                                <form class="form-horizontal" role="form">
+                                <form class="form-horizontal" role="form" ng-submit="submitUserReport()">
                                     <div class="col-md-10 col-md-offset-1">
                                         <div class="form-group">
-                                            <select name="user-report" class="form-control">
+                                            <select name="user-report" class="form-control" ng-model="userReportData.reason">
                                                 <option value="1">This user never sent the book.</option>
                                                 <option value="2">The item was not as described.</option>
                                             </select>

@@ -10,7 +10,7 @@
 
  var app = angular.module('hubAppApp');
 
- app.controller('SpecificUserCtrl', ['$scope', 'authService', 'UserService', 'MyOfferService', function($scope, authService, UserService, MyOfferService){
+ app.controller('SpecificUserCtrl', ['$scope', 'authService', 'UserService', 'MyOfferService', 'ReportService', function($scope, authService, UserService, MyOfferService, ReportService){
     $scope.tabs = {
         "showNew": false,
         "showUsed": false,
@@ -116,85 +116,75 @@
     $scope.profileData = '';
     $scope.profileReviews = '';
     $scope.profileOffers = '';
+    var params = {
+        "userId": '',
+        "ownerId": ''
+    };
 
     if(UserService.userId){
-        var params = {
-            'userId': UserService.userId,
-            'ownerId': UserService.userId
-        };
+        params.userId = UserService.userId;
+        params.ownerId = UserService.userId;
 
         $scope.profileData = UserService.specificProfile.get(params);
 
         $scope.$watch('profileData.id', function(){
             $scope.profileReviews = UserService.userReview.get(params);
             $scope.profileOffers = MyOfferService.userOffers.get(params);
-            console.log($scope.profileReviews);
+            console.log($scope.profileData);
             console.log($scope.profileOffers);
         });
     }else{
         //send to another place
     }
 
-    $scope.bookInformation = {
-
-        "title": 'Harry Potter - Eat You Alive',
-        "author": 'Howard T. James',
-        "isbn": '012345667890',
-        "rating": '5.0',
-        "publisher": 'Warner Brothers',
-        "edition": '10th edition',
-        "price": '$249.99',
-        "reviews": '',
-
-        "recomendation": ''
-
+    $scope.userReviewData = {
+        "user_id": '',
+        "created_by": '',
+        "owner": '',
+        "score": '',
+        "text": ''
     };
 
-    $scope.userInformation = {
-        "user": 'Howard T. James',
-        "rating": '5.0',
-        "review": 'Nice Seller, recommended with eyes closed!',
-        "type": 'Seller',
-        "facebook_url": 'www.facebook.com',
-        "twitter_url": '',
-        "github_url": ''
-        
+    $scope.loggedInUserData = '';
+
+    $scope.submitUserReview = function(){
+
+        if($scope.loggedInUserData){
+            $scope.userReviewData.created_by = $scope.loggedInUserData.id;
+        }else{
+            authService.settings().then(function(data){
+                $scope.loggedInUserData = data;
+                $scope.userReviewData.created_by = data.id;
+            });   
+        }
+
+        $scope.userReviewData.user_id = $scope.profileData.id;
+        $scope.userReviewData.owner = $scope.profileData.id;
+        UserService.userReview.save(params, $scope.userReviewData);
+
+        //make something to do the review section refresh it's data after post
+        //show success message
     };
 
-    $scope.userBook = {
-        "quantity": '15',
-        "new": '10',
-        "used": '5' 
+    $scope.userReportData = {
+        receiver: '',
+        reason: '',
+        sender: []
+    }
 
+    $scope.submitUserReport = function(){
+        if($scope.loggedInUserData){
+            $scope.userReportData.sender.push($scope.loggedInUserData.id);
+        }else{
+            authService.settings().then(function(data){
+                $scope.loggedInUserData = data;
+                $scope.userReportData.sender.push(data.id);
+            });
+        }
+
+        console.log($scope.userReportData);
+        $scope.userReportData.receiver = $scope.profileData.id;
+        ReportService.userReport.save('', $scope.userReportData);
+        //show success message
     };
-
-    $scope.offerInformation = {
-        "quantity": '2',
-        "new": '15',
-        "used": '3'
-    };
-
-    // $scope.addReviewData = function(id) {
-    //     var params = {
-    //         'userId': id
-    //     };
-
-    //     $scope.userReviews = UserService.userReview.get(params);
-    // };
-
-    // $scope.specificUser = function(userId) {
-    //     var result = validateField(userId);
-
-    //     if (result) {
-    //         params = {
-    //             "userId": result
-    //         };
-
-    //         $scope.userProfile = UserService.specificProfile.get(params);
-
-    //         $scope.$watch('userProfile.id', function(){
-    //             $scope.addReviewData($scope.userProfile.id);
-    //         });
-    //     }
-    // };
  }]);
