@@ -32,6 +32,9 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
     border-bottom-color: rgba(17, 213, 119, 0.69);
 }
+.tooltip-inner {
+    min-width: 100px;
+}
 .navbar-default i {
     color: rgba(17, 213, 119, 0.69);
 }

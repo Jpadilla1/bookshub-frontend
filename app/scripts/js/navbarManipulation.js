@@ -35,3 +35,9 @@ function defaultNavbar(){
 
     document.getElementById("brand-logo").src = "../images/logo.png";
 };
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip({
+        placement : 'bottom'
+    });
+});
