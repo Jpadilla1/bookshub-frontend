@@ -15,32 +15,35 @@
             <button type="button" ng-click="remove(-1)" class="btn btn-danger btn-lg">Remove</button>
         </div>
         <hr class="col-md-12">
-        <div class="col-md-12 cart-item" ng-repeat="item in cartItems">
-            <div class="col-md-1">
-                <div class="checkbox cart-item-checkbox">
-                    <input type="checkbox" ng-model="item.selected" ng-checked="allChecked">
+        <div class="col-md-12" ng-repeat="item in cartItems">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="comment-panel">
+                    <span class="checkbox">
+                        <input type="checkbox" ng-model="item.selected" ng-checked="allChecked">
+                        {{item.title}}
+                    </span>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <img src="../images/hpbook.jpg" class="cart-item-image">
-                <br>
-            </div>
-            <div class="col-md-5 cart-item-information">
-                <label class="cart-item-info">Title:</label> {{item.title}}
-                </br>
-                <label class="cart-item-info">ISBN 13:</label> {{item.isbn13}}
-                </br>
-                <label class="cart-item-info">ISBN 10:</label> {{item.isbn10}}
-                </br>
-                <label class="cart-item-info">Author:</label> {{item.author}}
-                </br>
-                <label class="cart-item-info">Quantity:</label> {{item.quantity}}
-                </br>
-                <label class="cart-item-info">Price Per Item:</label> {{item.pricePerItem | currency}}
-            </div>
-            <div class="col-md-3">
-                <h3 class="cart-item-price">Price: {{item.pricePerItem * item.quantity | currency}}</h3>
-                <button type="button" ng-click="remove($index)" class="btn btn-danger btn-lg cart-item-buttons">Remove</button>
+                <div class="panel-body">
+                    <div class="col-md-3">
+                        <img src="../images/hpbook.jpg" class="cart-item-image">
+                    </div>
+                    <div class="col-md-5">
+                        <label class="cart-item-info">Author:</label> {{item.author}}
+                        </br>
+                        <label class="cart-item-info">ISBN 13:</label> {{item.isbn13}}
+                        </br>
+                        <label class="cart-item-info">ISBN 10:</label> {{item.isbn10}}
+                        </br>
+                        <label class="cart-item-info">Quantity:</label> {{item.quantity}}
+                        </br>
+                        <label class="cart-item-info">Price Per Item:</label> {{item.pricePerItem | currency}}
+                    </div>
+                    <div class="col-md-4">
+                        <h3 class="cart-item-price">Price: {{item.pricePerItem * item.quantity | currency}}</h3>
+                        <button type="button" ng-click="remove($index)" class="btn btn-danger btn-lg cart-item-buttons">Remove</button>
+                    </div>
+                    <br>
+                </div>
             </div>
         </div>
     </div>
