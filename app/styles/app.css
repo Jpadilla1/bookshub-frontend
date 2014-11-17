@@ -501,7 +501,40 @@ textarea{
     margin-top:-2%;
     margin-bottom:1%; 
 }*/
+
+/* About Us */
+
+.image-about {
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+.info-about {
+    margin-bottom: 2%;
+}
+
+/* Contact Us */
+.buttons-contact{
+    margin-left: 5%;
+}
+
+/* Settings */
+.breadcrumbs {
+    margin-bottom: 2%;
+}
+
+/* Request Books */
+
+.info-request{
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+
+
+
+
 /* xs */
+
 
 @media (min-width: 0px) and (max-width: 767px) {
     .home-header {
