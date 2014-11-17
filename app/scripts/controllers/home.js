@@ -10,6 +10,9 @@
                 // set distance user needs to scroll before we start fadeIn
                 if ($(this).scrollTop() >= $(window).height()) {
                     $('.navbar-fixed-top').fadeIn();
+                    $('[data-toggle="tooltip"]').tooltip({
+                        placement: 'bottom'
+                    });
                 } else {
                     $('.navbar-fixed-top').fadeOut();
                 }
@@ -21,32 +24,32 @@
 /*This block creates an angular.js module and a controller to manage the items displayed and the data
 received in the index*/
 (function() {
-    angular.module('hubAppApp').controller("HomeCtrl", ['$scope', 'MyBookService', 'MySearch', function($scope, MyBookService, MySearch){
+    angular.module('hubAppApp').controller("HomeCtrl", ['$scope', 'MyBookService', 'MySearch', function($scope, MyBookService, MySearch) {
 
-      $scope.searchInput = '';
+        $scope.searchInput = '';
 
-      $scope.topRequestedBooks = MyBookService.topRequested.get();
+        $scope.topRequestedBooks = MyBookService.topRequested.get();
 
-      $scope.topRecommendedBooks = MyBookService.topRecommended.get();
+        $scope.topRecommendedBooks = MyBookService.topRecommended.get();
 
-      $scope.$on('$viewContentLoaded', function() {
-          homeNavbar();
-      });
+        $scope.$on('$viewContentLoaded', function() {
+            homeNavbar();
+        });
 
-      $scope.searchResult = '';
+        $scope.searchResult = '';
 
-      $scope.searchBy = function(selection){
-        result = validateField($scope.searchInput);
-        if(result){
-          var params = {
-            'searchBy': selection,
-            'searchValue': result
-          };
+        $scope.searchBy = function(selection) {
+            result = validateField($scope.searchInput);
+            if (result) {
+                var params = {
+                    'searchBy': selection,
+                    'searchValue': result
+                };
 
-          $scope.searchResult = MySearch.bookSearch.get(params);
-          console.log($scope.searchResult);
+                $scope.searchResult = MySearch.bookSearch.get(params);
+                console.log($scope.searchResult);
+            }
+
         }
-
-      }
     }]);
 })();
