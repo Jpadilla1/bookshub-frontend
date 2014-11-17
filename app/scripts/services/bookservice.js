@@ -13,6 +13,8 @@ var app = angular.module('hubAppApp');
 app.service('MyBookService', ['$resource', '$cookies', function($resource, $cookies){
 	var resource = {};
 	
+	resource.bookId = '';
+
 	var headers = {
 	  'Content-Type': 'application/json',
 	  'Authorization': 'JWT ' + $cookies.token

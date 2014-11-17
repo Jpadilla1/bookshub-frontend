@@ -10,7 +10,7 @@
 
 var app = angular.module('hubAppApp');
 
-app.service('CartService', ['$scope', '$cookies', function($scope, $cookies){
+app.service('CartService', ['$resource', '$cookies', function($resource, $cookies){
 	var resource = {};
 
 	var headers = {
@@ -53,4 +53,6 @@ app.service('CartService', ['$scope', '$cookies', function($scope, $cookies){
 			headers: headers
 		}
 	});
+
+	return resource;
 }]);

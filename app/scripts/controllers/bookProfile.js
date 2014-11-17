@@ -13,35 +13,27 @@ var app = angular.module('hubAppApp');
 
 app.controller('bookProfileCtrl', ['$scope', '$resource', 'MyBookService', 'MyOfferService',
     function($scope, $resource, MyBookService, MyOfferService){
-    var result;
-
-    $scope.test = {
-        "bookId": '1'
+    
+    var params = {
+        "bookId": ''
     };
 
-    var params = {'bookId': $scope.test.bookId};
-    var paramTest = {'offerId': 2};
+    $scope.bookInformation = '';
+    $scope.bookReviews = '';
 
-    console.log(MyBookService.specificBook.get(params));
+    if(MyBookService.bookId){
+        params.bookId = MyBookService.bookId;
 
-    $scope.bookInformation = MyBookService.specificBook.get(params);
+        $scope.bookInformation = MyBookService.specificBook.get(params);
 
-    $scope.bookReviews = MyBookService.bookReviews.get(params);
+        $scope.$watch('bookInformation.id', function(){
+            //fix the reviews, it's getting every review in the database.
+            $scope.bookReviews = MyBookService.bookReviews.get(params);
+        });
+    }else{
+        //do something else
+    }
 
-
-    $scope.vendorInformation = {
-        "vendor": 'Luis N. Valcourt',
-        "rating": '4.9',
-        "address": 'Puerto Rico',
-        "description": 'Book in excellent condition.'
-
-    };
-
-    $scope.offerInformation = {
-        "quantity": '2',
-        "new": '15',
-        "used": '3'
-    };
 
     $scope.tabs = {
         "showNew": false,
