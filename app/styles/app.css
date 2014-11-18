@@ -147,6 +147,12 @@ h1, h2, h3, h4, h5, h6 {
     text-align: justify;
 }
 
+/* AboutUs */
+.text-about {
+     text-align: justify;
+     
+}
+
 /*Sign Up Styles*/
 #signup-header {
     text-align: center;
