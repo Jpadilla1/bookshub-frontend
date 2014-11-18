@@ -13,21 +13,24 @@ var app = angular.module('hubAppApp');
 
 app.controller('SettingsCtrl', function($scope) {
       
-      $scope.tabs = {
-        "showUserInformation": true,
-        "showBookInformation": false
       
+      
+
+     $scope.showUserInformation1 = function() {
+      console.log("hi");
+        $scope.showUserInformation = true;
+        $scope.showBookInformation = false;
+        
     };
 
-     $scope.showUserInformation = function() {
-        $scope.tabs.showUserInformation = true;
-        $scope.tabs.showBookInformation = false;
-        
-    }
+     $scope.showBookInformation1 = function() {
+        $scope.showBookInformation = true;
+         $scope.showUserInformation = false;
+    };
 
-     $scope.showBookInformation = function() {
-        $scope.tabs.showBookInformation = true;
-         $scope.tabs.showUserInformation = false;
+    var init = function() {
+      $scope.showUserInformation = true;
+      $scope.showBookInformation = false;
     }
 
 
@@ -36,7 +39,7 @@ app.controller('SettingsCtrl', function($scope) {
     });
 
 
-        ];
-
+      
+      init();
      
     });
