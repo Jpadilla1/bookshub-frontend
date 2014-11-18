@@ -35,6 +35,10 @@ app.config(function($routeProvider) {
        templateUrl: 'views/about.html',
        controller: 'AboutCtrl'
      })
+     .when('/contactus', {
+       templateUrl: 'views/contactus.html',
+       controller: 'ContactUsCtrl'
+     })
      .when('/user-profile', {
        templateUrl: 'views/userProfile.html',
        controller: 'UserCtrl'
