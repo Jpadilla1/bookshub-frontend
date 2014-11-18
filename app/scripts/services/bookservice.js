@@ -13,6 +13,8 @@ var app = angular.module('hubAppApp');
 app.service('MyBookService', ['$resource', '$cookies', function($resource, $cookies){
 	var resource = {};
 	
+	resource.bookId = '';
+
 	var headers = {
 	  'Content-Type': 'application/json',
 	  'Authorization': 'JWT ' + $cookies.token
@@ -53,6 +55,12 @@ app.service('MyBookService', ['$resource', '$cookies', function($resource, $cook
 			headers: headers
 		},
 	});
-
+	resource.booksRequested = $resource('https://bookshub.herokuapp.com/api/books/requested\\/', {}, {
+		get: {
+			method: "GET",
+			isArray: false,
+			headers: headers
+		},
+	});
 	return resource;
 }]);

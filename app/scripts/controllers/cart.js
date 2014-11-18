@@ -7,7 +7,8 @@
  * # CartCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp').controller('CartCtrl', function($scope) {
+angular.module('hubAppApp').controller('CartCtrl', ['$scope', 'CartService', function($scope, CartService){
+    console.log(CartService.cart.get());
 
     $scope.cartItems = [{
         "title": 'Starting Out With Java',
@@ -65,4 +66,7 @@ angular.module('hubAppApp').controller('CartCtrl', function($scope) {
         defaultNavbar();
         $scope.checkTotalPrice();
     });
-});
+}]);
+
+
+

@@ -10,7 +10,8 @@
 
  var app = angular.module('hubAppApp');
 
- app.controller('SpecificUserCtrl', ['$scope', 'authService', 'UserService', 'MyOfferService', 'ReportService', function($scope, authService, UserService, MyOfferService, ReportService){
+ app.controller('SpecificUserCtrl', ['$scope', 'authService', 'UserService', 'MyOfferService', 'ReportService', 'MyBookService', 'CartService', 
+    function($scope, authService, UserService, MyOfferService, ReportService, MyBookService, CartService){
     $scope.tabs = {
         "showNew": false,
         "showUsed": false,
@@ -186,5 +187,35 @@
         $scope.userReportData.receiver = $scope.profileData.id;
         ReportService.userReport.save('', $scope.userReportData);
         //show success message
+    };
+
+    $scope.goToBookInfo = function(bookId){
+        MyBookService.bookId = bookId;
+    };
+
+    $scope.addOfferData = {
+        'user': '',
+        'offer': '',
+        'is_purchased': false,
+        'quantity': ''
+    };
+
+    $scope.addToCart = function(offerId){
+        if($scope.loggedInUserData){
+            $scope.addOfferData.user = $scope.loggedInUserData.id;
+        }else{
+            authService.settings().then(function(data){
+                $scope.loggedInUserData = data;
+                $scope.addOfferData.user = data.id;
+            });
+        }
+        $scope.addOfferData.offer = offerId;
+        if($scope.addOfferData.quantity != undefined && $scope.addOfferData.quantity > 0){
+            console.log($scope.addOfferData);
+            var test = CartService.cart.save('', $scope.addOfferData);
+            console.log(test);
+        }else{
+            console.log('error');
+        }
     };
  }]);
