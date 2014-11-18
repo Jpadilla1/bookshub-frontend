@@ -126,6 +126,7 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOff
         "owner": '',
         "end_date": ''
     };
+
     $scope.newBookForm = {
         "title": '',
         "isbn_10": '',
@@ -136,6 +137,11 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOff
         "category": ''
     };
 
+    $scope.getOfferImage = function() {
+        var offerImage = document.getElementById('offer-book-image-upload');
+        return offerImage;
+    }
+
     $scope.setBookIdOffer = function(bookId) {
         $scope.offerForm.book = bookId;
         $scope.show.result = false;
@@ -145,6 +151,7 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOff
     };
 
     $scope.submitOffer = function() {
+        console.log($scope.getOfferImage().files.item(0));
         $scope.submittedOffer = true;
         authService.settings().then(function(data) {
             $scope.offerForm.owner = data.id;
