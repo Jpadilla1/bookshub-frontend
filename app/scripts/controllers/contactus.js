@@ -28,8 +28,8 @@ var app = angular.module('hubAppApp')
                     "body": $scope.information,
                     "subject": $scope.subject,
                     "email": $scope.email,   //past user
-                    "category": $scope.category,
-                    "status": "open"
+                    "category": $scope.category
+                    
                 }
 
 
