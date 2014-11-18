@@ -55,6 +55,12 @@ app.service('MyBookService', ['$resource', '$cookies', function($resource, $cook
 			headers: headers
 		},
 	});
-
+	resource.booksRequested = $resource('https://bookshub.herokuapp.com/api/books/requested\\/', {}, {
+		get: {
+			method: "GET",
+			isArray: false,
+			headers: headers
+		},
+	});
 	return resource;
 }]);
