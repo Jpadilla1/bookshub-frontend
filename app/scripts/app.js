@@ -35,10 +35,6 @@ app.config(function($routeProvider) {
        templateUrl: 'views/about.html',
        controller: 'AboutCtrl'
      })
-     .when('/contactus', {
-       templateUrl: 'views/contactus.html',
-       controller: 'ContactUsCtrl'
-     })
      .when('/user-profile', {
        templateUrl: 'views/userProfile.html',
        controller: 'UserCtrl'
@@ -46,10 +42,6 @@ app.config(function($routeProvider) {
       .when('/book', {
        templateUrl: 'views/book.html',
        controller: 'BookCtrl'
-     })
-      .when('/requested', {
-       templateUrl: 'views/requested.html',
-       controller: 'RequestCtrl'
      })
       .when('/login', {
        templateUrl: 'views/login.html',
@@ -70,10 +62,6 @@ app.config(function($routeProvider) {
       .when('/cart', {
       templateUrl: 'views/cart.html',
       controller: 'CartCtrl'
-     })
-      .when('/settings', {
-      templateUrl: 'views/settings.html',
-      controller: 'SettingsCtrl'
      })
       .when('/specific-profile', {
       templateUrl: 'views/specificUserProfile.html',
