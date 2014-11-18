@@ -308,6 +308,15 @@ h1, h2, h3, h4, h5, h6 {
 .book-reviews-space{
     padding-top: 10%;
 }
+.specific-profile-review-space{
+    padding-top:8%;
+    padding-bottom:13%;
+}
+.specific-profile-book-space{
+    padding-top:8%;
+    padding-bottom:8%;
+}
+
 /*Cart Styles*/
 
 .cart-item {
@@ -369,6 +378,10 @@ h1, h2, h3, h4, h5, h6 {
 .book-options {
     margin-top: 2%;
     margin-bottom: 8%;
+}
+.book-display-footer{
+    margin-top: 0.5%;
+    margin-right: 2%;
 }
 
 /* user profile */
