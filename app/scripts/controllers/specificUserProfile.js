@@ -117,20 +117,23 @@
     $scope.profileData = '';
     $scope.profileReviews = '';
     $scope.profileOffers = '';
-    var params = {
-        "userId": '',
+    var paramsUser = {
+        "userId": ''
+    };
+
+    var paramsOwner = {
         "ownerId": ''
     };
 
     if(UserService.userId){
-        params.userId = UserService.userId;
-        params.ownerId = UserService.userId;
+        paramsUser.userId = UserService.userId;
+        paramsOwner.ownerId = UserService.userId;
 
-        $scope.profileData = UserService.specificProfile.get(params);
+        $scope.profileData = UserService.specificProfile.get(paramsUser);
 
         $scope.$watch('profileData.id', function(){
-            $scope.profileReviews = UserService.userReview.get(params);
-            $scope.profileOffers = MyOfferService.userOffers.get(params);
+            $scope.profileReviews = UserService.userReview.get(paramsUser);
+            $scope.profileOffers = MyOfferService.userOffers.get(paramsOwner);
             console.log($scope.profileData);
             console.log($scope.profileOffers);
         });
@@ -161,7 +164,8 @@
 
         $scope.userReviewData.user_id = $scope.profileData.id;
         $scope.userReviewData.owner = $scope.profileData.id;
-        UserService.userReview.save(params, $scope.userReviewData);
+        console.log($scope.userReviewData); 
+        UserService.userReview.save(paramsUser, $scope.userReviewData);
 
         //make something to do the review section refresh it's data after post
         //show success message
