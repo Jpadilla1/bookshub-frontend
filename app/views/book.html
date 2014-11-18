@@ -110,11 +110,14 @@
                 </form>
             </div>
         </div>
+
+        <!-- ng-click="notFound()" -->
         <div ng-show="show.result">
             <div class="col-md-offset-4 col-md-4">
-                <button type="button" class="btn btn-danger btn-lg add-book-not-found-button" ng-click="notFound()">
+                <a href="#/book"><button type="button" class="btn btn-danger btn-lg add-book-not-found-button">
                     Didn't Found your Book?
-                </button>
+                </button></a>
+               
             </div>
             <div class="col-md-12 autocomplete-results">
                 <div class="panel panel-default">
