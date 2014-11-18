@@ -1,87 +1,103 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="col-md-offset-2 col-md-8 info-request">
-                <h1>See All the Requested Books by our Users</h1>
+            <div class="col-md-offset-3 col-md-8 info-request">
+                <h1>See All the Requested Books!</h1>
 
             </div>
         </div>
 
 
-<!--  <div ng-show="show.searchForm" class="add-book-search" id="add-book-search-form">  </div>-->
+        <!--  <div ng-show="show.searchForm" class="add-book-search" id="add-book-search-form">  </div>-->
         <div class="col-md-12">
             <div class="col-md-offset-3 col-md-6 info-request">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" class="form-control" ng-model="searchInput">
-                            <div class="input-group-btn">
-                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Search
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                    <li>
-                                        <a href="" ng-click="autoCompleteSearch('title')">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Search
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                <li>
+                                    <a href="" ng-click="autoCompleteSearch('title')">
                                         Title
                                     </a>
-                                    </li>
-                                    <li>
-                                        <a href="" ng-click="autoCompleteSearch('isbn_10')">
+                                </li>
+                                <li>
+                                    <a href="" ng-click="autoCompleteSearch('isbn_10')">
                                         ISBN 10
                                     </a>
-                                    </li>
-                                    <li>
-                                        <a href="" ng-click="autoCompleteSearch('isbn_13')">
+                                </li>
+                                <li>
+                                    <a href="" ng-click="autoCompleteSearch('isbn_13')">
                                         ISBN 13
                                     </a>
-                                    </li>
-                                    <li>
-                                        <a href="" ng-click="autoCompleteSearch('author')">
+                                </li>
+                                <li>
+                                    <a href="" ng-click="autoCompleteSearch('author')">
                                         Author
                                     </a>
-                                    </li>
-                                </ul>
-                            </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-              
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-12 autocomplete-results">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="comment-panel">
+                    Search Results
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-12 add-book-result" ng-repeat="acr in autoCompleteResults.results">
+                        <div class="col-md-3">
+                            <img src="../images/hpbook.jpg" class="add-book-result-image">
+                            <br>
+                        </div>
+                        <div class="col-md-3 add-book-result-information">
+                            <label class="cart-item-info">Title:</label>{{acr.title}}
+                            </br>
+                            <label class="cart-item-info">ISBN 10:</label>{{acr.isbn_10}}
+                            </br>
+                            <label class="cart-item-info">ISBN 13:</label>{{acr.isbn_13}}
+                        </div>
+                        <div class="col-md-3 add-book-result-information">
+                            <label class="cart-item-info">Author:</label>
+                            <span ng-if="acr.id == null" ng-repeat="a in acr.author track by $index">
+                                {{a}}
+                            </span>
+                            <span ng-if="acr.id != null">
+                                {{acr.author}}
+                            </span>
+                            </br>
+                            <label class="cart-item-info">Edition:</label>{{acr.edition}}
+                            </br>
+                            <label class="cart-item-info">Publisher:</label>{{acr.publisher}}
+                        </div>
+                        <div class="col-md-3">
+                            <span ng-if="acr.id != null">
+                                <button type="button" ng-click="setBookIdOffer(acr.id)" class="btn btn-success btn-lg add-book-result-button">
+                                    This is the Book!
+                                </button>
+                            </span>
+                            <span ng-if="acr.id == null">
+                                <button type="button" ng-click="addBookAndOffer($index)" class="btn btn-success btn-lg add-book-result-button">
+                                    Add Book & Make Offer
+                                </button>
+                            </span>
+                        </div>
+                        <div class="col-md-12">
+                            <hr>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
 
-        
-            <div class="col-md-12">
-                <div class="requested-books">
-                    <ul class="list-unstyled" ng-repeat="o in offers.results">
-                        <span ng-if="o.condition == 'new'">
-                            <li class="col-md-6">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <a href="/">
-                                            <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
-                                        </a>
-                                        <div>
-                                            <h3>{{o.metadata.book.title}}</h3>
-                                            <span class="lighter-text">
-                                                <p>ISBN 10: {{o.metadata.book.isbn_10}}</p>
-                                                <p>ISBN 13: {{o.metadata.book.isbn_13}}</p>
-                                            </span>
-                                            <h4>{{o.metadata.book.author}}</h4>
-                                        </div>
-                                    </div>
-                                    <div class="panel-footer" id="comment-panel">
-                                        Price:
-                                        <span class="label label-with-background">
-                                            ${{o.price}}
-                                        </span>
-                                    </div>
-                                </div>
-                            </li>
-                        </span>
-                    </ul>
-                </div>
-            </div>
-
-       
 
 
     </div>
