@@ -10,20 +10,35 @@
 
 var app = angular.module('hubAppApp');
 
-app.controller('RequestCtrl', ['$scope', 'bookservice', function($scope, bookservice) {
- 
-alert("entro");
+app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBookService) {
 
-        $scope.result = function() {
-            //Here we send data to back end
-            bookservice.booksRequested()
-                .then(function(data){
-                    log("entro");
-                }, function(data){
-                    alert("no entro");
-                });
-        };
 
+    $scope.AllRequested = true;
+    $scope.TopRequested = false;
+
+    $scope.showAllRequested = function() {
+
+        $scope.result = MyBookService.booksRequested.get();
+           console.log($scope.result);
+
+        
+
+        $scope.AllRequested = true;
+        $scope.TopRequested = false;
+    };
+
+    $scope.showTopRequested = function() {
+
+         $scope.topRequested = MyBookService.topRequested.get();
+
+        $scope.AllRequested = false;
+        $scope.TopRequested = true;
+
+
+    
+    };
+    
+    $scope.showAllRequested();
 
 
       $scope.$on('$viewContentLoaded', function() {

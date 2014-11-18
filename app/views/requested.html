@@ -12,7 +12,7 @@
         </div>
          <div class="col-md-12">
             <div class="col-md-offset-3 col-md-6 info-request">
-               <center><a href="#/requested"><button type="button" class="btn btn-success btn-lg">
+               <center><a href="#/book"><button type="button" class="btn btn-success btn-lg">
                     Didn't Found your Book?
                 </button></a></center>
             </div>
@@ -22,9 +22,11 @@
             <div class="panel panel-default">
                 <div class="panel-heading" id="comment-panel">
                     Search Results
+                     <button type="button" class="btn-sm btn-success btn-options" ng-click="showAllRequested()">All Requested</button>
+                    <button type="button" class="btn-sm btn-success btn-options" ng-click="showTopRequested()">Top Requested</button>
                 </div>
-                <div class="panel-body">
-                    <div class="col-md-12 add-book-result" ng-repeat="r in result.requested">
+                <div class="panel-body" ng-show="AllRequested">
+                    <div class="col-md-12 add-book-result" ng-repeat="r in result">
                         <div class="col-md-3">
                             <img src="../images/hpbook.jpg" class="add-book-result-image">
                             <br>
@@ -66,6 +68,55 @@
                         </div>
                     </div>
                 </div>
+            
+                <div class="panel-body" ng-show="TopRequested">
+                    <div class="col-md-12 add-book-result" ng-repeat="r in topRequested">
+                        <div class="col-md-3">
+                            <img src="../images/hpbook.jpg" class="add-book-result-image">
+                            <br>
+                        </div>
+                        <div class="col-md-3 add-book-result-information">
+                            <label class="cart-item-info">Title:</label>{{r.title}}
+                            </br>
+                            <label class="cart-item-info">ISBN 10:</label>{{r.isbn_10}}
+                            </br>
+                            <label class="cart-item-info">ISBN 13:</label>{{r.isbn_13}}
+                        </div>
+                        <div class="col-md-3 add-book-result-information">
+                            <label class="cart-item-info">Author:</label>
+                            <span ng-if="acr.id == null" ng-repeat="a in r.author track by $index">
+                                {{a}}
+                            </span>
+                            <span ng-if="acr.id != null">
+                                {{acr.author}}
+                            </span>
+                            </br>
+                            <label class="cart-item-info">Edition:</label>{{r.edition}}
+                            </br>
+                            <label class="cart-item-info">Publisher:</label>{{r.publisher}}
+                        </div>
+                        <div class="col-md-3">
+                            <span ng-if="acr.id != null">
+                                <button type="button" ng-click="setBookIdOffer(r.id)" class="btn btn-success btn-lg add-book-result-button">
+                                    This is the Book!
+                                </button>
+                            </span>
+                            <span ng-if="acr.id == null">
+                                <button type="button" ng-click="addBookAndOffer($index)" class="btn btn-success btn-lg add-book-result-button">
+                                    Add Book & Make Offer
+                                </button>
+                            </span>
+                        </div>
+                        <div class="col-md-12">
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
             </div>
         </div>
 
