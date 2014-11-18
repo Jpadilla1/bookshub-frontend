@@ -8,11 +8,14 @@
  * Controller of the hubAppApp
  */
 
+
 var app = angular.module('hubAppApp');
 
-
-app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBookService) {
-
+app.controller('RequestCtrl', 
+    ['$rootScope', '$scope', 'authService', 'MyContactService', 'UserService',
+     'MyOfferService', 'MyBookService', 
+     function($rootScope, $scope, authService, MyContactService,
+        UserService, MyOfferService, MyBookService) {
 
 
     $scope.AllRequested = true;
