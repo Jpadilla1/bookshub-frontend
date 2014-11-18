@@ -23,6 +23,8 @@ angular.module('hubAppApp')
         "title": ''
     };
 
+    var originalSignUpForm = angular.copy($scope.signUpForm);
+
     $scope.settingsForm = {
         "zip": '',
         "twitter_url": '',
@@ -64,12 +66,20 @@ angular.module('hubAppApp')
         authService.signup($scope.signUpForm)
             .then(function(data){
                 // success
+                $scope.isSignUp = true;
                 console.log(data);
             }, function(data){
+                $scope.signUpError = true;
+                $scope.clearSignUpForm();
                 // error
                 console.log(data);
         });
         // console.log($scope.settingsForm);
+    }
+
+    $scope.clearSignUpForm = function() {
+        $scope.signUpForm = angular.copy(originalSignUpForm);
+        $scope.retypedPassword = '';
     }
 
     $scope.$on('$viewContentLoaded', function() {

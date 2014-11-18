@@ -132,7 +132,9 @@ h1, h2, h3, h4, h5, h6 {
 .login-logo {
     margin-bottom: 10%;
 }
-
+.login-alert{
+    margin-top: 10%;
+}
 /*Forgot Password Styles*/
 .forgot-password-btn {
     width: 100%;

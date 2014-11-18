@@ -171,10 +171,8 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOff
         return actualDate;
     };
 
-
     var originalNewBookForm = angular.copy($scope.newBookForm);
     var originalOfferForm = angular.copy($scope.offerForm);
-
 
     $scope.clearNewBookForm = function() {
         $scope.newBookForm = angular.copy(originalNewBookForm);

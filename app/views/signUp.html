@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-12">    
+        <div class="col-md-12">
             <div class="col-md-10 col-md-offset-1">
                 <form role="form" ng-submit="submit()">
                     <div ng-show="tabs.showBasicForm">
@@ -11,45 +11,52 @@
                         <div class="col-md-12">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Username" ng-model="signUpForm.username" required>
+                                    <input type="text" class="form-control" placeholder="Username" ng-disabled="isSignUp" ng-model="signUpForm.username" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email" ng-model="signUpForm.email" required>
+                                    <input type="email" class="form-control" placeholder="Email" ng-disabled="isSignUp" ng-model="signUpForm.email" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password" ng-model="signUpForm.password" required>
+                                    <input type="password" class="form-control" placeholder="Password" ng-minlength="6" ng-disabled="isSignUp" ng-model="signUpForm.password" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Retype Password" ng-model="retypedPassword" required>
-                                </div>                        
+                                    <input type="password" class="form-control" placeholder="Retype Password" ng-minlength="6" ng-disabled="isSignUp" ng-model="retypedPassword" required>
+                                </div>
                             </div>
-
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="First Name" ng-model="signUpForm.first_name" required>
+                                    <input type="text" class="form-control" placeholder="First Name" ng-disabled="isSignUp" ng-model="signUpForm.first_name" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Last Name" ng-model="signUpForm.last_name" required>
+                                    <input type="text" class="form-control" placeholder="Last Name" ng-disabled="isSignUp" ng-model="signUpForm.last_name" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="number" class="form-control" placeholder="Phone Number" ng-model="signUpForm.phone" required>
+                                    <input type="number" class="form-control" placeholder="Phone Number" ng-disabled="isSignUp" ng-model="signUpForm.phone" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Title" ng-model="signUpForm.title" required>
+                                    <input type="text" class="form-control" placeholder="Title" ng-disabled="isSignUp" ng-model="signUpForm.title" required>
                                 </div>
                             </div>
                             <div class="col-md-6 col-md-offset-3">
-                                    <div class="form-group" class="signup-buttons">
+                                <div class="form-group" class="signup-buttons">
                                     <!--<button type="button" class="btn btn-success btn-lg" ng-click="showUserForm()">Complete Account</button>-->
                                     <!--Student Form Button
                                     <div class="col-md-4">
                                         <button type="button" class="btn btn-success btn-lg" ng-click="showStudentForm()">Fill Student Info</button>
                                     </div>-->
-                                    <button type="submit" class="btn btn-success btn-lg btn-block">Finish Now!</button>
-                                </div>     
+                                    <button type="submit" class="btn btn-success btn-lg btn-block" ng-disabled="isSignUp">Finish Now!</button>
+                                </div>
+                                <div class="alert alert-success" ng-show="isSignUp">
+                                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                    <strong>Success!</strong> You Have Been Signed Up!
+                                </div>
+                                <div class="alert alert-danger" ng-show="signUpError">
+                                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                    <strong>Error!</strong> Account Already Exists!
+                                </div>
                             </div>
                         </div>
-                        <div ng-show="tabs.showUserForm">
+                        <!-- <div ng-show="tabs.showUserForm">
                             <div class="col-md-12">
                                 <h1 class="sign-up-header">Complete Your Account!</h1>
                             </div>
@@ -85,8 +92,8 @@
                                 <button type="submit" class="btn btn-success btn-lg">Finish!</button>
                             </div>
                         </div>
-                        </div>
-                    <!--STUDENTS FORM
+                    </div> -->
+                        <!--STUDENTS FORM
                     <div ng-show="tabs.showStudentForm">
                         <center>
                             <h1 class="sign-up-header">Finish your Profile or get Searching!</h1>
@@ -121,7 +128,7 @@
                         </div>
                     </div>-->
                 </form>
+                </div>
             </div>
         </div>
     </div>
-</div>

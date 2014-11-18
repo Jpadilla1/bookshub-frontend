@@ -7,7 +7,6 @@
  * # LogInCtrl
  * Controller of the hubAppApp
  */
-//$('.navbar.navbar-inverse').css('background-color', 'rgba(0, 0, 0, 0.74)');
 
 angular.module('hubAppApp')
     .controller('LogInCtrl', ['$scope', 'authService', function($scope, authService) {
@@ -21,11 +20,19 @@ angular.module('hubAppApp')
             //Here we send data to back end
             authService.signin($scope.logInForm.email, $scope.logInForm.password)
                 .then(function(data){
+                    $scope.isLogIn = true;      
                     // success
                 }, function(data){
+                    $scope.logInError = true;
+                    $scope.resetForm();
                     // error
                 });
         };
+
+        $scope.resetForm = function() {
+            $scope.logInForm.email = '';
+            $scope.logInForm.password = '';
+        }
 
         $scope.$on('$viewContentLoaded', function() {
             defaultNavbar();
