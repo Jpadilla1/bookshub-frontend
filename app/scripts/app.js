@@ -43,6 +43,10 @@ app.config(function($routeProvider) {
        templateUrl: 'views/book.html',
        controller: 'BookCtrl'
      })
+       .when('/requested', {
+       templateUrl: 'views/requested.html',
+       controller: 'RequestCtrl'
+     })
       .when('/login', {
        templateUrl: 'views/login.html',
        controller: 'LogInCtrl'

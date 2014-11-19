@@ -66,7 +66,7 @@
                     <div class="col-md-12" ng-show="addedNewBook">
                         <div class="alert alert-success">
                             <a href="#" class="close" data-dismiss="alert">&times;</a>
-                            <strong>Success!</strong> Your Book has been added successfully.
+                            <strong>Success!</strong>Your Book has been added successfully.
                         </div>
                     </div>
                     <div class="form-group add-book-buttons" ng-hide="addedNewBook">
@@ -110,12 +110,24 @@
                 </form>
             </div>
         </div>
+
         <div ng-show="show.result">
-            <div class="col-md-offset-4 col-md-4">
-                <button type="button" class="btn btn-danger btn-lg add-book-not-found-button" ng-click="notFound()">
-                    Didn't Found your Book?
-                </button>
+        <div class="col-md-offset-4 col-md-4">
+            <div class="text-center">
+                <h3>The book did not appear?</h3>
             </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-danger btn-md btn-options" ng-click="notFound()">
+                    Add the Book!</button>
+
+                <a href="#/requested">
+                    <button type="button" class="btn btn-danger btn-md btn-options">
+                        Check the Requested Books!</button>
+                </a>
+            </div> 
+            </div>
+
+           
             <div class="col-md-12 autocomplete-results">
                 <div class="panel panel-default">
                     <div class="panel-heading" id="comment-panel">
@@ -201,7 +213,7 @@
                 <div class="col-md-12" ng-show="submittedOffer">
                     <div class="alert alert-success">
                         <a href="#" class="close" data-dismiss="alert">&times;</a>
-                        <strong>Success!</strong> Your Offer has been added successfully.
+                        <strong>Success!</strong>Your Offer has been added successfully.
                     </div>
                 </div>
                 <div class="col-md-12" ng-hide="submittedOffer">
