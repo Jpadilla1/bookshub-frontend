@@ -151,9 +151,12 @@
                                                                 ${{po.price}}
                                                             </span>
                                                             <span>
-                                                                <button class="btn btn-with-background pull-right">
+                                                                <button class="btn btn-with-background pull-right" ng-click="addToCart(po.id)">
                                                                     Add to Cart
                                                                 </button>
+                                                            </span>
+                                                            <span>
+                                                                <input type="number" max="{{po.quantity}}" min="0" class="offer-footer-quantity book-display-footer pull-right" ng-model="addOfferData.quantity">
                                                             </span>
                                                         </div>
                                                     </div>

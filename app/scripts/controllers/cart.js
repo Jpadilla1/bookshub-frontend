@@ -7,36 +7,30 @@
  * # CartCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp').controller('CartCtrl', ['$scope', 'CartService', function($scope, CartService){
-    console.log(CartService.cart.get());
+angular.module('hubAppApp').controller('CartCtrl', ['$scope', 'CartService', 'MyOfferService', 'MyBookService', function($scope, CartService, MyOfferService, MyBookService){
 
-    $scope.cartItems = [{
-        "title": 'Starting Out With Java',
-        "isbn13": '978-0132855839',
-        "isbn10": 0132855836,
-        "author": 'Tonny Gaddis',
-        "quantity": '2',
-        "pricePerItem": 40,
-        "selected": false
-    }, {
-        "title": 'Starting Out With Java 2',
-        "isbn13": '978-0132855839',
-        "isbn10": 0132855836,
-        "author": 'Tonny Gaddis',
-        "quantity": '2',
-        "pricePerItem": 40,
-        "selected": false
-    }];
-
+    $scope.cartItems = CartService.cart.get();
+    var offerInformation = '';
+    var paramsOffer = {
+        'offerId': ''
+    };
     $scope.totalPrice = 0;
 
-    $scope.checkTotalPrice = function() {
-        var sum = 0;
-        angular.forEach($scope.cartItems, function(item) {
-            sum += (item.quantity * item.pricePerItem);
+    $scope.$watch('cartItems.results', function(){
+
+        angular.forEach($scope.cartItems.results, function(item) {
+            paramsOffer.offerId = item.offer;
+            offerInformation = MyOfferService.bookOffer.get(paramsOffer);
+            
+            offerInformation.$promise.then(function(data){
+                item.offerInformation = data;
+                $scope.totalPrice += (data.price * item.quantity);
+            });
+
         });
-        $scope.totalPrice = sum;
-    }
+
+        $scope.cartItems = $scope.cartItems;
+    });
 
     $scope.removeAtIndex = function(array, index) {
         array.splice(index, 1);
@@ -64,7 +58,6 @@ angular.module('hubAppApp').controller('CartCtrl', ['$scope', 'CartService', fun
 
     $scope.$on('$viewContentLoaded', function() {
         defaultNavbar();
-        $scope.checkTotalPrice();
     });
 }]);
 

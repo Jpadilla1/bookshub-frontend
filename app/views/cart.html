@@ -15,12 +15,12 @@
             <button type="button" ng-click="remove(-1)" class="btn btn-danger btn-lg">Remove</button>
         </div>
         <hr class="col-md-12">
-        <div class="col-md-12" ng-repeat="item in cartItems">
+        <div class="col-md-12" ng-repeat="item in cartItems.results">
             <div class="panel panel-default">
                 <div class="panel-heading" id="comment-panel">
                     <span class="checkbox">
                         <input type="checkbox" ng-model="item.selected" ng-checked="allChecked">
-                        {{item.title}}
+                        {{item.offerInformation.metadata.book.title}}
                     </span>
                 </div>
                 <div class="panel-body">
@@ -28,19 +28,23 @@
                         <img src="../images/hpbook.jpg" class="cart-item-image">
                     </div>
                     <div class="col-md-offset-1 col-md-4">
-                        <label class="cart-item-info">Author:</label> {{item.author}}
+                        <label class="cart-item-info">Author:</label> {{item.offerInformation.metadata.book.author}}
                         </br>
-                        <label class="cart-item-info">ISBN 13:</label> {{item.isbn13}}
+                        <label class="cart-item-info">ISBN 10:</label> {{item.offerInformation.metadata.book.isbn_10}}
                         </br>
-                        <label class="cart-item-info">ISBN 10:</label> {{item.isbn10}}
+                        <label class="cart-item-info">ISBN 13:</label> {{item.offerInformation.metadata.book.isbn_13}}
                         </br>
                         <label class="cart-item-info">Quantity:</label> {{item.quantity}}
                         </br>
-                        <label class="cart-item-info">Price Per Item:</label> {{item.pricePerItem | currency}}
+                        <label class="cart-item-info">Price Per Item:</label> {{item.offerInformation.price | currency}}
                     </div>
                     <div class="col-md-4">
-                        <h3 class="cart-item-price">Price: {{item.pricePerItem * item.quantity | currency}}</h3>
-                        <button type="button" ng-click="remove($index)" class="btn btn-danger btn-lg cart-item-buttons">Remove</button>
+                        <h3 class="cart-item-price">
+                            Price: {{item.offerInformation.price * item.quantity | currency}}
+                        </h3>
+                        <button type="button" ng-click="remove($index)" class="btn btn-danger btn-lg cart-item-buttons">
+                            Remove
+                        </button>
                     </div>
                     <br>
                 </div>
