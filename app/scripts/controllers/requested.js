@@ -62,11 +62,18 @@ app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBoo
 
     };
 
+    $scope.b = '';
 
-     $scope.showNewBookFormat = function(){
+    $scope.showNewBookFormat = function(){
+        var test = MyBookService.topRequested.get();
 
-         $scope.b = MyBookService.topRequested.get();
-         console.log($scope.b);
+        test.$promise.then(function(data){
+          alert('hello');
+          $scope.b = data;
+          console.log($scope.b.results);
+        });
+
+        console.log($scope.b);
 
         $scope.AddBook = false;
         $scope.AllRequested = false;
