@@ -67,11 +67,15 @@ app.config(function($routeProvider) {
       templateUrl: 'views/cart.html',
       controller: 'CartCtrl'
      })
+      .when('/404', {
+      templateUrl: '404.html',
+      controller: '404Ctrl'
+     })
       .when('/specific-profile', {
       templateUrl: 'views/specificUserProfile.html',
       controller: 'SpecificUserCtrl'
      })
      .otherwise({
-       redirectTo: '/'
+       redirectTo: '/404'
      });
  });

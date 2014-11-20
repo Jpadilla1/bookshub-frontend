@@ -26,7 +26,7 @@
     <!-- Add your site or application content here -->
     <div>
         <!--Navbar Begins -->
-        <nav class="navbar navbar-inverse" role="navigation" id="primary-nav">
+        <nav class="navbar navbar-inverse" role="navigation" id="primary-nav" ng-hide="is404Page">
             <div class="container-fluid">
                 <!--Brand and toggle get grouped for better mobile display-->
                 <div class="navbar-header">
@@ -78,7 +78,7 @@
         <div ng-view="" autoscroll=""></div>
 
         <!--Footer Section Begins-->
-        <div id="footer">
+        <div id="footer" ng-hide="is404Page">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12" id="footer-text">
@@ -159,6 +159,7 @@
     <script src="scripts/controllers/forgotPassword.js"></script>
     <script src="scripts/controllers/resetPassword.js"></script>
     <script src="scripts/controllers/cart.js"></script>
+    <script src="scripts/controllers/404.js"></script>
     <script src="scripts/controllers/specificUserProfile.js"></script>
     <script src="scripts/js/navbarManipulation.js"></script>
     <script src="scripts/js/searchValidation.js"></script>
