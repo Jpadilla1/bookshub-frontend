@@ -24,8 +24,6 @@ app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBoo
 
     };
     
-
-    
      // authservice.settings().then(function(data){
      //    $scope.test.user = data.id;
      // });
@@ -34,6 +32,7 @@ app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBoo
 
     $scope.AllRequested = true;
     $scope.TopRequested = false;
+    $scope.NewBookFormat = false;
     $scope.AddBook = false;
 
     $scope.showAllRequested = function() {
@@ -63,6 +62,19 @@ app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBoo
 
     };
 
+
+     $scope.showNewBookFormat = function(){
+
+         $scope.b = MyBookService.topRequested.get();
+         console.log($scope.b);
+
+        $scope.AddBook = false;
+        $scope.AllRequested = false;
+        $scope.TopRequested = false;
+        $scope.NewBookFormat = true;
+
+    };
+
     $scope.AddBookRequested = function(){
 
          $scope.request = MyBookService.booksRequested.save('', $scope.rBook);
@@ -70,8 +82,8 @@ app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBoo
 
     };
     
-    $scope.showAllRequested();
-
+    
+        $scope.showAllRequested();
 
       $scope.$on('$viewContentLoaded', function() {
         defaultNavbar();
