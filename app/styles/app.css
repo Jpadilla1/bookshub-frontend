@@ -111,6 +111,19 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
 }
 
+/* Requested */
+
+.panel-space{
+    
+    margin-right: 1%;
+    margin-bottom: 2%;
+    margin-left: 3%;
+    
+}
+.panel-foot{
+    margin-bottom: 3%;
+}
+
 /*Log In Styles*/
 .forgot-links {
     float: right;
@@ -146,6 +159,8 @@ h1, h2, h3, h4, h5, h6 {
 #forgot-pass-desc {
     text-align: justify;
 }
+
+
 
 /*Sign Up Styles*/
 #signup-header {

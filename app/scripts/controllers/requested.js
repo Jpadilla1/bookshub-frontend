@@ -85,7 +85,7 @@ app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBoo
     $scope.AddBookRequested = function(){
 
          $scope.request = MyBookService.booksRequested.save('', $scope.rBook);
-         console.log($scope.request);
+         console.log($scope.rBook);
 
     };
     
