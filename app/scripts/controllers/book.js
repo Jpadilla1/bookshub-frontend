@@ -7,7 +7,7 @@
  * # BookCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOfferService', 'MyBookService', 'authService', function($scope, MySearch, MyOfferService, MyBookService, authService) {
+angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOfferService', 'MyBookService', 'authService', '$http', '$cookies', function($scope, MySearch, MyOfferService, MyBookService, authService, $http, $cookies) {
     $scope.searchIsMoved = false;
     $scope.searchInput = '';
     $scope.createAndOffer = '';
@@ -126,6 +126,7 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOff
         "owner": '',
         "end_date": ''
     };
+
     $scope.newBookForm = {
         "title": '',
         "isbn_10": '',
@@ -134,6 +135,30 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOff
         "publisher": '',
         "edition": '',
         "category": ''
+    };
+
+    var offerId;
+
+    $scope.uploadImageFile = function() {
+        var imageFile = document.getElementById('offer-book-image-upload');
+        var fd = new FormData();
+
+        for (var i = 0; i < imageFile.files.length; i++) {
+            fd.append('image', imageFile.files[i]);
+        };
+
+        $http.post("https://bookshub.herokuapp.com/api/offers/" + offerId + "/images/",
+            fd, {
+                transformRequest: angular.identity,
+                headers: {
+                    'Content-Type': undefined,
+                    'Authorization': 'JWT ' + $cookies.token
+                }
+            }).success(function(data) {
+
+        }).error(function(data) {
+
+        });
     };
 
     $scope.setBookIdOffer = function(bookId) {
@@ -148,9 +173,15 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOff
         $scope.submittedOffer = true;
         authService.settings().then(function(data) {
             $scope.offerForm.owner = data.id;
-            MyOfferService.bookOffer.save('', $scope.offerForm);
+            MyOfferService.bookOffer.save('', $scope.offerForm)
+                .$promise.then(function(data) {
+                    // Success
+                    offerId = data.id;
+                    $scope.uploadImageFile();
+                }).then(function(data) {
+                   // Error
+                });
         });
-
     };
 
     $scope.submitNewBook = function() {
