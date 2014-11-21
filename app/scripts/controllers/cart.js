@@ -11,9 +11,15 @@ angular.module('hubAppApp').controller('CartCtrl', ['$scope', 'CartService', 'My
 
     $scope.cartItems = CartService.cart.get();
     var offerInformation = '';
+
     var paramsOffer = {
         'offerId': ''
     };
+
+    $scope.update = {
+        "quantity": ''
+    };
+
     $scope.totalPrice = 0;
 
     $scope.$watch('cartItems.results', function(){
@@ -21,6 +27,7 @@ angular.module('hubAppApp').controller('CartCtrl', ['$scope', 'CartService', 'My
 
         angular.forEach($scope.cartItems.results, function(item) {
             paramsOffer.offerId = item.offer;
+            $scope.update.quantity = item.quantity;
             offerInformation = MyOfferService.bookOffer.get(paramsOffer);
             
             offerInformation.$promise.then(function(data){
@@ -72,6 +79,39 @@ angular.module('hubAppApp').controller('CartCtrl', ['$scope', 'CartService', 'My
             $scope.cartItems = CartService.cart.get();
         });
     }
+
+    $scope.updateData = function(quantity, id, index){
+
+        var params = {
+            "cartId": id
+        };
+
+        var input = document.getElementsByClassName('quantity-update');
+
+        if(input[index].value <= quantity && input[index].value != 0){
+            $scope.cartOffer = CartService.specificCart.get(params);
+
+            $scope.cartOffer.$promise.then(function(){
+                var updateCartData = {
+                    'pk': id,
+                    'offer': $scope.cartOffer.offer,
+                    'quantity': input[index].value
+                };
+                var updateCart = CartService.specificCart.put(params, updateCartData);
+
+                updateCart.$promise.then(function(){
+                    $scope.cartItems = CartService.cart.get();
+                });
+            });
+
+        }else if(input[index].value == 0){
+            var removeItem = CartService.specificCart.remove(params);
+
+            removeItem.$promise.then(function(){
+                $scope.cartItems = CartService.cart.get();
+            });
+        }
+    };
 
     $scope.$on('$viewContentLoaded', function() {
         defaultNavbar();

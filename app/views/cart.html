@@ -34,7 +34,7 @@
                         </br>
                         <label class="cart-item-info">ISBN 13:</label> {{item.offerInformation.metadata.book.isbn_13}}
                         </br>
-                        <label class="cart-item-info">Quantity:</label> {{item.quantity}}
+                        <label class="cart-item-info">Quantity:</label> <input type="number" class="small-input quantity-update"  max="{{item.offerInformation.quantity}}" min="0" value="{{item.quantity}}">
                         </br>
                         <label class="cart-item-info">Price Per Item:</label> {{item.offerInformation.price | currency}}
                     </div>
@@ -42,6 +42,9 @@
                         <h3 class="cart-item-price">
                             Price: {{item.offerInformation.price * item.quantity | currency}}
                         </h3>
+                        <button type="button" ng-click="updateData(item.offerInformation.quantity, item.id, $index)" class="btn btn-info btn-lg cart-item-buttons">
+                            Update
+                        </button>
                         <button type="button" ng-click="remove(item.id)" class="btn btn-danger btn-lg cart-item-buttons">
                             Remove
                         </button>
