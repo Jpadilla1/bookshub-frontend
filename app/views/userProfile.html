@@ -76,7 +76,7 @@
                                                 <img ng-src="{{r.metadata.created_by_gravatar_url}}" class="img-rounded small-picture">
                                                 <span>
                                                     Reviewed by 
-                                                    <a href="#/specific-profile" ng-click="goToOtherUser(r.created_by)">
+                                                    <a href="#/specific-profile" class="custom-link-white" ng-click="goToOtherUser(r.created_by)">
                                                         {{r.metadata.created_by_name}}
                                                     </a>
                                                 </span>
@@ -131,11 +131,11 @@
                                                                 </a>
                                                                 <div>
                                                                     <h3>{{o.metadata.book.title}}</h3>
+                                                                    <h4>{{o.metadata.book.author}}</h4>
                                                                     <span class="lighter-text">
                                                                         <p>ISBN 10: {{o.metadata.book.isbn_10}}</p>
                                                                         <p>ISBN 13: {{o.metadata.book.isbn_13}}</p>
                                                                     </span>
-                                                                    <h4>{{o.metadata.book.author}}</h4>
                                                                 </div>
                                                             </div>
                                                             <div class="panel-footer" id="comment-panel">
@@ -178,11 +178,11 @@
                                                                 </a>
                                                                 <div>
                                                                     <h3>{{o.metadata.book.title}}</h3>
+                                                                    <h4>{{o.metadata.book.author}}</h4>
                                                                     <span class="lighter-text">
                                                                         <p>ISBN 10: {{o.metadata.book.isbn_10}}</p>
                                                                         <p>ISBN 13: {{o.metadata.book.isbn_13}}</p>
                                                                     </span>
-                                                                    <h4>{{o.metadata.book.author}}</h4>
                                                                 </div>
                                                             </div>
                                                             <div class="panel-footer" id="comment-panel">
