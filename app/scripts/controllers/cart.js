@@ -17,6 +17,7 @@ angular.module('hubAppApp').controller('CartCtrl', ['$scope', 'CartService', 'My
     $scope.totalPrice = 0;
 
     $scope.$watch('cartItems.results', function(){
+        $scope.totalPrice = 0;
 
         angular.forEach($scope.cartItems.results, function(item) {
             paramsOffer.offerId = item.offer;
@@ -36,24 +37,40 @@ angular.module('hubAppApp').controller('CartCtrl', ['$scope', 'CartService', 'My
         array.splice(index, 1);
     }
 
-    $scope.remove = function(index) {
-        if (index == -1) {
+    $scope.remove = function(id) {
+
+        var params = {
+            'cartId': ''
+        };
+
+        var removedItem = '';
+
+        if (id == -1) {
             if ($scope.allChecked) {
-                $scope.cartItems = [];
+                angular.forEach($scope.cartItems.results, function(item){
+                    params.cartId = item.id;
+                    removedItem = CartService.specificCart.remove(params);
+                });
                 $scope.allChecked = false;
-                $scope.checkTotalPrice();
+
             } else {
-                for (var i = $scope.cartItems.length - 1; i >= 0; i--) {
-                    if ($scope.cartItems[i].selected) {
-                        $scope.removeAtIndex($scope.cartItems, i);
+                var elements = document.getElementsByTagName('input');
+
+                for (var i = 0; i < elements.length; i++) {
+                    if(elements[i].checked){
+                        params.cartId = elements[i].value;
+                        removedItem = CartService.specificCart.remove(params);
                     }
-                    $scope.checkTotalPrice();
                 };
             }
         } else {
-            $scope.removeAtIndex($scope.cartItems, index);
-            $scope.checkTotalPrice();
+            params.cartId = id;
+            removedItem = CartService.specificCart.remove(params);
         }
+
+        removedItem.$promise.then(function(){
+            $scope.cartItems = CartService.cart.get();
+        });
     }
 
     $scope.$on('$viewContentLoaded', function() {
