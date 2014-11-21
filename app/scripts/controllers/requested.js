@@ -13,7 +13,6 @@ var app = angular.module('hubAppApp');
 app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBookService) {
  
     $scope.rBook = {
-       
         "title": '',
         "isbn_10": '',
         "isbn_13": '',
@@ -35,6 +34,7 @@ app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBoo
     $scope.NewBookFormat = false;
     $scope.AddBook = false;
 
+    $scope.result = '';
     $scope.showAllRequested = function() {
 
         $scope.result = MyBookService.booksRequested.get();
@@ -82,10 +82,42 @@ app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBoo
 
     };
 
-    $scope.AddBookRequested = function(){
+    $scope.showAddBookRequested = function(id, index){
 
-         $scope.request = MyBookService.booksRequested.save('', $scope.rBook);
-         console.log($scope.rBook);
+        var paramsbook = {
+            "requestId": id
+        };
+
+        var book = MyBookService.specificBookRequested.get(paramsbook);
+        $scope.newData = '';
+        book.$promise.then(function(data){
+            data.count+=1;
+            $scope.newData = data;
+            console.log($scope.result.results[index]);
+            $scope.result.results[index] = MyBookService.specificBookRequested.put(paramsbook, $scope.newData);
+        });
+    };
+
+    $scope.showAddBookRequested2 = function(id, index){
+
+        var paramsbook = {
+            "requestId": id
+        };
+
+        var book = MyBookService.specificBookRequested.get(paramsbook);
+        $scope.newData = '';
+        book.$promise.then(function(data){
+            data.count+=1;
+            $scope.newData = data;
+            console.log($scope.result.results[index]);
+            $scope.topRequested.results[index] = MyBookService.specificBookRequested.put(paramsbook, $scope.newData);
+        });
+    };
+
+
+    $scope.AddBook1 = function(){
+
+            MyBookService.booksRequested.save($scope.rBook);
 
     };
     
