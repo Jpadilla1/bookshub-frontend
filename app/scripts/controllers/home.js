@@ -30,8 +30,6 @@ received in the index*/
 
         $scope.topRequestedBooks = MyBookService.topRequested.get();
 
-        $scope.topRecommendedBooks = MyBookService.topRecommended.get();
-
         $scope.$on('$viewContentLoaded', function() {
             homeNavbar();
         });

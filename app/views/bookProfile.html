@@ -59,7 +59,7 @@
                                       <div class="panel-heading" id="comment-panel">
                                             <img src="http://placehold.it/400x200" class="img-rounded small-picture">
                                             <span>
-                                                Reviewed by {{r.user}}
+                                                Reviewed by {{r.username}}
                                             </span>
                                         </div>
                                         <div class="panel-body">
@@ -108,7 +108,7 @@
                                                     <div class="panel-heading" id="comment-panel">
                                                         <img src="http://placehold.it/400x200" class="img-rounded small-picture">
                                                         <span>
-                                                            Sold by {{nb.owner}} at
+                                                            Sold by {{nb.metadata.owner_username}} at
                                                             <span class="label label-with-background">
                                                                 ${{nb.price}}
                                                             </span>
@@ -152,7 +152,7 @@
                                                     <div class="panel-heading" id="comment-panel">
                                                         <img src="http://placehold.it/400x200" class="img-rounded small-picture">
                                                         <span>
-                                                            Sold by {{ub.owner}} at
+                                                            Sold by {{ub.metadata.owner_username}} at
                                                             <span class="label label-with-background">
                                                                 $ {{ub.price}}
                                                             </span>
