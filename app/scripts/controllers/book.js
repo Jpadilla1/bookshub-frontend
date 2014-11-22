@@ -7,7 +7,8 @@
  * # BookCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOfferService', 'MyBookService', 'authService', '$http', '$cookies', function($scope, MySearch, MyOfferService, MyBookService, authService, $http, $cookies) {
+angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOfferService', 'MyBookService', 'authService', '$http', '$cookies', '$location', '$timeout',
+    function($scope, MySearch, MyOfferService, MyBookService, authService, $http, $cookies, $location, $timeout) {
     $scope.searchIsMoved = false;
     $scope.searchInput = '';
     $scope.createAndOffer = '';
@@ -178,6 +179,11 @@ angular.module('hubAppApp').controller('BookCtrl', ['$scope', 'MySearch', 'MyOff
                     // Success
                     offerId = data.id;
                     $scope.uploadImageFile();
+                    console.log(data);
+                    $timeout(function(){
+                        MyBookService.bookId = data.book;
+                        $location.path('/book-profile');
+                    }, 2500);
                 }).then(function(data) {
                    // Error
                 });
