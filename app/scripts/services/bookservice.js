@@ -61,6 +61,33 @@ app.service('MyBookService', ['$resource', '$cookies', function($resource, $cook
 			isArray: false,
 			headers: headers
 		},
+		save: {
+			method: "POST",
+			isArray: false,
+			headers: headers
+		},
+	});
+		resource.specificBookRequested = $resource('https://bookshub.herokuapp.com/api/books/requested/:requestId\\/', {}, {
+		get: {
+			method: "GET",
+			isArray: false,
+			headers: headers
+		},
+		save: {
+			method: "POST",
+			isArray: false,
+			headers: headers
+		},
+		put: {
+			method: "PUT",
+			isArray: false,
+			headers: headers
+		},
+		remove: {
+			method: "DELETE",
+			isArray: false,
+			headers: headers
+		},
 	});
 	return resource;
 }]);
