@@ -59,7 +59,10 @@
                                       <div class="panel-heading" id="comment-panel">
                                             <img src="http://placehold.it/400x200" class="img-rounded small-picture">
                                             <span>
-                                                Reviewed by {{r.username}}
+                                                Reviewed by 
+                                                <a href="#/specific-profile" ng-click="goToReviewer(r.userInformation.id)">
+                                                    {{r.userInformation.username}}
+                                                </a>
                                             </span>
                                         </div>
                                         <div class="panel-body">

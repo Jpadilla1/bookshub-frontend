@@ -41,6 +41,23 @@ app.service('MyBookService', ['$resource', '$cookies', function($resource, $cook
 			headers: headers
 		},
 	});
+	resource.specificBookReview = $resource('https://bookshub.herokuapp.com/api/books/:bookId/reviews/:reviewId\\/', {}, {
+		get: {
+			method: "GET",
+			isArray: false,
+			headers: headers
+		},
+		put: {
+			method: "PUT",
+			isArray: false,
+			headers: headers
+		},
+		delete: {
+			method: "DELETE",
+			isArray: false,
+			headers: headers
+		},
+	})
 	resource.topRecommended = $resource('https://bookshub.herokuapp.com/api/books/top/recommended\\/', {}, {
 		get: {
 			method: "GET",

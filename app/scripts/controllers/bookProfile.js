@@ -11,8 +11,8 @@
 var app = angular.module('hubAppApp');
 
 
-app.controller('bookProfileCtrl', ['$scope', '$resource', 'MyBookService', 'MyOfferService',
-    function($scope, $resource, MyBookService, MyOfferService){
+app.controller('bookProfileCtrl', ['$scope', '$resource', 'MyBookService', 'MyOfferService', 'UserService',
+    function($scope, $resource, MyBookService, MyOfferService, UserService){
     
     var params = {
         "bookId": ''
@@ -27,8 +27,20 @@ app.controller('bookProfileCtrl', ['$scope', '$resource', 'MyBookService', 'MyOf
         $scope.bookInformation = MyBookService.specificBook.get(params);
 
         $scope.$watch('bookInformation.id', function(){
-            //fix the reviews, it's getting every review in the database.
-            $scope.bookReviews = MyBookService.bookReviews.get(params);
+            MyBookService.bookReviews.get(params).$promise.then(function(data){
+                angular.forEach(data.results, function(item){
+                    var paramsUser = {
+                        "userId": item.user
+                    };
+
+                    UserService.specificProfile.get(paramsUser).$promise.then(function(data){
+                        item.userInformation = data;
+                    });
+                });
+
+                $scope.bookReviews = data;
+                console.log($scope.bookReviews);
+            });
         });
     }else{
         //do something else
@@ -66,6 +78,10 @@ app.controller('bookProfileCtrl', ['$scope', '$resource', 'MyBookService', 'MyOf
         $scope.tabs.showNew = true;
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = false;
+    };
+
+    $scope.goToReviewer = function(userId){
+        UserService.setUserId(userId);
     };
 
     $scope.$on('$viewContentLoaded', function() {
