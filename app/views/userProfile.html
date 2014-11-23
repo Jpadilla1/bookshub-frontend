@@ -126,11 +126,15 @@
                                                     <li class="col-md-6">
                                                         <div class="panel panel-default">
                                                             <div class="panel-body">
-                                                                <a href="/">
+                                                                <a href="#/book-profile" ng-click="goToBook(o.book)">
                                                                     <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
                                                                 </a>
                                                                 <div>
-                                                                    <h3>{{o.metadata.book.title}}</h3>
+                                                                    <h3>
+                                                                        <a href="#/book-profile" ng-click="goToBook(o.book)">
+                                                                            {{o.metadata.book.title}}
+                                                                        </a>
+                                                                    </h3>
                                                                     <h4>{{o.metadata.book.author}}</h4>
                                                                     <span class="lighter-text">
                                                                         <p>ISBN 10: {{o.metadata.book.isbn_10}}</p>
@@ -173,11 +177,15 @@
                                                     <li class="col-md-6">
                                                         <div class="panel panel-default">
                                                             <div class="panel-body">
-                                                                <a href="/">
+                                                                <a href="#/book-profile" ng-click="goToBook(o.book)">
                                                                     <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
                                                                 </a>
                                                                 <div>
-                                                                    <h3>{{o.metadata.book.title}}</h3>
+                                                                    <h3>
+                                                                        <a href="#/book-profile" ng-click="goToBook(o.book)">
+                                                                            {{o.metadata.book.title}}
+                                                                        </a>
+                                                                    </h3>
                                                                     <h4>{{o.metadata.book.author}}</h4>
                                                                     <span class="lighter-text">
                                                                         <p>ISBN 10: {{o.metadata.book.isbn_10}}</p>

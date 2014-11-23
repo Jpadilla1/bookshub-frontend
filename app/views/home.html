@@ -188,16 +188,27 @@
             <div class="requested-books">
                 <ul class="list-unstyled">
                     <li class="col-md-4 col-sm-6" ng-repeat="rb in topRequestedBooks.results">
-                        <div class="thumbnail">
-                            <a href="#">
-                                <img src="http://placehold.it/400x200" alt="..." class="thumbnail-image"/>
-                            </a>
-                            <div class="caption">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <img src="http://placehold.it/400x200" alt="..." class="thumbnail-image img-responsive"/>
                                 <h3>{{rb.title}}</h3>
                                 <span class="lighter-text">
                                     <p>ISBN 10: {{rb.isbn_10}} </p>
                                     <p>ISBN 13: {{rb.isbn_13}}</p>
                                 </span>
+                            </div>
+                            <div class="panel-footer" id="footer-panel-with-button">
+                                <div class="offer-footer-top-space">
+                                    Users looking for this book: 
+                                    <span class="label label-with-background">
+                                        {{rb.count}}
+                                    </span>
+                                    <span>
+                                        <button class="btn btn-with-background pull-right">
+                                            Request it
+                                        </button>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </li>

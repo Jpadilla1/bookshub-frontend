@@ -9,7 +9,7 @@
  */
 
 angular.module('hubAppApp')
-    .controller('LogInCtrl', ['$scope', 'authService', function($scope, authService) {
+    .controller('LogInCtrl', ['$scope', 'authService', '$location', '$timeout', function($scope, authService, $location, $timeout) {
 
         $scope.logInForm = {
             "email": '',
@@ -20,7 +20,10 @@ angular.module('hubAppApp')
             //Here we send data to back end
             authService.signin($scope.logInForm.email, $scope.logInForm.password)
                 .then(function(data){
-                    $scope.isLogIn = true;      
+                    $scope.isLogIn = true;
+                    $timeout(function(){
+                        $location.path('/');
+                    }, 2000);
                     // success
                 }, function(data){
                     $scope.logInError = true;

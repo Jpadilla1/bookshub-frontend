@@ -115,6 +115,10 @@ app.controller('UserCtrl', ['$rootScope', '$scope', 'authService', 'MyContactSer
         UserService.setUserId(userId);
     };
 
+    $scope.goToBook = function(bookId){
+        MyBookService.bookId = bookId;
+    }
+
     $scope.$on('$viewContentLoaded', function() {
         defaultNavbar();
     });

@@ -25,16 +25,12 @@
         <div class="book-options">
             <div class="col-md-12">
                 <div class="col-md-3">
-                    <div class="col-md-12">
-                        <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showReview()">
-                            {{bookReviews.count}} Reviews
-                        </button>
-                    </div>
-                    <div class="col-md-12 top-space">
-                        <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showOffers()">
-                            {{bookInformation.offers.length}} Offers
-                        </button>
-                    </div>
+                    <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showReview()">
+                        {{bookReviews.count}} Reviews
+                    </button>
+                    <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showOffers()">
+                        {{bookInformation.offers.length}} Offers
+                    </button>
                 </div>
 
                 <div class="col-md-9">
@@ -59,7 +55,10 @@
                                       <div class="panel-heading" id="comment-panel">
                                             <img src="http://placehold.it/400x200" class="img-rounded small-picture">
                                             <span>
-                                                Reviewed by {{r.user}}
+                                                Reviewed by 
+                                                <a href="#/specific-profile" ng-click="goToReviewer(r.userInformation.id)">
+                                                    {{r.userInformation.username}}
+                                                </a>
                                             </span>
                                         </div>
                                         <div class="panel-body">
@@ -108,7 +107,7 @@
                                                     <div class="panel-heading" id="comment-panel">
                                                         <img src="http://placehold.it/400x200" class="img-rounded small-picture">
                                                         <span>
-                                                            Sold by {{nb.owner}} at
+                                                            Sold by {{nb.metadata.owner_username}} at
                                                             <span class="label label-with-background">
                                                                 ${{nb.price}}
                                                             </span>
@@ -152,7 +151,7 @@
                                                     <div class="panel-heading" id="comment-panel">
                                                         <img src="http://placehold.it/400x200" class="img-rounded small-picture">
                                                         <span>
-                                                            Sold by {{ub.owner}} at
+                                                            Sold by {{ub.metadata.owner_username}} at
                                                             <span class="label label-with-background">
                                                                 $ {{ub.price}}
                                                             </span>
