@@ -8,7 +8,7 @@
  * Controller of the hubAppApp
  */
 angular.module('hubAppApp')
-    .controller('SignUpCtrl', ['$scope', 'authService', function($scope, authService) {
+    .controller('SignUpCtrl', ['$scope', 'authService', '$location', '$timeout',function($scope, authService, $location, $timeout) {
 
     $scope.retypedPassword = '';
 
@@ -67,7 +67,9 @@ angular.module('hubAppApp')
             .then(function(data){
                 // success
                 $scope.isSignUp = true;
-                console.log(data);
+                $timeout(function(){
+                    $location.path('/login');
+                }, 2500);
             }, function(data){
                 $scope.signUpError = true;
                 $scope.clearSignUpForm();
