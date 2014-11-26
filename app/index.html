@@ -47,6 +47,46 @@
                     <!--Manages the items on right side of the first navbar-->
                     <form class="navbar-form navbar-right" role="form">
                         <ul class="nav navbar-nav">
+                            <li ng-show="show">
+                                <!--Displays the search input group when the search icon button is toggled-->
+                                <div class="form-group" id="navbar-search-input">
+                                    <input type="text" class="form-control" placeholder="Search" id="input-search-navbar" ng-model="searchInput">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                                            Search By
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a href="" ng-click="submitByTitle('title')">
+                                        Title
+                                      </a>
+                                            </li>
+                                            <li>
+                                                <a href="" ng-click="submitByIsbn10('isbn_10')">
+                                        ISBN 10
+                                      </a>
+                                            </li>
+                                            <li>
+                                                <a href="" ng-click="submitByIsbn13('isbn_13')">
+                                        ISBN 13
+                                      </a>
+                                            </li>
+                                            <li>
+                                                <a href="" ng-click="submitByAuthor('author')">
+                                        Author
+                                      </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <!--Icon button that when toggled shows the search input group-->
+                                <a href="" ng-click="show = ! show">
+                                    <i class="fa fa-search fa-lg" data-toggle="tooltip" title="Search Now!"></i>
+                                </a>
+                            </li>
                             <li>
                                 <a href="#/book"><i class="fa fa-plus fa-lg" data-toggle="tooltip" title="Add Book"></i>
                                 </a>
@@ -87,9 +127,9 @@
                             <span class="footer-links">
                                 <a href="#/about">About Us</a>
                                 <span class="footer-spacers">|</span>
-                                <a href="#/contactus">Contact Us</a>
-                                <span class="info-right-space">|</span>
-                                <a href="#" class="info-right-space">Terms and Conditions</a>
+                            <a href="#/contactus">Contact Us</a>
+                            <span class="info-right-space">|</span>
+                            <a href="#" class="info-right-space">Terms and Conditions</a>
                             </span>
                         </div>
                         <div class="col-md-4 col-xs-6 pull-right text-center footer-links">
