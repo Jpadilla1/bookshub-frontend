@@ -121,8 +121,8 @@
 
                                     <div class="col-md-12">
                                         <div class="requested-books">
-                                            <ul class="list-unstyled" ng-repeat="o in offers.results">
-                                                <span ng-if="o.condition == 'new'">
+                                            <ul class="list-unstyled">
+                                                <span ng-repeat="o in offers.results" ng-if="o.condition == 'new'">
                                                     <li class="col-md-6">
                                                         <div class="panel panel-default">
                                                             <div class="panel-body">
