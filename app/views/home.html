@@ -58,31 +58,31 @@
                           <i class="fa fa-search fa-lg" data-toggle="tooltip" title="Search Now!"></i>
                         </a>
                     </li>
-                    <li>
+                    <li  ng-show="isAuthenticated">
                         <a href="#/book">
                           <i class="fa fa-plus fa-lg" data-toggle="tooltip" title="Add Book"></i>
                         </a>
                     </li>
-                    <li>
+                    <li  ng-show="isAuthenticated">
                         <a href="#/cart">
                           <i class="fa fa-shopping-cart fa-lg" data-toggle="tooltip" title="View Cart"></i>
                         </a>
                     </li>
-                    <li>
+                    <li  ng-show="isAuthenticated">
                         <a href="#/user-profile">
                             <i class="fa fa-user fa-lg" data-toggle="tooltip" title="User Profile"></i>
                         </a>
                     </li>
-                    <li>
+                    <li  ng-show="isAuthenticated">
                         <a href="#/">
                           <i class="fa fa-cog fa-lg" data-toggle="tooltip" title="Settings"></i>
                         </a>
                     </li>
                     <!--Log in and Sign Up links-->
-                    <li>
+                    <li  ng-hide="isAuthenticated">
                       <a href="#/login" id="home-nav-link">Log In</a>
                     </li>
-                    <li>
+                    <li  ng-hide="isAuthenticated">
                       <a href="#/sign-up" id="home-nav-link">Sign Up</a>
                     </li>
                 </ul>
