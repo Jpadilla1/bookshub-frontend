@@ -24,17 +24,30 @@
 /*This block creates an angular.js module and a controller to manage the items displayed and the data
 received in the index*/
 (function() {
-    angular.module('hubAppApp').controller("HomeCtrl", ['$scope', 'MyBookService', 'MySearch', function($scope, MyBookService, MySearch) {
+    angular.module('hubAppApp').controller("HomeCtrl", ['$scope', 'MyBookService', 'MySearch', 'authService', '$rootScope', '$location', function($scope, MyBookService, MySearch, authService, $rootScope, $location) {
 
         $scope.searchInput = '';
 
         $scope.topRequestedBooks = MyBookService.topRequested.get();
 
+        $rootScope.isAuthenticated;
+
         $scope.$on('$viewContentLoaded', function() {
             homeNavbar();
+            $rootScope.checkUserStatus();
         });
 
         $scope.searchResult = '';
+
+        $rootScope.checkUserStatus = function() {
+            authService.authenticationStatus().then(function() {
+                $scope.setStatus();
+            });
+        }
+
+        $rootScope.setStatus = function() {
+            $rootScope.isAuthenticated = authService.authenticated;
+        }
 
         $scope.searchBy = function(selection) {
             result = validateField($scope.searchInput);
@@ -47,7 +60,6 @@ received in the index*/
                 $scope.searchResult = MySearch.bookSearch.get(params);
                 console.log($scope.searchResult);
             }
-
         }
     }]);
 })();
