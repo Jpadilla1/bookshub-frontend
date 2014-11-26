@@ -107,6 +107,9 @@
                             </li>
                             <li ng-hide="isAuthenticated"><a href="#/sign-up">Sign Up</a>
                             </li>
+                            <li ng-show="isAuthenticated">
+                                <a href="" ng-click="logOut()">Log Out</a>
+                           </li>
                         </ul>
                     </form>
                 </div>

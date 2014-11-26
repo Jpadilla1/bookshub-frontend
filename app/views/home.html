@@ -29,22 +29,22 @@
                                 </button>
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                      <a href="" ng-click="submitByTitle('title')">
+                                        <a href="" ng-click="submitByTitle('title')">
                                         Title
                                       </a>
                                     </li>
                                     <li>
-                                      <a href="" ng-click="submitByIsbn10('isbn_10')">
+                                        <a href="" ng-click="submitByIsbn10('isbn_10')">
                                         ISBN 10
                                       </a>
                                     </li>
                                     <li>
-                                      <a href="" ng-click="submitByIsbn13('isbn_13')">
+                                        <a href="" ng-click="submitByIsbn13('isbn_13')">
                                         ISBN 13
                                       </a>
                                     </li>
                                     <li>
-                                      <a href="" ng-click="submitByAuthor('author')">
+                                        <a href="" ng-click="submitByAuthor('author')">
                                         Author
                                       </a>
                                     </li>
@@ -55,35 +55,38 @@
                     <li>
                         <!--Icon button that when toggled shows the search input group-->
                         <a href="" ng-click="show = ! show">
-                          <i class="fa fa-search fa-lg" data-toggle="tooltip" title="Search Now!"></i>
+                            <i class="fa fa-search fa-lg" data-toggle="tooltip" title="Search Now!"></i>
                         </a>
                     </li>
-                    <li  ng-show="isAuthenticated">
+                    <li ng-show="isAuthenticated">
                         <a href="#/book">
-                          <i class="fa fa-plus fa-lg" data-toggle="tooltip" title="Add Book"></i>
+                            <i class="fa fa-plus fa-lg" data-toggle="tooltip" title="Add Book"></i>
                         </a>
                     </li>
-                    <li  ng-show="isAuthenticated">
+                    <li ng-show="isAuthenticated">
                         <a href="#/cart">
-                          <i class="fa fa-shopping-cart fa-lg" data-toggle="tooltip" title="View Cart"></i>
+                            <i class="fa fa-shopping-cart fa-lg" data-toggle="tooltip" title="View Cart"></i>
                         </a>
                     </li>
-                    <li  ng-show="isAuthenticated">
+                    <li ng-show="isAuthenticated">
                         <a href="#/user-profile">
                             <i class="fa fa-user fa-lg" data-toggle="tooltip" title="User Profile"></i>
                         </a>
                     </li>
-                    <li  ng-show="isAuthenticated">
+                    <li ng-show="isAuthenticated">
                         <a href="#/">
-                          <i class="fa fa-cog fa-lg" data-toggle="tooltip" title="Settings"></i>
+                            <i class="fa fa-cog fa-lg" data-toggle="tooltip" title="Settings"></i>
                         </a>
                     </li>
                     <!--Log in and Sign Up links-->
-                    <li  ng-hide="isAuthenticated">
-                      <a href="#/login" id="home-nav-link">Log In</a>
+                    <li ng-hide="isAuthenticated">
+                        <a href="#/login" id="home-nav-link">Log In</a>
                     </li>
-                    <li  ng-hide="isAuthenticated">
-                      <a href="#/sign-up" id="home-nav-link">Sign Up</a>
+                    <li ng-hide="isAuthenticated">
+                        <a href="#/sign-up" id="home-nav-link">Sign Up</a>
+                    </li>
+                    <li ng-show="isAuthenticated">
+                        <a href="" ng-click="logOut()">Log Out</a>
                     </li>
                 </ul>
             </form>
@@ -112,36 +115,36 @@
                             <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
                                 Search By
                                 <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                  <a href="" ng-click="searchBy('title')">
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="" ng-click="searchBy('title')">
                                     Title
                                   </a>
-                                </li>
-                                <li>
-                                  <a href="" ng-click="searchBy('isbn_10')">
+                        </li>
+                        <li>
+                            <a href="" ng-click="searchBy('isbn_10')">
                                     ISBN 10
                                   </a>
-                                </li>
-                                <li>
-                                  <a href="" ng-click="searchBy('isbn_13')">
+                        </li>
+                        <li>
+                            <a href="" ng-click="searchBy('isbn_13')">
                                     ISBN 13
                                   </a>
-                                </li>
-                                <li>
-                                  <a href="" ng-click="searchBy('author')">
+                        </li>
+                        <li>
+                            <a href="" ng-click="searchBy('author')">
                                     Author
                                   </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </span>
+                        </li>
+                    </ul>
                 </div>
-                <!-- /input-group -->
-                <!-- /.col-lg-6 -->
+                </span>
             </div>
+            <!-- /input-group -->
+            <!-- /.col-lg-6 -->
         </div>
+    </div>
     </div>
 </form>
 
@@ -190,7 +193,7 @@
                     <li class="col-md-4 col-sm-6" ng-repeat="rb in topRequestedBooks.results">
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <img src="http://placehold.it/400x200" alt="..." class="thumbnail-image img-responsive"/>
+                                <img src="http://placehold.it/400x200" alt="..." class="thumbnail-image img-responsive" />
                                 <h3>{{rb.title}}</h3>
                                 <span class="lighter-text">
                                     <p>ISBN 10: {{rb.isbn_10}} </p>
@@ -199,7 +202,7 @@
                             </div>
                             <div class="panel-footer" id="footer-panel-with-button">
                                 <div class="offer-footer-top-space">
-                                    Users looking for this book: 
+                                    Users looking for this book:
                                     <span class="label label-with-background">
                                         {{rb.count}}
                                     </span>

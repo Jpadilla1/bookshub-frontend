@@ -24,7 +24,7 @@
 /*This block creates an angular.js module and a controller to manage the items displayed and the data
 received in the index*/
 (function() {
-    angular.module('hubAppApp').controller("HomeCtrl", ['$scope', 'MyBookService', 'MySearch', 'authService', '$rootScope', '$location', function($scope, MyBookService, MySearch, authService, $rootScope, $location) {
+    angular.module('hubAppApp').controller("HomeCtrl", ['$scope', 'MyBookService', 'MySearch', 'authService', '$rootScope', '$location', '$cookieStore', function($scope, MyBookService, MySearch, authService, $rootScope, $location, $cookieStore) {
 
         $scope.searchInput = '';
 
@@ -43,6 +43,11 @@ received in the index*/
             authService.authenticationStatus().then(function() {
                 $scope.setStatus();
             });
+        }
+
+        $rootScope.logOut = function() {
+            $cookieStore.remove('token');
+            location.reload();
         }
 
         $rootScope.setStatus = function() {
