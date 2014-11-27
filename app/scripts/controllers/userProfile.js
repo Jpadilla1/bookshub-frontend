@@ -23,32 +23,26 @@ app.controller('UserCtrl', ['$rootScope', '$scope', 'authService', 'MyContactSer
 
     $scope.showNew = function() {
         $scope.tabs.showNew = true;
-        $scope.tabs.showUsed = false;
         $scope.tabs.showReview = false;
-        $scope.tabs.showContactForm = false;
-        $scope.tabs.showInformation = true;
-        $scope.tabs.showRating = true;
-        $scope.tabs.showReviewForm = false;
         $scope.tabs.offersNavbar = true;
     }
 
     $scope.showUsed = function() {
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = true;
-        $scope.tabs.showRating = true;
         $scope.tabs.showReview = false;
-        $scope.tabs.showContactForm = false;
-        $scope.tabs.showInformation = true;
-        $scope.tabs.showReviewForm = false;
         $scope.tabs.offersNavbar = true;
     }
 
-    $scope.showReview = function() {
+    $scope.showReviews = function() {
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = true;
-        $scope.tabs.showRating = true;
         $scope.tabs.offersNavbar = false;
+        
+        $('#side-offers').removeClass('active');
+        if(!($('#side-review').hasClass('active')))
+            $('#side-review').addClass('active');
     }
 
     $scope.showOffers = function() {
@@ -58,16 +52,10 @@ app.controller('UserCtrl', ['$rootScope', '$scope', 'authService', 'MyContactSer
         $scope.tabs.showRating = false;
         $scope.tabs.showAllOffers = true;
         $scope.tabs.offersNavbar = true;
-    }
 
-    $scope.showReviews = function() {
-        $scope.tabs.showNew = false;
-        $scope.tabs.showUsed = false;
-        $scope.tabs.showReview = true;
-        $scope.tabs.showRating = false;
-        $scope.tabs.showContactForm = false;
-        $scope.tabs.showInformation = false;
-        $scope.tabs.offersNavbar = false;
+        $('#side-review').removeClass('active');
+        if(!($('#side-offers').hasClass('active')))
+            $('#side-offers').addClass('active');
     }
 
     $scope.userProfile = '';
