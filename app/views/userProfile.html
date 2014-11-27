@@ -123,7 +123,7 @@
                                         <div class="requested-books">
                                             <ul class="list-unstyled">
                                                 <span ng-repeat="o in offers.results" ng-if="o.condition == 'new'">
-                                                    <li class="col-md-6">
+                                                    <li class="col-md-6 panel-bottom-space">
                                                         <div class="panel panel-default">
                                                             <div class="panel-body">
                                                                 <a href="#/book-profile" ng-click="goToBook(o.book)">
@@ -174,7 +174,7 @@
                                         <div class="requested-books">
                                             <ul class="list-unstyled" ng-repeat="o in offers.results">
                                                 <span ng-if="o.condition == 'used'">
-                                                    <li class="col-md-6">
+                                                    <li class="col-md-6 panel-bottom-space">
                                                         <div class="panel panel-default">
                                                             <div class="panel-body">
                                                                 <a href="#/book-profile" ng-click="goToBook(o.book)">

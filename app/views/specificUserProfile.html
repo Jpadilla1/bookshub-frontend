@@ -125,7 +125,7 @@
                                 <div class="requested-books">
                                     <ul class="list-unstyled" ng-repeat="po in profileOffers.results">
                                         <span ng-if="po.condition == 'new'">
-                                            <li class="col-md-6">
+                                            <li class="col-md-6 panel-bottom-space">
                                                 <div class="panel panel-default">
                                                     <div class="panel-body">
                                                         <a href="/">
@@ -151,7 +151,7 @@
                                                                 ${{po.price}}
                                                             </span>
                                                             <span>
-                                                                <button class="btn btn-with-background pull-right" ng-click="addToCart(po.id)">
+                                                                <button class="btn btn-with-background pull-right footer-button" ng-click="addToCart(po.id)">
                                                                     Add to Cart
                                                                 </button>
                                                             </span>
@@ -187,7 +187,7 @@
                                 <div class="requested-books">
                                     <ul class="list-unstyled" ng-repeat="po in profileOffers.results">
                                         <span ng-if="po.condition == 'used'">
-                                            <li class="col-md-6">
+                                            <li class="col-md-6 panel-bottom-space">
                                                 <div class="panel panel-default">
                                                     <div class="panel-body">
                                                         <a href="/">
@@ -213,7 +213,7 @@
                                                                 ${{po.price}}
                                                             </span>
                                                             <span>
-                                                                <button class="btn btn-with-background pull-right" ng-click="addToCart(po.id)">
+                                                                <button class="btn btn-with-background pull-right footer-button" ng-click="addToCart(po.id)">
                                                                     Add to Cart
                                                                 </button>
                                                             </span>

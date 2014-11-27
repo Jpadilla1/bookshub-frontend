@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5, h6 {
     color: rgba(17, 213, 119, 0.69);
 }
 #navbar-search-input {
-    margin-top: 2%;
+    margin-top: 3%;
 }
 #input-search-navbar {
     margin-left: -40%;
@@ -126,6 +126,9 @@ h1, h2, h3, h4, h5, h6 {
     padding-bottom: 14%;
     background-color: rgba(29, 28, 28, 0.65);
     color: white;
+}
+.panel-bottom-space{
+    margin-bottom: 2%;
 }
 /*Log In Styles*/
 
@@ -372,17 +375,18 @@ h1, h2, h3, h4, h5, h6 {
     font-size: medium;
 }
 .cart-item-price {
-    text-align: center;
     font-weight: bold;
+    margin-top: 1%;
 }
 .cart-item-buttons {
     text-align: center;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 2%;
 }
 .cart-item-information {
     margin-top: 20px;
 }
+
 /* Book Profile */
 
 .book-profile-background {
@@ -407,6 +411,7 @@ h1, h2, h3, h4, h5, h6 {
 .book-display-footer {
     margin-top: 0.5%;
     margin-right: 2%;
+    color:black;
 }
 /* user profile */
 
@@ -468,7 +473,6 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 2%;
 }
 .btn-with-background {
-    padding-bottom: 0.5%;
     background-color: rgba(57, 244, 155, 0.82);
     color: white;
 }
@@ -485,6 +489,18 @@ h1, h2, h3, h4, h5, h6 {
 .books-new-used {
     margin-top: 8%;
 }
+.custom-link-white{
+    color:white;
+    font-weight: 600;    
+}
+.custom-link-white:hover{
+    color:white;
+    font-weight: 600;    
+}
+.custom-link-white:active{
+    color:white;
+    font-weight: 600;    
+}
 /* book autocomplete search results */
 
 .autocomplete-results {
@@ -496,7 +512,12 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: 9%;
 }
 /* helpers */
-
+.footer-button{
+    margin-top: -1%;
+}
+.text-space-footer{
+    margin-top: 1%;
+}
 .top-space {
     margin-top: 1%;
 }
