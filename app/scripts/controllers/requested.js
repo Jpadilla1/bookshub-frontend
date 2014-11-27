@@ -22,6 +22,8 @@ app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBoo
         "category": ''
 
     };
+
+    var originalrBookForm = angular.copy($scope.rBook);
     
      // authservice.settings().then(function(data){
      //    $scope.test.user = data.id;
@@ -119,6 +121,13 @@ app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBoo
 
             MyBookService.booksRequested.save($scope.rBook);
 
+    };
+
+    $scope.Clear = function(){
+
+        $scope.rBook = angular.copy(originalrBookForm);
+        $scope.rBook.title = '';
+        
     };
     
     
