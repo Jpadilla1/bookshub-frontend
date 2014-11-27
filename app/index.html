@@ -46,38 +46,40 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <!--Manages the items on right side of the first navbar-->
                     <form class="navbar-form navbar-right" role="form">
-                        <ul class="nav navbar-nav">
-                            <li ng-show="show">
-                                <!--Displays the search input group when the search icon button is toggled-->
-                                <div class="form-group" id="navbar-search-input">
-                                    <input type="text" class="form-control" placeholder="Search" id="input-search-navbar" ng-model="searchInput">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-                                            Search By
-                                            <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li>
-                                                <a href="" ng-click="submitByTitle('title')">
-                                        Title
-                                      </a>
-                                            </li>
-                                            <li>
-                                                <a href="" ng-click="submitByIsbn10('isbn_10')">
-                                        ISBN 10
-                                      </a>
-                                            </li>
-                                            <li>
-                                                <a href="" ng-click="submitByIsbn13('isbn_13')">
-                                        ISBN 13
-                                      </a>
-                                            </li>
-                                            <li>
-                                                <a href="" ng-click="submitByAuthor('author')">
-                                        Author
-                                      </a>
-                                            </li>
-                                        </ul>
+                        <div id="navbar-options">
+                            <ul class="nav navbar-nav">
+                                <li ng-show="show">
+                                    <!--Displays the search input group when the search icon button is toggled-->
+                                    <div class="form-group" id="navbar-search-input">
+                                        <input type="text" class="form-control" placeholder="Search" id="input-search-navbar" ng-model="searchInput">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                                                Search By
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu" id="search-options">
+                                                <li>
+                                                    <a href="" ng-click="submitByTitle('title')" id="search-options">
+                                                        Title
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" ng-click="submitByIsbn10('isbn_10')" id="search-options">
+                                                        ISBN 10
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" ng-click="submitByIsbn13('isbn_13')" id="search-options">
+                                                        ISBN 13
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="" ng-click="submitByAuthor('author')" id="search-options">
+                                                        Author
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </li>

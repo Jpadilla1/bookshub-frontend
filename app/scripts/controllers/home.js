@@ -13,6 +13,8 @@
                     $('[data-toggle="tooltip"]').tooltip({
                         placement: 'bottom'
                     });
+                    var searchButton = document.getElementById('home-navbar-no-background');
+                    searchButton.style.backgroundColor = "rgba(17, 213, 119, 0.69)";
                 } else {
                     $('.navbar-fixed-top').fadeOut();
                 }

@@ -23,7 +23,7 @@
                         <div class="form-group" id="navbar-search-input">
                             <input type="text" class="form-control" placeholder="Search" id="input-search-navbar" ng-model="searchInput">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                                <button type="button" class="btn btn-with-background dropdown-toggle" data-toggle="dropdown" id="home-navbar-no-background">
                                     Search By
                                     <span class="caret"></span>
                                 </button>
@@ -190,7 +190,7 @@
         <div class="col-md-12">
             <div class="requested-books">
                 <ul class="list-unstyled">
-                    <li class="col-md-4 col-sm-6" ng-repeat="rb in topRequestedBooks.results">
+                    <li class="col-md-4 col-sm-6 panel-bottom-space" ng-repeat="rb in topRequestedBooks.results">
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <img src="http://placehold.it/400x200" alt="..." class="thumbnail-image img-responsive" />
@@ -202,12 +202,15 @@
                             </div>
                             <div class="panel-footer" id="footer-panel-with-button">
                                 <div class="offer-footer-top-space">
-                                    Users looking for this book:
-                                    <span class="label label-with-background">
-                                        {{rb.count}}
+
+                                    <span>
+                                        Users looking for this book: 
+                                        <span class="label label-with-background">
+                                            {{rb.count}}
+                                        </span>
                                     </span>
                                     <span>
-                                        <button class="btn btn-with-background pull-right">
+                                        <button class="btn btn-with-background pull-right footer-button">
                                             Request it
                                         </button>
                                     </span>

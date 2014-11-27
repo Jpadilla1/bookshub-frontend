@@ -16,103 +16,62 @@
         "showNew": false,
         "showUsed": false,
         "showReview": true,
-        "showContactForm": false,
         "showReviewForm": false,
         "showReportForm": false,
-        "showRating": true,
-        "showInformation": true,
     };
-
-     $scope.showInformation = function() {
-        $scope.tabs.showNew = false;
-        $scope.tabs.showUsed = false;
-        $scope.tabs.showReview = true;
-        $scope.tabs.showRating = true;
-        $scope.tabs.showInformation = true
-        $scope.tabs.showContactForm = false;
-        $scope.tabs.showReviewForm = false;
-        $scope.tabs.showReportForm = false;
-    }
-
-
-    $scope.showRating = function() {
-        $scope.tabs.showNew = false;
-        $scope.tabs.showUsed = false;
-        $scope.tabs.showReview = true;
-        $scope.tabs.showRating = false;
-        $scope.tabs.showContactForm = false;
-        $scope.tabs.showInformation = true;
-        $scope.tabs.showReviewForm = false;
-        $scope.tabs.showReportForm = false;
-    }
 
     $scope.showNew = function() {
         $scope.tabs.showNew = true;
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = false;
-        $scope.tabs.showContactForm = false;
-        $scope.tabs.showInformation = true;
-        $scope.tabs.showRating = true;
         $scope.tabs.showReviewForm = false;
         $scope.tabs.showReportForm = false;
-    }
+
+        removeActiveClass();
+    }   
 
     $scope.showUsed = function() {
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = true;
-        $scope.tabs.showRating = true;
         $scope.tabs.showReview = false;
-        $scope.tabs.showContactForm = false;
-        $scope.tabs.showInformation = true;
         $scope.tabs.showReviewForm = false;
         $scope.tabs.showReportForm = false;
+
+        removeActiveClass();
     }
 
     $scope.showReview = function() {
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = true;
-        $scope.tabs.showContactForm = false;
-        $scope.tabs.showInformation = true;
-        $scope.tabs.showRating = true;
         $scope.tabs.showReviewForm = false;
         $scope.tabs.showReportForm = false;
+
+        removeActiveClass();
     }
 
-    $scope.showContactForm = function() {
-        $scope.tabs.showNew = false;
-        $scope.tabs.showUsed = false;
-        $scope.tabs.showReview = false;
-        $scope.tabs.showRating = false;
-        $scope.tabs.showContactForm = true;
-        $scope.tabs.showInformation = false;
-        $scope.tabs.showReviewForm = false;
-        $scope.tabs.showReportForm = false;
-    }
     $scope.showReviewForm = function() {
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = false;
-        $scope.tabs.showRating = false;
-        $scope.tabs.showContactForm = false;
-        $scope.tabs.showInformation = false;
         $scope.tabs.showReviewForm = true;
         $scope.tabs.showReportForm = false;
+
+        $('#side-report').removeClass('active');
+        if(!($('#side-review').hasClass('active')))
+            $('#side-review').addClass('active');
     }
     $scope.showReportForm = function() {
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = false;
-        $scope.tabs.showRating = false;
-        $scope.tabs.showContactForm = false;
-        $scope.tabs.showInformation = false;
         $scope.tabs.showReviewForm = false;
         $scope.tabs.showReportForm = true;
-    }
 
-    $scope.$on('$viewContentLoaded', function() {
-        defaultNavbar();
-    });
+        $('#side-review').removeClass('active');
+        if(!($('#side-report').hasClass('active')))
+            $('#side-report').addClass('active');
+    }
 
     $scope.profileData = '';
     $scope.profileReviews = '';
@@ -221,5 +180,17 @@
         }else{
             console.log('error');
         }
+    };
+
+    $scope.$on('$viewContentLoaded', function() {
+        defaultNavbar();
+    });
+
+    function removeActiveClass(){
+        if($('#side-review').hasClass('active'))
+            $('#side-review').removeClass('active');
+
+        if($('#side-offers').hasClass('active'))
+            $('#side-offers').removeClass('active');
     };
  }]);

@@ -39,7 +39,7 @@
                         <label class="cart-item-info">Price Per Item:</label> {{item.offerInformation.price | currency}}
                     </div>
                     <div class="col-md-4">
-                        <h3 class="cart-item-price">
+                        <h3 class="cart-item-price text-center">
                             Price: {{item.offerInformation.price * item.quantity | currency}}
                         </h3>
                         <button type="button" ng-click="updateData(item.offerInformation.quantity, item.id, $index)" class="btn btn-info btn-lg cart-item-buttons">

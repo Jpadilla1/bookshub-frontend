@@ -44,13 +44,13 @@
             <div class="col-md-12">
                 <section class="side-navbar">
                     <div class="col-md-3">
-                        <div class="form-group">
-                            <button type="button" class="btn btn-info btn-lg  btn-block" ng-click="showReviews()">
+                        <div class="sidebar">
+                            <a href="" class="side-links col-md-12 active" ng-click="showReviews()" id="side-review">
                                 Reviews
-                            </button>
-                            <button type="button" class="btn btn-info btn-lg btn btn-block" ng-click="showOffers()">
+                            </a>
+                            <a href="" class="side-links col-md-12" ng-click="showOffers()" id="side-offers">
                                 Offers
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </section>
@@ -96,7 +96,7 @@
                         <div ng-show="tabs.showAllOffers">
                             <div ng-show="tabs.offersNavbar">
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showNew()">
+                                    <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showNew()" data-toggle="button" aria-pressed="true" autocomplete="off">
                                         New
                                     </button>
                                 </div>
@@ -121,9 +121,9 @@
 
                                     <div class="col-md-12">
                                         <div class="requested-books">
-                                            <ul class="list-unstyled" ng-repeat="o in offers.results">
-                                                <span ng-if="o.condition == 'new'">
-                                                    <li class="col-md-6">
+                                            <ul class="list-unstyled">
+                                                <span ng-repeat="o in offers.results" ng-if="o.condition == 'new'">
+                                                    <li class="col-md-6 panel-bottom-space">
                                                         <div class="panel panel-default">
                                                             <div class="panel-body">
                                                                 <a href="#/book-profile" ng-click="goToBook(o.book)">
@@ -174,7 +174,7 @@
                                         <div class="requested-books">
                                             <ul class="list-unstyled" ng-repeat="o in offers.results">
                                                 <span ng-if="o.condition == 'used'">
-                                                    <li class="col-md-6">
+                                                    <li class="col-md-6 panel-bottom-space">
                                                         <div class="panel panel-default">
                                                             <div class="panel-body">
                                                                 <a href="#/book-profile" ng-click="goToBook(o.book)">
