@@ -37,31 +37,44 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-offset-3 col-md-6">
-            <div ng-show="show.newForm" class="add-book-form">
+        <div ng-show="show.newForm" class="add-book-form">
+            <div class="col-md-12">
                 <h1 class="text-center">Add Your Book to Bookshub!</h1>
+            </div>
+            <div class="col-md-offset-3 col-md-6">
                 <form role="form" ng-submit="submitNewBook()" name="bookForm">
                     <div class="form-group">
+                        <label for="book_title">Title:</label>
                         <input type="text" class="form-control" id="book_title" placeholder="Title" ng-disabled="addedNewBook" ng-model="newBookForm.title" required>
                     </div>
                     <div class="form-group">
+                        <label for="book_isbn_10">ISBN 10:</label>
                         <input type="number" class="form-control" id="book_isbn_10" placeholder="ISBN 10" ng-disabled="addedNewBook" ng-model="newBookForm.isbn_10" required>
                     </div>
                     <div class="form-group">
+                        <label for="book_isbn_13">ISBN 13:</label>
                         <input type="number" class="form-control" id="book_isbn_13" placeholder="ISBN 13" ng-disabled="addedNewBook" ng-model="newBookForm.isbn_13" required>
                     </div>
                     <div class="form-group">
+                        <label for="book_author">Author:</label>
                         <input type="text" class="form-control" id="book_author" placeholder="Author" ng-disabled="addedNewBook" ng-model="newBookForm.author" required>
                     </div>
                     <div class="form-group">
+                        <label for="book_publisher">Publisher:</label>
                         <input type="text" class="form-control" id="book_publisher" placeholder="Publisher" ng-disabled="addedNewBook" ng-model="newBookForm.publisher" required>
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="book_edition" placeholder="Edition" ng-disabled="addedNewBook" ng-model="newBookForm.edition" required>
+                    <div class="col-md-6 form-shared-space">
+                        <div class="form-group">
+                            <label for="book_edition">Edition:</label>
+                            <input type="text" class="form-control" id="book_edition" placeholder="Edition" ng-disabled="addedNewBook" ng-model="newBookForm.edition" required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <select class="form-control" ng-model="newBookForm.category" id="book_category" ng-disabled="addedNewBook" ng-options="category.value as category.name for category in bookCategories" required>
-                        </select>
+                    <div class="col-md-6 form-shared-space">
+                        <div class="form-group">
+                            <label for="book_category">Category:</label>
+                            <select class="form-control" ng-model="newBookForm.category" id="book_category" ng-disabled="addedNewBook" ng-options="category.value as category.name for category in bookCategories" required>
+                            </select>
+                        </div>
                     </div>
                     <div class="col-md-12" ng-show="addedNewBook">
                         <div class="alert alert-success">
@@ -76,32 +89,45 @@
                 </form>
             </div>
         </div>
-        <div class="col-md-offset-3 col-md-6">
-            <div ng-show="show.newBookAndOfferForm" class="add-book-form">
+        <div ng-show="show.newBookAndOfferForm" class="add-book-form">
+            <div class="col-md-12">
                 <h1 class="text-center">
                     Add Your Book to BooksHub
                 </h1>
+            </div>
+            <div class="col-md-offset-3 col-md-6">
                 <form role="form" ng-submit="submitBookAndCreateOffer()" name="bookForm">
                     <div class="form-group">
+                        <label for="auto_title">Title:</label>
                         <input type="text" class="form-control" id="auto_title" placeholder="Title" ng-model="newBookForm.title" required>
                     </div>
                     <div class="form-group">
+                        <label for="auto_isbn_10">ISBN 10:</label>
                         <input type="number" class="form-control" id="auto_isbn_10" placeholder="ISBN 10" ng-model="newBookForm.isbn_10" required>
                     </div>
                     <div class="form-group">
+                        <label for="auto_isbn_13">ISBN 13:</label>
                         <input type="number" class="form-control" id="auto_isbn_13" placeholder="ISBN 13" ng-model="newBookForm.isbn_13" required>
                     </div>
                     <div class="form-group">
+                        <label for="auto_author">Author:</label>
                         <input type="text" class="form-control" id="auto_author" placeholder="Author" ng-model="newBookForm.author" required>
                     </div>
                     <div class="form-group">
+                        <label for="auto_publisher">Publisher:</label>
                         <input type="text" class="form-control" id="auto_publisher" placeholder="Publisher" ng-model="newBookForm.publisher" required>
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="auto_edition" placeholder="Edition" ng-model="newBookForm.edition" required>
+                    <div class="col-md-6 form-shared-space">
+                        <div class="form-group">
+                            <label for="auto_edition">Edition:</label>
+                            <input type="text" class="form-control" id="auto_edition" placeholder="Edition" ng-model="newBookForm.edition" required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <select class="form-control" ng-model="newBookForm.category" id="book_category" ng-options="category.value as category.name for category in bookCategories" required></select>
+                    <div class="col-md-6 form-shared-space">
+                        <div class="form-group">
+                            <label for="book_category">Category:</label>
+                            <select class="form-control" ng-model="newBookForm.category" id="book_category" ng-options="category.value as category.name for category in bookCategories" required></select>
+                        </div>
                     </div>
                     <div class="form-group add-book-buttons">
                         <button type="submit" class="btn btn-success btn-lg">Add Book & Make Offer</button>
@@ -112,21 +138,22 @@
         </div>
 
         <div ng-show="show.result">
-        <div class="col-md-offset-4 col-md-4">
-            <div class="text-center">
-                <h3>The book did not appear?</h3>
-            </div>
-            <div class="form-group">
-                <button type="button" class="btn btn-danger btn-md btn-options" ng-click="notFound()">
-                    Add the Book!</button>
+            <div class="col-md-offset-4 col-md-4">
+                <div class="text-center">
+                    <h3>The book did not appear?</h3>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-danger btn-md btn-options" ng-click="notFound()">
+                        Add the Book!
+                    </button>
 
-                <a href="#/requested">
-                    <button type="button" class="btn btn-danger btn-md btn-options">
-                        Check the Requested Books!</button>
-                </a>
-            </div> 
+                    <a href="#/requested">
+                        <button type="button" class="btn btn-danger btn-md btn-options">
+                            Check the Requested Books!
+                        </button>
+                    </a>
+                </div> 
             </div>
-
            
             <div class="col-md-12 autocomplete-results">
                 <div class="panel panel-default">
@@ -183,25 +210,29 @@
             <h1 class="text-center">Make an Offer!</h1>
             <form role="form" ng-submit="submitOffer()" name="newOfferForm" class="add-book-offer-form">
                 <div class="col-md-12">
-                    <div class="col-md-4">
-                        <div class="form-group col-md-12">
-                            <input type="number" class="form-control" ng-disabled="submittedOffer" placeholder="Price" ng-model="offerForm.price" required>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group col-md-12">
-                            <select class="form-control" ng-model="offerForm.condition" ng-disabled="submittedOffer" required ng-options="condition.value as condition.name for condition in conditions"></select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 form-shared-space">
                         <div class="form-group">
-                            <input type="number" class="form-control" placeholder="Quantity" ng-disabled="submittedOffer" ng-model="offerForm.quantity" required>
+                            <label for="offer-price">Price:</label>
+                            <input id="offer-price"type="number" class="form-control" ng-disabled="submittedOffer" placeholder="Price" ng-model="offerForm.price" required>
+                        </div>
+                    </div>
+                    <div class="col-md-4 form-shared-space">
+                        <div class="form-group">
+                            <label for="offer-condition">Condition:</label>
+                            <select id="offer-condition" class="form-control" ng-model="offerForm.condition" ng-disabled="submittedOffer" required ng-options="condition.value as condition.name for condition in conditions"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-4 form-shared-space">
+                        <div class="form-group">
+                            <label for="offer-quantity">Quantity:</label>
+                            <input id="offer-quantity" type="number" class="form-control" placeholder="Quantity" ng-disabled="submittedOffer" ng-model="offerForm.quantity" required>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="form-group">
-                        <textarea class="form-control" rows="4" placeholder="Description" ng-disabled="submittedOffer" ng-model="offerForm.description" required></textarea>
+                        <label for="offer-description">Description:</label>
+                        <textarea id="offer-description" class="form-control" rows="4" placeholder="Description" ng-disabled="submittedOffer" ng-model="offerForm.description" required></textarea>
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -218,8 +249,12 @@
                 </div>
                 <div class="col-md-12" ng-hide="submittedOffer">
                     <div class="form-group add-book-buttons">
-                        <button type="submit" class="btn btn-success btn-lg">Add Offer</button>
-                        <button type="button" ng-click="clearOfferForm()" class="btn btn-success btn-lg">Clear</button>
+                        <button type="submit" class="btn btn-success btn-lg">
+                            Add Offer
+                        </button>
+                        <button type="button" ng-click="clearOfferForm()" class="btn btn-success btn-lg">
+                            Clear
+                        </button>
                     </div>
                 </div>
             </form>

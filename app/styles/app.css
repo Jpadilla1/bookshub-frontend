@@ -329,7 +329,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 5%;
 }
 .add-book-form {
-    margin-top: 15%;
+    margin-top: 1%;
 }
 .panel-heading span {
     color: white;
@@ -453,7 +453,10 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: 12%;
 }
 /* helpers */
-
+.form-shared-space{
+    padding-left: 1%;
+    padding-right: 1%;
+}
 #comment-panel {
     background-color: rgba(29, 28, 28, 0.65);
     color: white;
