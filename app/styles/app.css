@@ -289,10 +289,11 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: -3%;
 }
 .image-subheader-text {
-    margin-top: 0;
-    margin-bottom: 5%;
+    margin-top: -2%;
+    margin-bottom: 2%;
 }
 /*Add Book Styles*/
 
