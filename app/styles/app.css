@@ -130,6 +130,12 @@ h1, h2, h3, h4, h5, h6 {
 .panel-bottom-space{
     margin-bottom: 2%;
 }
+.request-sections{
+    padding-top: 12%;
+}
+.request-display{
+    padding-bottom: 4%;
+}
 /*Log In Styles*/
 
 .forgot-links {

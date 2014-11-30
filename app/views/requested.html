@@ -1,142 +1,153 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <div class="info-request text-center">
-                <h1>All Requested Books from the Users!</h1>
-            </div>
-        </div>
-
-
-
         <div class="col-md-12 ">
-            <div class="col-md-offset-1 col-md-10">
-                <div class="col-md-4">
-                    <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showAllRequested()">All Requested</button>
-                </div>
-                <div class="col-md-4">
-                    <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showTopRequested()">Top Requested</button>
-                </div>
-                <div class="col-md-4">
-                    <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showAddBook()">Not Found? Add it!</button>
-                </div>
+            <div class="col-md-3 sidebar" id="requested-sidebar">
+                <a class="side-links col-md-12 active" ng-click="showAllRequested()">All Requested</a>
+                <a class="side-links col-md-12" ng-click="showTopRequested()">Top Requested</a>
+                <a class="side-links col-md-12" ng-click="showAddBook()">Not Found? Add it!</a>
             </div>
-
-        </div>
-
-
-        <div class="col-md-12 autocomplete-results">
-            <div ng-show="AllRequested">
-                <div class="col-md-12">
-                    <div>
-                        <span ng-repeat="r in result.results">
-                            <div class="col-md-4 panel-bottom-space">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <img src="../images/hpbook.jpg" class="add-book-result-image">
-                                        <label class="cart-item-info">Title:</label>{{r.title}}
-                                        </br>
-                                        <label class="cart-item-info">Author:</label>{{r.author}}
-                                       
-                                        <span ng-if="acr.id != null">
-                                            {{acr.author}}
-                                        </span>
-                                        </br>
-                                        <label class="cart-item-info">ISBN 10:</label>{{r.isbn_10}}
-                                        </br>
-                                        <label class="cart-item-info">ISBN 13:</label>{{r.isbn_13}}
-                                        </br>
-                                    </div>
-                                    <div class="panel-footer" id="footer-panel-with-button">
-                                        <div class="offer-footer-top-space">
-                                            <span>
-                                                Users looking for this
-                                                <span class="label label-with-background">
-                                                    {{r.count}}
-                                                </span>
-                                            </span>
-                                            <button class="btn btn-with-background pull-right" ng-click="showAddBookRequested(r.id, $index)">
-                                                Request It
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </span>
+            <div class="col-md-9">
+                <div ng-show="AllRequested">
+                    <div class="col-md-12 request-display">
+                        <div class="col-md-3">
+                            <div class="request-sections">
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h1 class="text-center">
+                                Requested Books
+                            </h1>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="request-sections">
+                                <hr>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            
-
-            <div ng-show="TopRequested">
-                <div class="col-md-12">
-                    <div>
-                        <span ng-repeat="r in topRequested.results">
-                        {{r.results}}
-                            <div class="col-md-4 panel-bottom-space">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <img src="../images/hpbook.jpg" class="add-book-result-image">
-                                        <label class="cart-item-info">Title:</label>{{r.title}}
-                                        </br>
-                                        <label class="cart-item-info">Author:</label>{{r.author}}
-                                       
-                                        <span ng-if="acr.id != null">
-                                            {{acr.author}}
-                                        </span>
-                                        </br>
-                                        <label class="cart-item-info">ISBN 10:</label>{{r.isbn_10}}
-                                        </br>
-                                        <label class="cart-item-info">ISBN 13:</label>{{r.isbn_13}}
-                                        </br>
-                                    </div>
-                                    <div class="panel-footer" id="footer-panel-with-button">
-                                        <div class="offer-footer-top-space">
-                                            <span>
-                                                Users looking for this
-                                                <span class="label label-with-background">
-                                                    {{r.count}}
-                                                </span>
+                    <span ng-repeat="r in result.results">
+                        <div class="col-md-6 panel-bottom-space">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <img src="../images/hpbook.jpg" class="add-book-result-image">
+                                    <label class="cart-item-info">Title:</label>{{r.title}}
+                                    </br>
+                                    <label class="cart-item-info">Author:</label>{{r.author}}
+                                   
+                                    <span ng-if="acr.id != null">
+                                        {{acr.author}}
+                                    </span>
+                                    </br>
+                                    <label class="cart-item-info">ISBN 10:</label>{{r.isbn_10}}
+                                    </br>
+                                    <label class="cart-item-info">ISBN 13:</label>{{r.isbn_13}}
+                                    </br>
+                                </div>
+                                <div class="panel-footer" id="footer-panel-with-button">
+                                    <div class="offer-footer-top-space">
+                                        <span>
+                                            Users looking for this
+                                            <span class="label label-with-background">
+                                                {{r.count}}
                                             </span>
-                                            <button class="btn btn-with-background pull-right" ng-click="showAddBookRequested2(r.id, $index)">
-                                                Request It
-                                            </button>
-                                        </div>
+                                        </span>
+                                        <button class="btn btn-with-background pull-right footer-button" ng-click="showAddBookRequested(r.id, $index)">
+                                            Request It
+                                        </button>
                                     </div>
                                 </div>
-                            </span>
-                        </div>
+                            </div>
+                        </span>
                     </div>
                 </div>
-            </div>
-
-
-
-
-
-
-            <div class="col-md-offset-3 col-md-6">
+                <div ng-show="TopRequested">
+                    <div class="col-md-12 request-display">
+                        <div class="col-md-3">
+                            <div class="request-sections">
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h1 class="text-center">
+                                Top Requested
+                            </h1>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="request-sections">
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                    <span ng-repeat="r in topRequested.results">
+                    {{r.results}}
+                        <div class="col-md-6 panel-bottom-space">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <img src="../images/hpbook.jpg" class="add-book-result-image">
+                                    <label class="cart-item-info">Title:</label>{{r.title}}
+                                    </br>
+                                    <label class="cart-item-info">Author:</label>{{r.author}}
+                                   
+                                    <span ng-if="acr.id != null">
+                                        {{acr.author}}
+                                    </span>
+                                    </br>
+                                    <label class="cart-item-info">ISBN 10:</label>{{r.isbn_10}}
+                                    </br>
+                                    <label class="cart-item-info">ISBN 13:</label>{{r.isbn_13}}
+                                    </br>
+                                </div>
+                                <div class="panel-footer" id="footer-panel-with-button">
+                                    <div class="offer-footer-top-space">
+                                        <span>
+                                            Users looking for this
+                                            <span class="label label-with-background">
+                                                {{r.count}}
+                                            </span>
+                                        </span>
+                                        <button class="btn btn-with-background pull-right footer-button" ng-click="showAddBookRequested2(r.id, $index)">
+                                            Request It
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                </div>
                 <div ng-show="AddBook" class="add-book-form">
-                    <h1 class="text-center">
-                        Add Your Book to BooksHub
-                    </h1>
+                    <div class="col-md-12 request-display">
+                        <h1 class="text-center">
+                            Add Your Book to BooksHub
+                        </h1>
+                    </div>
                     <form role="form" name="bookForm">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="auto_title" placeholder="Title" ng-model="rBook.title">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="request-title">Title:</label>
+                                <input id="request-title" type="text" class="form-control" id="auto_title" placeholder="Title" ng-model="rBook.title">
+                            </div>
+                            <div class="form-group">
+                                <label for="request-isbn-10">ISBN 10:</label>
+                                <input id="request-isbn-10" type="number" class="form-control" id="auto_isbn_10" placeholder="ISBN 10" ng-model="rBook.isbn_10">
+                            </div>
+                            <div class="form-group">
+                                <label for="request-isbn-13">ISBN 13:</label>
+                                <input id="request-isbn-13" type="number" class="form-control" id="auto_isbn_13" placeholder="ISBN 13" ng-model="rBook.isbn_13">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <input type="number" class="form-control" id="auto_isbn_10" placeholder="ISBN 10" ng-model="rBook.isbn_10">
-                        </div>
-                        <div class="form-group">
-                            <input type="number" class="form-control" id="auto_isbn_13" placeholder="ISBN 13" ng-model="rBook.isbn_13">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="auto_author" placeholder="Author" ng-model="rBook.author">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="auto_publisher" placeholder="Publisher" ng-model="rBook.publisher">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="auto_edition" placeholder="Edition" ng-model="rBook.edition">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="request-author">Author:</label>
+                                <input id="request-author" type="text" class="form-control" id="auto_author" placeholder="Author" ng-model="rBook.author">
+                            </div>
+                            <div class="form-group">
+                                <label for="request-publisher">Publisher:</label>
+                                <input id="request-publisher" type="text" class="form-control" id="auto_publisher" placeholder="Publisher" ng-model="rBook.publisher">
+                            </div>
+                            <div class="form-group">
+                                <label for="request-edition">Edition:</label>
+                                <input id="request-edition" type="text" class="form-control" id="auto_edition" placeholder="Edition" ng-model="rBook.edition">
+                            </div>
                         </div>
                         <div class="form-group add-book-buttons">
                             <button type="button" class="btn btn-success btn-lg" ng-click="AddBook1()">Add Book</button>
@@ -145,10 +156,6 @@
                     </form>
                 </div>
             </div>
-
-            
         </div>
     </div>
-
-</div>
 </div>
