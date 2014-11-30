@@ -1,10 +1,16 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 ">
-            <div class="col-md-3 sidebar" id="requested-sidebar">
-                <a class="side-links col-md-12 active" ng-click="showAllRequested()">All Requested</a>
-                <a class="side-links col-md-12" ng-click="showTopRequested()">Top Requested</a>
-                <a class="side-links col-md-12" ng-click="showAddBook()">Not Found? Add it!</a>
+            <div class="col-md-3 sidebar" id="requested-sidebar" >
+                <a class="side-links col-md-12 active" id="all-requested"ng-click="showAllRequested('all-requested')">
+                    All Requested
+                </a>
+                <a class="side-links col-md-12" id="top-requested" ng-click="showTopRequested('top-requested')">
+                    Top Requested
+                </a>
+                <a class="side-links col-md-12" id="add-book" ng-click="showAddBook('add-book')">
+                    Not Found? Add it!
+                </a>
             </div>
             <div class="col-md-9">
                 <div ng-show="AllRequested">
