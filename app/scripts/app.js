@@ -71,6 +71,10 @@ app.config(function($routeProvider) {
       templateUrl: 'views/cart.html',
       controller: 'CartCtrl'
      })
+      .when('/settings', {
+      templateUrl: 'views/settings.html',
+      controller: 'SettingsCtrl'
+     })
       .when('/404', {
       templateUrl: '404.html',
       controller: '404Ctrl'
