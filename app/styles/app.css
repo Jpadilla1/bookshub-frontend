@@ -522,16 +522,19 @@ h1, h2, h3, h4, h5, h6 {
     padding-bottom: 4%;
 }
 .settings-sections{
-    padding-top: 25%;
+    padding-top: 13%;
 }
 .settings-offers-sections{
     padding-top: 12%;
 }
 .settings-personal-all{
-    margin-top: 11%;
+    margin-top: 8%;
 }
 .settings-offers{
     margin-top: 3%;
+}
+.settings-offers-all{
+    padding-top: 12%;
 }
 /* user offers */
 
