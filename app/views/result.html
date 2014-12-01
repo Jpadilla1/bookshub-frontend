@@ -1,0 +1,98 @@
+<div class="container">
+<form class="form-group" role="form" id="form-search">
+        <div class="row">
+            <div class="search-input text-center">
+                <!--Input Group that manages the data to be searched-->
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="searchInput">
+                    <span class="input-group-btn">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                                Search By
+                                <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#/result" ng-click="searchBy('title')">
+                                    Title
+                                  </a>
+                        </li>
+                        <li>
+                            <a href="#/result" ng-click="searchBy('isbn_10')">
+                                    ISBN 10
+                                  </a>
+                        </li>
+                        <li>
+                            <a href="#/result" ng-click="searchBy('isbn_13')">
+                                    ISBN 13
+                                  </a>
+                        </li>
+                        <li>
+                            <a href="#/result" ng-click="searchBy('author')">
+                                    Author
+                                  </a>
+                        </li>
+                    </ul>
+                </div>
+                </span>
+            </div>
+            <!-- /input-group -->
+            <!-- /.col-lg-6 -->
+        </div>
+    </div>
+</form>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="info-request text-center">
+                <h1>Results from: {{}}!</h1>
+            </div>
+        </div>
+
+        <div class="col-md-12 autocomplete-results">
+                <div class="col-md-12">
+                    <div>
+                        <span ng-repeat="r in result.results">
+                            <div class="col-md-4 panel-bottom-space">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <img src="../images/hpbook.jpg" class="add-book-result-image">
+                                        <label class="cart-item-info">Title:</label>{{r.title}}
+                                        </br>
+                                        <label class="cart-item-info">Author:</label>{{r.author}}
+                                       
+                                        <span ng-if="acr.id != null">
+                                            {{acr.author}}
+                                        </span>
+                                        </br>
+                                        <label class="cart-item-info">ISBN 10:</label>{{r.isbn_10}}
+                                        </br>
+                                        <label class="cart-item-info">ISBN 13:</label>{{r.isbn_13}}
+                                        </br>
+                                    </div>
+                                    <div class="panel-footer" id="footer-panel-with-button">
+                                        <div class="offer-footer-top-space">
+                                            <span>
+                                                Users looking for this
+                                                <span class="label label-with-background">
+                                                    {{r.count}}
+                                                </span>
+                                            </span>
+                                            <button class="btn btn-with-background pull-right" ng-click="showAddBookRequested(r.id, $index)">
+                                                Request It
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+        
+           </div> 
+        </div>
+    </div>
+
+</div>
+</div>

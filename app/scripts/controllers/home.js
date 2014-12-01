@@ -58,6 +58,9 @@ received in the index*/
 
         $scope.searchBy = function(selection) {
             result = validateField($scope.searchInput);
+
+            MySearch.selection = selection;
+            MySearch.searchResult = result;
             if (result) {
                 var params = {
                     'searchBy': selection,

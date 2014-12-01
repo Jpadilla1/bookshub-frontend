@@ -51,6 +51,10 @@ app.config(function($routeProvider) {
        templateUrl: 'views/requested.html',
        controller: 'RequestCtrl'
      })
+       .when('/result', {
+       templateUrl: 'views/result.html',
+       controller: 'ResultCtrl'
+     })  
       .when('/login', {
        templateUrl: 'views/login.html',
        controller: 'LogInCtrl'
