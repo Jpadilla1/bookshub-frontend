@@ -37,26 +37,26 @@ app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBoo
     $scope.AddBook = false;
 
     $scope.result = '';
-    $scope.showAllRequested = function() {
-
+    $scope.showAllRequested = function(element) {
         $scope.result = MyBookService.booksRequested.get();
-           console.log($scope.result);
+        addActiveClass(element);
 
         $scope.AllRequested = true;
         $scope.TopRequested = false;
         $scope.AddBook = false;
     };
 
-    $scope.showTopRequested = function() {
-
-         $scope.topRequested = MyBookService.topRequested.get();
+    $scope.showTopRequested = function(element) {
+        $scope.topRequested = MyBookService.topRequested.get();
+        addActiveClass(element);
 
         $scope.AllRequested = false;
         $scope.TopRequested = true;
         $scope.AddBook = false;
     };
 
-    $scope.showAddBook = function(){
+    $scope.showAddBook = function(element){
+        addActiveClass(element);
 
         $scope.AddBook = true;
         $scope.AllRequested = false;
@@ -70,7 +70,6 @@ app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBoo
         var test = MyBookService.topRequested.get();
 
         test.$promise.then(function(data){
-          alert('hello');
           $scope.b = data;
           console.log($scope.b.results);
         });
@@ -136,4 +135,19 @@ app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBoo
       $scope.$on('$viewContentLoaded', function() {
         defaultNavbar();
     });
+
+    function addActiveClass(id){
+        if(id){
+            var element = $('#' + id).addClass('active');
+            console.log($('#' + id).attr('id'));
+
+            var elements = $('#requested-sidebar').find('a');
+            console.log(elements);
+            for(var i = 0; i < elements.length; i++){
+                if(elements[i].id != id){
+                    $('#' + elements[i].id).removeClass('active');
+                }
+            }
+        }
+    };
 }]);

@@ -130,6 +130,12 @@ h1, h2, h3, h4, h5, h6 {
 .panel-bottom-space{
     margin-bottom: 2%;
 }
+.request-sections{
+    padding-top: 12%;
+}
+.request-display{
+    padding-bottom: 4%;
+}
 /*Log In Styles*/
 
 .forgot-links {
@@ -289,10 +295,11 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: -3%;
 }
 .image-subheader-text {
-    margin-top: 0;
-    margin-bottom: 5%;
+    margin-top: -2%;
+    margin-bottom: 2%;
 }
 /*Add Book Styles*/
 
@@ -329,7 +336,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 5%;
 }
 .add-book-form {
-    margin-top: 15%;
+    margin-top: 1%;
 }
 .panel-heading span {
     color: white;
@@ -453,7 +460,10 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: 12%;
 }
 /* helpers */
-
+.form-shared-space{
+    padding-left: 1%;
+    padding-right: 1%;
+}
 #comment-panel {
     background-color: rgba(29, 28, 28, 0.65);
     color: white;
@@ -505,6 +515,26 @@ h1, h2, h3, h4, h5, h6 {
 
 .autocomplete-results {
     padding-top: 2%;
+}
+
+/* settings */
+.settings-header{
+    padding-bottom: 4%;
+}
+.settings-sections{
+    padding-top: 13%;
+}
+.settings-offers-sections{
+    padding-top: 12%;
+}
+.settings-personal-all{
+    margin-top: 8%;
+}
+.settings-offers{
+    margin-top: 3%;
+}
+.settings-offers-all{
+    padding-top: 12%;
 }
 /* user offers */
 
