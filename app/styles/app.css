@@ -516,6 +516,23 @@ h1, h2, h3, h4, h5, h6 {
 .autocomplete-results {
     padding-top: 2%;
 }
+
+/* settings */
+.settings-header{
+    padding-bottom: 4%;
+}
+.settings-sections{
+    padding-top: 25%;
+}
+.settings-offers-sections{
+    padding-top: 12%;
+}
+.settings-personal-all{
+    margin-top: 11%;
+}
+.settings-offers{
+    margin-top: 3%;
+}
 /* user offers */
 
 .user-offers-top-space {
