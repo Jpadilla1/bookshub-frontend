@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">Search Our Users!</h1>
+            <div class="col-md-offset-3 col-md-6">
+                <form  role="form" id="all-users-search">
+                    <div class="form-group">
+                            <input type="text" class="form-control" ng-model="searchInput.name">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="all-users-results">
+            <span ng-repeat="user in results | filter:searchInput | orderBy: 'name'">
+                <div class="col-md-4 all-users-result-margin">
+                    <div class="col-md-3">
+                        <a href="" ng-click=""><img src="../images/logo.png" class="all-users-image"></a>
+                    </div>
+                    <div class="col-md-9">
+                        <a href="" ng-click="" id="all-users-link">{{user.name}}</a>
+                        </br>
+                        <p class="all-users-description">
+                            {{user.description}}
+                        </p>
+                    </div>
+                </div>
+            </span>
+        </div>
+    </div>
+</div>
