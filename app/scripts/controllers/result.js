@@ -32,13 +32,13 @@ app.controller('ResultCtrl', ['$scope', 'MyBookService','MySearch', 'MyOfferServ
         $scope.New = true;
         $scope.Used = false;
         searchBy();
-    }
+    };
 
     $scope.showUsed = function() {
         $scope.New = false;
         $scope.Used = true;
         searchBy();       
-    }
+    };
 
     function searchBy() {
         $scope.selection = MySearch.selectionResult;
@@ -56,5 +56,13 @@ app.controller('ResultCtrl', ['$scope', 'MyBookService','MySearch', 'MyOfferServ
                  console.log($scope.result);
             });
         }
-    }
+    };
+
+     $scope.bookProfile = function(ID){
+
+        MyBookService.bookId = ID;
+        console.log(ID);
+    };
+
+
 }]);
