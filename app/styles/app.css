@@ -221,6 +221,10 @@ h1, h2, h3, h4, h5, h6 {
     background-color: rgba(17, 213, 119, 0.69);
     color: white;
 }
+.pricing-header{
+    padding-top: 2%;
+    padding-bottom: 3%;
+}
 /* navbar */
 
 #primary-nav {

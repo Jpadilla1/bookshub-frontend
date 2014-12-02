@@ -8,83 +8,119 @@
  * Controller of the hubAppApp
  */
 angular.module('hubAppApp')
-    .controller('SignUpCtrl', ['$scope', 'authService', '$location', '$timeout',function($scope, authService, $location, $timeout) {
+    .controller('SignUpCtrl', ['$scope', 'authService', '$location', '$timeout', '$cookies', function($scope, authService, $location, $timeout, $cookies) {
 
-    $scope.retypedPassword = '';
-
-    $scope.signUpForm = {
-        "last_name": '',
-        "email": '',
-        "first_name": '',
-        "username": '',
-        "password": '',
-        "type": 'standard',
-        "phone": '',
-        "title": ''
-    };
-
-    var originalSignUpForm = angular.copy($scope.signUpForm);
-
-    $scope.settingsForm = {
-        "zip": '',
-        "twitter_url": '',
-        "google_url": '',
-        "address_1": '',
-        "address_2": '',
-        "state": '',
-        "country": '',
-        "city": '',
-        "facebook_url": ''
-    };
-
-    $scope.tabs = {
-        "showBasicForm": true,
-        "showStudentForm": false,
-        "showUserForm": false
-    };
-
-    $scope.showBasicForm = function() {
-        $scope.tabs.showBasicForm = true;
-        $scope.tabs.showStudentForm = false;
-        $scope.tabs.showUserForm = false;
-    }
-
-    $scope.showStudentForm = function() {
-        $scope.tabs.showBasicForm = false;
-        $scope.tabs.showStudentForm = true;
-        $scope.tabs.showUserForm = false;
-    }
-
-    $scope.showUserForm = function() {
-        $scope.tabs.showBasicForm = false;
-        $scope.tabs.showStudentForm = false;
-        $scope.tabs.showUserForm = true;
-    }
-
-    $scope.submit = function() {
-        console.log($scope.signUpForm);
-        authService.signup($scope.signUpForm)
-            .then(function(data){
-                // success
-                $scope.isSignUp = true;
-                $timeout(function(){
-                    $location.path('/login');
-                }, 2500);
-            }, function(data){
-                $scope.signUpError = true;
-                $scope.clearSignUpForm();
-                // error
-                console.log(data);
-        });
-        // console.log($scope.settingsForm);
-    }
-
-    $scope.clearSignUpForm = function() {
-        $scope.signUpForm = angular.copy(originalSignUpForm);
         $scope.retypedPassword = '';
-    }
+        $scope.token = '';
+        $scope.plan = '';
 
-    $scope.$on('$viewContentLoaded', function() {
-        defaultNavbar();
-    });
-}]);
+        $scope.signUpForm = {
+            "username": '',
+            "first_name": '',
+            "last_name": '',
+            "email": '',
+            "password": '',
+            "type": 'standard',
+            "phone": '',
+            "title": ''
+        };
+
+        var originalSignUpForm = angular.copy($scope.signUpForm);
+
+        $scope.settingsForm = {
+            "name": '',
+            "zip": '',
+            "address_1": '',
+            "address_2": '',
+            "state": '',
+            "country": '',
+            "city": ''
+        };
+
+        $scope.tabs = {
+            "showBasicForm": true,
+            "showSellerForms": false,
+            "showOffers": false
+        };
+
+        $scope.showBasicForm = function() {
+            $scope.tabs.showBasicForm = true;
+            $scope.tabs.showUserForm = false;
+            $scope.tabs.showOffers = false;
+        }
+
+        $scope.showSellerForms = function() {
+            $scope.tabs.showBasicForm = false;
+            $scope.tabs.showSellerForms = true;
+            $scope.tabs.showOffers = false;
+        }
+
+        $scope.showOffers = function() {
+            $scope.tabs.showBasicForm = false;
+            $scope.tabs.showSellerForms = false;
+            $scope.tabs.showOffers = true;
+        }
+
+        $scope.submitSignUp = function() {
+            console.log($scope.signUpForm);
+            authService.signup($scope.signUpForm)
+                .then(function(data) {
+                    // success
+                    $scope.isSignUp = true;
+                    $cookies.token = data.token;
+                    $scope.tabs.showBasicForm = false;
+                    $scope.tabs.showOffers = true;
+                }, function(data) {
+                    $scope.signUpError = true;
+                    $scope.clearSignUpForm();
+                    // error
+                    console.log(data);
+                });
+        };
+
+        $scope.addPlanAndComplete = function(planChoosen) {
+            $scope.plan = planChoosen;
+            $scope.tabs.showOffers = false;
+            $scope.tabs.showSellerForms = true;
+        };
+
+        $scope.submitSellerInformation = function() {
+            $scope.settingsForm.name = $scope.signUpForm.first_name + " " + $scope.signUpForm.last_name;
+            authService.updateSettings($scope.settingsForm);
+        };
+
+        $scope.$on('$viewContentLoaded', function() {
+            defaultNavbar();
+        });
+
+        //Stripe
+        // $scope.token;
+        Stripe.setPublishableKey('pk_test_0kdKRntcrHlYsL54QQsSjaXo');
+
+        $scope.stripeSubscribe = function(){
+            var $form = $('#checkout-form');
+
+            // Disable the submit button to prevent repeated clicks
+            $form.find('button').prop('disabled', true);
+            console.log($scope.plan);
+            Stripe.createToken($form, stripeResponseHandler);
+        };
+
+        var stripeResponseHandler = function(status, response) {
+            var $form = $('#checkout-form');
+            console.log($scope.plan);
+            console.log(response);
+            if (response.error) {
+                // Show the errors on the form
+                $form.find('.payment-errors').text(response.error.message);
+                $form.find('.payment-errors').addClass('alert');
+                $form.find('.payment-errors').addClass('alert-error');
+                $form.find('button').prop('disabled', false);
+            } else {
+                // token contains id, last4, and card type
+                console.log('here');
+                $scope.token = response.id;
+                authService.stripe($scope.plan, $scope.token);
+            }
+        };
+    }]);

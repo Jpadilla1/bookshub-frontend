@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="col-md-10 col-md-offset-1">
-                <form role="form" ng-submit="submit()">
-                    <div ng-show="tabs.showBasicForm">
+                <div ng-show="tabs.showBasicForm">
+                    <form role="form" ng-submit="submitSignUp()">
                         <div class="col-md-12">
                             <img src="../images/bookhub-b.png" class="header-image" alt="">
                             <h1 class="image-subheader-text text-center">Start selling today!</h1>
@@ -38,14 +38,10 @@
                                         <input id="signup-last-name" type="text" class="form-control" placeholder="Last Name" ng-disabled="isSignUp" ng-model="signUpForm.last_name" required>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="signup-phone-number">Phone Number</label>
-                                    <input id="signup-phone-number" type="number" class="form-control" placeholder="Phone Number" ng-disabled="isSignUp" ng-model="signUpForm.phone" required>
-                                </div>
                             </div>
                             <div class="col-md-6 col-md-offset-3">
                                 <div class="form-group" class="signup-buttons">
-                                    <button type="submit" class="btn btn-success btn-lg btn-block" ng-disabled="isSignUp">Finish Now!</button>
+                                    <button type="submit" class="btn btn-success btn-lg btn-block" ng-disabled="isSignUp">Register & Choose Account</button>
                                 </div>
                                 <div class="alert alert-success" ng-show="isSignUp">
                                     <a href="#" class="close" data-dismiss="alert">&times;</a>
@@ -57,285 +53,274 @@
                                 </div>
                             </div>
                         </div>
+                    </form>
+                </div>
+                <div ng-show="tabs.showSellerForms">
+                    <form role="form" id="checkout-form">
+                        <!-- Stripe form -->
+                        <span class="payment-errors"></span>
+                        <div class="col-md-12">
+                            <img src="../images/bookhub-b.png" class="header-image" alt="">
+                            <h1 class="image-subheader-text text-center">Seller Information</h1>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-offset-3 col-md-6">
+                                <div class="form-group">
+                                    <label for="signup-phone-number">Phone Number</label>
+                                    <input id="signup-phone-number" type="number" class="form-control" placeholder="Phone Number" ng-model="signUpForm.phone" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="address_line1">Address Line</label>
+                                    <div class="controls">
+                                        <input type="text" id="address_line1" class="form-control" placeholder="Address Line 1" data-stripe="address_line1" ng-model="settingsForm.address_1"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="address_line2">Address Line 2</label>
+                                    <div class="controls">
+                                        <input type="text" id="address_line2" class="form-control" placeholder="Address Line 2" data-stripe="address_line2" ng-model="settingsForm.address_2" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="address_city">City</label>
+                                    <div class="controls">
+                                        <input type="text" id="address_city" class="form-control" placeholder="City" data-stripe="address_city" ng-model="settingsForm.city" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="address_state">State</label>
+                                    <div class="controls">
+                                        <input type="text" id="address_state" class="form-control" placeholder="State" data-stripe="address_state" ng-model="settingsForm.state" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="address_zip">Zip</label>
+                                    <div class="controls">
+                                        <input type="text" id="address_zip" class="form-control" placeholder="Zip" data-stripe="address_zip" ng-model="settingsForm.zip" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="address_country">Country</label>
+                                    <div class="controls">
+                                        <input type="text" id="address_country" class="form-control" placeholder="Country" data-stripe="address_country" ng-model="settingsForm.country" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3>Credit Card Information</h3>
+                                    <hr>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label" for="">Card</label>
+                                            <div class="controls">
+                                                <input type="text" id="card" class="form-control" data-stripe="number" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label" for="cvc">CVC</label>
+                                            <div class="controls">
+                                                <input type="text" id="cvc" size="4" class="form-control form-shared-space" data-stripe="cvc" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label" for="">Expiration Month</label>
+                                            <input type="text" size="2" data-stripe="exp-month" class="form-control form-shared-space" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label" for="">Expiration Year</label>
+                                            <input type="text" size="4" data-stripe="exp-year" class="form-control form-shared-space" />   
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 info-top-space">
+                            <div class="form-group">
+                                <center>
+                                    <button class="btn btn-success btn-lg" ng-click="stripeSubscribe()">Submit</button>
+                                </center>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div ng-show="tabs.showOffers">
+                <section id="pricing">
+                    <div class="col-md-12 pricing-header">
+                        <div class="col-md-3">
+                            <div class="settings-sections">
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h1 class="text-center">
+                                Choose the offer that fits you the most.
+                            </h1>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="settings-sections">
+                                <hr>
+                            </div>
+                        </div>
                     </div>
-                 </form>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="the-price">
+                                    <h1>
+                                    $0<span class="subscript">/mo</span></h1>
+                                    <!-- <small>1 month FREE trial</small> -->
+                                </div>
+                                <table class="table">
+                                    <tr>
+                                        <td>
+                                            For students
+                                        </td>
+                                    </tr>
+                                    <tr class="active">
+                                        <td>
+                                            up to 10 unique books
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Unlimited quantity
+                                        </td>
+                                    </tr>
+                                    <tr class="active">
+                                        <td>
+                                            24/7 support
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="panel-footer">
+                                <button class="btn btn-lg btn-success btn-block" role="button" ng-click="addPlanAndComplete('free')">SIGN UP</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="the-price">
+                                    <h1>
+                                    $5<span class="subscript">/mo</span></h1>
+                                    <!-- <small>1 month FREE trial</small> -->
+                                </div>
+                                <table class="table">
+                                    <tr>
+                                        <td>
+                                            Seller
+                                        </td>
+                                    </tr>
+                                    <tr class="active">
+                                        <td>
+                                            up to 20 unique books
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Unlimited quantity
+                                        </td>
+                                    </tr>
+                                    <tr class="active">
+                                        <td>
+                                            24/7 support
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="panel-footer">
+                                <button class="btn btn-lg btn-success btn-block" role="button" ng-click="addPlanAndComplete('monthly_5')">SIGN UP</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="panel panel-default">
+                            <div class="cnrflash">
+                                <div class="cnrflash-inner">
+                                    <span class="cnrflash-label">MOST
+                                    <br>
+                                    POPULAR</span>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="the-price">
+                                    <h1>
+                                    $10<span class="subscript">/mo</span></h1>
+                                    <!-- <small>1 month FREE trial</small> -->
+                                </div>
+                                <table class="table">
+                                    <tr>
+                                        <td>
+                                            Seller
+                                        </td>
+                                    </tr>
+                                    <tr class="active">
+                                        <td>
+                                            up to 50 unique books
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Unlimited quantity
+                                        </td>
+                                    </tr>
+                                    <tr class="active">
+                                        <td>
+                                            24/7 support
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="panel-footer">
+                                <button class="btn btn-lg btn-success btn-block" role="button" ng-click="addPlanAndComplete('monthly_10')">SIGN UP</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="the-price">
+                                    <h1>
+                                    $20<span class="subscript">/mo</span></h1>
+                                    <!-- <small>1 month FREE trial </small> -->
+                                </div>
+                                <table class="table">
+                                    <tr>
+                                        <td>
+                                            Seller
+                                        </td>
+                                    </tr>
+                                    <tr class="active">
+                                        <td>
+                                            up to 200 unique books
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Unlimited quantity
+                                        </td>
+                                    </tr>
+                                    <tr class="active">
+                                        <td>
+                                            24/7 support
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="panel-footer">
+                                <button class="btn btn-lg btn-success btn-block" role="button" ng-click="addPlanAndComplete('monthly_20')">SIGN UP</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
 </div>
-
-
-
-    <!-- Stripe form -->
-    <form id="checkout-form">
-        <span class="payment-errors"></span>
-        <div class="form-group">
-            <label class="control-label" for="name">Name</label>
-            <div class="controls">
-                <input type="text" id="name" class="form-control" data-stripe="name" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="address_line1">Address Line</label>
-            <div class="controls">
-                <input type="text" id="address_line1" class="form-control" data-stripe="address_line1" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="address_line2">Address Line 2</label>
-            <div class="controls">
-                <input type="text" id="address_line2" class="form-control" data-stripe="address_line2" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="address_city">City</label>
-            <div class="controls">
-                <input type="text" id="address_city" class="form-control" data-stripe="address_city" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="address_state">State</label>
-            <div class="controls">
-                <input type="text" id="address_state" class="form-control" data-stripe="address_state" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="address_zip">Zip</label>
-            <div class="controls">
-                <input type="text" id="address_zip" class="form-control" data-stripe="address_zip" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="address_country">Country</label>
-            <div class="controls">
-                <input type="text" id="address_country" class="form-control" data-stripe="address_country" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="card">Card</label>
-            <div class="controls">
-                <input type="text" id="card" class="form-control" data-stripe="number" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="">Expiration (MM/YYYY)</label>
-            <div class="row">
-                <div class="col-xs-2">
-                    <input type="text" size="2" data-stripe="exp-month" class="form-control" />
-                </div>
-                <div class="col-xs-2">
-                    <input type="text" size="4" data-stripe="exp-year" class="form-control" />
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="cvc">CVC</label>
-            <div class="controls">
-                <input type="text" id="cvc" size="4" class="form-control" data-stripe="cvc" />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="controls">
-                <input type="submit" value="Checkout" class="btn btn-primary" />
-            </div>
-        </div>
-    </form>
-
-    <script type="text/javascript">
-    Stripe.setPublishableKey('pk_test_0kdKRntcrHlYsL54QQsSjaXo');
-
-    var stripeResponseHandler = function(status, response) {
-        var $form = $('#checkout-form');
-
-        console.log(response);
-        if (response.error) {
-            // Show the errors on the form
-            $form.find('.payment-errors').text(response.error.message);
-            $form.find('.payment-errors').addClass('alert');
-            $form.find('.payment-errors').addClass('alert-error');
-            $form.find('button').prop('disabled', false);
-        } else {
-            // token contains id, last4, and card type
-            var token = response.id;
-            // Insert the token into the form so it gets submitted to the server
-            $form.append($('<input type="hidden" name="stripe_token" />').val(token));
-            // and re-submit
-            // $form.get(0).submit();
-            // For bookshub, call API and send data.
-        }
-    };
-
-    jQuery(function($) {
-        $('#checkout-form').submit(function(e) {
-            var $form = $(this);
-
-            // Disable the submit button to prevent repeated clicks
-            $form.find('button').prop('disabled', true);
-
-            Stripe.createToken($form, stripeResponseHandler);
-
-            // Prevent the form from submitting with the default action
-            return false;
-        });
-    });
-    </script>
-
-
-    <section id="pricing">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="the-price">
-                                <h1>
-                                $0<span class="subscript">/mo</span></h1>
-                                <!-- <small>1 month FREE trial</small> -->
-                            </div>
-                            <table class="table">
-                                <tr>
-                                    <td>
-                                        For students
-                                    </td>
-                                </tr>
-                                <tr class="active">
-                                    <td>
-                                        up to 10 unique books
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Unlimited quantity
-                                    </td>
-                                </tr>
-                                <tr class="active">
-                                    <td>
-                                        24/7 support
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="panel-footer">
-                            <button class="btn btn-lg btn-success btn-block" role="button">SIGN UP</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="the-price">
-                                <h1>
-                                $5<span class="subscript">/mo</span></h1>
-                                <!-- <small>1 month FREE trial</small> -->
-                            </div>
-                            <table class="table">
-                                <tr>
-                                    <td>
-                                        Seller
-                                    </td>
-                                </tr>
-                                <tr class="active">
-                                    <td>
-                                        up to 20 unique books
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Unlimited quantity
-                                    </td>
-                                </tr>
-                                <tr class="active">
-                                    <td>
-                                        24/7 support
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="panel-footer">
-                            <button class="btn btn-lg btn-success btn-block" role="button">SIGN UP</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="panel panel-default">
-                        <div class="cnrflash">
-                            <div class="cnrflash-inner">
-                                <span class="cnrflash-label">MOST
-                                <br>
-                                POPULAR</span>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="the-price">
-                                <h1>
-                                $10<span class="subscript">/mo</span></h1>
-                                <!-- <small>1 month FREE trial</small> -->
-                            </div>
-                            <table class="table">
-                                <tr>
-                                    <td>
-                                        Seller
-                                    </td>
-                                </tr>
-                                <tr class="active">
-                                    <td>
-                                        up to 50 unique books
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Unlimited quantity
-                                    </td>
-                                </tr>
-                                <tr class="active">
-                                    <td>
-                                        24/7 support
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="panel-footer">
-                            <button class="btn btn-lg btn-success btn-block" role="button">SIGN UP</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="the-price">
-                                <h1>
-                                $20<span class="subscript">/mo</span></h1>
-                                <!-- <small>1 month FREE trial </small> -->
-                            </div>
-                            <table class="table">
-                                <tr>
-                                    <td>
-                                        Seller
-                                    </td>
-                                </tr>
-                                <tr class="active">
-                                    <td>
-                                        up to 200 unique books
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Unlimited quantity
-                                    </td>
-                                </tr>
-                                <tr class="active">
-                                    <td>
-                                        24/7 support
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="panel-footer">
-                            <button class="btn btn-lg btn-success btn-block" role="button">SIGN UP</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>

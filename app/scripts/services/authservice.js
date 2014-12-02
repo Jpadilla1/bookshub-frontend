@@ -14,7 +14,7 @@ angular.module('hubAppApp')
     // https://github.com/Tivix/angular-django-registration-auth/blob/master/app/scripts/services/djangoAuth.js
     var service = {
         // e.g. /api/rest-auth  (DO NOT INCLUDE ENDING SLASH)
-        'API_URL': 'https://bookshub.herokuapp.com/api/auth',
+        'API_URL': 'http://10.250.49.113:8000/api/auth',
         'use_session': false,
         'authenticated': null,
         'authPromise': null,
@@ -80,6 +80,18 @@ angular.module('hubAppApp')
                     'title': form.title,
                     'phone': form.phone,
                     'password':form.password
+                }
+            });
+        },
+        'stripe': function(plan, token){
+            console.log(plan);
+            console.log(token);
+            return this.request({
+                'method': "POST",
+                'url': "/subscription/",
+                'data':{
+                    'stripe_token': token,
+                    'plan': plan
                 }
             });
         },
