@@ -408,6 +408,28 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 0.5%;
     margin-right: 2%;
 }
+/*All Users Styles*/
+.all-users-results {
+    margin-top: 8%;
+}
+.all-users-image {
+    width: 90px;
+    height: 95px;
+}
+#all-users-link {
+    margin-left: 3%;
+    font-weight: 800;
+}
+.all-users-description {
+    margin-left: 3%;
+    margin-top: 2%;
+}
+.all-users-result-margin {
+    margin-bottom: 5%;
+}
+#all-users-search {
+    margin-bottom: 20%;
+}
 /* user profile */
 
 .user-profile {
