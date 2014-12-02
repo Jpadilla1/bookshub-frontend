@@ -1,98 +1,74 @@
 <div class="container">
-<form class="form-group" role="form" id="form-search">
-        <div class="row">
-            <div class="search-input text-center">
-                <!--Input Group that manages the data to be searched-->
-                <div class="input-group">
-                    <input type="text" class="form-control" ng-model="searchInput">
-                    <span class="input-group-btn">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-                                Search By
-                                <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="#/result" ng-click="searchBy('title')">
-                                    Title
-                                  </a>
-                        </li>
-                        <li>
-                            <a href="#/result" ng-click="searchBy('isbn_10')">
-                                    ISBN 10
-                                  </a>
-                        </li>
-                        <li>
-                            <a href="#/result" ng-click="searchBy('isbn_13')">
-                                    ISBN 13
-                                  </a>
-                        </li>
-                        <li>
-                            <a href="#/result" ng-click="searchBy('author')">
-                                    Author
-                                  </a>
-                        </li>
-                    </ul>
-                </div>
-                </span>
-            </div>
-            <!-- /input-group -->
-            <!-- /.col-lg-6 -->
-        </div>
-    </div>
-</form>
-
-
-    <div class="row">
+    <div clas="row">
         <div class="col-md-12">
-            <div class="info-request text-center">
-                <h1>Results from: {{}}!</h1>
-            </div>
-        </div>
 
-        <div class="col-md-12 autocomplete-results">
-                <div class="col-md-12">
-                    <div>
-                        <span ng-repeat="r in result.results">
-                            <div class="col-md-4 panel-bottom-space">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <img src="../images/hpbook.jpg" class="add-book-result-image">
-                                        <label class="cart-item-info">Title:</label>{{r.title}}
-                                        </br>
-                                        <label class="cart-item-info">Author:</label>{{r.author}}
-                                       
-                                        <span ng-if="acr.id != null">
-                                            {{acr.author}}
-                                        </span>
-                                        </br>
-                                        <label class="cart-item-info">ISBN 10:</label>{{r.isbn_10}}
-                                        </br>
-                                        <label class="cart-item-info">ISBN 13:</label>{{r.isbn_13}}
-                                        </br>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showNew()" data-toggle="button" aria-pressed="true" autocomplete="off">
+                    New
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showUsed()">
+                    Used
+                </button>
+            </div>
+
+
+            <div ng-show="showNew">
+                 <div ng-show="showNew">
+                                    <div class="col-md-4 user-sections">
+                                        <hr>
                                     </div>
-                                    <div class="panel-footer" id="footer-panel-with-button">
-                                        <div class="offer-footer-top-space">
-                                            <span>
-                                                Users looking for this
-                                                <span class="label label-with-background">
-                                                    {{r.count}}
+                                    <div class="col-md-4 text-center">
+                                        <h1>New Books</h1>
+                                    </div>
+                                    <div class="col-md-4 user-sections">
+                                        <hr>
+                                    </div>
+
+                                    
+                                        <div class="requested-books">
+                                            <ul class="list-unstyled">
+                                                <span ng-repeat="o in result.results">
+                                                <h1>{{o.metadata.book.condition}}</h1>
+                                                    <li class="col-md-6 panel-bottom-space">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body">
+                                                                <a href="#/book-profile" ng-click="goToBook(o.book)">
+                                                                    <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
+                                                                </a>
+                                                                <div>
+                                                                    <h3>
+                                                                        <a href="#/book-profile" ng-click="goToBook(o.book)">
+                                                                            {{o.title}}
+                                                                        </a>
+                                                                    </h3>
+                                                                    <h4>{{o.metadata.book.author}}</h4>
+                                                                    <span class="lighter-text">
+                                                                        <p>ISBN 10: {{o.isbn_10}}</p>
+                                                                        <p>ISBN 13: {{o.isbn_13}}</p>
+                                                                        <p>Price:  <span class="label label-with-background">
+                                                                    ${{o.price}}
+                                                                </span></p>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="panel-footer" id="comment-panel">
+    
+                                                                 <button type="button" ng-click="addBookAndOffer($index)" class="btn btn-success btn-md add-book-result-button">
+                                        Add Book & Make Offer
+                                    </button>
+                                                            </div>
+                                                        </div>
+                                                    </li>
                                                 </span>
-                                            </span>
-                                            <button class="btn btn-with-background pull-right" ng-click="showAddBookRequested(r.id, $index)">
-                                                Request It
-                                            </button>
+                                            </ul>
                                         </div>
-                                    </div>
+                                
                                 </div>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-        
-           </div> 
+
+            </div>
+
         </div>
     </div>
-
-</div>
 </div>

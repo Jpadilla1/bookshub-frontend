@@ -11,8 +11,8 @@ app.service('MySearch', ['$resource', '$cookies', function($resource, $cookies){
   };
 
   
-  resource.selection = '';
-  resource.result = '';
+  resource.selectionResult = '';
+  resource.searchResult = '';
 
   resource.bookSearch = $resource(
     'https://bookshub.herokuapp.com/api/search/?search_by=:searchBy&search_value=:searchValue&sort_field=:sortField', {}, {

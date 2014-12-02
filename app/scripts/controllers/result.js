@@ -10,9 +10,9 @@
 
 var app = angular.module('hubAppApp');
 
-app.controller('ResultCtrl', ['$scope', 'MyBookService','MySearch' function($scope, MyBookService, MySearch) {
+app.controller('ResultCtrl', ['$scope', 'MyBookService','MySearch', 'MyOfferService' ,function($scope, MyBookService, MySearch,MyOfferService) {
  
-    $scope.Results = {
+    $scope.Searchresults = {
         "title": '',
         "isbn_10": '',
         "isbn_13": '',
@@ -23,26 +23,38 @@ app.controller('ResultCtrl', ['$scope', 'MyBookService','MySearch' function($sco
 
     };
 
-     $scope.searchBy = function(selection) {
-            
-            MySearch.selection = selection;
-            MySearch.searchResult = result;
-            if (result) {
-                var params = {
-                    'searchBy': selection,
-                    'searchValue': result
-                };
+    searchBy();
+    $scope.New = true;
+    $scope.Used  = false;
+    $scope.result;
 
-                $scope.results = MySearch.bookSearch.get(params);
-                console.log($scope.result);
+    $scope.showNew = function() {
+        $scope.New = true;
+        $scope.Used = false;
+        searchBy();
+    }
 
+    $scope.showUsed = function() {
+        $scope.New = false;
+        $scope.Used = true;
+        searchBy();       
+    }
 
-            }
+    function searchBy() {
+        $scope.selection = MySearch.selectionResult;
+        $scope.searchResult = MySearch.searchResult;
+
+        
+        if ($scope.searchResult) {
+            var params = {
+                'searchBy': $scope.selection,
+                'searchValue': $scope.searchResult
+            };
+
+            MySearch.bookSearch.get(params).$promise.then(function(data){
+                $scope.result = data;
+                 console.log($scope.result);
+            });
         }
-
-   
-
-
-
-
+    }
 }]);
