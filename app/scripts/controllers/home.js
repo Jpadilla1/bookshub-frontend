@@ -60,15 +60,9 @@ received in the index*/
 
         $scope.searchBy = function(selection) {
             result = validateField($scope.searchInput);
-            if (result) {
-                var params = {
-                    'searchBy': selection,
-                    'searchValue': result
-                };
 
-                $scope.searchResult = MySearch.bookSearch.get(params);
-                console.log($scope.searchResult);
-            }
+            MySearch.selectionResult = selection;
+            MySearch.searchResult = result;
         }
     }]);
 })();

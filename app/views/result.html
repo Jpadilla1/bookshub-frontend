@@ -1,0 +1,53 @@
+<div class="container">
+    <div clas="row">
+        <div class="col-md-12">
+            <div class="col-md-4 user-sections">
+                <hr>
+            </div>
+            <div class="col-md-4 text-center">
+                <h1>Books Found</h1>
+            </div>
+            <div class="col-md-4 user-sections">
+                <hr>
+            </div>
+
+
+            <div class="requested-books">
+                <ul class="list-unstyled">
+                    <span ng-repeat="o in result.results">
+                         <h1>{{o.metadata.book.condition}}</h1>
+                            <li class="col-md-4 panel-bottom-space">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                                                <a href="#/book-profile" ng-click="goToBook(o.book)">
+                                                                    <img src="http://placehold.it/400x200" alt="..." height="191" width="300" />
+                                                                </a>
+                                                                <div>
+                                                                    <h3>
+                                                                        <a href="#/book-profile" ng-click="goToBook(o.book)">
+                                                                            {{o.title}}
+                                                                        </a>
+                                                                    </h3>
+                                                                    <h4>{{o.metadata.book.author}}</h4>
+                                                                    <span class="lighter-text">
+                                                                        <p>ISBN 10: {{o.isbn_10}}</p>
+                                                                        <p>ISBN 13: {{o.isbn_13}}</p>
+                                                                        <p>Price:  <span class="label label-with-background">
+                                                                    ${{o.price}}
+                                                                </span>
+                    </p>
+                    </span>
+            </div>
+        </div>
+        <div class="panel-footer" id="comment-panel">
+
+            <a href="#/book-profile"><button type="button" ng-click="bookProfile(o.id)" class="btn btn-success btn-md">
+                Check Offers!
+            </button></a>
+        </div>
+    </div>
+    </li>
+    </span>
+    </ul>
+</div>
+
