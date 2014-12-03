@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <div class="col-md-10 col-md-offset-1">
                 <div ng-show="tabs.showBasicForm">
-                    <form role="form" ng-submit="submitSignUp()">
+                    <form role="form">
                         <div class="col-md-12">
                             <img src="../images/bookhub-b.png" class="header-image" alt="">
                             <h1 class="image-subheader-text text-center">Start selling today!</h1>
@@ -41,8 +41,15 @@
                             </div>
                             <div class="col-md-6 col-md-offset-3">
                                 <div class="form-group" class="signup-buttons">
-                                    <button type="submit" class="btn btn-success btn-lg btn-block" ng-disabled="isSignUp">Register & Choose Account</button>
+                                    <div class="col-md-6 form-shared-space">
+                                        <button class="btn btn-success btn-lg btn-block" ng-disabled="isSignUp" ng-click="SignUpAsBuyer()">Create Buyer Account</button>
+                                    </div>
+                                    <div class="col-md-6 form-shared-space">
+                                        <button class="btn btn-info btn-lg btn-block" ng-disabled="isSignUp" ng-click="SignUpAsSeller()">Create Seller Account</button>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="col-md-6 col-md-offset-3 info-top-space">
                                 <div class="alert alert-success" ng-show="isSignUp">
                                     <a href="#" class="close" data-dismiss="alert">&times;</a>
                                     <strong>Success!</strong> You Have Been Signed Up!
@@ -142,8 +149,18 @@
                         <div class="col-md-12 info-top-space">
                             <div class="form-group">
                                 <center>
-                                    <button class="btn btn-success btn-lg" ng-click="stripeSubscribe()">Submit</button>
+                                    <button class="btn btn-success btn-lg" ng-click="stripeSubscribe()">Submit Seller Information</button>
                                 </center>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-md-offset-3 info-top-space">
+                            <div class="alert alert-success" ng-show="isSignUp">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                <strong>Success!</strong> You Have Been Signed Up!
+                            </div>
+                            <div class="alert alert-danger" ng-show="signUpError">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                <strong>Error!</strong> Account Already Exists!
                             </div>
                         </div>
                     </form>

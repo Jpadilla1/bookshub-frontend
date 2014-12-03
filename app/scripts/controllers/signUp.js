@@ -61,7 +61,7 @@ angular.module('hubAppApp')
             $scope.tabs.showOffers = true;
         }
 
-        $scope.submitSignUp = function() {
+        $scope.SignUpAsSeller = function() {
             console.log($scope.signUpForm);
             authService.signup($scope.signUpForm)
                 .then(function(data) {
@@ -70,6 +70,22 @@ angular.module('hubAppApp')
                     $cookies.token = data.token;
                     $scope.tabs.showBasicForm = false;
                     $scope.tabs.showOffers = true;
+                }, function(data) {
+                    $scope.signUpError = true;
+                    $scope.clearSignUpForm();
+                    // error
+                    console.log(data);
+                });
+        };
+
+        $scope.SignUpAsBuyer = function() {
+            console.log($scope.signUpForm);
+            authService.signup($scope.signUpForm)
+                .then(function(data) {
+                    // success
+                    $scope.isSignUp = true;
+                    $cookies.token = data.token;
+                    $scope.goHome();
                 }, function(data) {
                     $scope.signUpError = true;
                     $scope.clearSignUpForm();
@@ -87,6 +103,7 @@ angular.module('hubAppApp')
         $scope.submitSellerInformation = function() {
             $scope.settingsForm.name = $scope.signUpForm.first_name + " " + $scope.signUpForm.last_name;
             authService.updateSettings($scope.settingsForm);
+            $scope.goHome();
         };
 
         $scope.$on('$viewContentLoaded', function() {
@@ -122,5 +139,11 @@ angular.module('hubAppApp')
                 $scope.token = response.id;
                 authService.stripe($scope.plan, $scope.token);
             }
+        };
+
+        $scope.goHome = function(){
+            $timeout(function(){
+                $location.url('/');
+            }, 2500);
         };
     }]);
