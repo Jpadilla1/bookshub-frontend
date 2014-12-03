@@ -105,6 +105,9 @@ h1, h2, h3, h4, h5, h6 {
 .requested-books {
     padding-top: 5%;
 }
+.search-results{
+    padding-top: 9%;   
+}
 .slogan-section {
     padding-top: 1%;
     position: relative;
