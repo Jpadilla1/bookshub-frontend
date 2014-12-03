@@ -31,6 +31,11 @@ app.service('MyOfferService', ['$resource', '$cookies', 'authService', function(
 			isArray: false,
 			headers: headers
 		},
+		patch: {
+			method: "PATCH",
+			isArray: false,
+			headers: headers
+		}
 	});
 
 	resource.userOffers = $resource('https://bookshub.herokuapp.com/api/offers/?owner=:ownerId', {}, {

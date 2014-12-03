@@ -17,17 +17,18 @@ app.controller('SettingsCtrl', ['$scope', 'MyOfferService', 'authService', funct
     "editOffer": false
   };
 
+  $scope.disabledFields = true;
   $scope.userOffers = '';
   $scope.userData = ''; 
-  $scope.offerEdit = {
-    'description': '',
-    'condition': '',
-    'price': '',
-    'quantity': ''
-  };
+  $scope.offerEdit = '';
+  $scope.personalResultSuccess;
+  $scope.personalResultFail;
+  $scope.offerResultSuccess;
+  $scope.offerResultFail;
 
   authService.settings().then(function(data){
     $scope.userData = data;
+    console.log($scope.userData);
   });
 
   $scope.showPersonalInformation = function() {
@@ -59,18 +60,38 @@ app.controller('SettingsCtrl', ['$scope', 'MyOfferService', 'authService', funct
     });
   };
 
+  $scope.savePersonalChanges = function(){
+    console.log($scope.userData);
+    authService.updateSettings($scope.userData).then(function(){
+      $scope.personalResultSuccess = true;
+      $scope.personalResultFail = false;
+    }, function(){
+      $scope.personalResultFail = true;
+      $scope.personalResultSuccess = false;
+    });
+  };
+
+  $scope.saveOfferChanges = function(id){
+    var params = {
+      "offerId": id
+    };
+
+    MyOfferService.bookOffer.patch(params, $scope.offerEdit).$promise.then(function(data){
+      $scope.offerResultSuccess = true;
+      $scope.offerResultFail = false;
+    }, function(){
+      $scope.offerResultFail = true;
+      $scope.offerResultSuccess = false;
+    });
+  };
+
   $scope.showEditOfferForm = function(id){
     var params = {
       'offerId': id,
     };
 
     MyOfferService.bookOffer.get(params).$promise.then(function(data){
-      console.log(data);
-      $scope.offerEdit.description = data.description;
-      $scope.offerEdit.condition = data.condition;
-      $scope.offerEdit.price = data.price;
-      $scope.offerEdit.quantity = data.quantity;
-      console.log($scope.offerEdit);
+      $scope.offerEdit = data;
     });
 
     $scope.tabs.editOffer = true;
