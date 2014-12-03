@@ -7,7 +7,7 @@
  * # CartCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp').controller('CartCtrl', ['$scope', 'CartService', 'MyOfferService', 'MyBookService', function($scope, CartService, MyOfferService, MyBookService){
+angular.module('hubAppApp').controller('CartCtrl', ['$scope', 'CartService', 'MyOfferService', 'MyBookService', '$http', function($scope, CartService, MyOfferService, MyBookService, $http){
 
     $scope.cartItems = CartService.cart.get();
     var offerInformation = '';
@@ -111,6 +111,18 @@ angular.module('hubAppApp').controller('CartCtrl', ['$scope', 'CartService', 'My
                 $scope.cartItems = CartService.cart.get();
             });
         }
+    };
+
+    $scope.checkout = function(){
+        $http({
+            method: "POST",
+            url: "https://bookshub.herokuapp.com/api/checkout/",
+        }).then(function(data){
+            CartService.cart.get().$promise.then(function(data){
+                $scope.cartItems = data;
+                console.log($scope.cartItems);
+            });
+        });
     };
 
     $scope.$on('$viewContentLoaded', function() {

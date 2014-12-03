@@ -11,12 +11,8 @@ var app = angular.module('hubAppApp')
 
 
     app.controller('ContactUsCtrl', function($scope, $http) {
-
-
-
         $scope.SendEmail = function(){
             console.log("sent");
-
             if($scope.category == "Complaints") $scope.category = "1";
             if($scope.category == "Question") $scope.category = "2";
             if($scope.category == "Suggestion") $scope.category = "3";
@@ -31,10 +27,6 @@ var app = angular.module('hubAppApp')
                     "category": $scope.category
                     
                 }
-
-
-
-
             }).then(function(data){
                 alert(data);
             }).then(function(data){
@@ -60,6 +52,4 @@ var app = angular.module('hubAppApp')
          $scope.$on('$viewContentLoaded', function() {
             defaultNavbar();
          });
-
-
     });
