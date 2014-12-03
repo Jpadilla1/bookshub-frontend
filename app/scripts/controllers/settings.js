@@ -17,6 +17,7 @@ app.controller('SettingsCtrl', ['$scope', 'MyOfferService', 'authService', funct
     "editOffer": false
   };
 
+  $scope.disabledFields = true;
   $scope.userOffers = '';
   $scope.userData = ''; 
   $scope.offerEdit = {
@@ -28,6 +29,7 @@ app.controller('SettingsCtrl', ['$scope', 'MyOfferService', 'authService', funct
 
   authService.settings().then(function(data){
     $scope.userData = data;
+    console.log($scope.userData);
   });
 
   $scope.showPersonalInformation = function() {
