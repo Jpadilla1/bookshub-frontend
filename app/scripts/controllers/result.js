@@ -64,5 +64,9 @@ app.controller('ResultCtrl', ['$scope', 'MyBookService','MySearch', 'MyOfferServ
         console.log(ID);
     };
 
+      $scope.$on('$viewContentLoaded', function() {
+        defaultNavbar();
+    });
+
 
 }]);
