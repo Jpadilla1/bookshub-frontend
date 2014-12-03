@@ -118,6 +118,13 @@
                                 <input type="url" class="form-control" placeholder="Google ID" ng-model="userDatas.google_url">
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <center>
+                                <button class="btn btn-success btn-lg" ng-click="savePersonalChanges()">
+                                    Save Changes
+                                </button>
+                            </center>
+                        </div>
                     </div>
                 </div>
                 <div ng-show="tabs.editOffer">
@@ -169,7 +176,7 @@
                     </div>
                     <div class="col-md-12">
                         <center>
-                            <button class="btn btn-success btn-lg">Submit</button>
+                            <button class="btn btn-success btn-lg">Save Changes</button>
                         </center>
                     </div>
                 </div>
@@ -195,6 +202,9 @@
                                 <div class="panel panel-default">
                                     <div class="panel-body">
                                         <a href="/">
+                                            <span class="label label-success pull-right image-condition-label">
+                                                {{uo.condition}}
+                                            </span>
                                             <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
                                         </a>
                                         <div>

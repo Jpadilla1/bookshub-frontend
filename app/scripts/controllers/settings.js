@@ -61,6 +61,14 @@ app.controller('SettingsCtrl', ['$scope', 'MyOfferService', 'authService', funct
     });
   };
 
+  $scope.savePersonalChanges = function(){
+    alert('hello');
+    console.log($scope.userData);
+    authService.updateSettings($scope.userData).then(function(){
+      alert('good');
+    });
+  };
+
   $scope.showEditOfferForm = function(id){
     var params = {
       'offerId': id,

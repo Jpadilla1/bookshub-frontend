@@ -540,6 +540,9 @@ h1, h2, h3, h4, h5, h6 {
 .settings-offers-all {
     padding-top: 12%;
 }
+.image-condition-label{
+    position: absolute;
+}
 /* user offers */
 
 .user-offers-top-space {
