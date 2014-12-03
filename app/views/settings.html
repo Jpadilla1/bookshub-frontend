@@ -31,6 +31,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="alert alert-success login-alert" ng-show="personalResultSuccess">
+                        <a href="" class="close" data-dismiss="alert">&times;</a>
+                        <strong>Success!</strong> Your profile was updated.
+                    </div>
+                    <div class="alert alert-danger login-alert" ng-show="personalResultFail">
+                        <a href="" class="close" data-dismiss="alert">&times;</a>
+                        <strong>Error!</strong> There was an error on your request.
+                    </div>
                     <div class="settings-personal-all">
                         <div class="col-md-3 form-shared-space">
                             <div class="form-group">
@@ -144,6 +152,16 @@
                         </div>
                     </div>
                     <div class="col-md-12">
+                        <div class="alert alert-success login-alert" ng-show="offerResultSuccess">
+                            <a href="" class="close" data-dismiss="alert">&times;</a>
+                            <strong>Success!</strong> Your offer was updated.
+                        </div>
+                        <div class="alert alert-danger login-alert" ng-show="offerResultFail">
+                            <a href="" class="close" data-dismiss="alert">&times;</a>
+                            <strong>Error!</strong> There was an error on your request.
+                        </div>
+                    </div>
+                    <div class="col-md-12">
                         <div class="settings-offers">
                             <form role="form" ng-submit="" name="bookForm">
                                 <div class="col-md-12">
@@ -176,7 +194,7 @@
                     </div>
                     <div class="col-md-12">
                         <center>
-                            <button class="btn btn-success btn-lg">Save Changes</button>
+                            <button class="btn btn-success btn-lg" ng-click="saveOfferChanges(offerEdit.id)">Save Changes</button>
                         </center>
                     </div>
                 </div>
