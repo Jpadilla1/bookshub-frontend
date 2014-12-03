@@ -163,7 +163,14 @@
         'quantity': ''
     };
 
-    $scope.addToCart = function(offerId){
+    $scope.cartNewSuccess = '';
+    $scope.cartNewError = '';
+    $scope.cartUsedSuccess = '';
+    $scope.cartUsedError = '';
+
+
+    $scope.addToCart = function(offerId, condition){
+        $scope.addOfferData.quantity = 0;
         if($scope.loggedInUserData){
             $scope.addOfferData.user = $scope.loggedInUserData.id;
         }else{
@@ -173,12 +180,26 @@
             });
         }
         $scope.addOfferData.offer = offerId;
+        $scope.addOfferData.quantity = $('#' + offerId).val();
+        alert(condition);
         if($scope.addOfferData.quantity != undefined && $scope.addOfferData.quantity > 0){
-            console.log($scope.addOfferData);
-            var test = CartService.cart.save('', $scope.addOfferData);
-            console.log(test);
+            CartService.cart.save('', $scope.addOfferData).$promise.then(function(data){
+                if(condition.toLowerCase() == 'new'){
+                    $scope.cartNewSuccess = true;
+                    $scope.cartNewError = false;
+                }else{
+                    $scope.cartUsedSuccess = true;
+                    $scope.cartUsedError = false;
+                };
+            });
         }else{
-            console.log('error');
+            if (condition.toLowerCase() == 'new') {
+                $scope.cartNewError = true;
+                $scope.cartNewSuccess = false;
+            }else{
+                $scope.cartUsedError = true;
+                $scope.cartUsedSuccess = false;
+            };
         }
     };
 
