@@ -242,6 +242,9 @@ h1, h2, h3, h4, h5, h6 {
 .home-sections {
     margin-top: 12%;
 }
+.seller-pricing-sections{
+    margin-top: 18%;
+}
 .separate-sections {
     padding-top: 2%;
     padding-bottom: 2%;
@@ -253,6 +256,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 .home-subheader {
     color: whitesmoke;
+    padding-bottom: 5%;
+}
+.home-pricing-header{
+    padding-top: 2%;
     padding-bottom: 5%;
 }
 .anchor-btn:hover {
