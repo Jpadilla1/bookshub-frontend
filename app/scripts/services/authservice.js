@@ -162,7 +162,19 @@ angular.module('hubAppApp')
             return this.request({
                 'method': "PATCH",
                 'url': "/settings/",
-                'data':data
+                'data': {
+                    'address_1': data.address_1,
+                    'address_2': data.address_2,
+                    'city': data.city,
+                    'country': data.country,
+                    'facebook_url': data.facebook_url,
+                    'first_name': data.first_name,
+                    'google_url': data.google_url,
+                    'last_name': data.last_name,
+                    'phone': data.phone,
+                    'twitter_url': data.twitter_url,
+                    'zip': data.zip
+                }
             });
         },
         'refreshToken': function(){
