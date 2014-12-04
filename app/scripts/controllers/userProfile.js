@@ -27,7 +27,7 @@ app.controller('UserCtrl', ['$rootScope', '$scope', 'authService', 'MyContactSer
         $scope.tabs.showReview = false;
         $scope.tabs.offersNavbar = true;
 
-        $scope.addAndRemoveActive('user-profile-used', 'user-profile-new');   
+        $scope.addAndRemoveActive('user-profile-used', 'user-profile-new');
     };
 
     $scope.showUsed = function() {
@@ -114,12 +114,9 @@ app.controller('UserCtrl', ['$rootScope', '$scope', 'authService', 'MyContactSer
     });
 
     $scope.addAndRemoveActive = function(removeId, addId){
-        // alert('hello new');
         $('#' + removeId).removeClass('active');
-        // alert($('#' + addId).hasClass('active'));
         if(!$('#' + addId).hasClass('active')){
             $('#' + addId).addClass('active');
-            // alert($('#' + addId).hasClass('active'));
         }
     };
 }]);

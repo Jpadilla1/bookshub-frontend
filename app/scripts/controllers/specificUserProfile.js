@@ -27,8 +27,9 @@
         $scope.tabs.showReviewForm = false;
         $scope.tabs.showReportForm = false;
 
-        removeActiveClass();
-    }   
+        $scope.addAndRemoveActive('show-user-reviews', 'show-new-books');
+        $scope.addAndRemoveActive('show-used-books', 'show-new-books');
+    };   
 
     $scope.showUsed = function() {
         $scope.tabs.showNew = false;
@@ -37,8 +38,9 @@
         $scope.tabs.showReviewForm = false;
         $scope.tabs.showReportForm = false;
 
-        removeActiveClass();
-    }
+        $scope.addAndRemoveActive('show-new-books', 'show-used-books');
+        $scope.addAndRemoveActive('show-user-reviews', 'show-used-books');
+    };
 
     $scope.showReview = function() {
         $scope.tabs.showNew = false;
@@ -47,8 +49,10 @@
         $scope.tabs.showReviewForm = false;
         $scope.tabs.showReportForm = false;
 
-        removeActiveClass();
-    }
+        $scope.addAndRemoveActive('show-new-books', 'show-user-reviews');
+        $scope.addAndRemoveActive('show-used-books', 'show-user-reviews');
+
+    };
 
     $scope.showReviewForm = function() {
         $scope.tabs.showNew = false;
@@ -57,10 +61,8 @@
         $scope.tabs.showReviewForm = true;
         $scope.tabs.showReportForm = false;
 
-        $('#side-report').removeClass('active');
-        if(!($('#side-review').hasClass('active')))
-            $('#side-review').addClass('active');
-    }
+        $scope.addAndRemoveActive('side-report', 'side-review');
+    };
     $scope.showReportForm = function() {
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = false;
@@ -68,10 +70,8 @@
         $scope.tabs.showReviewForm = false;
         $scope.tabs.showReportForm = true;
 
-        $('#side-review').removeClass('active');
-        if(!($('#side-report').hasClass('active')))
-            $('#side-report').addClass('active');
-    }
+        $scope.addAndRemoveActive('side-review', 'side-report');
+    };
 
     $scope.profileData = '';
     $scope.profileReviews = '';
@@ -207,11 +207,10 @@
         defaultNavbar();
     });
 
-    function removeActiveClass(){
-        if($('#side-review').hasClass('active'))
-            $('#side-review').removeClass('active');
-
-        if($('#side-offers').hasClass('active'))
-            $('#side-offers').removeClass('active');
+    $scope.addAndRemoveActive = function(removeId, addId){
+        $('#' + removeId).removeClass('active');
+        if(!$('#' + addId).hasClass('active')){
+            $('#' + addId).addClass('active');
+        }
     };
  }]);
