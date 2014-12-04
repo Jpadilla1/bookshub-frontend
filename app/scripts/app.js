@@ -1,27 +1,26 @@
 'use strict';
 
 /**
-* @ngdoc overview
-* @name hubAppApp
-* @description
-* # hubAppApp
-*
-* Main module of the application.
-*/
+ * @ngdoc overview
+ * @name hubAppApp
+ * @description
+ * # hubAppApp
+ *
+ * Main module of the application.
+ */
 
 var app = angular.module('hubAppApp', [
-  'ngAnimate',
-  'ngCookies',
-  'ngResource',
-  'ngRoute',
-  'ngSanitize',
-  'ngTouch',
-  'validation',
-  'validation.rule'
- ]);
+    'ngAnimate',
+    'ngCookies',
+    'ngResource',
+    'ngRoute',
+    'ngSanitize',
+    'ngTouch',
+    'validation',
+    'validation.rule'
+]);
 
 app.config(function($routeProvider) {
-
    $routeProvider
      .when('/', {
        templateUrl: 'views/home.html',
@@ -87,6 +86,10 @@ app.config(function($routeProvider) {
       templateUrl: 'views/specificUserProfile.html',
       controller: 'SpecificUserCtrl'
      })
+     .when('/all-users', {
+      templateUrl: 'views/showAllUsers.html',
+      controller: 'ShowAllUsersCtrl'
+    })
      .otherwise({
        redirectTo: '/404'
      });
