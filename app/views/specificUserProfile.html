@@ -120,7 +120,16 @@
                                     <hr>
                                 </div>
                             </div>
-
+                            <div class="col-md-12 info-top-space">
+                                <div class="alert alert-success" ng-show="cartNewSuccess">
+                                    <a href="" class="close" data-dismiss="alert">&times;</a>
+                                    <strong>Success!</strong> Your book has been added.
+                                </div>
+                                <div class="alert alert-danger" ng-show="cartNewError">
+                                    <a href="" class="close" data-dismiss="alert">&times;</a>
+                                    <strong>Error!</strong> Your book was not added.
+                                </div>
+                            </div>
                             <div class="col-md-12">
                                 <div class="requested-books">
                                     <ul class="list-unstyled" ng-repeat="po in profileOffers.results">
@@ -154,12 +163,12 @@
                                                                 ${{po.price}}
                                                             </span>
                                                             <span>
-                                                                <button class="btn btn-with-background pull-right footer-button" ng-click="addToCart(po.id)">
+                                                                <button class="btn btn-with-background pull-right footer-button" ng-click="addToCart(po.id, po.condition)">
                                                                     Add to Cart
                                                                 </button>
                                                             </span>
                                                             <span>
-                                                                <input type="number" max="{{po.quantity}}" min="0" class="book-display-footer pull-right" ng-model="addOfferData.quantity">
+                                                                <input type="number" max="{{po.quantity}}" min="0" class="book-display-footer pull-right" id="{{po.id}}">
                                                             </span>
                                                         </div>
                                                     </div>
@@ -186,52 +195,64 @@
                                     <hr>
                                 </div>
                             </div>
+                            <div class="col-md-12 info-top-space">
+                                <div class="alert alert-success" ng-show="cartUsedSuccess">
+                                    <a href="" class="close" data-dismiss="alert">&times;</a>
+                                    <strong>Success!</strong> Your book has been added.
+                                </div>
+                                <div class="alert alert-danger" ng-show="cartUsedError">
+                                    <a href="" class="close" data-dismiss="alert">&times;</a>
+                                    <strong>Error!</strong> Your book was not added.
+                                </div>
+                            </div>
                             <div class="col-md-12">
                                 <div class="requested-books">
-                                    <ul class="list-unstyled" ng-repeat="po in profileOffers.results">
-                                        <span ng-if="po.condition == 'used'">
-                                            <li class="col-md-6 panel-bottom-space">
-                                                <div class="panel panel-default">
-                                                    <div class="panel-body">
-                                                        <a href="/">
-                                                            <span class="label label-success pull-right image-condition-label">
-                                                                {{po.condition}}
-                                                            </span>
-                                                            <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
-                                                        </a>
-                                                        <div>
-                                                            <h3>
-                                                                <a href="#/book-profile" ng-click="goToBookInfo(po.book)">
-                                                                    {{po.metadata.book.title}}
-                                                                </a>
-                                                            </h3>
-                                                            <h4>{{po.metadata.book.author}}</h4>
-                                                            <span class="lighter-text">
-                                                                <p>ISBN 10: {{po.metadata.book.isbn_10}}</p>
-                                                                <p>ISBN 13: {{po.metadata.book.isbn_13}}</p>
-                                                            </span>
+                                    <span ng-repeat="po in profileOffers.results">
+                                        <ul class="list-unstyled">
+                                            <span ng-if="po.condition == 'used'">
+                                                <li class="col-md-6 panel-bottom-space">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-body">
+                                                            <a href="/">
+                                                                <span class="label label-success pull-right image-condition-label">
+                                                                    {{po.condition}}
+                                                                </span>
+                                                                <img src="http://placehold.it/400x200" alt="..." height="191" width="340" />
+                                                            </a>
+                                                            <div>
+                                                                <h3>
+                                                                    <a href="#/book-profile" ng-click="goToBookInfo(po.book)">
+                                                                        {{po.metadata.book.title}}
+                                                                    </a>
+                                                                </h3>
+                                                                <h4>{{po.metadata.book.author}}</h4>
+                                                                <span class="lighter-text">
+                                                                    <p>ISBN 10: {{po.metadata.book.isbn_10}}</p>
+                                                                    <p>ISBN 13: {{po.metadata.book.isbn_13}}</p>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="panel-footer" id="footer-panel-with-button">
+                                                            <div class="offer-footer-top-space">
+                                                                Price: 
+                                                                <span class="label label-with-background">
+                                                                    ${{po.price}}
+                                                                </span>
+                                                                <span>
+                                                                    <button class="btn btn-with-background pull-right footer-button" ng-click="addToCart(po.id, po.condition)">
+                                                                        Add to Cart
+                                                                    </button>
+                                                                </span>
+                                                                <span>
+                                                                    <input type="number" max="{{po.quantity}}" min="0" class="offer-footer-quantity book-display-footer pull-right" id="{{po.id}}">
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="panel-footer" id="footer-panel-with-button">
-                                                        <div class="offer-footer-top-space">
-                                                            Price: 
-                                                            <span class="label label-with-background">
-                                                                ${{po.price}}
-                                                            </span>
-                                                            <span>
-                                                                <button class="btn btn-with-background pull-right footer-button" ng-click="addToCart(po.id)">
-                                                                    Add to Cart
-                                                                </button>
-                                                            </span>
-                                                            <span>
-                                                                <input type="number" max="{{po.quantity}}" min="0" class="offer-footer-quantity book-display-footer pull-right" ng-model="addOfferData.quantity">
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </span>
-                                    </ul>
+                                                </li>
+                                            </span>
+                                        </ul>
+                                    </span>
                                 </div>
                             </div>
                         </div>
