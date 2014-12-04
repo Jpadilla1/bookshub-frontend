@@ -7,33 +7,23 @@
  * # ShowAllUsersCtrl
  * Controller of the hubAppApp
  */
-angular.module('hubAppApp')
-    .controller('ShowAllUsersCtrl', function($scope) {
+var app = angular.module('hubAppApp')
+app.controller('ShowAllUsersCtrl', function($scope, $http) {
+    $scope.searchInput;
+    $scope.users = '';
 
-        $scope.searchInput;
-        $scope.results = [{
-            'name': "Juan",
-            'description': "Baila tu cuerpo alegria macarena, alegria cosa buena, ehhhhh macarena!!"
-        }, {
-            'name': "Pedro",
-            'description': "Baila tu cuerpo alegria macarena, alegria cosa buena, ehhhhh macarena!!"
+    $scope.getAllUsers = function() {
 
-        }, {
-            'name': "Maria",
-            'description': "Baila tu cuerpo alegria macarena, alegria cosa buena, ehhhhh macarena!!"
-        }, {
-            'name': "Jose",
-            'description': "Baila tu cuerpo alegria macarena, alegria cosa buena, ehhhhh macarena!!"
-        }, {
-            'name': "Emmanuel",
-            'description': "Baila tu cuerpo alegria macarena, alegria cosa buena, ehhhhh macarena!!"
-        }];
+        $http.get("https://bookshub.herokuapp.com/api/autocomplete/users/").success(function(data) {
+            $scope.users = data;
+            console.log(data);
+        }).error(function(data) {
 
-        $scope.getAllUsers = function() {
-            
-        }
-
-        $scope.$on('$viewContentLoaded', function() {
-            defaultNavbar();
         });
+    }
+
+    $scope.$on('$viewContentLoaded', function() {
+        defaultNavbar();
+        $scope.getAllUsers();
     });
+});
