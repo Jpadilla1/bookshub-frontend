@@ -36,12 +36,26 @@ received in the index*/
 
         $rootScope.isAuthenticated;
 
+        $scope.gravatar = '';
+
         $scope.$on('$viewContentLoaded', function() {
             homeNavbar();
             $rootScope.checkUserStatus();
+            $scope.setGravatar();
         });
 
         $scope.searchResult = '';
+
+        $scope.setGravatar = function () {
+            authService.settings().then(function(data) {
+                $scope.getGravatar(data);
+            });
+        }
+
+        $scope.getGravatar = function(data) {
+            $scope.gravatar = data.gravatar_url;
+            console.log($scope.gravatar);
+        }
 
         $rootScope.checkUserStatus = function() {
             authService.authenticationStatus().then(function() {
