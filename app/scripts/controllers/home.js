@@ -36,24 +36,25 @@ received in the index*/
 
         $rootScope.isAuthenticated;
 
-        $rootScope.gravatar = '';
+        $scope.gravatar = '';
 
         $scope.$on('$viewContentLoaded', function() {
             homeNavbar();
             $rootScope.checkUserStatus();
-            $rootScope.setGravatar();
+            $scope.setGravatar();
         });
 
         $scope.searchResult = '';
 
-        $rootScope.setGravatar = function () {
+        $scope.setGravatar = function () {
             authService.settings().then(function(data) {
-                $rootScope.getGravatar(data);
+                $scope.getGravatar(data);
             });
         }
 
-        $rootScope.getGravatar = function(data) {
-            $rootScope.gravatar = data.gravatar_url;
+        $scope.getGravatar = function(data) {
+            $scope.gravatar = data.gravatar_url;
+            console.log($scope.gravatar);
         }
 
         $rootScope.checkUserStatus = function() {
@@ -77,5 +78,7 @@ received in the index*/
             MySearch.selectionResult = selection;
             MySearch.searchResult = result;
         }
+
+       
     }]);
 })();

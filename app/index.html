@@ -62,6 +62,10 @@
                                     </a>
                                 </li>
                                 <li ng-show="isAuthenticated">
+                                    <a href="#/user-profile"><i class="fa fa-user fa-lg" data-toggle="tooltip" title="User Profile"></i>
+                                    </a>
+                                </li>
+                                <li ng-show="isAuthenticated">
                                     <a href="#/settings"><i class="fa fa-cog fa-lg" data-toggle="tooltip" title="Settings"></i>
                                     </a>
                                 </li>
@@ -71,11 +75,6 @@
                                 </li>
                                 <li ng-show="isAuthenticated">
                                     <a href="" ng-click="logOut()">Log Out</a>
-                                </li>
-                                <li ng-show="isAuthenticated">
-                                   <a href="#/user-profile">
-                                       <img ng-src="{{gravatar}}" class="small-picture img-rounded nav-gravatar" data-toggle="tooltip" title="User Profile">
-                                   </a>
                                 </li>
                             </ul>
                         </div>
