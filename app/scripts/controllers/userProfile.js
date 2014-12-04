@@ -23,27 +23,30 @@ app.controller('UserCtrl', ['$rootScope', '$scope', 'authService', 'MyContactSer
 
     $scope.showNew = function() {
         $scope.tabs.showNew = true;
+        $scope.tabs.showUsed = false;
         $scope.tabs.showReview = false;
         $scope.tabs.offersNavbar = true;
-    }
+
+        $scope.addAndRemoveActive('user-profile-used', 'user-profile-new');   
+    };
 
     $scope.showUsed = function() {
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = true;
         $scope.tabs.showReview = false;
         $scope.tabs.offersNavbar = true;
-    }
+
+        $scope.addAndRemoveActive('user-profile-new', 'user-profile-used');
+    };
 
     $scope.showReviews = function() {
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = true;
         $scope.tabs.offersNavbar = false;
-        
-        $('#side-offers').removeClass('active');
-        if(!($('#side-review').hasClass('active')))
-            $('#side-review').addClass('active');
-    }
+
+        $scope.addAndRemoveActive('side-offers', 'side-review');
+    };
 
     $scope.showOffers = function() {
         $scope.tabs.showNew = true;
@@ -53,10 +56,9 @@ app.controller('UserCtrl', ['$rootScope', '$scope', 'authService', 'MyContactSer
         $scope.tabs.showAllOffers = true;
         $scope.tabs.offersNavbar = true;
 
-        $('#side-review').removeClass('active');
-        if(!($('#side-offers').hasClass('active')))
-            $('#side-offers').addClass('active');
-    }
+        $scope.addAndRemoveActive('side-review', 'side-offers');
+        $scope.addAndRemoveActive('user-profile-used', 'user-profile-new');
+    };
 
     $scope.userProfile = '';
 
@@ -110,4 +112,14 @@ app.controller('UserCtrl', ['$rootScope', '$scope', 'authService', 'MyContactSer
     $scope.$on('$viewContentLoaded', function() {
         defaultNavbar();
     });
+
+    $scope.addAndRemoveActive = function(removeId, addId){
+        // alert('hello new');
+        $('#' + removeId).removeClass('active');
+        // alert($('#' + addId).hasClass('active'));
+        if(!$('#' + addId).hasClass('active')){
+            $('#' + addId).addClass('active');
+            // alert($('#' + addId).hasClass('active'));
+        }
+    };
 }]);
