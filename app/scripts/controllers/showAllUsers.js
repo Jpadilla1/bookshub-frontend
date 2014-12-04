@@ -8,7 +8,7 @@
  * Controller of the hubAppApp
  */
 var app = angular.module('hubAppApp')
-app.controller('ShowAllUsersCtrl', function($scope, $http) {
+app.controller('ShowAllUsersCtrl', function($scope, $http, UserService) {
     $scope.searchInput;
     $scope.users = '';
 
@@ -20,6 +20,11 @@ app.controller('ShowAllUsersCtrl', function($scope, $http) {
         }).error(function(data) {
 
         });
+    }
+
+    $scope.sendId = function(id) {
+        UserService.setUserId(id);
+        console.log(id);
     }
 
     $scope.$on('$viewContentLoaded', function() {

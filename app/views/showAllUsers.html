@@ -14,10 +14,10 @@
             <span ng-repeat="user in users.results | filter:searchInput | orderBy: 'first_name'">
                 <div class="col-md-4 all-users-result-margin">
                     <div class="col-md-3">
-                        <a href="" ng-click=""><img ng-src="{{user.gravatar_url}}" class="all-users-image"></a>
+                        <a href="#/specific-profile" ng-click="sendId(user.id)"><img ng-src="{{user.gravatar_url}}" class="all-users-image"></a>
                     </div>
                     <div class="col-md-9">
-                        <a href="" ng-click="" id="all-users-link">{{user.first_name}}</a>
+                        <a href="" ng-click="" id="all-users-link">{{user.first_name}} {{user.last_name}}</a>
                         </br>
                         <p class="all-users-description">
                             {{user.description}}
