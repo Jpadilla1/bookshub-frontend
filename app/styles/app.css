@@ -370,6 +370,9 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: 8%;
     padding-bottom: 8%;
 }
+.specific-profile-cart-space {
+    margin-left: 49%;
+}
 /*Cart Styles*/
 
 .cart-item {

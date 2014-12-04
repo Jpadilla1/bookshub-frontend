@@ -11,8 +11,8 @@
 var app = angular.module('hubAppApp');
 
 
-app.controller('bookProfileCtrl', ['$scope', '$resource', 'MyBookService', 'MyOfferService', 'UserService',
-    function($scope, $resource, MyBookService, MyOfferService, UserService){
+app.controller('bookProfileCtrl', ['$scope', '$resource', 'MyBookService', 'MyOfferService', 'UserService','authService', 'CartService',
+    function($scope, $resource, MyBookService, MyOfferService, UserService,authService, CartService){
     
     var params = {
         "bookId": ''
@@ -45,6 +45,63 @@ app.controller('bookProfileCtrl', ['$scope', '$resource', 'MyBookService', 'MyOf
     }else{
         //do something else
     }
+
+
+    $scope.addDataCart = {
+        'user': '',
+        'offer': '',
+        'is_purchased': false,
+        'quantity': ''
+    };
+
+  $scope.addOfferData = {
+        'user': '',
+        'offer': '',
+        'is_purchased': false,
+        'quantity': ''
+    };
+
+    $scope.cartNewSuccess = '';
+    $scope.cartNewError = '';
+    $scope.cartUsedSuccess = '';
+    $scope.cartUsedError = '';
+
+
+    $scope.addToCart = function(offerId, condition){
+        $scope.addOfferData.quantity = 0;
+       
+        alert(offerId);
+        alert(condition);
+
+            authService.settings().then(function(data){
+                $scope.addOfferData.user = data.id;
+            })
+        
+        $scope.addOfferData.offer = offerId;
+        $scope.addOfferData.quantity = $('#' + offerId).val();
+        alert(condition);
+        if($scope.addOfferData.quantity != undefined && $scope.addOfferData.quantity > 0){
+            CartService.cart.save('', $scope.addOfferData).$promise.then(function(data){
+                if(condition.toLowerCase() == 'new'){
+                    $scope.cartNewSuccess = true;
+                    $scope.cartNewError = false;
+                }else{
+                    $scope.cartUsedSuccess = true;
+                    $scope.cartUsedError = false;
+                };
+            });
+        }else{
+            if (condition.toLowerCase() == 'new') {
+                $scope.cartNewError = true;
+                $scope.cartNewSuccess = false;
+            }else{
+                $scope.cartUsedError = true;
+                $scope.cartUsedSuccess = false;
+            };
+        }
+
+
+    };
 
 
     $scope.tabs = {
