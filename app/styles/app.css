@@ -465,6 +465,9 @@ h1, h2, h3, h4, h5, h6 {
 #all-users-search {
     margin-bottom: 20%;
 }
+.all-users-panel-body{
+    padding: 5% 1% 1% 1%;
+}
 /* user profile */
 
 .user-profile {

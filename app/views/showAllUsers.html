@@ -11,20 +11,28 @@
             </div>
         </div>
         <div class="all-users-results">
-            <span ng-repeat="user in users.results | filter:searchInput | orderBy: 'first_name'">
-                <div class="col-md-4 all-users-result-margin">
-                    <div class="col-md-3">
-                        <a href="#/specific-profile" ng-click="sendId(user.id)"><img ng-src="{{user.gravatar_url}}" class="all-users-image"></a>
-                    </div>
-                    <div class="col-md-9">
-                        <a href="" ng-click="" id="all-users-link">{{user.first_name}} {{user.last_name}}</a>
-                        </br>
-                        <p class="all-users-description">
-                            {{user.description}}
-                        </p>
-                    </div>
-                </div>
-            </span>
+            <ul class="list-unstyled">
+                <span ng-repeat="user in users.results | filter:searchInput | orderBy: 'first_name'">
+                    <li class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-body all-users-panel-body">
+                                <div class="col-md-4 all-users-result-margin">
+                                    <a href="#/specific-profile" ng-click="sendId(user.id)"><img ng-src="{{user.gravatar_url}}" class="all-users-image"></a>
+                                </div>
+                                <div class="col-md-8">
+                                    <a href="" ng-click="" id="all-users-link">
+                                        {{user.first_name}} {{user.last_name}}
+                                    </a>
+                                    </br>
+                                    <p class="all-users-description">
+                                        {{user.description}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </span>
+            </ul>
         </div>
     </div>
 </div>
