@@ -18,44 +18,10 @@
             <!--Manages the items in the right side of the second navbar-->
             <form class="navbar-form navbar-right" role="form">
                 <ul class="nav navbar-nav">
-                    <li ng-show="show">
-                        <!--Displays the search input group when the search icon button is toggled-->
-                        <div class="form-group" id="navbar-search-input">
-                            <input type="text" class="form-control" placeholder="Search" id="input-search-navbar" ng-model="searchInput">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-with-background dropdown-toggle" data-toggle="dropdown" id="home-navbar-no-background">
-                                    Search By
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                            <a href="#/result" ng-click="searchBy('title')">
-                                    Title
-                            </a>
-                        </li>
-                                    <li>
-                                        <a href="#/result" ng-click="searchBy('isbn_10')">
-                                        ISBN 10
-                                      </a>
-                                    </li>
-                                    <li>
-                                        <a href="#/result" ng-click="searchBy('isbn_13')">
-                                        ISBN 13
-                                      </a>
-                                    </li>
-                                    <li>
-                                        <a href="#/result" ng-click="searchBy('author')">
-                                        Author
-                                      </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
                     <li>
                         <!--Icon button that when toggled shows the search input group-->
-                        <a href="" ng-click="show = ! show">
-                            <i class="fa fa-search fa-lg" data-toggle="tooltip" title="Search Now!"></i>
+                        <a href="#/all-users">
+                            <i class="fa fa-group fa-lg" data-toggle="tooltip" title="Search User"></i>
                         </a>
                     </li>
                     <li ng-show="isAuthenticated">
