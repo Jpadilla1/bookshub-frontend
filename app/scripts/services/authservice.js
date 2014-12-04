@@ -173,7 +173,8 @@ angular.module('hubAppApp')
                     'last_name': data.last_name,
                     'phone': data.phone,
                     'twitter_url': data.twitter_url,
-                    'zip': data.zip
+                    'zip': data.zip,
+                    'description': data.description
                 }
             });
         },

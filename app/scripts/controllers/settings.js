@@ -62,7 +62,8 @@ app.controller('SettingsCtrl', ['$scope', 'MyOfferService', 'authService', funct
 
   $scope.savePersonalChanges = function(){
     console.log($scope.userData);
-    authService.updateSettings($scope.userData).then(function(){
+    authService.updateSettings($scope.userData).then(function(data){
+      console.log(data);
       $scope.personalResultSuccess = true;
       $scope.personalResultFail = false;
     }, function(){
