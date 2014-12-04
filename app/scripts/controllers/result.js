@@ -12,6 +12,9 @@ var app = angular.module('hubAppApp');
 
 app.controller('ResultCtrl', ['$scope', 'MyBookService','MySearch', 'MyOfferService' ,function($scope, MyBookService, MySearch,MyOfferService) {
  
+  $scope.searchInput = '';
+
+
     $scope.Searchresults = {
         "title": '',
         "isbn_10": '',
@@ -22,6 +25,18 @@ app.controller('ResultCtrl', ['$scope', 'MyBookService','MySearch', 'MyOfferServ
         "category": ''
 
     };
+
+    $scope.Navbarresults = {
+        "title": '',
+        "isbn_10": '',
+        "isbn_13": '',
+        "author": '',
+        "publisher": '',
+        "edition": '',
+        "category": ''
+
+    };
+    
 
     searchBy();
     $scope.New = true;
@@ -40,7 +55,29 @@ app.controller('ResultCtrl', ['$scope', 'MyBookService','MySearch', 'MyOfferServ
         searchBy();       
     };
 
+
+    alert("fs gfhdbg fjdhbgfh");
+
+    $scope.navSearch = function(selection) {
+
+            alert("selection");
+
+            result = validateField($scope.searchInput);
+            MySearch.selectionResult = selection;
+            MySearch.searchResult = result;
+            searchBy();
+
+    };
+
+    $scope.cop = function(selection){
+        alert("Cop");
+    }
+     
+
     function searchBy() {
+
+        alert("fs gfhdbg fjdhbgfh");
+
         $scope.selection = MySearch.selectionResult;
         $scope.searchResult = MySearch.searchResult;
 
@@ -57,6 +94,9 @@ app.controller('ResultCtrl', ['$scope', 'MyBookService','MySearch', 'MyOfferServ
             });
         }
     };
+
+
+
 
      $scope.bookProfile = function(ID){
 

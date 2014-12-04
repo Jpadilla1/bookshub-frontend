@@ -64,5 +64,7 @@ received in the index*/
             MySearch.selectionResult = selection;
             MySearch.searchResult = result;
         }
+
+       
     }]);
 })();

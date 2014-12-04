@@ -59,22 +59,22 @@
                                             </button>
                                             <ul class="dropdown-menu" role="menu" id="search-options">
                                                 <li>
-                                                    <a href="" ng-click="submitByTitle('title')" id="search-options">
-                                                        Title
+                                                    <a href="#/result" ng-click="searchBy('title')">
+                                                                Title
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="" ng-click="submitByIsbn10('isbn_10')" id="search-options">
+                                                    <a href="#/result" ng-click="searchBy('isbn_10')" id="search-options">
                                                         ISBN 10
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="" ng-click="submitByIsbn13('isbn_13')" id="search-options">
+                                                    <a href="#/result" ng-click="searchBy('isbn_13')" id="search-options">
                                                         ISBN 13
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="" ng-click="submitByAuthor('author')" id="search-options">
+                                                    <a href="#/result" ng-click="searchBy('author')" id="search-options">
                                                         Author
                                                     </a>
                                                 </li>
@@ -110,7 +110,7 @@
                                 </li>
                                 <li ng-show="isAuthenticated">
                                     <a href="" ng-click="logOut()">Log Out</a>
-                               </li>
+                                </li>
                             </ul>
                         </div>
                     </form>
