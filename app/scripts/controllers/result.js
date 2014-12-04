@@ -56,7 +56,7 @@ app.controller('ResultCtrl', ['$scope', 'MyBookService','MySearch', 'MyOfferServ
     };
 
 
-    alert("fs gfhdbg fjdhbgfh");
+   
 
     $scope.navSearch = function(selection) {
 
@@ -69,14 +69,12 @@ app.controller('ResultCtrl', ['$scope', 'MyBookService','MySearch', 'MyOfferServ
 
     };
 
-    $scope.cop = function(selection){
-        alert("Cop");
-    }
+    
      
 
     function searchBy() {
 
-        alert("fs gfhdbg fjdhbgfh");
+       
 
         $scope.selection = MySearch.selectionResult;
         $scope.searchResult = MySearch.searchResult;
