@@ -23,8 +23,8 @@ app.service('UserService', ['$resource', '$cookies', '$rootScope', function($res
 	resource.userReview = $resource('https://bookshub.herokuapp.com/api/users/:userId/reviews\\/', {}, {
 		get: {
 			method: "GET",
-			isArray: false,
-			headers: headers
+			isArray: false
+			// headers: headers
 		},
 		save: {
 			method: "POST",
@@ -36,8 +36,8 @@ app.service('UserService', ['$resource', '$cookies', '$rootScope', function($res
 	resource.specificUserReview = $resource('https://bookshub.herokuapp.com/api/users/:userId/reviews/:reviewId\\/', {}, {
 		get: {
 			method: "GET",
-			isArray: false,
-			headers: headers
+			isArray: false
+			// headers: headers
 		},
 		remove: {
 			method: "DELETE",

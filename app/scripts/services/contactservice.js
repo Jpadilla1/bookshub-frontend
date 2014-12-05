@@ -19,9 +19,9 @@ app.service('MyContactService', ['$resource', '$cookies', function($resource, $c
 	  'Authorization': 'JWT ' + $cookies.token
 	};
 
-	resource.contact = $resource((apiUrl + 'constact\\/'), {}, {
+	resource.contact = $resource((apiUrl + 'contact\\/'), {}, {
 		method: 'POST',
-		isArray: false,
-		headers: headers
+		isArray: false
+		// headers: headers
 	});
 }]);

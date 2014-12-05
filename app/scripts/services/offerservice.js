@@ -22,8 +22,8 @@ app.service('MyOfferService', ['$resource', '$cookies', 'authService', function(
 	resource.bookOffer = $resource('https://bookshub.herokuapp.com/api/offers/:offerId\\/', {}, {
 		get: {
 			method: "GET",
-			isArray: false,
-			headers: headers
+			isArray: false
+			// headers: headers
 		},
 		save: {
 			url: 'https://bookshub.herokuapp.com/api/offers\\/',
@@ -41,8 +41,8 @@ app.service('MyOfferService', ['$resource', '$cookies', 'authService', function(
 	resource.userOffers = $resource('https://bookshub.herokuapp.com/api/offers/?owner=:ownerId', {}, {
 		get: {
 			method: "GET",
-			isArray: false,
-			headers: headers
+			isArray: false
+			// headers: headers
 		}
 	});
 

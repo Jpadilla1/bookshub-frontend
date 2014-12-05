@@ -24,8 +24,8 @@ app.service('MyBookService', ['$resource', '$cookies', function($resource, $cook
 	resource.specificBook = $resource('https://bookshub.herokuapp.com/api/books/:bookId\\/', {}, {
 		get: {
 			method: "GET",
-			isArray: false,
-			headers: headers
+			isArray: false
+			// headers: headers
 		},
 		save: {
 			url: "https://bookshub.herokuapp.com/api/books\\/",
@@ -37,15 +37,15 @@ app.service('MyBookService', ['$resource', '$cookies', function($resource, $cook
 	resource.bookReviews = $resource('https://bookshub.herokuapp.com/api/books/:bookId/reviews\\/', {},{
 		get: {
 			method: "GET",
-			isArray: false,
-			headers: headers
+			isArray: false
+			// headers: headers
 		},
 	});
 	resource.specificBookReview = $resource('https://bookshub.herokuapp.com/api/books/:bookId/reviews/:reviewId\\/', {}, {
 		get: {
 			method: "GET",
-			isArray: false,
-			headers: headers
+			isArray: false
+			// headers: headers
 		},
 		put: {
 			method: "PUT",
@@ -87,8 +87,8 @@ app.service('MyBookService', ['$resource', '$cookies', function($resource, $cook
 		resource.specificBookRequested = $resource('https://bookshub.herokuapp.com/api/books/requested/:requestId\\/', {}, {
 		get: {
 			method: "GET",
-			isArray: false,
-			headers: headers
+			isArray: false
+			// headers: headers
 		},
 		save: {
 			method: "POST",
