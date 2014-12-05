@@ -55,7 +55,7 @@ app.config(function($routeProvider) {
        controller: 'ResultCtrl'
      })  
       .when('/login', {
-       templateUrl: 'views/login.html',
+       templateUrl: 'views/logIn.html',
        controller: 'LogInCtrl'
      })
       .when('/book-profile', {
