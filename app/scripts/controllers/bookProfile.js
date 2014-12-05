@@ -112,12 +112,16 @@ app.controller('bookProfileCtrl', ['$scope', '$resource', 'MyBookService', 'MyOf
         $scope.tabs.showNew = true;
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = false;
+
+        $scope.addAndRemoveActive('book-profile-used', 'book-profile-new');
     };
 
     $scope.showUsed = function() {
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = true;
         $scope.tabs.showReview = false;
+
+        $scope.addAndRemoveActive('book-profile-new', 'book-profile-used');
     };
 
     $scope.showReview = function() {
@@ -141,4 +145,11 @@ app.controller('bookProfileCtrl', ['$scope', '$resource', 'MyBookService', 'MyOf
     $scope.$on('$viewContentLoaded', function() {
         defaultNavbar();
     });
+
+    $scope.addAndRemoveActive = function(removeId, addId){
+        $('#' + removeId).removeClass('active');
+        if(!$('#' + addId).hasClass('active')){
+            $('#' + addId).addClass('active');
+        }
+    };
 }]);

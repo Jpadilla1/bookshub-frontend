@@ -26,7 +26,7 @@
             <div class="col-md-12">
                 <div class="col-md-3">
                     <div class="sidebar">
-                        <a href="" class="side-links col-md-12 active" ng-click="showReviews()" id="side-review">
+                        <a href="" class="side-links col-md-12" ng-click="showReviews()" id="side-review">
                             {{bookReviews.count}} Reviews
                         </a>
                         <a href="" class="side-links col-md-12" ng-click="showOffers()" id="side-offers">
@@ -77,12 +77,12 @@
                 <div ng-show="tabs.showOffers">
                     <div class="col-md-9">
                         <div class="col-md-6">
-                            <button class="btn btn-info btn-lg btn-block" ng-click="showNew()">
+                            <button class="btn btn-info btn-lg btn-block active" ng-click="showNew()" id="book-profile-new">
                                 New
                             </button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-info btn-lg btn-block" ng-click="showUsed()">
+                            <button class="btn btn-info btn-lg btn-block" ng-click="showUsed()" id="book-profile-used">
                                 Used
                             </button>
                         </div>
