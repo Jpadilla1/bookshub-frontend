@@ -129,6 +129,8 @@ app.controller('bookProfileCtrl', ['$scope', '$resource', 'MyBookService', 'MyOf
         $scope.tabs.showNew = false;
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = true;
+
+        $scope.addAndRemoveActive('book-profile-side-offers', 'book-profile-side-review');
     };
 
     $scope.showOffers = function(){
@@ -136,6 +138,9 @@ app.controller('bookProfileCtrl', ['$scope', '$resource', 'MyBookService', 'MyOf
         $scope.tabs.showNew = true;
         $scope.tabs.showUsed = false;
         $scope.tabs.showReview = false;
+
+        $scope.addAndRemoveActive('book-profile-side-review', 'book-profile-side-offers');
+        $scope.addAndRemoveActive('book-profile-used', 'book-profile-new');
     };
 
     $scope.goToReviewer = function(userId){
