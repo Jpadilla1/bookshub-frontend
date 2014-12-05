@@ -25,12 +25,14 @@
         <div class="book-options">
             <div class="col-md-12">
                 <div class="col-md-3">
-                    <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showReview()">
-                        {{bookReviews.count}} Reviews
-                    </button>
-                    <button type="button" class="btn btn-info btn-lg btn-block" ng-click="showOffers()">
-                        {{bookInformation.offers.length}} Offers
-                    </button>
+                    <div class="sidebar">
+                        <a href="" class="side-links col-md-12 active" ng-click="showReviews()" id="side-review">
+                            {{bookReviews.count}} Reviews
+                        </a>
+                        <a href="" class="side-links col-md-12" ng-click="showOffers()" id="side-offers">
+                            {{bookInformation.offers.length}} Offers
+                        </a>
+                    </div>
                 </div>
 
                 <div class="col-md-9">
