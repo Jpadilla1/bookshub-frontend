@@ -110,6 +110,9 @@
 
     $scope.loggedInUserData = '';
 
+    $scope.reviewSuccess = '';
+    $scope.reviewError = '';
+
     $scope.submitUserReview = function(){
 
         if($scope.loggedInUserData){
@@ -124,7 +127,13 @@
         $scope.userReviewData.user_id = $scope.profileData.id;
         $scope.userReviewData.owner = $scope.profileData.id;
         console.log($scope.userReviewData); 
-        UserService.userReview.save(paramsUser, $scope.userReviewData);
+        UserService.userReview.save(paramsUser, $scope.userReviewData).$promise.then(function(data){
+            $scope.reviewSuccess = true;
+            $scope.reviewError = false;            
+        }, function(data){
+            $scope.reviewError = true;
+            $scope.reviewSuccess = false;
+        });
 
         //make something to do the review section refresh it's data after post
         //show success message
@@ -135,6 +144,9 @@
         reason: '',
         sender: []
     }
+
+    $scope.reportSuccess = '';
+    $scope.reportError = '';
 
     $scope.submitUserReport = function(){
         if($scope.loggedInUserData){
@@ -148,7 +160,13 @@
 
         console.log($scope.userReportData);
         $scope.userReportData.receiver = $scope.profileData.id;
-        ReportService.userReport.save('', $scope.userReportData);
+        ReportService.userReport.save('', $scope.userReportData).$promise.then(function(data){
+            $scope.reportSuccess = true;
+            $scope.reportError = false;
+        }, function(data){
+            $scope.reportError = true;
+            $scope.reportSuccess = false;
+        });
         //show success message
     };
 

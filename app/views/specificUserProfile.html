@@ -45,7 +45,7 @@
                 <section class="side-navbar">
                     <div class="col-md-3">
                         <div class="sidebar">
-                            <a href="" class="side-links col-md-12 active" ng-click="showReviewForm()" id="side-review">
+                            <a href="" class="side-links col-md-12" ng-click="showReviewForm()" id="side-review">
                                 Review {{profileData.username}}
                             </a>
                             <a href="" class="side-links col-md-12" ng-click="showReportForm()" id="side-report">
@@ -260,6 +260,16 @@
 
                     <!-- Review -->
                     <section class="user-reviews-top-space">
+                        <div class="col-md-12">
+                            <div class="alert alert-success" ng-show="reviewSuccess">
+                                <a href="" class="close" data-dismiss="alert">&times;</a>
+                                <strong>Success!</strong> Your review has been sent.
+                            </div>
+                             <div class="alert alert-danger" ng-show="reviewError">
+                                <a href="" class="close" data-dismiss="alert">&times;</a>
+                                <strong>Error!</strong> Something went wrong when adding your review.
+                            </div>
+                        </div>
                         <div class="col-md-12" ng-show="tabs.showReviewForm">
                             <div class="col-md-4 col-md-offset-4 text-center">
                                 <h1>Review</h1>
@@ -291,6 +301,16 @@
 
                     <!-- Report -->
                     <section class="user-report">
+                        <div class="col-md-12">
+                            <div class="alert alert-success" ng-show="reportSuccess">
+                                <a href="" class="close" data-dismiss="alert">&times;</a>
+                                <strong>Success!</strong> Your report has been sent.
+                            </div>
+                             <div class="alert alert-danger" ng-show="reportError">
+                                <a href="" class="close" data-dismiss="alert">&times;</a>
+                                <strong>Error!</strong> Something went wrong when adding your report.
+                            </div>
+                        </div>
                         <div class="col-md-12" ng-show="tabs.showReportForm">
                             <div class="col-md-4 col-md-offset-4 text-center">
                                 <h1>Report</h1>
