@@ -110,6 +110,9 @@ angular.module('hubAppApp')
             defaultNavbar();
         });
 
+        $scope.sellerSignSuccess = '';
+        $scope.sellerSignError = '';
+
         //Stripe
         // $scope.token;
         Stripe.setPublishableKey('pk_test_0kdKRntcrHlYsL54QQsSjaXo');
@@ -137,7 +140,13 @@ angular.module('hubAppApp')
                 // token contains id, last4, and card type
                 console.log('here');
                 $scope.token = response.id;
-                authService.stripe($scope.plan, $scope.token);
+                authService.stripe($scope.plan, $scope.token).then(function(data){
+                    $scope.sellerSignSuccess = true;
+                    $scope.sellerSignError = false;
+                }, function(data){
+                    $scope.sellerSignError = true;
+                    $scope.sellerSignSuccess = false;
+                });
             }
         };
 
