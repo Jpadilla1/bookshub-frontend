@@ -69,9 +69,6 @@ app.controller('bookProfileCtrl', ['$scope', '$resource', 'MyBookService', 'MyOf
 
     $scope.addToCart = function(offerId, condition){
         $scope.addOfferData.quantity = 0;
-       
-        alert(offerId);
-        alert(condition);
 
             authService.settings().then(function(data){
                 $scope.addOfferData.user = data.id;
@@ -79,7 +76,7 @@ app.controller('bookProfileCtrl', ['$scope', '$resource', 'MyBookService', 'MyOf
         
         $scope.addOfferData.offer = offerId;
         $scope.addOfferData.quantity = $('#' + offerId).val();
-        alert(condition);
+
         if($scope.addOfferData.quantity != undefined && $scope.addOfferData.quantity > 0){
             CartService.cart.save('', $scope.addOfferData).$promise.then(function(data){
                 if(condition.toLowerCase() == 'new'){
