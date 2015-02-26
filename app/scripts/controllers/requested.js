@@ -10,7 +10,7 @@
 
 var app = angular.module('hubAppApp');
 
-app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBookService) {
+app.controller('RequestCtrl', ['$scope', 'MyBookService', '$location', '$timeout', function($scope, MyBookService, $location, $timeout) {
  
     $scope.rBook = {
         "title": '',
@@ -83,6 +83,9 @@ app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBoo
 
     };
 
+    $scope.requestedSuccess = '';
+    $scope.requestedError = '';
+
     $scope.showAddBookRequested = function(id, index){
 
         var paramsbook = {
@@ -95,9 +98,25 @@ app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBoo
             data.count+=1;
             $scope.newData = data;
             console.log($scope.result.results[index]);
-            $scope.result.results[index] = MyBookService.specificBookRequested.put(paramsbook, $scope.newData);
+            MyBookService.specificBookRequested.put(paramsbook, $scope.newData).$promise.then(function(data){
+                $scope.requestedSuccess = true;
+                $scope.requestedError = false;
+
+                $scope.result.results[index] = data;
+
+                $timeout(function(){
+                    $location.url('/');
+                }, 2500);
+
+            }, function(){
+                $scope.requestedError = false;
+                $scope.requestedSuccess = false;
+            });
         });
     };
+
+    $scope.topRequestedSuccess = '';
+    $scope.topRequestedError = '';
 
     $scope.showAddBookRequested2 = function(id, index){
 
@@ -110,8 +129,22 @@ app.controller('RequestCtrl', ['$scope', 'MyBookService', function($scope, MyBoo
         book.$promise.then(function(data){
             data.count+=1;
             $scope.newData = data;
-            console.log($scope.result.results[index]);
-            $scope.topRequested.results[index] = MyBookService.specificBookRequested.put(paramsbook, $scope.newData);
+            MyBookService.specificBookRequested.put(paramsbook, $scope.newData).$promise.then(function(data){
+                $scope.topRequestedSuccess = true;
+                $scope.topRequestedError = false;
+
+                $scope.topRequested.results[index] = data;
+                console.log($scope.topRequested.results[index]);
+
+
+                $timeout(function(){
+                    $location.url('/');
+                }, 2500);
+
+            }, function(){
+                $scope.topRequestedError = false;
+                $scope.topRequestedSuccess = true;
+            });
         });
     };
 
